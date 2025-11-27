@@ -22,6 +22,15 @@
                     fontFamily: {
                         sans: ['Open Sans', 'sans-serif'],
                         display: ['Montserrat', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
                     }
                 }
             }
@@ -32,29 +41,43 @@
             background-color: #050505;
             color: #e5e5e5;
         }
-        .hero-pattern {
-            background-color: #000000;
-            background-image: radial-gradient(#1f1f1f 1px, transparent 1px);
-            background-size: 30px 30px;
-        }
         .glass-panel {
             background: rgba(23, 23, 23, 0.7);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .content-card {
+            background-color: rgba(24, 24, 27, 0.6); /* zinc-900/60 */
+            border: 1px solid rgba(63, 63, 70, 0.5); /* zinc-700/50 */
+            backdrop-filter: blur(8px);
         }
         h1, h2, h3, h4 {
             font-family: 'Montserrat', sans-serif;
         }
-        .page-transition {
-            animation: fadeIn 0.5s ease-in-out;
+        .page-section {
+            opacity: 0;
+            animation: none;
         }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
+        .page-section.active {
+            animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
         .nav-active {
             color: #DC2626 !important;
-            border-bottom: 2px solid #DC2626;
+            position: relative;
+        }
+        .nav-active::after {
+            content: '';
+            position: absolute;
+            bottom: -29px; /* Adjust based on nav height */
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #DC2626;
+            box-shadow: 0 -2px 10px rgba(220, 38, 38, 0.5);
         }
         /* Custom Scrollbar */
         ::-webkit-scrollbar {
@@ -75,25 +98,25 @@
 <body class="antialiased selection:bg-redwolf selection:text-white flex flex-col min-h-screen">
 
     <!-- Navigation -->
-    <nav class="fixed w-full z-50 glass-panel border-b border-red-900/30">
+    <nav class="fixed w-full z-50 glass-panel border-b border-white/5">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
                 <!-- Logo -->
-                <div class="flex-shrink-0 flex items-center gap-3 cursor-pointer" onclick="switchPage('home')">
-                    <i class="fa-solid fa-wolf-pack-battalion text-4xl text-redwolf"></i>
+                <div class="flex-shrink-0 flex items-center gap-3 cursor-pointer group" onclick="switchPage('home')">
+                    <i class="fa-solid fa-wolf-pack-battalion text-4xl text-redwolf group-hover:text-white transition-colors duration-300"></i>
                     <div class="flex flex-col">
                         <span class="font-display font-black text-xl tracking-wider text-white">RED WOLF</span>
-                        <span class="text-xs text-red-500 font-bold tracking-[0.2em]">SECURITY</span>
+                        <span class="text-xs text-red-500 font-bold tracking-[0.2em] group-hover:text-red-400">SECURITY</span>
                     </div>
                 </div>
                 
                 <!-- Desktop Nav -->
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-8">
-                        <button onclick="switchPage('home')" id="nav-home" class="nav-link hover:text-redwolf transition-all px-3 py-2 text-sm font-medium text-white nav-active">Home</button>
-                        <button onclick="switchPage('about')" id="nav-about" class="nav-link hover:text-redwolf transition-all px-3 py-2 text-sm font-medium text-white">About Us</button>
-                        <button onclick="switchPage('services')" id="nav-services" class="nav-link hover:text-redwolf transition-all px-3 py-2 text-sm font-medium text-white">Services</button>
-                        <button onclick="switchPage('contact')" id="nav-contact" class="nav-link hover:text-redwolf transition-all px-3 py-2 text-sm font-medium text-white">Contact</button>
+                        <button onclick="switchPage('home')" id="nav-home" class="nav-link hover:text-white transition-all px-3 py-2 text-sm font-bold text-gray-400 uppercase tracking-wide nav-active">Home</button>
+                        <button onclick="switchPage('about')" id="nav-about" class="nav-link hover:text-white transition-all px-3 py-2 text-sm font-bold text-gray-400 uppercase tracking-wide">About</button>
+                        <button onclick="switchPage('services')" id="nav-services" class="nav-link hover:text-white transition-all px-3 py-2 text-sm font-bold text-gray-400 uppercase tracking-wide">Services</button>
+                        <button onclick="switchPage('contact')" id="nav-contact" class="nav-link hover:text-white transition-all px-3 py-2 text-sm font-bold text-gray-400 uppercase tracking-wide">Contact</button>
                     </div>
                 </div>
 
@@ -118,16 +141,16 @@
     </nav>
 
     <!-- Main Content Container -->
-    <main class="flex-grow pt-20">
+    <main class="flex-grow pt-20 relative">
+        <!-- Background texture for all pages -->
+        <div class="fixed inset-0 z-[-1] bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-zinc-900 via-black to-black pointer-events-none"></div>
 
         <!-- ================= HOME PAGE ================= -->
-        <div id="home" class="page-section page-transition">
+        <div id="home" class="page-section active">
             <!-- Hero Section -->
             <header class="relative h-screen flex items-center justify-center overflow-hidden">
-                 <!-- Background with overlay -->
                 <div class="absolute inset-0 bg-black">
-                     <!-- Placeholder abstract tech/security background -->
-                     <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1557597774-9d273605dfa9?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center opacity-30"></div>
+                     <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1557597774-9d273605dfa9?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center opacity-20"></div>
                      <div class="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent"></div>
                 </div>
                 
@@ -136,7 +159,7 @@
                         <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
                         <span class="text-red-400 text-xs font-bold tracking-widest uppercase">System Operational</span>
                     </div>
-                    <h1 class="text-5xl md:text-7xl lg:text-8xl font-black mb-6 tracking-tight leading-none text-white">
+                    <h1 class="text-5xl md:text-7xl lg:text-8xl font-black mb-6 tracking-tight leading-none text-white drop-shadow-2xl">
                         ABSOLUTE <span class="text-red-600">SAFETY</span><br>
                         <span class="text-transparent bg-clip-text bg-gradient-to-r from-gray-200 to-gray-500">WITHOUT COMPROMISE</span>
                     </h1>
@@ -144,40 +167,40 @@
                         The new face of security. We combine elite manned guarding with cutting-edge electronic surveillance and tracking technology.
                     </p>
                     <div class="flex flex-col sm:flex-row gap-5 justify-center">
-                        <button onclick="switchPage('services')" class="group relative px-8 py-4 bg-red-600 hover:bg-red-700 text-white font-bold text-lg rounded overflow-hidden transition-all shadow-[0_0_20px_rgba(220,38,38,0.5)] hover:shadow-[0_0_40px_rgba(220,38,38,0.7)]">
+                        <button onclick="switchPage('services')" class="group relative px-8 py-4 bg-red-600 hover:bg-red-700 text-white font-bold text-lg rounded-lg overflow-hidden transition-all shadow-[0_0_20px_rgba(220,38,38,0.3)] hover:shadow-[0_0_40px_rgba(220,38,38,0.6)]">
                             <span class="relative z-10">Explore Solutions</span>
                         </button>
-                        <button onclick="switchPage('contact')" class="px-8 py-4 border border-zinc-700 hover:border-white bg-zinc-900/50 hover:bg-white/10 text-gray-300 hover:text-white font-bold text-lg rounded transition-all backdrop-blur-sm">
+                        <button onclick="switchPage('contact')" class="px-8 py-4 border border-zinc-700 hover:border-white bg-zinc-900/50 hover:bg-white/10 text-gray-300 hover:text-white font-bold text-lg rounded-lg transition-all backdrop-blur-sm">
                             Get a Quote
                         </button>
                     </div>
                 </div>
             </header>
 
-            <!-- Quick Stats / Trust Bar -->
-            <div class="border-y border-zinc-800 bg-black/50 backdrop-blur relative z-20 -mt-20 mx-4 md:mx-auto max-w-7xl rounded-xl overflow-hidden">
+            <!-- Trust Bar -->
+            <div class="border-y border-zinc-800 bg-black/50 backdrop-blur-md relative z-20 -mt-20 mx-4 md:mx-auto max-w-7xl rounded-xl overflow-hidden shadow-2xl">
                 <div class="grid grid-cols-2 md:grid-cols-4 divide-x divide-zinc-800">
-                    <div class="p-6 text-center">
-                        <div class="text-3xl font-black text-white mb-1">24/7</div>
-                        <div class="text-xs text-red-500 font-bold uppercase tracking-wider">Monitoring</div>
+                    <div class="p-6 text-center group hover:bg-zinc-900/50 transition-colors">
+                        <div class="text-3xl font-black text-white mb-1 group-hover:text-red-500 transition-colors">24/7</div>
+                        <div class="text-xs text-gray-500 font-bold uppercase tracking-wider">Monitoring</div>
                     </div>
-                    <div class="p-6 text-center">
-                        <div class="text-3xl font-black text-white mb-1">100%</div>
-                        <div class="text-xs text-red-500 font-bold uppercase tracking-wider">Client Focus</div>
+                    <div class="p-6 text-center group hover:bg-zinc-900/50 transition-colors">
+                        <div class="text-3xl font-black text-white mb-1 group-hover:text-red-500 transition-colors">100%</div>
+                        <div class="text-xs text-gray-500 font-bold uppercase tracking-wider">Client Focus</div>
                     </div>
-                    <div class="p-6 text-center">
-                        <div class="text-3xl font-black text-white mb-1">Expert</div>
-                        <div class="text-xs text-red-500 font-bold uppercase tracking-wider">Personnel</div>
+                    <div class="p-6 text-center group hover:bg-zinc-900/50 transition-colors">
+                        <div class="text-3xl font-black text-white mb-1 group-hover:text-red-500 transition-colors">Expert</div>
+                        <div class="text-xs text-gray-500 font-bold uppercase tracking-wider">Personnel</div>
                     </div>
-                    <div class="p-6 text-center">
-                        <div class="text-3xl font-black text-white mb-1">Rapid</div>
-                        <div class="text-xs text-red-500 font-bold uppercase tracking-wider">Response</div>
+                    <div class="p-6 text-center group hover:bg-zinc-900/50 transition-colors">
+                        <div class="text-3xl font-black text-white mb-1 group-hover:text-red-500 transition-colors">Rapid</div>
+                        <div class="text-xs text-gray-500 font-bold uppercase tracking-wider">Response</div>
                     </div>
                 </div>
             </div>
 
             <!-- Core Pillars Section -->
-            <section class="py-24 bg-black">
+            <section class="py-24">
                 <div class="max-w-7xl mx-auto px-4">
                     <div class="text-center mb-16">
                         <h2 class="text-3xl md:text-5xl font-black text-white mb-4">Comprehensive Protection</h2>
@@ -187,93 +210,44 @@
 
                     <div class="grid md:grid-cols-3 gap-8">
                         <!-- Card 1 -->
-                        <div onclick="switchPage('service-guarding')" class="group relative p-8 rounded-2xl bg-zinc-900 border border-zinc-800 hover:border-red-600/50 transition-all cursor-pointer overflow-hidden">
+                        <div onclick="switchPage('service-guarding')" class="group relative p-8 rounded-2xl bg-zinc-900 border border-zinc-800 hover:border-red-600/50 transition-all cursor-pointer overflow-hidden shadow-lg hover:shadow-red-900/20">
                             <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/90 z-10"></div>
-                            <!-- Icon/Image placeholder -->
                             <div class="relative z-20">
-                                <i class="fa-solid fa-user-shield text-5xl text-red-600 mb-6 group-hover:scale-110 transition-transform"></i>
-                                <h3 class="text-2xl font-bold text-white mb-3">Manned Guarding</h3>
+                                <i class="fa-solid fa-user-shield text-5xl text-red-600 mb-6 group-hover:scale-110 transition-transform duration-300"></i>
+                                <h3 class="text-2xl font-bold text-white mb-3 group-hover:text-red-500 transition-colors">Manned Guarding</h3>
                                 <p class="text-gray-400 mb-6 line-clamp-3">Uniformed professionals, rapid response teams, and specialized protection for retail, corporate, and residential sectors.</p>
-                                <span class="text-red-500 font-bold text-sm flex items-center gap-2 group-hover:gap-4 transition-all">Learn More <i class="fa-solid fa-arrow-right"></i></span>
+                                <span class="text-white font-bold text-sm flex items-center gap-2 group-hover:gap-4 transition-all uppercase tracking-wider">Explore <i class="fa-solid fa-arrow-right text-red-600"></i></span>
                             </div>
                         </div>
 
                         <!-- Card 2 -->
-                        <div onclick="switchPage('service-cctv')" class="group relative p-8 rounded-2xl bg-zinc-900 border border-zinc-800 hover:border-red-600/50 transition-all cursor-pointer overflow-hidden">
+                        <div onclick="switchPage('service-cctv')" class="group relative p-8 rounded-2xl bg-zinc-900 border border-zinc-800 hover:border-red-600/50 transition-all cursor-pointer overflow-hidden shadow-lg hover:shadow-red-900/20">
                             <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/90 z-10"></div>
                             <div class="relative z-20">
-                                <i class="fa-solid fa-eye text-5xl text-red-600 mb-6 group-hover:scale-110 transition-transform"></i>
-                                <h3 class="text-2xl font-bold text-white mb-3">Electronic Systems</h3>
+                                <i class="fa-solid fa-eye text-5xl text-red-600 mb-6 group-hover:scale-110 transition-transform duration-300"></i>
+                                <h3 class="text-2xl font-bold text-white mb-3 group-hover:text-red-500 transition-colors">Electronic Systems</h3>
                                 <p class="text-gray-400 mb-6 line-clamp-3">State-of-the-art CCTV, access control, and intrusion detection systems designed to deter and detect.</p>
-                                <span class="text-red-500 font-bold text-sm flex items-center gap-2 group-hover:gap-4 transition-all">Learn More <i class="fa-solid fa-arrow-right"></i></span>
+                                <span class="text-white font-bold text-sm flex items-center gap-2 group-hover:gap-4 transition-all uppercase tracking-wider">Explore <i class="fa-solid fa-arrow-right text-red-600"></i></span>
                             </div>
                         </div>
 
                         <!-- Card 3 -->
-                        <div onclick="switchPage('service-tracking')" class="group relative p-8 rounded-2xl bg-zinc-900 border border-zinc-800 hover:border-red-600/50 transition-all cursor-pointer overflow-hidden">
+                        <div onclick="switchPage('service-tracking')" class="group relative p-8 rounded-2xl bg-zinc-900 border border-zinc-800 hover:border-red-600/50 transition-all cursor-pointer overflow-hidden shadow-lg hover:shadow-red-900/20">
                             <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/90 z-10"></div>
                             <div class="relative z-20">
-                                <i class="fa-solid fa-location-dot text-5xl text-red-600 mb-6 group-hover:scale-110 transition-transform"></i>
-                                <h3 class="text-2xl font-bold text-white mb-3">Tracking & Tech</h3>
+                                <i class="fa-solid fa-location-dot text-5xl text-red-600 mb-6 group-hover:scale-110 transition-transform duration-300"></i>
+                                <h3 class="text-2xl font-bold text-white mb-3 group-hover:text-red-500 transition-colors">Tracking & Tech</h3>
                                 <p class="text-gray-400 mb-6 line-clamp-3">GPS vehicle tracking, solar energy solutions, and smart home automation for the modern world.</p>
-                                <span class="text-red-500 font-bold text-sm flex items-center gap-2 group-hover:gap-4 transition-all">Learn More <i class="fa-solid fa-arrow-right"></i></span>
+                                <span class="text-white font-bold text-sm flex items-center gap-2 group-hover:gap-4 transition-all uppercase tracking-wider">Explore <i class="fa-solid fa-arrow-right text-red-600"></i></span>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- Value Proposition (Why Us) -->
-            <section class="py-24 bg-zinc-900/50 border-y border-zinc-800">
-                <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-16 items-center">
-                    <div>
-                        <h2 class="text-3xl md:text-4xl font-black text-white mb-6">The Red Wolf Standard</h2>
-                        <p class="text-gray-300 text-lg mb-6 leading-relaxed">
-                            We are champions of Client Focus. We take the time to understand the unique challenges you face, developing bespoke security programmes that provide industry-specific solutions.
-                        </p>
-                        <div class="space-y-4">
-                            <div class="flex items-start gap-4">
-                                <div class="w-10 h-10 rounded bg-red-900/20 flex items-center justify-center text-red-500 shrink-0">
-                                    <i class="fa-solid fa-check"></i>
-                                </div>
-                                <div>
-                                    <h4 class="text-white font-bold">Rigorous Selection</h4>
-                                    <p class="text-sm text-gray-400">Intensive screening including criminal background checks and written references.</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start gap-4">
-                                <div class="w-10 h-10 rounded bg-red-900/20 flex items-center justify-center text-red-500 shrink-0">
-                                    <i class="fa-solid fa-check"></i>
-                                </div>
-                                <div>
-                                    <h4 class="text-white font-bold">Continuous Training</h4>
-                                    <p class="text-sm text-gray-400">Constant reinforcement drills for high-stress situations.</p>
-                                </div>
-                            </div>
-                             <div class="flex items-start gap-4">
-                                <div class="w-10 h-10 rounded bg-red-900/20 flex items-center justify-center text-red-500 shrink-0">
-                                    <i class="fa-solid fa-check"></i>
-                                </div>
-                                <div>
-                                    <h4 class="text-white font-bold">Integrated Technology</h4>
-                                    <p class="text-sm text-gray-400">Combining manpower with modern tech for complete coverage.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="relative h-full min-h-[400px] rounded-2xl overflow-hidden border border-zinc-700 bg-black">
-                         <!-- Abstract visual representation -->
-                         <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1551817958-c1b313a7d731?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center opacity-40 grayscale hover:grayscale-0 transition-all duration-700"></div>
-                         <div class="absolute bottom-0 left-0 p-8 bg-gradient-to-t from-black to-transparent w-full">
-                            <div class="text-white font-bold text-xl">"The embodiment of experience and modern technology."</div>
-                         </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- CTA -->
-            <section class="py-24 bg-black relative overflow-hidden">
-                <div class="absolute inset-0 bg-red-900/10 radial-gradient"></div>
+             <!-- CTA -->
+             <section class="py-24 bg-zinc-900/30 relative overflow-hidden border-t border-zinc-800">
+                <div class="absolute inset-0 bg-red-900/5 radial-gradient"></div>
                 <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
                     <h2 class="text-4xl md:text-5xl font-black text-white mb-8">Secure Your Future Today</h2>
                     <p class="text-xl text-gray-400 mb-10">Don't wait for a security breach to happen. Let us design a comprehensive safety plan for your home or business.</p>
@@ -285,40 +259,36 @@
         </div>
 
         <!-- ================= ABOUT PAGE ================= -->
-        <div id="about" class="page-section hidden page-transition">
-            <section class="py-20 bg-neutral-900 min-h-screen">
+        <div id="about" class="page-section hidden">
+            <section class="py-20 min-h-screen">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="text-center mb-16">
-                        <h1 class="text-4xl md:text-5xl font-black text-white mb-4">Who We Are</h1>
-                        <div class="h-1 w-20 bg-redwolf mx-auto"></div>
+                        <h1 class="text-4xl md:text-6xl font-black text-white mb-4">Who We Are</h1>
+                        <div class="h-1 w-20 bg-red-600 mx-auto rounded-full"></div>
                     </div>
 
                     <div class="grid md:grid-cols-2 gap-12 mb-20">
-                        <div>
-                            <h2 class="text-3xl font-bold mb-6 border-l-4 border-redwolf pl-4 text-white">Our Angle</h2>
-                            <p class="text-gray-300 leading-relaxed mb-6">
-                                We are champions of Client Focus. We take the time to understand the challenges that our Clients face, developing leading security programmes that provide industry-specific solutions, catering to their unique needs—in line with their budgets. Our culture of accountability and innovation keeps us consistent in the provision of top-quality products and services.
+                        <div class="content-card p-8 rounded-2xl">
+                            <h2 class="text-3xl font-bold mb-6 text-white">Our Angle</h2>
+                            <p class="text-gray-300 leading-relaxed">
+                                We are champions of Client Focus. We take the time to understand the challenges that our Clients face, developing leading security programmes that provide industry-specific solutions, catering to their unique needs—in line with their budgets.
                             </p>
                         </div>
-                        <div class="bg-zinc-800 p-8 rounded-lg border border-zinc-700">
+                        <div class="content-card p-8 rounded-2xl border-l-4 border-l-red-600">
                             <h2 class="text-2xl font-bold mb-4 text-red-500">The Game Changer</h2>
                             <p class="text-gray-300 mb-4 italic text-lg">
                                 "The embodiment of the perfect degree of experience, dedication, and professionalism that has long been missing in the security industry."
                             </p>
-                            <p class="text-gray-400 text-sm">
-                                We focus on quality, excellence, continual improvement, and innovation. The wealth of knowledge we have gained over the years provides the bedrock for the great quality work we do.
-                            </p>
                         </div>
                     </div>
                     
-                    <!-- Values Section -->
                     <div class="grid md:grid-cols-3 gap-8 mb-20">
-                        <div class="glass-panel p-8 rounded-xl relative overflow-hidden group hover:border-red-600 transition-colors">
+                        <div class="glass-panel p-8 rounded-2xl relative overflow-hidden group hover:border-red-600/50 transition-colors">
                             <div class="absolute -right-4 -top-4 text-zinc-800 text-9xl font-black opacity-20 group-hover:text-red-900 transition-colors">V</div>
                             <h3 class="text-2xl font-bold mb-4 text-red-500">Vision</h3>
                             <p class="text-2xl font-light text-white">Absolute Safety</p>
                         </div>
-                        <div class="glass-panel p-8 rounded-xl relative overflow-hidden group hover:border-red-600 transition-colors md:col-span-2">
+                        <div class="glass-panel p-8 rounded-2xl relative overflow-hidden group hover:border-red-600/50 transition-colors md:col-span-2">
                             <div class="absolute -right-4 -top-4 text-zinc-800 text-9xl font-black opacity-20 group-hover:text-red-900 transition-colors">M</div>
                             <h3 class="text-2xl font-bold mb-4 text-red-500">Mission</h3>
                             <div class="grid md:grid-cols-2 gap-4">
@@ -326,11 +296,10 @@
                                     <li>Security guard services & risk analysis.</li>
                                     <li>Armoured vans with radio communication.</li>
                                     <li>Electronic security systems (CCTV, Access Control).</li>
-                                    <li>Bespoke software solutions.</li>
                                 </ul>
                                 <ul class="text-sm text-gray-300 list-disc pl-5 space-y-2">
                                     <li>Gate security (Boom barriers, Scanners).</li>
-                                    <li>National guarding services (Events, Facilities).</li>
+                                    <li>National guarding services.</li>
                                     <li>Skill development training programmes.</li>
                                 </ul>
                             </div>
@@ -341,87 +310,114 @@
         </div>
 
         <!-- ================= SERVICES HUB ================= -->
-        <div id="services" class="page-section hidden page-transition">
-            <section class="py-20 bg-black min-h-screen">
+        <div id="services" class="page-section hidden">
+            <section class="py-20 min-h-screen">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="text-center mb-16">
-                        <h1 class="text-4xl md:text-5xl font-black text-white mb-4">Our Services</h1>
-                        <div class="h-1 w-20 bg-redwolf mx-auto"></div>
+                        <h1 class="text-4xl md:text-6xl font-black text-white mb-4">Our Services</h1>
+                        <div class="h-1 w-20 bg-red-600 mx-auto rounded-full"></div>
                         <p class="mt-4 text-gray-400">Comprehensive security solutions tailored to your needs.</p>
                     </div>
 
                     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                         
                         <!-- 1. Guarding -->
-                        <div onclick="switchPage('service-guarding')" class="bg-zinc-900 rounded-xl p-6 cursor-pointer hover:bg-zinc-800 hover:border-redwolf border border-zinc-800 transition-all group relative overflow-hidden">
-                            <i class="fa-solid fa-person-military-pointing text-3xl text-redwolf mb-4"></i>
-                            <h3 class="text-xl font-bold text-white mb-2">Guarding & Rapid Response</h3>
-                            <p class="text-sm text-gray-400 mb-4 line-clamp-2">Uniformed security, mobile patrols, and specialized protection services.</p>
-                            <span class="text-red-500 font-bold text-xs uppercase tracking-wider group-hover:translate-x-2 transition-transform inline-block">Explore &rarr;</span>
+                        <div onclick="switchPage('service-guarding')" class="group relative p-8 rounded-2xl bg-zinc-900 border border-zinc-800 hover:border-red-600/50 transition-all cursor-pointer overflow-hidden">
+                            <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/90 z-10"></div>
+                            <div class="relative z-20">
+                                <i class="fa-solid fa-person-military-pointing text-4xl text-red-600 mb-6 group-hover:scale-110 transition-transform"></i>
+                                <h3 class="text-xl font-bold text-white mb-2 group-hover:text-red-500 transition-colors">Guarding & Rapid Response</h3>
+                                <p class="text-sm text-gray-400 mb-4 line-clamp-2">Uniformed security, mobile patrols, and specialized protection services.</p>
+                                <span class="text-white font-bold text-xs uppercase tracking-wider group-hover:translate-x-2 transition-transform inline-block">Explore &rarr;</span>
+                            </div>
                         </div>
 
                         <!-- 2. CCTV -->
-                        <div onclick="switchPage('service-cctv')" class="bg-zinc-900 rounded-xl p-6 cursor-pointer hover:bg-zinc-800 hover:border-redwolf border border-zinc-800 transition-all group relative overflow-hidden">
-                            <i class="fa-solid fa-video text-3xl text-redwolf mb-4"></i>
-                            <h3 class="text-xl font-bold text-white mb-2">CCTV & Surveillance</h3>
-                            <p class="text-sm text-gray-400 mb-4 line-clamp-2">High-quality video systems, night vision, and analytics.</p>
-                            <span class="text-red-500 font-bold text-xs uppercase tracking-wider group-hover:translate-x-2 transition-transform inline-block">Explore &rarr;</span>
+                        <div onclick="switchPage('service-cctv')" class="group relative p-8 rounded-2xl bg-zinc-900 border border-zinc-800 hover:border-red-600/50 transition-all cursor-pointer overflow-hidden">
+                            <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/90 z-10"></div>
+                            <div class="relative z-20">
+                                <i class="fa-solid fa-video text-4xl text-red-600 mb-6 group-hover:scale-110 transition-transform"></i>
+                                <h3 class="text-xl font-bold text-white mb-2 group-hover:text-red-500 transition-colors">CCTV & Surveillance</h3>
+                                <p class="text-sm text-gray-400 mb-4 line-clamp-2">High-quality video systems, night vision, and analytics.</p>
+                                <span class="text-white font-bold text-xs uppercase tracking-wider group-hover:translate-x-2 transition-transform inline-block">Explore &rarr;</span>
+                            </div>
                         </div>
 
                         <!-- 3. Fire -->
-                        <div onclick="switchPage('service-fire')" class="bg-zinc-900 rounded-xl p-6 cursor-pointer hover:bg-zinc-800 hover:border-redwolf border border-zinc-800 transition-all group relative overflow-hidden">
-                            <i class="fa-solid fa-fire-extinguisher text-3xl text-redwolf mb-4"></i>
-                            <h3 class="text-xl font-bold text-white mb-2">Fire Detection & Evacuation</h3>
-                            <p class="text-sm text-gray-400 mb-4 line-clamp-2">Prevention systems, certification, and emergency planning.</p>
-                            <span class="text-red-500 font-bold text-xs uppercase tracking-wider group-hover:translate-x-2 transition-transform inline-block">Explore &rarr;</span>
+                        <div onclick="switchPage('service-fire')" class="group relative p-8 rounded-2xl bg-zinc-900 border border-zinc-800 hover:border-red-600/50 transition-all cursor-pointer overflow-hidden">
+                            <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/90 z-10"></div>
+                            <div class="relative z-20">
+                                <i class="fa-solid fa-fire-extinguisher text-4xl text-red-600 mb-6 group-hover:scale-110 transition-transform"></i>
+                                <h3 class="text-xl font-bold text-white mb-2 group-hover:text-red-500 transition-colors">Fire Detection</h3>
+                                <p class="text-sm text-gray-400 mb-4 line-clamp-2">Prevention systems, certification, and emergency planning.</p>
+                                <span class="text-white font-bold text-xs uppercase tracking-wider group-hover:translate-x-2 transition-transform inline-block">Explore &rarr;</span>
+                            </div>
                         </div>
 
                         <!-- 4. Solar -->
-                        <div onclick="switchPage('service-solar')" class="bg-zinc-900 rounded-xl p-6 cursor-pointer hover:bg-zinc-800 hover:border-redwolf border border-zinc-800 transition-all group relative overflow-hidden">
-                            <i class="fa-solid fa-solar-panel text-3xl text-redwolf mb-4"></i>
-                            <h3 class="text-xl font-bold text-white mb-2">Solar / Inverter Solutions</h3>
-                            <p class="text-sm text-gray-400 mb-4 line-clamp-2">Grid-tied, off-grid, and hybrid energy systems.</p>
-                            <span class="text-red-500 font-bold text-xs uppercase tracking-wider group-hover:translate-x-2 transition-transform inline-block">Explore &rarr;</span>
+                        <div onclick="switchPage('service-solar')" class="group relative p-8 rounded-2xl bg-zinc-900 border border-zinc-800 hover:border-red-600/50 transition-all cursor-pointer overflow-hidden">
+                            <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/90 z-10"></div>
+                            <div class="relative z-20">
+                                <i class="fa-solid fa-solar-panel text-4xl text-red-600 mb-6 group-hover:scale-110 transition-transform"></i>
+                                <h3 class="text-xl font-bold text-white mb-2 group-hover:text-red-500 transition-colors">Solar Solutions</h3>
+                                <p class="text-sm text-gray-400 mb-4 line-clamp-2">Grid-tied, off-grid, and hybrid energy systems.</p>
+                                <span class="text-white font-bold text-xs uppercase tracking-wider group-hover:translate-x-2 transition-transform inline-block">Explore &rarr;</span>
+                            </div>
                         </div>
 
                         <!-- 5. Access Control -->
-                        <div onclick="switchPage('service-access')" class="bg-zinc-900 rounded-xl p-6 cursor-pointer hover:bg-zinc-800 hover:border-redwolf border border-zinc-800 transition-all group relative overflow-hidden">
-                            <i class="fa-solid fa-id-card text-3xl text-redwolf mb-4"></i>
-                            <h3 class="text-xl font-bold text-white mb-2">Access Control Systems</h3>
-                            <p class="text-sm text-gray-400 mb-4 line-clamp-2">Biometrics, smart cards, intercoms, and intrusion detection.</p>
-                            <span class="text-red-500 font-bold text-xs uppercase tracking-wider group-hover:translate-x-2 transition-transform inline-block">Explore &rarr;</span>
+                        <div onclick="switchPage('service-access')" class="group relative p-8 rounded-2xl bg-zinc-900 border border-zinc-800 hover:border-red-600/50 transition-all cursor-pointer overflow-hidden">
+                            <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/90 z-10"></div>
+                            <div class="relative z-20">
+                                <i class="fa-solid fa-id-card text-4xl text-red-600 mb-6 group-hover:scale-110 transition-transform"></i>
+                                <h3 class="text-xl font-bold text-white mb-2 group-hover:text-red-500 transition-colors">Access Control</h3>
+                                <p class="text-sm text-gray-400 mb-4 line-clamp-2">Biometrics, smart cards, intercoms, and intrusion detection.</p>
+                                <span class="text-white font-bold text-xs uppercase tracking-wider group-hover:translate-x-2 transition-transform inline-block">Explore &rarr;</span>
+                            </div>
                         </div>
 
                         <!-- 6. Smart Home -->
-                        <div onclick="switchPage('service-smarthome')" class="bg-zinc-900 rounded-xl p-6 cursor-pointer hover:bg-zinc-800 hover:border-redwolf border border-zinc-800 transition-all group relative overflow-hidden">
-                            <i class="fa-solid fa-house-signal text-3xl text-redwolf mb-4"></i>
-                            <h3 class="text-xl font-bold text-white mb-2">Smart Home Automation</h3>
-                            <p class="text-sm text-gray-400 mb-4 line-clamp-2">Remote control of security, lighting, and climate.</p>
-                            <span class="text-red-500 font-bold text-xs uppercase tracking-wider group-hover:translate-x-2 transition-transform inline-block">Explore &rarr;</span>
+                        <div onclick="switchPage('service-smarthome')" class="group relative p-8 rounded-2xl bg-zinc-900 border border-zinc-800 hover:border-red-600/50 transition-all cursor-pointer overflow-hidden">
+                            <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/90 z-10"></div>
+                            <div class="relative z-20">
+                                <i class="fa-solid fa-house-signal text-4xl text-red-600 mb-6 group-hover:scale-110 transition-transform"></i>
+                                <h3 class="text-xl font-bold text-white mb-2 group-hover:text-red-500 transition-colors">Smart Home</h3>
+                                <p class="text-sm text-gray-400 mb-4 line-clamp-2">Remote control of security, lighting, and climate.</p>
+                                <span class="text-white font-bold text-xs uppercase tracking-wider group-hover:translate-x-2 transition-transform inline-block">Explore &rarr;</span>
+                            </div>
                         </div>
 
                          <!-- 7. Investigation -->
-                         <div onclick="switchPage('service-investigation')" class="bg-zinc-900 rounded-xl p-6 cursor-pointer hover:bg-zinc-800 hover:border-redwolf border border-zinc-800 transition-all group relative overflow-hidden">
-                            <i class="fa-solid fa-magnifying-glass text-3xl text-redwolf mb-4"></i>
-                            <h3 class="text-xl font-bold text-white mb-2">Investigation Services</h3>
-                            <p class="text-sm text-gray-400 mb-4 line-clamp-2">Private, corporate, and insurance investigations.</p>
-                            <span class="text-red-500 font-bold text-xs uppercase tracking-wider group-hover:translate-x-2 transition-transform inline-block">Explore &rarr;</span>
+                         <div onclick="switchPage('service-investigation')" class="group relative p-8 rounded-2xl bg-zinc-900 border border-zinc-800 hover:border-red-600/50 transition-all cursor-pointer overflow-hidden">
+                            <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/90 z-10"></div>
+                            <div class="relative z-20">
+                                <i class="fa-solid fa-magnifying-glass text-4xl text-red-600 mb-6 group-hover:scale-110 transition-transform"></i>
+                                <h3 class="text-xl font-bold text-white mb-2 group-hover:text-red-500 transition-colors">Investigation</h3>
+                                <p class="text-sm text-gray-400 mb-4 line-clamp-2">Private, corporate, and insurance investigations.</p>
+                                <span class="text-white font-bold text-xs uppercase tracking-wider group-hover:translate-x-2 transition-transform inline-block">Explore &rarr;</span>
+                            </div>
                         </div>
 
                         <!-- 8. Consulting -->
-                        <div onclick="switchPage('service-consulting')" class="bg-zinc-900 rounded-xl p-6 cursor-pointer hover:bg-zinc-800 hover:border-redwolf border border-zinc-800 transition-all group relative overflow-hidden">
-                            <i class="fa-solid fa-user-tie text-3xl text-redwolf mb-4"></i>
-                            <h3 class="text-xl font-bold text-white mb-2">IT & Corporate Consulting</h3>
-                            <p class="text-sm text-gray-400 mb-4 line-clamp-2">Risk assessments, network security (LAN/WAN), and consulting.</p>
-                            <span class="text-red-500 font-bold text-xs uppercase tracking-wider group-hover:translate-x-2 transition-transform inline-block">Explore &rarr;</span>
+                        <div onclick="switchPage('service-consulting')" class="group relative p-8 rounded-2xl bg-zinc-900 border border-zinc-800 hover:border-red-600/50 transition-all cursor-pointer overflow-hidden">
+                            <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/90 z-10"></div>
+                            <div class="relative z-20">
+                                <i class="fa-solid fa-user-tie text-4xl text-red-600 mb-6 group-hover:scale-110 transition-transform"></i>
+                                <h3 class="text-xl font-bold text-white mb-2 group-hover:text-red-500 transition-colors">Consulting</h3>
+                                <p class="text-sm text-gray-400 mb-4 line-clamp-2">Risk assessments, network security (LAN/WAN), and consulting.</p>
+                                <span class="text-white font-bold text-xs uppercase tracking-wider group-hover:translate-x-2 transition-transform inline-block">Explore &rarr;</span>
+                            </div>
                         </div>
 
                         <!-- 9. Tracking -->
-                        <div onclick="switchPage('service-tracking')" class="bg-zinc-900 rounded-xl p-6 cursor-pointer hover:bg-zinc-800 hover:border-redwolf border border-zinc-800 transition-all group relative overflow-hidden">
-                            <i class="fa-solid fa-location-crosshairs text-3xl text-redwolf mb-4"></i>
-                            <h3 class="text-xl font-bold text-white mb-2">Vehicle Tracking</h3>
-                            <p class="text-sm text-gray-400 mb-4 line-clamp-2">Real-time GPS tracking for fleets and individuals.</p>
-                            <span class="text-red-500 font-bold text-xs uppercase tracking-wider group-hover:translate-x-2 transition-transform inline-block">Explore &rarr;</span>
+                        <div onclick="switchPage('service-tracking')" class="group relative p-8 rounded-2xl bg-zinc-900 border border-zinc-800 hover:border-red-600/50 transition-all cursor-pointer overflow-hidden">
+                            <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/90 z-10"></div>
+                            <div class="relative z-20">
+                                <i class="fa-solid fa-location-crosshairs text-4xl text-red-600 mb-6 group-hover:scale-110 transition-transform"></i>
+                                <h3 class="text-xl font-bold text-white mb-2 group-hover:text-red-500 transition-colors">Vehicle Tracking</h3>
+                                <p class="text-sm text-gray-400 mb-4 line-clamp-2">Real-time GPS tracking for fleets and individuals.</p>
+                                <span class="text-white font-bold text-xs uppercase tracking-wider group-hover:translate-x-2 transition-transform inline-block">Explore &rarr;</span>
+                            </div>
                         </div>
 
                     </div>
@@ -429,258 +425,211 @@
             </section>
         </div>
 
-        <!-- ================= VIEW 1: GUARDING & RAPID RESPONSE ================= -->
-        <div id="service-guarding" class="page-section hidden page-transition bg-neutral-900 min-h-screen pt-12 pb-20">
+        <!-- ================= VIEW 1: GUARDING ================= -->
+        <div id="service-guarding" class="page-section hidden pt-12 pb-20">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <button onclick="switchPage('services')" class="mb-8 flex items-center text-redwolf hover:text-white transition-colors font-bold"><i class="fa-solid fa-arrow-left mr-2"></i> Back to Services</button>
-                <h1 class="text-4xl font-black text-white mb-8 border-l-8 border-redwolf pl-6">Guarding & Rapid Response</h1>
+                <button onclick="switchPage('services')" class="mb-8 flex items-center text-gray-400 hover:text-red-500 transition-colors font-bold group">
+                    <i class="fa-solid fa-arrow-left mr-2 group-hover:-translate-x-1 transition-transform"></i> Back to Services
+                </button>
+                
+                <h1 class="text-4xl md:text-5xl font-black text-white mb-8 border-l-8 border-red-600 pl-6">Guarding & Rapid Response</h1>
                 
                 <div class="grid gap-8">
-                    <div class="bg-black p-8 rounded-xl border border-zinc-800">
-                        <p class="text-lg text-gray-300 mb-6">Our security professionals have developed comprehensive uniformed security service packages in order to address your specific needs, for your homes and businesses. Our certified security guards are expertly trained in capacities including general guarding to highly specialised security roles.</p>
-                        <div class="grid md:grid-cols-2 gap-6">
-                            <div>
-                                <h3 class="text-redwolf font-bold mb-2">Specialised Roles</h3>
-                                <ul class="list-disc pl-5 text-gray-400 space-y-1">
-                                    <li>Critical asset protection</li>
-                                    <li>Customer relations</li>
-                                    <li>Mobile patrol</li>
-                                    <li>Close protection</li>
-                                    <li>Response team</li>
-                                    <li>Company social responsibility</li>
-                                    <li>Access control & Security alert</li>
+                    <!-- General Guarding & Roles -->
+                    <div class="content-card p-8 rounded-2xl">
+                        <div class="flex flex-col md:flex-row gap-8">
+                            <div class="flex-1">
+                                <h2 class="text-2xl font-bold text-white mb-4">Guarding Services</h2>
+                                <p class="text-gray-300 leading-relaxed mb-6">
+                                    Our security professionals have developed comprehensive uniformed security service packages to address your specific needs for homes and businesses. Our certified security guards are expertly trained in capacities ranging from general guarding to highly specialised security roles.
+                                </p>
+                                <h3 class="text-red-500 font-bold mb-3">Specialised Roles Include:</h3>
+                                <div class="grid grid-cols-2 gap-y-2 gap-x-4 text-sm text-gray-400">
+                                    <div class="flex items-center"><i class="fa-solid fa-shield text-red-800 mr-2"></i> Critical asset protection</div>
+                                    <div class="flex items-center"><i class="fa-solid fa-shield text-red-800 mr-2"></i> Customer relations</div>
+                                    <div class="flex items-center"><i class="fa-solid fa-shield text-red-800 mr-2"></i> Mobile patrol</div>
+                                    <div class="flex items-center"><i class="fa-solid fa-shield text-red-800 mr-2"></i> Close protection</div>
+                                    <div class="flex items-center"><i class="fa-solid fa-shield text-red-800 mr-2"></i> Response team</div>
+                                    <div class="flex items-center"><i class="fa-solid fa-shield text-red-800 mr-2"></i> Company social responsibility</div>
+                                    <div class="flex items-center"><i class="fa-solid fa-shield text-red-800 mr-2"></i> Access control</div>
+                                    <div class="flex items-center"><i class="fa-solid fa-shield text-red-800 mr-2"></i> Security alert</div>
+                                </div>
+                            </div>
+                            <div class="flex-1 bg-zinc-900/50 p-6 rounded-xl border border-zinc-700/30">
+                                <h3 class="text-white font-bold mb-3 text-lg">Security Guard Management</h3>
+                                <p class="text-sm text-gray-400 mb-4">We not only provide a comprehensive security guard force, we also take a leading role in managing the transition of security guard forces for Clients interested in outsourcing or improving the performance of their current security programmes.</p>
+                                <strong class="text-red-500 text-xs uppercase block mb-2">External Guard Force Programme:</strong>
+                                <ul class="space-y-2 text-sm text-gray-400">
+                                    <li class="flex items-center"><i class="fa-solid fa-check-circle text-zinc-600 mr-2"></i> Guard transition programme</li>
+                                    <li class="flex items-center"><i class="fa-solid fa-check-circle text-zinc-600 mr-2"></i> Security guard management programme</li>
+                                    <li class="flex items-center"><i class="fa-solid fa-check-circle text-zinc-600 mr-2"></i> Physical security programme</li>
+                                    <li class="flex items-center"><i class="fa-solid fa-check-circle text-zinc-600 mr-2"></i> Technical security programme</li>
                                 </ul>
                             </div>
-                            <div>
-                                <h3 class="text-redwolf font-bold mb-2">External Guard Force Management</h3>
-                                <p class="text-sm text-gray-400 mb-2">We also play a leading role in managing the transition of security guard forces for Clients interested in outsourcing and improving performance. Our program encompasses:</p>
-                                <ul class="list-disc pl-5 text-gray-400 space-y-1">
-                                    <li>Guard transition programme</li>
-                                    <li>Security guard management programme</li>
-                                    <li>Physical security programme</li>
-                                    <li>Technical security programme</li>
-                                </ul>
-                            </div>
                         </div>
                     </div>
 
-                    <div class="bg-black p-8 rounded-xl border border-zinc-800">
-                        <h2 class="text-2xl font-bold text-white mb-6">Sector-Specific Security</h2>
-                        <div class="space-y-6">
-                            
-                            <!-- Retail -->
-                            <div class="border-b border-zinc-800 pb-6">
-                                <h3 class="text-xl font-bold text-white mb-2">Shopping Centres and Retail Stores</h3>
-                                <p class="text-sm text-gray-400 mb-3"><strong>Dedication to Details:</strong> Shopping centres demand security officers with a wide range of skills - from the sensitivity to deal with lost children to the ability to respond to and effectively address law enforcement incidents.</p>
-                                <div class="grid md:grid-cols-2 gap-4 text-xs text-gray-500">
-                                    <ul class="list-disc pl-4">
-                                        <li>Customer Service & Emergency Response Drills</li>
-                                        <li>Risk Management and Liability</li>
-                                        <li>Special Events Management</li>
-                                    </ul>
-                                    <ul class="list-disc pl-4">
-                                        <li>Loss Prevention & Fire Safety Operations</li>
-                                        <li>Interior/Exterior Patrols</li>
-                                        <li>Retail Security (Shoplifting issues)</li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <!-- Residential -->
-                            <div class="border-b border-zinc-800 pb-6">
-                                <h3 class="text-xl font-bold text-white mb-2">Residential Properties</h3>
-                                <p class="text-sm text-gray-400 mb-2">We tailor our services to fit residential communities - Resident Associations, Courts, Individual Home Owners, and Property Managers. We work closely with homeowners by attending monthly meetings and listening to residents.</p>
-                                <div class="grid md:grid-cols-2 gap-4">
-                                    <div class="bg-zinc-900 p-3 rounded">
-                                        <strong class="text-white block text-sm">Access Control / Gate Officers</strong>
-                                        <p class="text-xs text-gray-500">Reviewing CCTV replays, Examining Visitor/Resident books, Conducting uniform inspections.</p>
-                                    </div>
-                                    <div class="bg-zinc-900 p-3 rounded">
-                                        <strong class="text-white block text-sm">Patrol Officers</strong>
-                                        <p class="text-xs text-gray-500">Responding to alarms, Identifying suspicious behaviour, Securing homes, Detecting forced entry, Monitoring traffic.</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Others -->
-                            <div class="grid md:grid-cols-3 gap-6">
-                                <div>
-                                    <h4 class="text-white font-bold text-sm mb-1">Hotels</h4>
-                                    <p class="text-xs text-gray-400">Delivering proactive and efficient solutions. Our hotel security staff puts Client service at the forefront with approachable personas.</p>
-                                </div>
-                                <div>
-                                    <h4 class="text-white font-bold text-sm mb-1">Education & Hospitals</h4>
-                                    <p class="text-xs text-gray-400"><strong>Education:</strong> Tight security for Universities and Schools. <br><strong>Hospitals:</strong> Professional security suited for hospital and nursing home settings.</p>
-                                </div>
-                                <div>
-                                    <h4 class="text-white font-bold text-sm mb-1">Manufacturing & Construction</h4>
-                                    <p class="text-xs text-gray-400"><strong>Industrial:</strong> On-site training for specific environments. <br><strong>Construction:</strong> Promptly sorting trespassing and theft issues.</p>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div class="grid md:grid-cols-2 gap-8">
-                        <div class="bg-zinc-900 p-6 rounded-xl">
-                            <h3 class="text-xl font-bold text-white mb-4"><i class="fa-solid fa-calendar-check text-redwolf mr-2"></i> Event Security</h3>
-                            <p class="text-sm text-gray-400 mb-4">From preparing initial security details to wrapping it all up. We cover Sporting Events, Exhibitions, Corporate Functions, Weddings, and Concerts.</p>
-                            <ul class="text-xs text-gray-500 list-disc pl-4 space-y-1">
-                                <li>Checking for potential fire and flood hazards</li>
-                                <li>Monitoring car parks</li>
-                                <li>Dealing with VIPs professionally</li>
-                                <li>Crowd safety (Entry/Exit)</li>
-                            </ul>
-                        </div>
-                        <div class="bg-zinc-900 p-6 rounded-xl">
-                            <h3 class="text-xl font-bold text-white mb-4"><i class="fa-solid fa-ghost text-redwolf mr-2"></i> Vacant Property Guarding</h3>
-                            <p class="text-sm text-gray-400">Vacant properties can be easy targets by vandals, arsonists and squatters. We specialise in comprehensive, cost-effective solutions to secure, occupy, and vacate properties when needed.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- ================= VIEW 2: CCTV & SURVEILLANCE ================= -->
-        <div id="service-cctv" class="page-section hidden page-transition bg-neutral-900 min-h-screen pt-12 pb-20">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <button onclick="switchPage('services')" class="mb-8 flex items-center text-redwolf hover:text-white transition-colors font-bold"><i class="fa-solid fa-arrow-left mr-2"></i> Back to Services</button>
-                <h1 class="text-4xl font-black text-white mb-8 border-l-8 border-redwolf pl-6">CCTV & Surveillance</h1>
-                
-                <div class="bg-black p-8 rounded-xl border border-zinc-800">
-                    <div class="mb-8">
-                        <h2 class="text-2xl font-bold text-white mb-4">Security Cameras</h2>
-                        <p class="text-gray-400 mb-4">Our range of high-quality security camera systems are exactly what you need. For preventing theft or ensuring safety, we offer the best in commercial-grade security solutions. Our systems go beyond simple video surveillance. For the latest in cutting-edge night vision cameras, analytic capabilities, fever detection systems - our professionals will design solutions that incorporate everything needed to protect your private and corporate premises.</p>
-                    </div>
-
-                    <div class="grid md:grid-cols-2 gap-8">
-                        <div class="bg-zinc-900 p-6 rounded-xl">
-                            <h3 class="text-xl font-bold text-white mb-3">Installation & Maintenance</h3>
-                            <ul class="space-y-4">
-                                <li>
-                                    <strong class="text-redwolf block text-sm">Installation</strong>
-                                    <p class="text-xs text-gray-400">CCTV and Alarms are installed by qualified professionals. Your property is surveyed before installation is carried out for the best fit and orchestration of functionality.</p>
-                                </li>
-                                <li>
-                                    <strong class="text-redwolf block text-sm">Maintenance</strong>
-                                    <p class="text-xs text-gray-400">Maintenance contracts to ensure systems are operating at optimum performance with regular adjustments and upgrades to provide long life and usefulness, are prime.</p>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="bg-zinc-900 p-6 rounded-xl">
-                            <h3 class="text-xl font-bold text-white mb-3">Hardware Options</h3>
-                            <p class="text-sm text-gray-400 mb-4">Choose from a range of cameras:</p>
-                            <div class="flex flex-wrap gap-2 text-xs">
-                                <span class="bg-black px-3 py-1 rounded text-gray-300 border border-zinc-700">Standard</span>
-                                <span class="bg-black px-3 py-1 rounded text-gray-300 border border-zinc-700">Wireless</span>
-                                <span class="bg-black px-3 py-1 rounded text-gray-300 border border-zinc-700">Night Vision</span>
-                                <span class="bg-black px-3 py-1 rounded text-gray-300 border border-zinc-700">High Definition</span>
-                                <span class="bg-black px-3 py-1 rounded text-gray-300 border border-zinc-700">PTZ Dome</span>
-                                <span class="bg-black px-3 py-1 rounded text-gray-300 border border-zinc-700">Hidden/Covert</span>
-                                <span class="bg-black px-3 py-1 rounded text-gray-300 border border-zinc-700">Latest IP Cameras</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- ================= VIEW 3: FIRE DETECTION ================= -->
-        <div id="service-fire" class="page-section hidden page-transition bg-neutral-900 min-h-screen pt-12 pb-20">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <button onclick="switchPage('services')" class="mb-8 flex items-center text-redwolf hover:text-white transition-colors font-bold"><i class="fa-solid fa-arrow-left mr-2"></i> Back to Services</button>
-                <h1 class="text-4xl font-black text-white mb-8 border-l-8 border-redwolf pl-6">Fire Detection & Evacuation</h1>
-                
-                <div class="bg-black p-8 rounded-xl border border-zinc-800">
-                    <div class="grid md:grid-cols-2 gap-12">
-                        <div>
-                            <h2 class="text-2xl font-bold text-white mb-4">Evacuations</h2>
-                            <p class="text-gray-400 mb-4">This describes what action to take in case of an emergency. It includes tasks, instructions and emergency escape plans. For every building the evacuation plan is different, but by default, the following areas are covered:</p>
-                            <ul class="space-y-2 text-sm text-gray-400">
-                                <li class="flex items-center"><i class="fa-solid fa-check text-redwolf mr-2"></i> Plan of site</li>
-                                <li class="flex items-center"><i class="fa-solid fa-check text-redwolf mr-2"></i> Building, installation and organisation data</li>
-                                <li class="flex items-center"><i class="fa-solid fa-check text-redwolf mr-2"></i> Internal and external alarm procedure</li>
-                                <li class="flex items-center"><i class="fa-solid fa-check text-redwolf mr-2"></i> Means of evacuation and evacuation organisation</li>
-                                <li class="flex items-center"><i class="fa-solid fa-check text-redwolf mr-2"></i> Tasks staff</li>
-                                <li class="flex items-center"><i class="fa-solid fa-check text-redwolf mr-2"></i> Emergency Escape Plans</li>
-                            </ul>
-                        </div>
-                        <div class="bg-zinc-900 p-6 rounded-xl">
-                            <h3 class="text-xl font-bold text-white mb-3">Fire Prevention</h3>
-                            <p class="text-sm text-gray-400 mb-4">We design, install and maintain fire prevention systems. We stay in contact with the fire departments and arrange certification as well maintenance of your safety systems. We also organise trainings for managers of these systems, assisting you with writing evacuation plans.</p>
-                            <i class="fa-solid fa-fire-extinguisher text-6xl text-zinc-800 mt-4"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- ================= VIEW 4: SOLAR SOLUTIONS ================= -->
-        <div id="service-solar" class="page-section hidden page-transition bg-neutral-900 min-h-screen pt-12 pb-20">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <button onclick="switchPage('services')" class="mb-8 flex items-center text-redwolf hover:text-white transition-colors font-bold"><i class="fa-solid fa-arrow-left mr-2"></i> Back to Services</button>
-                <h1 class="text-4xl font-black text-white mb-8 border-l-8 border-redwolf pl-6">Solar / Inverter Solutions</h1>
-                
-                <div class="bg-black p-8 rounded-xl border border-zinc-800">
-                    <p class="text-gray-300 mb-8 text-lg">We provide cutting-edge alternative solar and energy solutions for the rapidly growing solar market. We specialise in photo-voltaic solar systems for the production of clean energy, both ON-Grid, Off-Grid and Hybrid Systems.</p>
-                    
+                    <!-- Sectors -->
                     <div class="grid md:grid-cols-3 gap-6">
-                        <div class="bg-zinc-900 p-6 rounded-xl border-t-4 border-yellow-500">
-                            <h3 class="text-xl font-bold text-white mb-3">Grid Tied Solar Systems</h3>
-                            <p class="text-sm text-gray-400">Grid tied solar systems for commercial businesses are the fastest growing segment of the solar market worldwide. With rising electricity tariffs, many businesses and government facilities are now experiencing the benefits of solar electricity.</p>
-                        </div>
-                        <div class="bg-zinc-900 p-6 rounded-xl border-t-4 border-yellow-500">
-                            <h3 class="text-xl font-bold text-white mb-3">Off Grid Solar Systems</h3>
-                            <p class="text-sm text-gray-400 mb-3">We provide off grid solar systems for various applications such as Telecommunication, Security and Control Applications.</p>
-                            <p class="text-xs text-gray-500"><strong>Applications:</strong> VSAT, WIFI access points, Antennas, RF end points, Perimeter fencing, Security systems, Electric fences, Cellular repeaters.</p>
-                        </div>
-                        <div class="bg-zinc-900 p-6 rounded-xl border-t-4 border-yellow-500">
-                            <h3 class="text-xl font-bold text-white mb-3">Mini-Grid Hybrid Solar Systems</h3>
-                            <p class="text-sm text-gray-400 mb-3">A centralised hybrid solution acting like a small power generation plant. Very reliable and cost effective.</p>
-                            <p class="text-xs text-gray-500"><strong>Applications:</strong> Remote villages, Rural hospitals and clinics, Schools, Water plants, Border and military posts, Security facilities.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- ================= VIEW 5: ACCESS CONTROL ================= -->
-        <div id="service-access" class="page-section hidden page-transition bg-neutral-900 min-h-screen pt-12 pb-20">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <button onclick="switchPage('services')" class="mb-8 flex items-center text-redwolf hover:text-white transition-colors font-bold"><i class="fa-solid fa-arrow-left mr-2"></i> Back to Services</button>
-                <h1 class="text-4xl font-black text-white mb-8 border-l-8 border-redwolf pl-6">Access Control Systems</h1>
-                
-                <div class="space-y-8">
-                    <div class="bg-black p-8 rounded-xl border border-zinc-800">
-                        <h2 class="text-2xl font-bold text-white mb-4">Modern Access Security</h2>
-                        <p class="text-gray-400">Access control security systems have displaced metal keys and deadbolts replacing them with key cards, electronic pass-codes, and monitoring. This allows you to select who can enter certain areas or even specify the hours that a certain space is available. Electronic locks cannot be compromised like deadbolts. Our systems provide a main dashboard for movement information.</p>
-                    </div>
-
-                    <div class="grid md:grid-cols-2 gap-8">
-                        <!-- Detectors & Alarm -->
-                        <div class="bg-zinc-900 p-6 rounded-xl border border-zinc-800">
-                            <h3 class="text-xl font-bold text-white mb-4"><i class="fa-solid fa-bell text-redwolf mr-2"></i> Detection & Monitoring</h3>
+                        <div class="content-card p-6 rounded-2xl">
+                            <h3 class="text-white font-bold mb-3">Contractual Security</h3>
                             <div class="space-y-4">
                                 <div>
-                                    <strong class="text-white text-sm">Detectors</strong>
-                                    <p class="text-xs text-gray-400">Designed to detect intruders as early as possible. Available with different sensing/operating principles and specific applications.</p>
+                                    <strong class="text-red-500 text-xs uppercase block">Manufacturing & Industrial</strong>
+                                    <p class="text-xs text-gray-400 mt-1">Requires specialised training due to unique environments. We provide on-site training and orientation.</p>
                                 </div>
                                 <div>
-                                    <strong class="text-white text-sm">Alarm Monitoring</strong>
-                                    <p class="text-xs text-gray-400">When an alarm notification reaches the central monitoring centre, immediate action will be taken (usually after verification). Thus, the chance that the intruders will be arrested before they achieve their aim, increases.</p>
+                                    <strong class="text-red-500 text-xs uppercase block">Construction Sites</strong>
+                                    <p class="text-xs text-gray-400 mt-1">Trespassing and theft issues addressed promptly by highly trained officers.</p>
                                 </div>
                             </div>
                         </div>
+                        <div class="content-card p-6 rounded-2xl">
+                            <h3 class="text-white font-bold mb-3">Institutions</h3>
+                            <div class="space-y-4">
+                                <div>
+                                    <strong class="text-red-500 text-xs uppercase block">Education</strong>
+                                    <p class="text-xs text-gray-400 mt-1">Handling elevated security demands for Universities, Colleges & Schools.</p>
+                                </div>
+                                <div>
+                                    <strong class="text-red-500 text-xs uppercase block">Healthcare</strong>
+                                    <p class="text-xs text-gray-400 mt-1">Professional officers trained for all eventualities in Hospitals & Nursing Homes.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="content-card p-6 rounded-2xl">
+                            <h3 class="text-white font-bold mb-3">Hospitality</h3>
+                            <div>
+                                <strong class="text-red-500 text-xs uppercase block">Hotels</strong>
+                                <p class="text-xs text-gray-400 mt-1">Prioritising Client service by combining professionalism with an approachable demeanour.</p>
+                            </div>
+                        </div>
+                    </div>
 
-                        <!-- Intercoms -->
-                        <div class="bg-zinc-900 p-6 rounded-xl border border-zinc-800">
-                            <h3 class="text-xl font-bold text-white mb-4"><i class="fa-solid fa-phone-intercom text-redwolf mr-2"></i> Intercoms (IP PBX/ Analog)</h3>
-                            <p class="text-xs text-gray-400 mb-4">Powered using PoE or optional power adapters.</p>
-                            <ul class="text-xs text-gray-400 space-y-2">
-                                <li><strong>IP Intercoms:</strong> Integrated speaker/mic, 4-button controls, TalkMaster Solo Software.</li>
-                                <li><strong>Outdoor IP (TVIP-intercomPA):</strong> Available flush-mounted (2-Gang) or surface mounted with hood.</li>
-                                <li><strong>Network Attached:</strong> Can integrate with IP camera or door access systems.</li>
-                                <li><strong>Apartments:</strong> Multi-tenant systems with built-in camera, connected to electric locks or mobile devices.</li>
+                    <!-- Residential Focus -->
+                    <div class="content-card p-8 rounded-2xl border-l-4 border-red-600">
+                        <h3 class="text-xl font-bold text-white mb-4">Residential Properties</h3>
+                        <p class="text-sm text-gray-400 mb-6">We tailor security for estates, courts, homeowners and property managers. Every community’s personality, bylaws, layout and needs are considered. We collaborate by attending monthly meetings and listening to residents.</p>
+                        <div class="grid md:grid-cols-2 gap-8">
+                            <div>
+                                <strong class="text-white block mb-2">Access Control / Gate Officers</strong>
+                                <ul class="text-sm text-gray-500 list-disc pl-4 space-y-1">
+                                    <li>CCTV replay reviews</li>
+                                    <li>Visitor/resident book checks</li>
+                                    <li>Uniform inspections</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <strong class="text-white block mb-2">Patrol Officers</strong>
+                                <ul class="text-sm text-gray-500 list-disc pl-4 space-y-1">
+                                    <li>Responding to house alarms & identifying suspicious behaviour</li>
+                                    <li>Securing homes, detecting forced entry & monitoring traffic</li>
+                                    <li>Pin-pointing audible alarms & unpredictable patrol patterns</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Event & Vacant -->
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div class="content-card p-8 rounded-2xl">
+                            <div class="flex items-center mb-4">
+                                <i class="fa-solid fa-calendar-check text-3xl text-red-600 mr-4"></i>
+                                <h3 class="text-xl font-bold text-white">Event Security</h3>
+                            </div>
+                            <p class="text-sm text-gray-400 mb-4">Securing events from planning to completion. Includes sporting events, social gatherings, corporate functions, weddings, and concerts.</p>
+                            <strong class="text-white text-xs uppercase block mb-2">Core Duties:</strong>
+                            <ul class="text-xs text-gray-500 grid grid-cols-2 gap-2">
+                                <li><i class="fa-solid fa-angle-right text-red-600 mr-1"></i> Fire/Flood checks</li>
+                                <li><i class="fa-solid fa-angle-right text-red-600 mr-1"></i> Car park monitoring</li>
+                                <li><i class="fa-solid fa-angle-right text-red-600 mr-1"></i> VIP handling</li>
+                                <li><i class="fa-solid fa-angle-right text-red-600 mr-1"></i> Crowd safety</li>
+                            </ul>
+                        </div>
+                        <div class="content-card p-8 rounded-2xl">
+                            <div class="flex items-center mb-4">
+                                <i class="fa-solid fa-building-circle-xmark text-3xl text-red-600 mr-4"></i>
+                                <h3 class="text-xl font-bold text-white">Vacant Property</h3>
+                            </div>
+                            <p class="text-sm text-gray-400">Vacant properties are prime targets for vandalism, arson and squatting. We provide comprehensive, cost-effective and flexible security solutions for vacant residential and commercial properties, including securing, occupying, and vacating properties when needed.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- VIEW 2: CCTV ================= -->
+        <div id="service-cctv" class="page-section hidden pt-12 pb-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <button onclick="switchPage('services')" class="mb-8 flex items-center text-gray-400 hover:text-red-500 transition-colors font-bold group">
+                    <i class="fa-solid fa-arrow-left mr-2 group-hover:-translate-x-1 transition-transform"></i> Back to Services
+                </button>
+                <h1 class="text-4xl md:text-5xl font-black text-white mb-8 border-l-8 border-red-600 pl-6">CCTV & Surveillance</h1>
+                
+                <div class="content-card p-8 rounded-2xl">
+                    <h2 class="text-2xl font-bold text-white mb-6">Video Surveillance Systems</h2>
+                    <div class="grid md:grid-cols-3 gap-12">
+                        <div class="md:col-span-2">
+                            <p class="text-gray-300 mb-6 leading-relaxed">
+                                A video surveillance system is critical to any comprehensive security strategy. From deterring potential crimes to providing operational insights, security cameras and their data enhance safety and security. We design, install, service and monitor the right video system for your unique needs.
+                            </p>
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div class="bg-zinc-900/30 p-4 rounded-lg">
+                                    <strong class="text-red-500 block mb-2">Security Cameras</strong>
+                                    <p class="text-xs text-gray-400">Ideal for preventing theft or ensuring safety. We offer cutting-edge night vision, analytics capabilities, and fever detection systems tailored to private and corporate premises.</p>
+                                </div>
+                                <div class="bg-zinc-900/30 p-4 rounded-lg">
+                                    <strong class="text-red-500 block mb-2">CCTV Recording</strong>
+                                    <p class="text-xs text-gray-400">Digital recording provides longer recording times, higher-quality video, remote access and increased convenience compared to VCR systems.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-zinc-900/50 p-6 rounded-xl h-fit border border-zinc-700/30">
+                            <h3 class="text-white font-bold mb-4">Hardware Options</h3>
+                            <ul class="space-y-2 text-sm text-gray-400 mb-6">
+                                <li class="flex items-center"><i class="fa-solid fa-camera text-zinc-500 mr-2"></i> Standard & Wireless</li>
+                                <li class="flex items-center"><i class="fa-solid fa-moon text-zinc-500 mr-2"></i> Night Vision</li>
+                                <li class="flex items-center"><i class="fa-solid fa-eye text-zinc-500 mr-2"></i> High Definition</li>
+                                <li class="flex items-center"><i class="fa-solid fa-arrows-spin text-zinc-500 mr-2"></i> PTZ Dome</li>
+                                <li class="flex items-center"><i class="fa-solid fa-user-secret text-zinc-500 mr-2"></i> Hidden/Covert</li>
+                                <li class="flex items-center"><i class="fa-solid fa-network-wired text-zinc-500 mr-2"></i> Latest IP Cameras</li>
+                            </ul>
+                            <div class="border-t border-zinc-700 pt-4">
+                                <strong class="text-white text-xs uppercase block mb-1">Lifecycle Services</strong>
+                                <p class="text-xs text-gray-500 mb-2"><strong>Installation:</strong> Surveyed by professionals for optimal placement.</p>
+                                <p class="text-xs text-gray-500"><strong>Maintenance:</strong> Regular adjustments and upgrades for long-term reliability.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- VIEW 3: FIRE ================= -->
+        <div id="service-fire" class="page-section hidden pt-12 pb-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <button onclick="switchPage('services')" class="mb-8 flex items-center text-gray-400 hover:text-red-500 transition-colors font-bold group">
+                    <i class="fa-solid fa-arrow-left mr-2 group-hover:-translate-x-1 transition-transform"></i> Back to Services
+                </button>
+                <h1 class="text-4xl md:text-5xl font-black text-white mb-8 border-l-8 border-red-600 pl-6">Fire Detection & Evacuation</h1>
+                
+                <div class="content-card p-8 rounded-2xl">
+                    <div class="flex flex-col md:flex-row gap-12 items-center">
+                        <div class="flex-1">
+                            <h2 class="text-2xl font-bold text-white mb-4">Prevention & Maintenance</h2>
+                            <p class="text-gray-300 mb-6 leading-relaxed">
+                                We design, install and maintain fire detection, prevention and evacuation systems. We maintain direct communication with fire departments, arrange certification and ensure ongoing system maintenance. We also organise training for system managers and assist in writing evacuation procedures.
+                            </p>
+                        </div>
+                        <div class="flex-1 w-full bg-zinc-900/50 p-8 rounded-xl border border-zinc-700/50">
+                            <h3 class="text-xl font-bold text-red-500 mb-6">Evacuation Planning Includes:</h3>
+                            <ul class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm text-gray-400">
+                                <li class="flex items-center"><i class="fa-solid fa-map text-zinc-500 mr-3"></i> Plan of site</li>
+                                <li class="flex items-center"><i class="fa-solid fa-building text-zinc-500 mr-3"></i> Installation data</li>
+                                <li class="flex items-center"><i class="fa-solid fa-bell text-zinc-500 mr-3"></i> Alarm procedures</li>
+                                <li class="flex items-center"><i class="fa-solid fa-person-running text-zinc-500 mr-3"></i> Means of evacuation</li>
+                                <li class="flex items-center"><i class="fa-solid fa-users text-zinc-500 mr-3"></i> Organisation & Staff tasks</li>
+                                <li class="flex items-center"><i class="fa-solid fa-file-shield text-zinc-500 mr-3"></i> Emergency escape plans</li>
                             </ul>
                         </div>
                     </div>
@@ -688,71 +637,210 @@
             </div>
         </div>
 
-        <!-- ================= VIEW 6: SMART HOME ================= -->
-        <div id="service-smarthome" class="page-section hidden page-transition bg-neutral-900 min-h-screen pt-12 pb-20">
+        <!-- VIEW 4: SOLAR ================= -->
+        <div id="service-solar" class="page-section hidden pt-12 pb-20">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <button onclick="switchPage('services')" class="mb-8 flex items-center text-redwolf hover:text-white transition-colors font-bold"><i class="fa-solid fa-arrow-left mr-2"></i> Back to Services</button>
-                <h1 class="text-4xl font-black text-white mb-8 border-l-8 border-redwolf pl-6">Smart Home Automation</h1>
+                <button onclick="switchPage('services')" class="mb-8 flex items-center text-gray-400 hover:text-red-500 transition-colors font-bold group">
+                    <i class="fa-solid fa-arrow-left mr-2 group-hover:-translate-x-1 transition-transform"></i> Back to Services
+                </button>
+                <h1 class="text-4xl md:text-5xl font-black text-white mb-8 border-l-8 border-red-600 pl-6">Solar / Inverter Solutions</h1>
                 
-                <div class="bg-black p-8 rounded-xl border border-zinc-800">
-                    <p class="text-lg text-gray-300 mb-8">Home automation helps homes keep safe while reducing utility costs and saving time. It enables remote control and monitoring of wireless security systems.</p>
-                    
-                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        <div class="p-6 bg-zinc-900 rounded-xl">
-                            <h3 class="font-bold text-white mb-2">Control Panel</h3>
-                            <p class="text-sm text-gray-400">The command centre. Wall-mounted touchscreen panels featuring smart apps to interface with your home.</p>
+                <div class="content-card p-8 rounded-2xl">
+                     <p class="text-gray-300 mb-8 text-lg max-w-3xl">We provide cutting-edge solar and alternative energy solutions for the growing energy market. We specialise in photovoltaic solar systems (On-Grid, Off-Grid and Hybrid).</p>
+                     
+                     <div class="grid md:grid-cols-3 gap-6">
+                        <!-- Card 1 -->
+                        <div class="bg-zinc-900/50 p-6 rounded-xl border-t-4 border-yellow-500 flex flex-col h-full">
+                            <div class="mb-4"><i class="fa-solid fa-sun text-yellow-500 text-3xl"></i></div>
+                            <h3 class="text-lg font-bold text-white mb-3">Grid Tied Solar</h3>
+                            <p class="text-sm text-gray-400 flex-grow">One of the fastest-growing renewable energy solutions worldwide. Rising electricity tariffs make solar highly beneficial for commercial and government facilities.</p>
                         </div>
-                        <div class="p-6 bg-zinc-900 rounded-xl">
-                            <h3 class="font-bold text-white mb-2">Remote Access</h3>
-                            <p class="text-sm text-gray-400">Arm/disarm your system, dim lights, or set temps using a smart device and companion app.</p>
+                        <!-- Card 2 -->
+                        <div class="bg-zinc-900/50 p-6 rounded-xl border-t-4 border-yellow-500 flex flex-col h-full">
+                            <div class="mb-4"><i class="fa-solid fa-battery-full text-yellow-500 text-3xl"></i></div>
+                            <h3 class="text-lg font-bold text-white mb-3">Off-Grid Solar</h3>
+                            <p class="text-sm text-gray-400 mb-3">Ideal for remote Telecommunication, Security and Control installations located beyond grid access.</p>
+                            <p class="text-xs text-gray-500"><strong>Applications:</strong> VSAT, WiFi, antennas, perimeter fencing, security systems, cellular repeaters.</p>
                         </div>
-                        <div class="p-6 bg-zinc-900 rounded-xl">
-                            <h3 class="font-bold text-white mb-2">Biometric Voice</h3>
-                            <p class="text-sm text-gray-400">Use your voice to control lights, thermostat, doors, and appliances. Supports macros for multiple tasks.</p>
+                        <!-- Card 3 -->
+                        <div class="bg-zinc-900/50 p-6 rounded-xl border-t-4 border-yellow-500 flex flex-col h-full">
+                            <div class="mb-4"><i class="fa-solid fa-plug-circle-bolt text-yellow-500 text-3xl"></i></div>
+                            <h3 class="text-lg font-bold text-white mb-3">Mini-Grid Hybrid</h3>
+                            <p class="text-sm text-gray-400 mb-3">Reliable, independent, cost-effective. Acts like a small power generation plant with localised distribution.</p>
+                            <p class="text-xs text-gray-500"><strong>Applications:</strong> Remote villages, rural hospitals, schools, water plants, military posts.</p>
                         </div>
-                        <div class="p-6 bg-zinc-900 rounded-xl">
-                            <h3 class="font-bold text-white mb-2">Door Locks & Garage</h3>
-                            <p class="text-sm text-gray-400">Grant entry access remotely. Open/close garage and give permissions to friends/family.</p>
+                     </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- VIEW 5: ACCESS CONTROL ================= -->
+        <div id="service-access" class="page-section hidden pt-12 pb-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <button onclick="switchPage('services')" class="mb-8 flex items-center text-gray-400 hover:text-red-500 transition-colors font-bold group">
+                    <i class="fa-solid fa-arrow-left mr-2 group-hover:-translate-x-1 transition-transform"></i> Back to Services
+                </button>
+                <h1 class="text-4xl md:text-5xl font-black text-white mb-8 border-l-8 border-red-600 pl-6">Access Control & Detection</h1>
+                
+                <div class="grid gap-8">
+                    <!-- Access Control -->
+                    <div class="content-card p-8 rounded-2xl">
+                        <div class="flex flex-col md:flex-row justify-between items-start gap-12">
+                            <div class="flex-1">
+                                <h2 class="text-2xl font-bold text-white mb-4">Access Control</h2>
+                                <p class="text-gray-400 mb-6">Access control systems replace metal keys with key cards, fobs, electronic passcodes and monitored electronic locks. Owners can specify who enters specific areas and at what times.</p>
+                                <div class="bg-zinc-900/50 p-5 rounded-xl">
+                                    <strong class="text-white text-sm block mb-3">Key Benefits</strong>
+                                    <ul class="space-y-2 text-sm text-gray-400">
+                                        <li class="flex items-center"><i class="fa-solid fa-check text-red-600 mr-2"></i> Prevents unauthorised key duplication</li>
+                                        <li class="flex items-center"><i class="fa-solid fa-check text-red-600 mr-2"></i> Electronic locks cannot be picked</li>
+                                        <li class="flex items-center"><i class="fa-solid fa-check text-red-600 mr-2"></i> Central dashboard for monitoring</li>
+                                        <li class="flex items-center"><i class="fa-solid fa-check text-red-600 mr-2"></i> Enhanced confidentiality</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="flex-1 w-full">
+                                <h3 class="text-xl font-bold text-white mb-4">Intrusion Detection</h3>
+                                <p class="text-sm text-gray-400 mb-6">Components depending on your risks and business processes.</p>
+                                <div class="space-y-4">
+                                    <div class="bg-zinc-900/50 p-4 rounded-lg border-l-2 border-red-600">
+                                        <strong class="text-white text-sm block mb-1">Detectors</strong>
+                                        <p class="text-xs text-gray-500">Designed to detect intruders as early as possible using various sensing principles.</p>
+                                    </div>
+                                    <div class="bg-zinc-900/50 p-4 rounded-lg border-l-2 border-red-600">
+                                        <strong class="text-white text-sm block mb-1">Alarm Monitoring</strong>
+                                        <p class="text-xs text-gray-500">Immediate action taken by central monitoring centre after verification, increasing apprehension likelihood.</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="p-6 bg-zinc-900 rounded-xl">
-                            <h3 class="font-bold text-white mb-2">Heat/AC</h3>
-                            <p class="text-sm text-gray-400">Remotely dial in the perfect temperature to save on energy costs while at work or on vacation.</p>
+                    </div>
+
+                    <!-- Intercoms -->
+                    <div class="content-card p-8 rounded-2xl">
+                        <h2 class="text-2xl font-bold text-white mb-6">Intercom Systems</h2>
+                        <p class="text-gray-400 mb-6">Communication between rooms or locations via network connections. Indoor and outdoor models available, powered by PoE.</p>
+                        
+                        <div class="grid md:grid-cols-3 gap-6">
+                            <div class="bg-zinc-900/50 p-6 rounded-xl">
+                                <h3 class="text-white font-bold mb-3 text-sm uppercase tracking-wider">IP Features</h3>
+                                <ul class="text-xs text-gray-400 space-y-2">
+                                    <li>High quality speaker/mic</li>
+                                    <li>Vol/Monitor/PTT controls</li>
+                                    <li>Active/Link/Talk LEDs</li>
+                                    <li>TalkMaster Solo Software</li>
+                                    <li>PoE & 3.5mm Jacks</li>
+                                </ul>
+                            </div>
+                            <div class="bg-zinc-900/50 p-6 rounded-xl">
+                                <h3 class="text-white font-bold mb-3 text-sm uppercase tracking-wider">Outdoor Models</h3>
+                                <ul class="text-xs text-gray-400 space-y-3">
+                                    <li><strong>TVIP-intercomPA-O-2G:</strong> 1 watt, PoE, flush-mounted stainless steel.</li>
+                                    <li><strong>TVIP-intercomPA-O-BB:</strong> 1 watt, PoE, surface-mounted with hood.</li>
+                                    <li><strong>TVIP-IntercomPA:</strong> Outdoor enclosure, network module, analog panel.</li>
+                                </ul>
+                            </div>
+                            <div class="bg-zinc-900/50 p-6 rounded-xl">
+                                <h3 class="text-white font-bold mb-3 text-sm uppercase tracking-wider">Use Cases</h3>
+                                <ul class="text-xs text-gray-400 space-y-3">
+                                    <li>
+                                        <strong class="block text-gray-300">Network Attached</strong>
+                                        Manual door access control. Standalone or integrated with cameras/access systems.
+                                    </li>
+                                    <li>
+                                        <strong class="block text-gray-300">Apartments</strong>
+                                        Multi-tenant systems with built-in cameras, mobile-enabled access, and lock integration.
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- ================= VIEW 7: INVESTIGATION ================= -->
-        <div id="service-investigation" class="page-section hidden page-transition bg-neutral-900 min-h-screen pt-12 pb-20">
+        <!-- VIEW 6: SMART HOME ================= -->
+        <div id="service-smarthome" class="page-section hidden pt-12 pb-20">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <button onclick="switchPage('services')" class="mb-8 flex items-center text-redwolf hover:text-white transition-colors font-bold"><i class="fa-solid fa-arrow-left mr-2"></i> Back to Services</button>
-                <h1 class="text-4xl font-black text-white mb-8 border-l-8 border-redwolf pl-6">Investigation Services</h1>
+                <button onclick="switchPage('services')" class="mb-8 flex items-center text-gray-400 hover:text-red-500 transition-colors font-bold group">
+                    <i class="fa-solid fa-arrow-left mr-2 group-hover:-translate-x-1 transition-transform"></i> Back to Services
+                </button>
+                <h1 class="text-4xl md:text-5xl font-black text-white mb-8 border-l-8 border-red-600 pl-6">Smart Home Systems</h1>
                 
-                <div class="bg-black p-8 rounded-xl border border-zinc-800">
-                    <p class="text-gray-400 mb-8 text-lg">Our investigators have the experience to undertake investigative tasks at all levels. They are always professional in their approach, providing detailed information, discreetly.</p>
+                <div class="content-card p-8 rounded-2xl">
+                    <p class="text-lg text-gray-300 mb-10 max-w-3xl">Home automation improves safety, cuts utility costs and saves time through remote monitoring and control of security systems.</p>
+                    
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div class="p-6 bg-zinc-900/50 rounded-xl border border-transparent hover:border-red-900/50 transition-colors">
+                            <i class="fa-solid fa-tablet-screen-button text-3xl text-blue-500 mb-4"></i>
+                            <h3 class="font-bold text-white mb-2">Control Panel</h3>
+                            <p class="text-sm text-gray-400">Wall-mounted touchscreen command centre with smart apps and remote-control capability.</p>
+                        </div>
+                        <div class="p-6 bg-zinc-900/50 rounded-xl border border-transparent hover:border-red-900/50 transition-colors">
+                            <i class="fa-solid fa-mobile-screen-button text-3xl text-blue-500 mb-4"></i>
+                            <h3 class="font-bold text-white mb-2">Remote Access</h3>
+                            <p class="text-sm text-gray-400">Control lights, alarms, temperature, garage access, locks and more from anywhere via mobile app.</p>
+                        </div>
+                        <div class="p-6 bg-zinc-900/50 rounded-xl border border-transparent hover:border-red-900/50 transition-colors">
+                            <i class="fa-solid fa-microphone-lines text-3xl text-blue-500 mb-4"></i>
+                            <h3 class="font-bold text-white mb-2">Biometric Voice</h3>
+                            <p class="text-sm text-gray-400">Voice-controlled activation of alarms, lighting, thermostat, doors and music.</p>
+                        </div>
+                        <div class="p-6 bg-zinc-900/50 rounded-xl border border-transparent hover:border-red-900/50 transition-colors">
+                            <i class="fa-solid fa-shield-halved text-3xl text-blue-500 mb-4"></i>
+                            <h3 class="font-bold text-white mb-2">Arm/Disarm</h3>
+                            <p class="text-sm text-gray-400">Remote system control from mobile devices.</p>
+                        </div>
+                        <div class="p-6 bg-zinc-900/50 rounded-xl border border-transparent hover:border-red-900/50 transition-colors">
+                            <i class="fa-solid fa-door-open text-3xl text-blue-500 mb-4"></i>
+                            <h3 class="font-bold text-white mb-2">Locks & Garage</h3>
+                            <p class="text-sm text-gray-400">Grant entry from any location. Open/close garage and manage permissions via mobile.</p>
+                        </div>
+                        <div class="p-6 bg-zinc-900/50 rounded-xl border border-transparent hover:border-red-900/50 transition-colors">
+                            <i class="fa-solid fa-temperature-full text-3xl text-blue-500 mb-4"></i>
+                            <h3 class="font-bold text-white mb-2">Heat/AC Control</h3>
+                            <p class="text-sm text-gray-400">Remote temperature control for comfort and energy savings.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- VIEW 7: INVESTIGATION ================= -->
+        <div id="service-investigation" class="page-section hidden pt-12 pb-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <button onclick="switchPage('services')" class="mb-8 flex items-center text-gray-400 hover:text-red-500 transition-colors font-bold group">
+                    <i class="fa-solid fa-arrow-left mr-2 group-hover:-translate-x-1 transition-transform"></i> Back to Services
+                </button>
+                <h1 class="text-4xl md:text-5xl font-black text-white mb-8 border-l-8 border-red-600 pl-6">Investigation Services</h1>
+                
+                <div class="content-card p-8 rounded-2xl">
+                    <p class="text-gray-400 mb-8 text-lg">Our investigators handle tasks at all levels professionally and discreetly.</p>
                     
                     <div class="grid md:grid-cols-2 gap-12">
                         <div>
-                            <h3 class="text-2xl font-bold text-white mb-6 border-b border-zinc-800 pb-2">Insurance Investigation</h3>
-                            <ul class="space-y-4 text-gray-400">
-                                <li class="flex items-center bg-zinc-900 p-3 rounded"><i class="fa-solid fa-car-crash text-redwolf mr-3"></i> Accident Benefit Claims</li>
-                                <li class="flex items-center bg-zinc-900 p-3 rounded"><i class="fa-solid fa-house-chimney-crack text-redwolf mr-3"></i> Property Theft Claims</li>
-                                <li class="flex items-center bg-zinc-900 p-3 rounded"><i class="fa-solid fa-user-injured text-redwolf mr-3"></i> WIBA & Casualty Claims</li>
-                                <li class="flex items-center bg-zinc-900 p-3 rounded"><i class="fa-solid fa-magnifying-glass-location text-redwolf mr-3"></i> Tracing Defaulters</li>
-                                <li class="flex items-center bg-zinc-900 p-3 rounded"><i class="fa-solid fa-box-open text-redwolf mr-3"></i> Goods in Transit Losses/Thefts</li>
-                                <li class="flex items-center bg-zinc-900 p-3 rounded"><i class="fa-solid fa-eye text-redwolf mr-3"></i> Background Investigation & Surveillance</li>
+                            <h3 class="text-xl font-bold text-white mb-6 border-b border-zinc-700 pb-2">Insurance Investigation</h3>
+                            <ul class="space-y-3 text-sm text-gray-400">
+                                <li class="flex items-center"><i class="fa-solid fa-caret-right text-red-600 mr-3"></i> Accident Benefit Claims</li>
+                                <li class="flex items-center"><i class="fa-solid fa-caret-right text-red-600 mr-3"></i> Property Theft Claims</li>
+                                <li class="flex items-center"><i class="fa-solid fa-caret-right text-red-600 mr-3"></i> WIBA & Casualty Claims</li>
+                                <li class="flex items-center"><i class="fa-solid fa-caret-right text-red-600 mr-3"></i> Tracing defaulters and owners</li>
+                                <li class="flex items-center"><i class="fa-solid fa-caret-right text-red-600 mr-3"></i> Goods in Transit Losses/Thefts</li>
+                                <li class="flex items-center"><i class="fa-solid fa-caret-right text-red-600 mr-3"></i> Background Investigation</li>
+                                <li class="flex items-center"><i class="fa-solid fa-caret-right text-red-600 mr-3"></i> Surveillance & Litigation Support</li>
                             </ul>
                         </div>
                         <div>
-                            <h3 class="text-2xl font-bold text-white mb-6 border-b border-zinc-800 pb-2">Corporate Investigation</h3>
-                            <p class="text-sm text-gray-500 mb-4">Verification of potential employees, suppliers, sub contractors, business partners, etc.</p>
-                            <ul class="space-y-4 text-gray-400">
-                                <li class="flex items-center bg-zinc-900 p-3 rounded"><i class="fa-solid fa-file-contract text-blue-500 mr-3"></i> Fraud Investigations</li>
-                                <li class="flex items-center bg-zinc-900 p-3 rounded"><i class="fa-solid fa-copyright text-blue-500 mr-3"></i> Patent Infringement</li>
-                                <li class="flex items-center bg-zinc-900 p-3 rounded"><i class="fa-solid fa-users-viewfinder text-blue-500 mr-3"></i> Pre-employment Screenings</li>
-                                <li class="flex items-center bg-zinc-900 p-3 rounded"><i class="fa-solid fa-building-shield text-blue-500 mr-3"></i> Internal Theft/Loss Prevention</li>
-                                <li class="flex items-center bg-zinc-900 p-3 rounded"><i class="fa-solid fa-user-secret text-blue-500 mr-3"></i> Internal Investigations</li>
+                            <h3 class="text-xl font-bold text-white mb-6 border-b border-zinc-700 pb-2">Corporate Investigation</h3>
+                            <p class="text-sm text-gray-500 mb-4">We verify employees, suppliers, subcontractors, partners, etc.</p>
+                            <ul class="space-y-3 text-sm text-gray-400">
+                                <li class="flex items-center"><i class="fa-solid fa-caret-right text-blue-600 mr-3"></i> Fraud investigations</li>
+                                <li class="flex items-center"><i class="fa-solid fa-caret-right text-blue-600 mr-3"></i> Patent infringement</li>
+                                <li class="flex items-center"><i class="fa-solid fa-caret-right text-blue-600 mr-3"></i> Internal investigations</li>
+                                <li class="flex items-center"><i class="fa-solid fa-caret-right text-blue-600 mr-3"></i> Pre-employment screenings</li>
+                                <li class="flex items-center"><i class="fa-solid fa-caret-right text-blue-600 mr-3"></i> Workplace accident investigations</li>
+                                <li class="flex items-center"><i class="fa-solid fa-caret-right text-blue-600 mr-3"></i> Internal theft and loss prevention</li>
+                                <li class="flex items-center"><i class="fa-solid fa-caret-right text-blue-600 mr-3"></i> Security consulting</li>
                             </ul>
                         </div>
                     </div>
@@ -760,96 +848,126 @@
             </div>
         </div>
 
-        <!-- ================= VIEW 8: CONSULTING ================= -->
-        <div id="service-consulting" class="page-section hidden page-transition bg-neutral-900 min-h-screen pt-12 pb-20">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <button onclick="switchPage('services')" class="mb-8 flex items-center text-redwolf hover:text-white transition-colors font-bold"><i class="fa-solid fa-arrow-left mr-2"></i> Back to Services</button>
-                <h1 class="text-4xl font-black text-white mb-8 border-l-8 border-redwolf pl-6">IT & Corporate Consulting</h1>
+        <!-- VIEW 8: CONSULTING ================= -->
+        <div id="service-consulting" class="page-section hidden pt-12 pb-20">
+             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <button onclick="switchPage('services')" class="mb-8 flex items-center text-gray-400 hover:text-red-500 transition-colors font-bold group">
+                    <i class="fa-solid fa-arrow-left mr-2 group-hover:-translate-x-1 transition-transform"></i> Back to Services
+                </button>
+                <h1 class="text-4xl md:text-5xl font-black text-white mb-8 border-l-8 border-red-600 pl-6">IT & Corporate Consulting</h1>
                 
                 <div class="grid gap-8">
-                    <div class="bg-black p-8 rounded-xl border border-zinc-800">
-                        <h2 class="text-2xl font-bold text-white mb-4">Computer Networking and Access Point (LAN, WAN, MAN)</h2>
-                        <p class="text-gray-400 mb-6">Network security threats have reached unprecedented levels. We specialise in the planning, implementation, auditing, monitoring, and management of complete data and network security solutions tailored to your needs.</p>
+                    <!-- Computer Networking -->
+                    <div class="content-card p-8 rounded-2xl">
+                        <h2 class="text-2xl font-bold text-white mb-4">Computer Networking (LAN, WAN, MAN)</h2>
+                        <p class="text-gray-400 mb-6">We specialise in planning, implementing, auditing, monitoring and managing full data and network security solutions.</p>
                         
-                        <div class="bg-zinc-900 p-6 rounded-xl">
-                            <h3 class="text-lg font-bold text-white mb-3">Full scope IT Network Security Services Advantage</h3>
+                        <div class="bg-zinc-900/50 p-6 rounded-xl border border-zinc-700/50">
+                            <h3 class="text-lg font-bold text-white mb-4">Advantages Include:</h3>
                             <ul class="grid md:grid-cols-2 gap-3 text-sm text-gray-400">
-                                <li class="flex items-center"><i class="fa-solid fa-shield-virus text-redwolf mr-2"></i> Comprehensive, custom-tailored defence strategies</li>
-                                <li class="flex items-center"><i class="fa-solid fa-lock text-redwolf mr-2"></i> Complete security solutions</li>
-                                <li class="flex items-center"><i class="fa-solid fa-network-wired text-redwolf mr-2"></i> Network stability enhanced for business continuity</li>
-                                <li class="flex items-center"><i class="fa-solid fa-scale-balanced text-redwolf mr-2"></i> Statutory and regulatory compliance</li>
-                                <li class="flex items-center"><i class="fa-solid fa-ban text-redwolf mr-2"></i> Reduced risk of external attack</li>
-                                <li class="flex items-center"><i class="fa-solid fa-file-shield text-redwolf mr-2"></i> Secure transfer of data</li>
+                                <li class="flex items-center"><i class="fa-solid fa-check text-red-600 mr-2"></i> Comprehensive, custom-tailored defence strategies</li>
+                                <li class="flex items-center"><i class="fa-solid fa-check text-red-600 mr-2"></i> End-to-end security solutions</li>
+                                <li class="flex items-center"><i class="fa-solid fa-check text-red-600 mr-2"></i> Enhanced network stability</li>
+                                <li class="flex items-center"><i class="fa-solid fa-check text-red-600 mr-2"></i> Compliance with regulations</li>
+                                <li class="flex items-center"><i class="fa-solid fa-check text-red-600 mr-2"></i> Reduced risk of external attacks</li>
+                                <li class="flex items-center"><i class="fa-solid fa-check text-red-600 mr-2"></i> Secure data transfer</li>
                             </ul>
                         </div>
                     </div>
                     
-                    <div class="bg-zinc-900 p-8 rounded-xl border border-zinc-700">
+                    <!-- Corporate Consulting -->
+                    <div class="content-card p-8 rounded-2xl">
                          <h2 class="text-2xl font-bold text-white mb-4">Corporate Security Consulting</h2>
-                         <p class="text-gray-400">We assist corporate Clients with security consulting including risk assessments, retail security planning, and loss prevention strategies.</p>
+                         <p class="text-gray-400 mb-6">Technological, strategic and personnel-driven corporate protection. Services include CCTV systems, Mobile patrols, Risk assessments, and Corporate investigations. We cater to buildings ranging from public facilities to research labs, financial centres and government buildings.</p>
+                         
+                         <div class="grid md:grid-cols-2 gap-6">
+                            <div class="p-6 bg-zinc-900/50 rounded-xl">
+                                <h3 class="text-white font-bold mb-3 text-lg">Shopping Centres</h3>
+                                <p class="text-sm text-gray-400 mb-3">We supply skilled officers trained in:</p>
+                                <div class="grid grid-cols-2 gap-2 text-xs text-gray-500">
+                                    <ul class="list-disc pl-4">
+                                        <li>Customer service</li>
+                                        <li>Emergency response</li>
+                                        <li>Risk management</li>
+                                        <li>Special events</li>
+                                    </ul>
+                                    <ul class="list-disc pl-4">
+                                        <li>Loss prevention</li>
+                                        <li>Fire safety</li>
+                                        <li>Patrols</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="p-6 bg-zinc-900/50 rounded-xl">
+                                <h3 class="text-white font-bold mb-3 text-lg">Retail Security</h3>
+                                <p class="text-sm text-gray-400">Specially trained officers for shoplifting prevention and retail-related threats.</p>
+                            </div>
+                         </div>
                     </div>
                 </div>
-            </div>
+             </div>
         </div>
 
-        <!-- ================= VIEW 9: VEHICLE TRACKING ================= -->
-        <div id="service-tracking" class="page-section hidden page-transition bg-neutral-900 min-h-screen pt-12 pb-20">
+        <!-- VIEW 9: TRACKING ================= -->
+        <div id="service-tracking" class="page-section hidden pt-12 pb-20">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <button onclick="switchPage('services')" class="mb-8 flex items-center text-redwolf hover:text-white transition-colors font-bold"><i class="fa-solid fa-arrow-left mr-2"></i> Back to Services</button>
-                <div class="flex flex-col md:flex-row justify-between items-end mb-8 border-l-8 border-redwolf pl-6">
-                    <h1 class="text-4xl font-black text-white">Vehicle Tracking Solutions</h1>
-                    <span class="text-red-500 font-bold mt-2 md:mt-0">GPS/GPRS SiRF Star III</span>
+                <button onclick="switchPage('services')" class="mb-8 flex items-center text-gray-400 hover:text-red-500 transition-colors font-bold group">
+                    <i class="fa-solid fa-arrow-left mr-2 group-hover:-translate-x-1 transition-transform"></i> Back to Services
+                </button>
+                <div class="flex flex-col md:flex-row justify-between items-end mb-8 border-l-8 border-red-600 pl-6">
+                    <h1 class="text-4xl md:text-5xl font-black text-white">Vehicle Tracking Services</h1>
+                    <span class="text-red-500 font-mono text-sm uppercase mt-2 md:mt-0">GPS/GPRS SiRF Star III</span>
                 </div>
                 
                 <div class="grid lg:grid-cols-3 gap-8">
-                    <!-- Features -->
-                    <div class="lg:col-span-2 bg-black p-8 rounded-xl border border-zinc-800">
-                        <p class="text-gray-400 mb-6">We provide GPS, GPRS satellite based vehicle and asset tracking solutions. Our tracking units are fitted with the latest SIRF star III technology chips.</p>
+                    <div class="lg:col-span-2 content-card p-8 rounded-2xl">
+                        <p class="text-gray-400 mb-6">We provide GPS/GPRS satellite-based vehicle and asset tracking solutions for corporates and individuals.</p>
                         
-                        <h2 class="text-xl font-bold text-white mb-4">Features</h2>
+                        <h2 class="text-xl font-bold text-white mb-4">Features (All Fully Supported)</h2>
                         <div class="grid md:grid-cols-2 gap-4 text-sm text-gray-400">
                             <ul class="space-y-3">
-                                <li><strong>Real Time Tracking:</strong> Via Online (TCP/UDP) or SMS.</li>
-                                <li><strong>Current location report:</strong> Get real-time location always.</li>
-                                <li><strong>Engine Cut:</strong> Gradual stop immobilisation via SMS.</li>
-                                <li><strong>Geo Fencing:</strong> Alerts when entering/leaving zones.</li>
-                                <li><strong>SOS Panic Button:</strong> Alert police or listen-in function.</li>
-                                <li><strong>Fuel & Mileage:</strong> Online monitoring and calculation.</li>
+                                <li class="flex items-center"><i class="fa-solid fa-satellite-dish text-red-600 mr-2"></i> Real-time tracking (online TCP/UDP)</li>
+                                <li class="flex items-center"><i class="fa-solid fa-map-location-dot text-red-600 mr-2"></i> Current location reporting</li>
+                                <li class="flex items-center"><i class="fa-solid fa-clock text-red-600 mr-2"></i> Interval-based tracking</li>
+                                <li class="flex items-center"><i class="fa-solid fa-bell text-red-600 mr-2"></i> SOS panic button</li>
+                                <li class="flex items-center"><i class="fa-solid fa-draw-polygon text-red-600 mr-2"></i> Geo-fencing with alerts</li>
+                                <li class="flex items-center"><i class="fa-solid fa-battery-quarter text-red-600 mr-2"></i> Low battery alert</li>
+                                <li class="flex items-center"><i class="fa-solid fa-gauge-high text-red-600 mr-2"></i> Speeding alerts</li>
+                                <li class="flex items-center"><i class="fa-solid fa-ban text-red-600 mr-2"></i> Engine cut (gradual stop)</li>
+                                <li class="flex items-center"><i class="fa-solid fa-signal text-red-600 mr-2"></i> Blind-area alerts</li>
                             </ul>
                             <ul class="space-y-3">
-                                <li><strong>Safety Alerts:</strong> Speeding, Tilt/Shaking (Accident).</li>
-                                <li><strong>Low Battery Alert:</strong> Notification on battery disconnect.</li>
-                                <li><strong>Data Logger:</strong> Stores 260,000+ waypoints if GPRS is lost.</li>
-                                <li><strong>Motion Sensor:</strong> For GPRS data saving.</li>
-                                <li><strong>Blind Area Alert:</strong> Signal sent when GPRS re-establishes.</li>
-                                <li><strong>Voice Broadcast:</strong> Automatic according to GPS position.</li>
+                                <li class="flex items-center"><i class="fa-solid fa-database text-red-600 mr-2"></i> 260,000+ waypoint logging</li>
+                                <li class="flex items-center"><i class="fa-solid fa-comment-sms text-red-600 mr-2"></i> SMS alerts & Real-time SMS tracking</li>
+                                <li class="flex items-center"><i class="fa-solid fa-gas-pump text-red-600 mr-2"></i> Online fuel monitoring</li>
+                                <li class="flex items-center"><i class="fa-solid fa-route text-red-600 mr-2"></i> Mileage calculation</li>
+                                <li class="flex items-center"><i class="fa-solid fa-person-running text-red-600 mr-2"></i> Motion sensor for data-saving</li>
+                                <li class="flex items-center"><i class="fa-solid fa-lock text-red-600 mr-2"></i> Vehicle immobilisation via SMS</li>
+                                <li class="flex items-center"><i class="fa-solid fa-car-burst text-red-600 mr-2"></i> Shaking/tilt alerts</li>
+                                <li class="flex items-center"><i class="fa-solid fa-bullhorn text-red-600 mr-2"></i> Automatic voice broadcast</li>
                             </ul>
                         </div>
                     </div>
-
-                    <!-- Clients & Types -->
-                    <div class="space-y-6">
-                        <div class="bg-zinc-900 p-6 rounded-xl">
-                            <h3 class="font-bold text-white mb-3">Who is this for?</h3>
-                            <ul class="text-sm text-gray-400 space-y-2">
-                                <li><strong>Fleet Owners:</strong> Monitor lorries and large fleets.</li>
-                                <li><strong>Taxi Operators:</strong> Monitor movement and recovery.</li>
-                                <li><strong>Private Companies:</strong> Control movement at all times.</li>
-                                <li><strong>NGOs:</strong> Ensure safety of vehicles always.</li>
-                                <li><strong>Individuals:</strong> One stop shop for vehicle security.</li>
-                            </ul>
+                    
+                    <div class="content-card p-8 rounded-2xl h-fit">
+                        <h3 class="font-bold text-white mb-4">Clients Include</h3>
+                        <div class="flex flex-wrap gap-2 text-xs mb-8">
+                            <span class="bg-zinc-800 px-2 py-1 rounded text-gray-300">Fleet owners</span>
+                            <span class="bg-zinc-800 px-2 py-1 rounded text-gray-300">Taxi operators</span>
+                            <span class="bg-zinc-800 px-2 py-1 rounded text-gray-300">Private companies</span>
+                            <span class="bg-zinc-800 px-2 py-1 rounded text-gray-300">NGOs</span>
+                            <span class="bg-zinc-800 px-2 py-1 rounded text-gray-300">Individuals</span>
                         </div>
-                        <div class="bg-zinc-900 p-6 rounded-xl">
-                            <h3 class="font-bold text-white mb-3">Other Trackers</h3>
-                            <div class="space-y-3">
-                                <div>
-                                    <strong class="block text-white text-sm">Motorbike Tracking</strong>
-                                    <span class="text-xs text-gray-500">All features of vehicle tracking except fuel monitoring.</span>
-                                </div>
-                                <div>
-                                    <strong class="block text-white text-sm">Personal Trackers</strong>
-                                    <span class="text-xs text-gray-500">Portable units for handbags/pockets. Monitored via SMS or Web portal.</span>
-                                </div>
+                        
+                        <h3 class="font-bold text-white mb-4">Other Trackers</h3>
+                        <div class="space-y-4">
+                            <div class="bg-zinc-900/30 p-3 rounded">
+                                <strong class="text-red-500 block text-xs uppercase mb-1">Motorbike Tracking</strong>
+                                <p class="text-xs text-gray-400">All vehicle tracking features except fuel monitoring.</p>
+                            </div>
+                            <div class="bg-zinc-900/30 p-3 rounded">
+                                <strong class="text-red-500 block text-xs uppercase mb-1">Personal Trackers</strong>
+                                <p class="text-xs text-gray-400">Small GPS devices for tracking individuals via SMS or web portal.</p>
                             </div>
                         </div>
                     </div>
@@ -858,37 +976,38 @@
         </div>
 
         <!-- ================= CONTACT PAGE ================= -->
-        <div id="contact" class="page-section hidden page-transition">
-            <section class="py-20 bg-neutral-900 min-h-screen">
+        <!-- (Rest of the file remains the same) -->
+        <div id="contact" class="page-section hidden">
+            <!-- ... Contact content ... -->
+            <section class="py-20 min-h-screen">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="text-center mb-16">
-                        <h1 class="text-4xl md:text-5xl font-black text-white mb-4">Get In Touch</h1>
-                        <div class="h-1 w-20 bg-redwolf mx-auto"></div>
-                        <p class="mt-4 text-gray-400">Ready to experience absolute safety? Contact us today.</p>
+                        <h1 class="text-4xl md:text-6xl font-black text-white mb-4">Get In Touch</h1>
+                        <div class="h-1 w-20 bg-red-600 mx-auto rounded-full"></div>
                     </div>
 
                     <div class="grid lg:grid-cols-2 gap-12">
                         <!-- Contact Info -->
                         <div>
-                            <div class="bg-black p-8 rounded-2xl border border-zinc-800 mb-8">
+                            <div class="content-card p-8 rounded-2xl mb-8">
                                 <h3 class="text-2xl font-bold text-white mb-6">Headquarters</h3>
                                 <div class="space-y-6 text-gray-300">
                                     <div class="flex items-start">
-                                        <i class="fa-solid fa-location-dot text-redwolf mt-1 w-8"></i>
+                                        <i class="fa-solid fa-location-dot text-red-600 mt-1 w-8"></i>
                                         <div>
                                             <p class="font-bold text-white">Red Wolf Security</p>
                                             <p class="text-sm">Nigeria (National Service)</p>
                                         </div>
                                     </div>
                                     <div class="flex items-start">
-                                        <i class="fa-solid fa-envelope text-redwolf mt-1 w-8"></i>
+                                        <i class="fa-solid fa-envelope text-red-600 mt-1 w-8"></i>
                                         <div>
                                             <p class="font-bold text-white">Email Us</p>
                                             <p class="text-sm">info@redwolfsecurity.com</p>
                                         </div>
                                     </div>
                                     <div class="flex items-start">
-                                        <i class="fa-solid fa-phone text-redwolf mt-1 w-8"></i>
+                                        <i class="fa-solid fa-phone text-red-600 mt-1 w-8"></i>
                                         <div>
                                             <p class="font-bold text-white">Call Us</p>
                                             <p class="text-sm">+234 (0) 123 456 7890</p>
@@ -904,25 +1023,25 @@
                         </div>
 
                         <!-- Form -->
-                        <div class="bg-zinc-900 p-8 rounded-2xl shadow-xl">
+                        <div class="content-card p-8 rounded-2xl shadow-2xl">
                             <form onsubmit="event.preventDefault(); alert('Thank you for your inquiry. A Red Wolf representative will contact you shortly.');">
                                 <div class="grid md:grid-cols-2 gap-6 mb-6">
                                     <div>
                                         <label class="block text-xs font-bold text-gray-400 uppercase mb-2">First Name</label>
-                                        <input type="text" class="w-full bg-black border border-zinc-700 rounded p-3 text-white focus:border-redwolf focus:outline-none transition-colors" placeholder="John">
+                                        <input type="text" class="w-full bg-black/50 border border-zinc-700 rounded-lg p-3 text-white focus:border-red-600 focus:outline-none focus:ring-1 focus:ring-red-600 transition-all" placeholder="John">
                                     </div>
                                     <div>
                                         <label class="block text-xs font-bold text-gray-400 uppercase mb-2">Last Name</label>
-                                        <input type="text" class="w-full bg-black border border-zinc-700 rounded p-3 text-white focus:border-redwolf focus:outline-none transition-colors" placeholder="Doe">
+                                        <input type="text" class="w-full bg-black/50 border border-zinc-700 rounded-lg p-3 text-white focus:border-red-600 focus:outline-none focus:ring-1 focus:ring-red-600 transition-all" placeholder="Doe">
                                     </div>
                                 </div>
                                 <div class="mb-6">
                                     <label class="block text-xs font-bold text-gray-400 uppercase mb-2">Email Address</label>
-                                    <input type="email" class="w-full bg-black border border-zinc-700 rounded p-3 text-white focus:border-redwolf focus:outline-none transition-colors" placeholder="john@company.com">
+                                    <input type="email" class="w-full bg-black/50 border border-zinc-700 rounded-lg p-3 text-white focus:border-red-600 focus:outline-none focus:ring-1 focus:ring-red-600 transition-all" placeholder="john@company.com">
                                 </div>
                                 <div class="mb-6">
                                     <label class="block text-xs font-bold text-gray-400 uppercase mb-2">Service Interest</label>
-                                    <select class="w-full bg-black border border-zinc-700 rounded p-3 text-white focus:border-redwolf focus:outline-none transition-colors">
+                                    <select class="w-full bg-black/50 border border-zinc-700 rounded-lg p-3 text-white focus:border-red-600 focus:outline-none focus:ring-1 focus:ring-red-600 transition-all">
                                         <option>Manned Guarding</option>
                                         <option>CCTV & Surveillance</option>
                                         <option>Vehicle Tracking</option>
@@ -935,9 +1054,9 @@
                                 </div>
                                 <div class="mb-6">
                                     <label class="block text-xs font-bold text-gray-400 uppercase mb-2">Message</label>
-                                    <textarea rows="4" class="w-full bg-black border border-zinc-700 rounded p-3 text-white focus:border-redwolf focus:outline-none transition-colors" placeholder="How can we help you achieve absolute safety?"></textarea>
+                                    <textarea rows="4" class="w-full bg-black/50 border border-zinc-700 rounded-lg p-3 text-white focus:border-red-600 focus:outline-none focus:ring-1 focus:ring-red-600 transition-all" placeholder="How can we help you achieve absolute safety?"></textarea>
                                 </div>
-                                <button type="submit" class="w-full bg-redwolf hover:bg-red-700 text-white font-bold py-4 rounded transition-colors shadow-lg shadow-red-900/30">
+                                <button type="submit" class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-4 rounded-lg transition-all shadow-lg shadow-red-900/30 transform hover:scale-[1.02]">
                                     SEND MESSAGE
                                 </button>
                             </form>
@@ -950,7 +1069,7 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-black border-t border-zinc-900 py-8">
+    <footer class="bg-black border-t border-zinc-900 py-8 relative z-10">
         <div class="max-w-7xl mx-auto px-4 text-center md:text-left flex flex-col md:flex-row justify-between items-center">
             <div class="text-gray-600 text-sm mb-4 md:mb-0">
                 &copy; 2021 Red Wolf Security. All Rights Reserved.
@@ -964,16 +1083,23 @@
     <!-- JS Router Logic -->
     <script>
         function switchPage(pageId) {
-            // Hide all pages including sub-services
+            // Get all pages
             const allPages = document.querySelectorAll('.page-section');
+            
+            // Hide all pages & remove active class for animation reset
             allPages.forEach(page => {
                 page.classList.add('hidden');
+                page.classList.remove('active');
             });
 
             // Show selected page
             const selectedPage = document.getElementById(pageId);
             if(selectedPage) {
                 selectedPage.classList.remove('hidden');
+                // Small delay to ensure the DOM has updated hidden state before adding animation class
+                setTimeout(() => {
+                    selectedPage.classList.add('active');
+                }, 10);
             } else {
                 console.error("Page ID not found:", pageId);
                 return;
