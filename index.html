@@ -1073,13 +1073,33 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-black border-t border-zinc-900 py-8 relative z-10">
-        <div class="max-w-7xl mx-auto px-4 text-center md:text-left flex flex-col md:flex-row justify-between items-center">
-            <div class="text-gray-600 text-sm mb-4 md:mb-0">
-                &copy; 2021 Red Wolf Security. All Rights Reserved.
+    <footer class="bg-black border-t border-zinc-900 py-12 relative z-10">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center mb-8">
+                <!-- Logo -->
+                <div class="flex items-center gap-3 cursor-pointer group mb-6 md:mb-0" onclick="switchPage('home')">
+                    <i class="fa-solid fa-wolf-pack-battalion text-3xl text-zinc-800 group-hover:text-red-600 transition-colors duration-300"></i>
+                    <div class="flex flex-col">
+                        <span class="font-display font-bold text-lg tracking-wider text-zinc-500 group-hover:text-white transition-colors">RED WOLF</span>
+                    </div>
+                </div>
+
+                <!-- Navigation -->
+                <div class="flex flex-wrap justify-center gap-8">
+                    <button onclick="switchPage('home')" class="text-sm font-semibold text-gray-500 hover:text-red-600 transition-colors uppercase tracking-wide">Home</button>
+                    <button onclick="switchPage('about')" class="text-sm font-semibold text-gray-500 hover:text-red-600 transition-colors uppercase tracking-wide">About Us</button>
+                    <button onclick="switchPage('services')" class="text-sm font-semibold text-gray-500 hover:text-red-600 transition-colors uppercase tracking-wide">Services</button>
+                    <button onclick="switchPage('contact')" class="text-sm font-semibold text-gray-500 hover:text-red-600 transition-colors uppercase tracking-wide">Contact</button>
+                </div>
             </div>
-            <div class="text-gray-700 text-xs font-mono uppercase tracking-widest">
-                Prepared by EVISCERATED SOLUTIONS
+
+            <div class="border-t border-zinc-900 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <div class="text-zinc-700 text-xs mb-4 md:mb-0">
+                    &copy; 2021 Red Wolf Security. All Rights Reserved.
+                </div>
+                <div class="text-zinc-800 text-[10px] font-mono uppercase tracking-[0.2em] hover:text-red-900 transition-colors cursor-default">
+                    Prepared by EVISCERATED SOLUTIONS
+                </div>
             </div>
         </div>
     </footer>
