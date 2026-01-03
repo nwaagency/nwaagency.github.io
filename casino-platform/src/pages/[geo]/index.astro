@@ -1,0 +1,134 @@
+---
+// src/pages/[geo]/index.astro
+import Layout from '../../layouts/Layout.astro';
+import CasinoCard from '../../components/CasinoCard.astro';
+import { getCollection } from 'astro:content';
+
+// 1. Generate Static Paths for GEOs
+// This tells Astro exactly which URLs to build (e.g., /global, /de, /ca)
+export async function getStaticPaths() {
+  const geos = ['de', 'at', 'ca', 'nz', 'ie', 'global'];
+  return geos.map((geo) => ({ params: { geo } }));
+}
+
+// 2. Access Params & Data
+const { geo } = Astro.params;
+
+// 3. Fetch & Filter Data
+// We load all casinos and filter them based on the current URL param
+const allCasinos = await getCollection('casinos');
+
+const filteredCasinos = allCasinos.filter((casino) => {
+  const data = casino.data;
+  // Filter 1: Must be active
+  if (!data.isActive) return false;
+  
+  // Filter 2: GEO Logic
+  // If allowed_geos includes 'global', show it everywhere.
+  // Otherwise, only show if the specific geo (e.g., 'de') is listed.
+  const allowed = data.allowed_geos || ['global'];
+  return allowed.includes('global') || allowed.includes(geo);
+});
+
+// 4. Sorting Logic (Rank -> Rating)
+const sortedCasinos = filteredCasinos.sort((a, b) => {
+  // Primary: Rank (Low to High)
+  if (a.data.rank !== b.data.rank) {
+    return a.data.rank - b.data.rank;
+  }
+  // Secondary: Rating (High to Low)
+  return b.data.rating - a.data.rating;
+});
+
+// 5. Dynamic Metadata
+const geoNames: Record<string, string> = {
+  de: 'Germany',
+  at: 'Austria',
+  ca: 'Canada',
+  nz: 'New Zealand',
+  ie: 'Ireland',
+  global: 'World'
+};
+const countryName = geoNames[geo] || 'Global';
+const currentMonth = new Date().toLocaleString('default', { month: 'long' });
+const currentYear = new Date().getFullYear();
+const pageTitle = `Best Online Casinos in ${countryName} - ${currentMonth} ${currentYear}`;
+---
+
+<Layout title={pageTitle}>
+  <main class="container">
+    
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <h1 class="text-gradient">Top Ranked Casinos in <span class="text-gold">{countryName}</span></h1>
+      <p class="subtitle">
+        We have compared {sortedCasinos.length} operators based on payouts, bonuses, and safety.
+      </p>
+    </section>
+
+    <!-- Controls (Filter/Sort Placeholders) -->
+    <div class="controls-bar">
+      <span>Last Updated: {currentMonth} {currentYear}</span>
+      <div class="filter-badges">
+        <span class="badge active">All</span>
+        <span class="badge">New</span>
+        <span class="badge">Fast Payout</span>
+      </div>
+    </div>
+
+    <!-- The Casino List -->
+    <div class="casino-list">
+      {sortedCasinos.map((casino, index) => (
+        <CasinoCard 
+          data={casino.data} 
+          index={index + 1} 
+        />
+      ))}
+    </div>
+
+    {sortedCasinos.length === 0 && (
+      <div class="empty-state">
+        <p>No casinos found for this region currently.</p>
+      </div>
+    )}
+
+  </main>
+</Layout>
+
+<style>
+  .hero-section {
+    padding: 4rem 0 2rem;
+    text-align: center;
+    background: radial-gradient(circle at center, rgba(60,60,60,0.4) 0%, transparent 70%);
+  }
+  
+  h1 { font-size: 2.5rem; font-weight: 800; margin-bottom: 1rem; }
+  .text-gradient { background: linear-gradient(to bottom, #fff, #ccc); -webkit-background-clip: text; color: transparent; }
+  .subtitle { color: var(--text-secondary); max-width: 600px; margin: 0 auto; }
+
+  .controls-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    font-size: 0.9rem;
+    color: var(--text-muted);
+  }
+
+  .badge {
+    padding: 6px 12px;
+    border-radius: 20px;
+    background: #222;
+    margin-left: 8px;
+    cursor: pointer;
+  }
+  .badge.active { background: var(--gold-muted); color: white; }
+  .empty-state { text-align: center; padding: 4rem; color: #666; border: 1px dashed #333; border-radius: 8px; }
+
+  @media (max-width: 768px) {
+    h1 { font-size: 1.8rem; }
+    .controls-bar { flex-direction: column; gap: 1rem; }
+  }
+</style>

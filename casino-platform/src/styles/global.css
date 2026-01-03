@@ -1,0 +1,138 @@
+/* SECTION 8: Styling & Design System Implementation 
+  Luxury Dark Mode Theme Configuration
+*/
+
+:root {
+  /* Backgrounds */
+  --bg-body: #0a0a0a;       /* Deepest black */
+  --bg-card: #141414;       /* Charcoal */
+  --bg-panel: #0f0f0f;      /* Darker details panel */
+  --bg-input: #1f1f1f;
+  
+  /* Brand Accents */
+  --gold-metallic: #D4AF37;
+  --gold-bright: #FFD700;
+  --gold-muted: #8A7218;
+  --green-success: #10b981;
+  
+  /* Action */
+  --gradient-cta: linear-gradient(180deg, #FFD700 0%, #FFA500 100%);
+  --gradient-cta-hover: linear-gradient(180deg, #ffe033 0%, #ffb31a 100%);
+  
+  /* Typography */
+  --text-primary: #FFFFFF;
+  --text-secondary: #B0B0B0;
+  --text-muted: #6e6e6e;
+
+  /* Spacing */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+}
+
+/* Reset & Base */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-body);
+  color: var(--text-primary);
+  font-family: 'Inter', system-ui, sans-serif;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Utility Classes */
+.glass-panel {
+  background: rgba(20, 20, 20, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.text-gold {
+  color: var(--gold-bright);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* ANIMATION LOGIC (Section 8)
+*/
+
+/* Cascading Entrance - Applied via JS/CSS var index */
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-entrance {
+  animation: slideInUp 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  opacity: 0; /* Start hidden */
+}
+
+/* Sheen Effect for Buttons */
+@keyframes sheen {
+  0% { transform: skewX(-45deg) translateX(-150%); }
+  100% { transform: skewX(-45deg) translateX(150%); }
+}
+
+.btn-primary {
+  position: relative;
+  background: var(--gradient-cta);
+  color: #000;
+  font-weight: 700;
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 0.75rem 1.5rem;
+  cursor: pointer;
+  overflow: hidden;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+  transition: transform 0.2s;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  background: var(--gradient-cta-hover);
+  box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
+}
+
+.btn-primary::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, transparent, rgba(255,255,255,0.4), transparent);
+  transform: skewX(-45deg) translateX(-150%);
+}
+
+.btn-primary:hover::after {
+  animation: sheen 0.8s ease-in-out;
+}
+
+/* Star Pulsing */
+@keyframes pulseStar {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+.star-icon:hover {
+  animation: pulseStar 0.4s ease-in-out;
+}
