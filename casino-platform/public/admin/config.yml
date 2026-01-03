@@ -1,11 +1,13 @@
 backend:
   name: git-gateway
   branch: main
+  
 
 # CRM Branding
 site_url: "https://nexoraweb.agency"
 display_url: "nexoraweb.agency"
 logo_url: "https://placehold.co/200x50/111/D4AF37?text=CASINO+CRM" 
+
 
 # CRITICAL FIX: Paths must include the subfolder name
 media_folder: "casino-platform/public/uploads"
