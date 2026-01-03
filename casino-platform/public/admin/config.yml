@@ -17,8 +17,9 @@ collections:
   - name: "pages"
     label: "Pages"
     icon: "page"
-    folder: "casino-platform/src/content/pages" # Updated Path
+    folder: "casino-platform/src/content/pages" 
     create: true
+    identifier_field: "title" # Fixes slug generation
     fields:
       - {label: "Title", name: "title", widget: "string"}
       - {label: "SEO Description", name: "description", widget: "text"}
@@ -29,9 +30,10 @@ collections:
     label: "Casinos"
     label_singular: "Casino"
     icon: "crown" 
-    folder: "casino-platform/src/content/casinos" # Updated Path
+    folder: "casino-platform/src/content/casinos" 
     create: true
-    slug: "{{rank}}-{{slug}}"
+    identifier_field: "name" # Explicitly tell CMS this is the title
+    slug: "{{rank}}-{{name}}" # Cleaner filenames (e.g. 1-royal-spin)
     summary: "{{rank}}. {{name}} ({{rating}}★)"
     fields:
       - {label: "ID", name: "id", widget: "uuid"}
@@ -96,7 +98,7 @@ collections:
     files:
       - name: "scripts"
         label: "Tracking Scripts"
-        file: "casino-platform/src/content/settings/scripts.json" # Updated Path
+        file: "casino-platform/src/content/settings/scripts.json" 
         fields:
           - {label: "Header Scripts", name: "header_scripts", widget: "code"}
           - {label: "Footer Scripts", name: "footer_scripts", widget: "code"}
@@ -108,7 +110,7 @@ collections:
     files:
       - name: "global"
         label: "Global Config"
-        file: "casino-platform/src/content/settings/global.json" # Updated Path
+        file: "casino-platform/src/content/settings/global.json" 
         fields:
           - {label: "Site Title", name: "site_title", widget: "string"}
           - {label: "Meta Description", name: "site_description", widget: "text"}
