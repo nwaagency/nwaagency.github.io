@@ -1,98 +1,214 @@
-/* CASINO CRM DASHBOARD THEME */
+/* CASINO CRM - DASHBOARD THEME V2 */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
 :root {
-  --bg-dark: #0f1115;
-  --bg-sidebar: #050505;
-  --bg-card: #161920;
-  --brand-gold: #D4AF37;
-  --text-main: #e2e8f0;
-  --border-color: #2a2d35;
+  /* Core Colors */
+  --bg-app: #09090b;       /* Deepest Black */
+  --bg-sidebar: #121214;   /* Dark Grey Sidebar */
+  --bg-card: #1c1c1f;      /* Lighter Grey Card */
+  --bg-input: #27272a;     /* Input Fields */
+  
+  /* Brand Accents */
+  --gold-primary: #D4AF37;
+  --gold-hover: #F2C94C;
+  --gold-dim: rgba(212, 175, 55, 0.1);
+  
+  /* Text */
+  --text-main: #ECECEC;
+  --text-muted: #A1A1AA;
+  
+  /* Borders */
+  --border-color: #27272a;
+  --radius-md: 8px;
+  --radius-sm: 4px;
 }
 
-/* 1. Global Reset for Admin */
-body, #nc-root {
-  background-color: var(--bg-dark) !important;
+/* =========================================
+   1. GLOBAL OVERRIDES
+   ========================================= */
+body {
+  font-family: 'Inter', sans-serif !important;
+  background-color: var(--bg-app) !important;
   color: var(--text-main) !important;
-  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* 2. Sidebar Styling */
-/* Note: Selectors target Decap CMS internal class structures. 
-   These may need adjustment if class names shift in newer versions. */
+/* Scrollbars */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: var(--bg-app); }
+::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #555; }
+
+/* =========================================
+   2. SIDEBAR NAVIGATION
+   ========================================= */
+/* Target the main sidebar container */
 div[class*="SidebarContainer"] {
   background-color: var(--bg-sidebar) !important;
-  border-right: 1px solid var(--border-color);
+  border-right: 1px solid var(--border-color) !important;
+  width: 280px !important;
 }
 
+/* Brand Area */
 div[class*="SidebarBrand"] {
-  background-color: #000;
-  color: var(--brand-gold) !important;
+  background-color: transparent !important;
   border-bottom: 1px solid var(--border-color);
-  font-weight: 800;
+  color: var(--gold-primary) !important;
+  font-size: 1.2rem !important;
+  font-weight: 700 !important;
+  padding: 24px !important;
+  text-transform: uppercase;
   letter-spacing: 1px;
 }
 
-/* Navigation Links */
+/* Nav Links */
 a[class*="SidebarNavLink"] {
-  color: #888 !important;
+  display: flex !important;
+  align-items: center;
+  padding: 12px 24px !important;
+  color: var(--text-muted) !important;
+  font-weight: 500 !important;
+  font-size: 0.95rem !important;
   border-left: 3px solid transparent;
+  transition: all 0.2s ease;
 }
 
+/* Hover & Active States */
 a[class*="SidebarNavLink"]:hover,
 a[class*="SidebarNavLink"][class*="active"] {
-  background-color: rgba(212, 175, 55, 0.1) !important;
-  color: #fff !important;
-  border-left: 3px solid var(--brand-gold);
+  background-color: var(--gold-dim) !important;
+  color: var(--gold-primary) !important;
+  border-left-color: var(--gold-primary);
 }
 
-/* 3. Main Content Area */
-main {
-  background-color: var(--bg-dark);
+/* Icons in Sidebar (if any) */
+a[class*="SidebarNavLink"] svg {
+  fill: currentColor !important;
+  margin-right: 12px;
 }
 
-/* Header/Toolbar */
+/* =========================================
+   3. MAIN CONTENT AREA (LIST VIEW)
+   ========================================= */
+/* Top Header Toolbar */
 div[class*="AppHeader"] {
-  background-color: var(--bg-card) !important;
+  background-color: var(--bg-app) !important;
   border-bottom: 1px solid var(--border-color) !important;
+  height: 64px;
 }
 
-/* 4. Entry Cards (The List View) */
-div[class*="Card"] {
+/* "Casinos" Page Title */
+h1[class*="CollectionLabel"] {
+  color: var(--text-main) !important;
+  font-size: 1.5rem !important;
+  font-weight: 700 !important;
+}
+
+/* The Grid/List Container */
+div[class*="CollectionContainer"] {
+  padding: 32px !important;
+}
+
+/* Individual Entry Cards */
+a[class*="Card"] {
   background-color: var(--bg-card) !important;
   border: 1px solid var(--border-color) !important;
-  border-radius: 8px;
-  box-shadow: none !important;
-  transition: transform 0.2s;
+  border-radius: var(--radius-md) !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
+  transition: transform 0.2s, border-color 0.2s;
+  overflow: hidden;
 }
 
-div[class*="Card"]:hover {
-  transform: translateY(-2px);
-  border-color: var(--brand-gold) !important;
+a[class*="Card"]:hover {
+  transform: translateY(-4px);
+  border-color: var(--gold-primary) !important;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3) !important;
 }
 
-/* Text in cards */
-div[class*="Card"] h2, 
-div[class*="Card"] p,
-span {
+/* Card Text */
+a[class*="Card"] h2 {
   color: var(--text-main) !important;
+  font-size: 1.1rem !important;
+  font-weight: 600 !important;
 }
 
-/* 5. Editor Inputs */
-input, textarea, div[class*="Control"] {
-  background-color: #000 !important;
-  border: 1px solid #333 !important;
-  color: #fff !important;
+a[class*="Card"] p, 
+a[class*="Card"] span {
+  color: var(--text-muted) !important;
+}
+
+/* "New Entry" Button */
+a[href*="new"] {
+  background-color: var(--gold-primary) !important;
+  color: #000 !important;
+  font-weight: 700 !important;
+  border-radius: var(--radius-sm) !important;
+  padding: 10px 20px !important;
+  text-transform: uppercase;
+  font-size: 0.85rem !important;
+  border: none !important;
+}
+a[href*="new"]:hover {
+  background-color: var(--gold-hover) !important;
+}
+
+/* =========================================
+   4. EDITOR VIEW (WRITING CONTENT)
+   ========================================= */
+/* Input Fields & Textareas */
+input, textarea, div[role="textbox"] {
+  background-color: var(--bg-input) !important;
+  border: 1px solid var(--border-color) !important;
+  color: var(--text-main) !important;
+  border-radius: var(--radius-sm) !important;
+  padding: 10px !important;
 }
 
 input:focus, textarea:focus {
-  border-color: var(--brand-gold) !important;
-  box-shadow: 0 0 0 1px var(--brand-gold) !important;
+  outline: none;
+  border-color: var(--gold-primary) !important;
+  box-shadow: 0 0 0 2px var(--gold-dim) !important;
 }
 
-/* 6. Buttons */
-button[class*="Button"] {
-  background-color: var(--brand-gold) !important;
+/* Field Labels */
+label {
+  color: var(--text-muted) !important;
+  font-size: 0.85rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px;
+  font-weight: 600 !important;
+  margin-bottom: 8px !important;
+}
+
+/* Image Widget Wrapper */
+div[class*="ImageWrapper"] {
+  border: 2px dashed var(--border-color) !important;
+  background-color: rgba(255,255,255,0.02) !important;
+  border-radius: var(--radius-md);
+}
+
+/* Top Bar in Editor (Save/Publish) */
+div[class*="EditorToolbar"] {
+  background-color: var(--bg-sidebar) !important;
+  border-bottom: 1px solid var(--border-color) !important;
+}
+
+/* Publish Button */
+button[class*="PublishButton"] {
+  background-color: var(--gold-primary) !important;
   color: #000 !important;
   font-weight: 700;
-  border: none;
-  text-transform: uppercase;
+}
+
+/* Dropdowns/Selects */
+div[class*="Select"] {
+  border-color: var(--border-color) !important;
+  background-color: var(--bg-input) !important;
+  color: var(--text-main) !important;
+}
+
+/* Markdown Editor Pane */
+div[class*="RichText"] {
+  background-color: var(--bg-input) !important;
+  color: var(--text-main) !important;
 }
