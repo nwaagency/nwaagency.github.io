@@ -1,12 +1,9 @@
-
-
 backend:
   name: github
   repo: nwaagency/nwaagency.github.io
   branch: main
-  base_url: https://api.netlify.com
-  auth_endpoint: auth
 
+# This defines where uploaded files go
 media_folder: "public/uploads"
 public_folder: "/uploads"
 
@@ -17,47 +14,47 @@ collections:
     create: true
     slug: "{{rank}}-{{slug}}"
     fields:
-      # SECTION 5: Database Schema Mapping
       - {label: "ID", name: "id", widget: "uuid"}
       - {label: "Active", name: "isActive", widget: "boolean", default: true}
       - {label: "Rank", name: "rank", widget: "number", value_type: "int"}
       - {label: "Name", name: "name", widget: "string"}
-      - {label: "Logo", name: "logo_url", widget: "image"}
+      - {label: "Logo", name: "logo_url", widget: "image"} 
       - {label: "Affiliate URL", name: "affiliate_url", widget: "string"}
       
-      # Geographic Targeting
       - label: "Allowed GEOs"
         name: "allowed_geos"
         widget: "select"
         multiple: true
-        options: ["de", "at", "ca", "nz", "ie", "ch", "global"]
+        options: ["global", "de", "at", "ca", "nz", "ie", "ch"]
         default: ["global"]
 
-      # Ratings & Scores
-      - {label: "Rating (0.0-5.0)", name: "rating", widget: "number", value_type: "float", step: 0.1, min: 0, max: 5}
-      - {label: "RTP %", name: "rtp", widget: "number", value_type: "float", step: 0.01, min: 0, max: 100}
+      - {label: "Rating (0.0-5.0)", name: "rating", widget: "number", value_type: "float", step: 0.1}
+      - {label: "RTP %", name: "rtp", widget: "number", value_type: "float", step: 0.01}
 
-      # Marketing Content
       - {label: "Welcome Bonus Headline", name: "welcome_bonus_headline", widget: "string"}
       - {label: "Bonus Details HTML", name: "bonus_details", widget: "markdown"}
       
-      # Technical Specs
       - {label: "Payout Speed", name: "payout_speed", widget: "string"}
       - {label: "License", name: "license", widget: "string"}
       - {label: "Min Deposit", name: "min_deposit", widget: "string"}
       
-      # Arrays/Lists
+      # UPDATED: Now uses 'image' widget for easy selection
       - label: "Banking Methods"
         name: "banking"
         widget: "list"
         summary: "{{fields.method}}"
         fields:
           - {label: "Method Name", name: "method", widget: "string"}
-          - {label: "Icon Filename", name: "icon", widget: "string"}
+          - {label: "Icon", name: "icon", widget: "image"} 
       
+      # UPDATED: Added Logo support for Providers
       - label: "Game Providers"
         name: "providers"
         widget: "list"
-        field: {label: "Provider", name: "name", widget: "string"}
+        fields: 
+          - {label: "Provider Name", name: "name", widget: "string"}
+          - {label: "Provider Logo", name: "logo", widget: "image"}
       
       - {label: "VIP Program Available", name: "vip_high_roller", widget: "boolean", default: false}
+      - {label: "Mobile App", name: "mobile_app", widget: "string"}
+      - {label: "Customer Service", name: "customer_service", widget: "string"}
