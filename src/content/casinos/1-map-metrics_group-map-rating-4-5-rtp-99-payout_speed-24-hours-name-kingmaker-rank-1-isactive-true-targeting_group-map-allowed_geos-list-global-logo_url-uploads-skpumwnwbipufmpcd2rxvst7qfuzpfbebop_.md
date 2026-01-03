@@ -8,7 +8,7 @@ targeting_group:
   allowed_geos:
     - global
 metrics_group:
-  rating: 4.5
+  rating: 4.9
   rtp: 99
   payout_speed: 24 Hours
 offer_group:
