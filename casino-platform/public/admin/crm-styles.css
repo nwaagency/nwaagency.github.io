@@ -1,0 +1,98 @@
+/* CASINO CRM DASHBOARD THEME */
+:root {
+  --bg-dark: #0f1115;
+  --bg-sidebar: #050505;
+  --bg-card: #161920;
+  --brand-gold: #D4AF37;
+  --text-main: #e2e8f0;
+  --border-color: #2a2d35;
+}
+
+/* 1. Global Reset for Admin */
+body, #nc-root {
+  background-color: var(--bg-dark) !important;
+  color: var(--text-main) !important;
+  font-family: 'Inter', sans-serif;
+}
+
+/* 2. Sidebar Styling */
+/* Note: Selectors target Decap CMS internal class structures. 
+   These may need adjustment if class names shift in newer versions. */
+div[class*="SidebarContainer"] {
+  background-color: var(--bg-sidebar) !important;
+  border-right: 1px solid var(--border-color);
+}
+
+div[class*="SidebarBrand"] {
+  background-color: #000;
+  color: var(--brand-gold) !important;
+  border-bottom: 1px solid var(--border-color);
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+/* Navigation Links */
+a[class*="SidebarNavLink"] {
+  color: #888 !important;
+  border-left: 3px solid transparent;
+}
+
+a[class*="SidebarNavLink"]:hover,
+a[class*="SidebarNavLink"][class*="active"] {
+  background-color: rgba(212, 175, 55, 0.1) !important;
+  color: #fff !important;
+  border-left: 3px solid var(--brand-gold);
+}
+
+/* 3. Main Content Area */
+main {
+  background-color: var(--bg-dark);
+}
+
+/* Header/Toolbar */
+div[class*="AppHeader"] {
+  background-color: var(--bg-card) !important;
+  border-bottom: 1px solid var(--border-color) !important;
+}
+
+/* 4. Entry Cards (The List View) */
+div[class*="Card"] {
+  background-color: var(--bg-card) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 8px;
+  box-shadow: none !important;
+  transition: transform 0.2s;
+}
+
+div[class*="Card"]:hover {
+  transform: translateY(-2px);
+  border-color: var(--brand-gold) !important;
+}
+
+/* Text in cards */
+div[class*="Card"] h2, 
+div[class*="Card"] p,
+span {
+  color: var(--text-main) !important;
+}
+
+/* 5. Editor Inputs */
+input, textarea, div[class*="Control"] {
+  background-color: #000 !important;
+  border: 1px solid #333 !important;
+  color: #fff !important;
+}
+
+input:focus, textarea:focus {
+  border-color: var(--brand-gold) !important;
+  box-shadow: 0 0 0 1px var(--brand-gold) !important;
+}
+
+/* 6. Buttons */
+button[class*="Button"] {
+  background-color: var(--brand-gold) !important;
+  color: #000 !important;
+  font-weight: 700;
+  border: none;
+  text-transform: uppercase;
+}

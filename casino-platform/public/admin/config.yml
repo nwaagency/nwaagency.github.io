@@ -2,56 +2,113 @@ backend:
   name: git-gateway
   branch: main
 
-# This defines where uploaded files go
+# CRM Branding
+site_url: "https://nexoraweb.agency"
+display_url: "nexoraweb.agency"
+logo_url: "https://placehold.co/200x50/111/D4AF37?text=CASINO+CRM" 
+
 media_folder: "public/uploads"
 public_folder: "/uploads"
 
+# The Sidebar Structure
 collections:
+  # 1. PAGES SECTION
+  - name: "pages"
+    label: "Pages"
+    icon: "page"
+    folder: "src/content/pages"
+    create: true
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "SEO Description", name: "description", widget: "text"}
+      - {label: "Body", name: "body", widget: "markdown"}
+
+  # 2. CASINOS SECTION (The Core)
   - name: "casinos"
     label: "Casinos"
+    label_singular: "Casino"
+    icon: "crown" # Custom icon if supported or mapped in CSS
     folder: "src/content/casinos"
     create: true
     slug: "{{rank}}-{{slug}}"
+    summary: "{{rank}}. {{name}} ({{rating}}★)"
     fields:
       - {label: "ID", name: "id", widget: "uuid"}
       - {label: "Active", name: "isActive", widget: "boolean", default: true}
-      - {label: "Rank", name: "rank", widget: "number", value_type: "int"}
-      - {label: "Name", name: "name", widget: "string"}
+      - {label: "Rank Position", name: "rank", widget: "number", value_type: "int"}
+      - {label: "Casino Name", name: "name", widget: "string"}
       - {label: "Logo", name: "logo_url", widget: "image"} 
-      - {label: "Affiliate URL", name: "affiliate_url", widget: "string"}
+      - {label: "Affiliate Link", name: "affiliate_url", widget: "string"}
       
-      - label: "Allowed GEOs"
-        name: "allowed_geos"
-        widget: "select"
-        multiple: true
-        options: ["global", "de", "at", "ca", "nz", "ie", "ch"]
-        default: ["global"]
-
-      - {label: "Rating (0.0-5.0)", name: "rating", widget: "number", value_type: "float", step: 0.1}
-      - {label: "RTP %", name: "rtp", widget: "number", value_type: "float", step: 0.01}
-
-      - {label: "Welcome Bonus Headline", name: "welcome_bonus_headline", widget: "string"}
-      - {label: "Bonus Details HTML", name: "bonus_details", widget: "markdown"}
-      
-      - {label: "Payout Speed", name: "payout_speed", widget: "string"}
-      - {label: "License", name: "license", widget: "string"}
-      - {label: "Min Deposit", name: "min_deposit", widget: "string"}
-      
-      - label: "Banking Methods"
-        name: "banking"
-        widget: "list"
-        summary: "{{fields.method}}"
+      - label: "Targeting & SEO"
+        name: "targeting_group"
+        widget: "object"
+        collapsed: true
         fields:
-          - {label: "Method Name", name: "method", widget: "string"}
-          - {label: "Icon", name: "icon", widget: "image"} 
-      
-      - label: "Game Providers"
-        name: "providers"
-        widget: "list"
-        fields: 
-          - {label: "Provider Name", name: "name", widget: "string"}
-          - {label: "Provider Logo", name: "logo", widget: "image"}
-      
-      - {label: "VIP Program Available", name: "vip_high_roller", widget: "boolean", default: false}
-      - {label: "Mobile App", name: "mobile_app", widget: "string"}
-      - {label: "Customer Service", name: "customer_service", widget: "string"}
+          - label: "Allowed GEOs"
+            name: "allowed_geos"
+            widget: "select"
+            multiple: true
+            options: ["global", "de", "at", "ca", "nz", "ie", "ch"]
+            default: ["global"]
+
+      - label: "Performance Metrics"
+        name: "metrics_group"
+        widget: "object"
+        collapsed: false
+        fields:
+          - {label: "Rating (0-5)", name: "rating", widget: "number", value_type: "float", step: 0.1}
+          - {label: "RTP %", name: "rtp", widget: "number", value_type: "float", step: 0.01}
+          - {label: "Payout Speed", name: "payout_speed", widget: "string"}
+
+      - label: "Offer Details"
+        name: "offer_group"
+        widget: "object"
+        collapsed: false
+        fields:
+          - {label: "Welcome Bonus Headline", name: "welcome_bonus_headline", widget: "string"}
+          - {label: "Bonus Details HTML", name: "bonus_details", widget: "markdown"}
+          - {label: "Min Deposit", name: "min_deposit", widget: "string"}
+          - {label: "VIP Program", name: "vip_high_roller", widget: "boolean", default: false}
+
+      - label: "Features & Data"
+        name: "features_group"
+        widget: "object"
+        collapsed: true
+        fields:
+          - {label: "License", name: "license", widget: "string"}
+          - {label: "Mobile App", name: "mobile_app", widget: "string"}
+          - {label: "Customer Service", name: "customer_service", widget: "string"}
+          - label: "Banking Methods"
+            name: "banking"
+            widget: "list"
+            fields: [{label: "Method", name: "method", widget: "string"}, {label: "Icon", name: "icon", widget: "image"}]
+          - label: "Providers"
+            name: "providers"
+            widget: "list"
+            fields: [{label: "Name", name: "name", widget: "string"}, {label: "Logo", name: "logo", widget: "image"}]
+
+  # 3. TOOLS SECTION (Simulated)
+  - name: "tools"
+    label: "Tools"
+    icon: "code"
+    files:
+      - name: "scripts"
+        label: "Tracking Scripts"
+        file: "src/content/settings/scripts.json"
+        fields:
+          - {label: "Header Scripts", name: "header_scripts", widget: "code"}
+          - {label: "Footer Scripts", name: "footer_scripts", widget: "code"}
+
+  # 4. SETTINGS SECTION
+  - name: "settings"
+    label: "Settings"
+    icon: "settings"
+    files:
+      - name: "global"
+        label: "Global Config"
+        file: "src/content/settings/global.json"
+        fields:
+          - {label: "Site Title", name: "site_title", widget: "string"}
+          - {label: "Meta Description", name: "site_description", widget: "text"}
+          - {label: "Contact Email", name: "contact_email", widget: "string"}

@@ -3,20 +3,35 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Content Manager</title>
-  <!-- Required for Netlify Identity (Auth) -->
+  <title>Casino CRM | Dashboard</title>
+  
+  <!-- Netlify Identity (Required for Login) -->
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  
+  <!-- Custom CRM Styles -->
+  <link rel="stylesheet" href="/admin/crm-styles.css">
+  
+  <!-- Font for Dashboard -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 </head>
 <body>
-  <!-- This text will disappear when the CMS loads successfully -->
-  <div id="nc-root" style="display: flex; height: 100vh; align-items: center; justify-content: center;">
-    <h3 style="font-family: sans-serif; color: #666;">Loading Content Manager...</h3>
+  <!-- Loading State -->
+  <div id="nc-root" style="display: flex; height: 100vh; align-items: center; justify-content: center; background: #0f1115; color: #D4AF37; font-family: 'Inter', sans-serif;">
+    <div style="text-align: center;">
+      <h2 style="text-transform: uppercase; letter-spacing: 2px;">Casino CRM</h2>
+      <p style="color: #666; font-size: 0.9rem;">Initializing Secure Environment...</p>
+    </div>
   </div>
 
-  <!-- Main Decap CMS Script -->
+  <!-- Decap CMS Core -->
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
   
-  <!-- Handle Netlify Identity Redirects -->
+  <!-- Register Styles via CMS API (Ensures styles load inside the preview iframe too) -->
+  <script>
+    CMS.registerPreviewStyle("/admin/crm-styles.css");
+  </script>
+
+  <!-- Auth Redirect Logic -->
   <script>
     if (window.netlifyIdentity) {
       window.netlifyIdentity.on("init", user => {
