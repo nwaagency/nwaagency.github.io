@@ -12,8 +12,8 @@ banking:
   - method: Neteller
   - method: PayPal
 isActive: true
-rank: 2
-name: Royal Spin Casin
+rank: 4
+name: Test
 payout_speed: Instant
 rtp: 97.5
 welcome_bonus_headline: 100% up to $1000 + 200 Free Spins
@@ -41,7 +41,11 @@ features_group:
   banking:
     - icon: /uploads/bitcoin.svg
       method: bitcoin
+    - icon: /uploads/mastercard.svg
+      method: mastercard
   providers:
     - logo: /uploads/netent.svg
       name: netent
+    - logo: /uploads/microgaming.svg
+      name: microgaming
 ---
