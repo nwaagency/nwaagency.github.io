@@ -35,7 +35,10 @@ const { title, description = "Compare the best online casinos with high payouts 
 
     <!-- Script to handle the login/invite flow -->
     <script>
+      // Ensure the Netlify Identity widget is loaded
       if (window.netlifyIdentity) {
+        
+        // 1. Listen for the 'init' event
         window.netlifyIdentity.on("init", user => {
           if (!user) {
             window.netlifyIdentity.on("login", () => {
@@ -44,6 +47,16 @@ const { title, description = "Compare the best online casinos with high payouts 
             });
           }
         });
+
+        // 2. Initialize the widget explicitly
+        window.netlifyIdentity.init();
+
+        // 3. Force open the widget if a token is present in the URL
+        // This catches cases where the redirect might have confused the auto-detection
+        if (window.location.hash.includes("recovery_token") || window.location.hash.includes("invite_token")) {
+           console.log("Recovery/Invite token detected, opening widget...");
+           window.netlifyIdentity.open();
+        }
       }
     </script>
   </body>
