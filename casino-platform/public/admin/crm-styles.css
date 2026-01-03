@@ -248,7 +248,7 @@ div[class*="ImageWrapper"]:hover {
     background-color: var(--bg-input) !important;
 }
 
-/* Top Bar in Editor (Sticky) */
+/* Top Bar in Editor (Sticky */
 div[class*="EditorToolbar"] {
     background-color: var(--bg-sidebar) !important;
     border-bottom: 1px solid var(--border-color) !important;
