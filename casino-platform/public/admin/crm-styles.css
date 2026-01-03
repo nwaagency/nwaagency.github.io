@@ -2,105 +2,125 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 :root {
-  /* Core Colors - Light Theme */
-  --bg-app: #f3f4f6;       /* Light grey background for the main app area */
-  --bg-sidebar: #ffffff;   /* White sidebar */
-  --bg-card: #ffffff;      /* White cards */
-  --bg-input: #f9fafb;     /* Very light grey for inputs */
-  
-  /* Brand Accents */
-  --gold-primary: #D4AF37;
-  --gold-hover: #bfa32a;
-  --gold-dim: rgba(212, 175, 55, 0.15);
-  
-  /* Text */
-  --text-main: #111827;    /* Near black for readability */
-  --text-muted: #6b7280;   /* Cool grey for labels/secondary text */
-  --text-on-gold: #ffffff;
-  
-  /* Borders & Shadows */
-  --border-color: #e5e7eb;
-  --radius-md: 8px;
-  --radius-sm: 4px;
-  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  --shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    /* Core Colors - Light Theme */
+    --bg-app: #f3f4f6;
+    /* Light grey background for the main app area */
+    --bg-sidebar: #ffffff;
+    /* White sidebar */
+    --bg-card: #ffffff;
+    /* White cards */
+    --bg-input: #f9fafb;
+    /* Very light grey for inputs */
+
+    /* Brand Accents */
+    --gold-primary: #D4AF37;
+    --gold-hover: #bfa32a;
+    --gold-dim: rgba(212, 175, 55, 0.15);
+
+    /* Text */
+    --text-main: #111827;
+    /* Near black for readability */
+    --text-muted: #6b7280;
+    /* Cool grey for labels/secondary text */
+    --text-on-gold: #ffffff;
+
+    /* Borders & Shadows */
+    --border-color: #e5e7eb;
+    --radius-md: 8px;
+    --radius-sm: 4px;
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 
 /* =========================================
    1. GLOBAL OVERRIDES
    ========================================= */
 body {
-  font-family: 'Inter', sans-serif !important;
-  background-color: var(--bg-app) !important;
-  color: var(--text-main) !important;
-  -webkit-font-smoothing: antialiased;
+    font-family: 'Inter', sans-serif !important;
+    background-color: var(--bg-app) !important;
+    color: var(--text-main) !important;
+    -webkit-font-smoothing: antialiased;
 }
 
 /* Scrollbars - Thinner & Cleaner */
-::-webkit-scrollbar { width: 6px; height: 6px; }
-::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: #9ca3af; }
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #d1d5db;
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #9ca3af;
+}
 
 /* =========================================
    2. SIDEBAR NAVIGATION
    ========================================= */
 /* Main Sidebar Container */
 div[class*="SidebarContainer"] {
-  background-color: var(--bg-sidebar) !important;
-  border-right: 1px solid var(--border-color) !important;
-  width: 260px !important;
-  box-shadow: var(--shadow-sm);
-  z-index: 10;
+    background-color: var(--bg-sidebar) !important;
+    border-right: 1px solid var(--border-color) !important;
+    width: 260px !important;
+    box-shadow: var(--shadow-sm);
+    z-index: 10;
 }
 
 /* Brand Area */
 div[class*="SidebarBrand"] {
-  background-color: var(--bg-sidebar) !important;
-  border-bottom: 1px solid var(--border-color);
-  color: var(--gold-primary) !important;
-  font-size: 1.1rem !important;
-  font-weight: 800 !important;
-  padding: 24px !important;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+    background-color: var(--bg-sidebar) !important;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--gold-primary) !important;
+    font-size: 1.1rem !important;
+    font-weight: 800 !important;
+    padding: 24px !important;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 /* Nav Links */
 a[class*="SidebarNavLink"] {
-  display: flex !important;
-  align-items: center;
-  padding: 12px 20px !important;
-  color: var(--text-muted) !important;
-  font-weight: 500 !important;
-  font-size: 0.9rem !important;
-  border-left: 3px solid transparent;
-  transition: all 0.2s ease;
-  margin: 4px 12px;
-  border-radius: var(--radius-sm);
+    display: flex !important;
+    align-items: center;
+    padding: 12px 20px !important;
+    color: var(--text-muted) !important;
+    font-weight: 500 !important;
+    font-size: 0.9rem !important;
+    border-left: 3px solid transparent;
+    transition: all 0.2s ease;
+    margin: 4px 12px;
+    border-radius: var(--radius-sm);
 }
 
 /* Hover & Active States */
 a[class*="SidebarNavLink"]:hover,
 a[class*="SidebarNavLink"][class*="active"] {
-  background-color: var(--gold-dim) !important;
-  color: #854d0e !important; /* Darker Gold for text contrast */
-  font-weight: 600 !important;
+    background-color: var(--gold-dim) !important;
+    color: #854d0e !important;
+    /* Darker Gold for text contrast */
+    font-weight: 600 !important;
 }
 
 a[class*="SidebarNavLink"][class*="active"] {
-  background-color: var(--gold-primary) !important;
-  color: var(--text-on-gold) !important;
-  box-shadow: var(--shadow-sm);
+    background-color: var(--gold-primary) !important;
+    color: var(--text-on-gold) !important;
+    box-shadow: var(--shadow-sm);
 }
 
 /* Sidebar Icons */
 a[class*="SidebarNavLink"] svg {
-  fill: currentColor !important;
-  margin-right: 12px;
-  width: 18px;
-  height: 18px;
+    fill: currentColor !important;
+    margin-right: 12px;
+    width: 18px;
+    height: 18px;
 }
 
 /* =========================================
@@ -108,165 +128,174 @@ a[class*="SidebarNavLink"] svg {
    ========================================= */
 /* Top Header Toolbar */
 div[class*="AppHeader"] {
-  background-color: var(--bg-sidebar) !important;
-  border-bottom: 1px solid var(--border-color) !important;
-  height: 64px;
-  box-shadow: var(--shadow-sm);
+    background-color: var(--bg-sidebar) !important;
+    border-bottom: 1px solid var(--border-color) !important;
+    height: 64px;
+    box-shadow: var(--shadow-sm);
 }
 
 /* Page Title */
 h1[class*="CollectionLabel"] {
-  color: var(--text-main) !important;
-  font-size: 1.5rem !important;
-  font-weight: 700 !important;
-  letter-spacing: -0.5px;
+    color: var(--text-main) !important;
+    font-size: 1.5rem !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.5px;
 }
 
 /* The Grid/List Container - MAXIMIZE SPACE */
 div[class*="CollectionContainer"] {
-  padding: 24px 32px !important;
-  max-width: 100% !important; /* Force full width */
-  margin: 0 auto;
+    padding: 24px 32px !important;
+    max-width: 100% !important;
+    /* Force full width */
+    margin: 0 auto;
 }
 
 /* Main Main Element */
 main {
-  background-color: var(--bg-app);
+    background-color: var(--bg-app);
 }
 
 /* Individual Entry Cards */
 a[class*="Card"] {
-  background-color: var(--bg-card) !important;
-  border: 1px solid var(--border-color) !important;
-  border-radius: var(--radius-md) !important;
-  box-shadow: var(--shadow-sm) !important;
-  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+    background-color: var(--bg-card) !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: var(--radius-md) !important;
+    box-shadow: var(--shadow-sm) !important;
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
 }
 
 a[class*="Card"]:hover {
-  transform: translateY(-2px);
-  border-color: var(--gold-primary) !important;
-  box-shadow: var(--shadow-hover) !important;
-  z-index: 5;
+    transform: translateY(-2px);
+    border-color: var(--gold-primary) !important;
+    box-shadow: var(--shadow-hover) !important;
+    z-index: 5;
 }
 
 /* Card Text */
 a[class*="Card"] h2 {
-  color: var(--text-main) !important;
-  font-size: 1rem !important;
-  font-weight: 600 !important;
+    color: var(--text-main) !important;
+    font-size: 1rem !important;
+    font-weight: 600 !important;
 }
 
-a[class*="Card"] p, 
+a[class*="Card"] p,
 a[class*="Card"] span {
-  color: var(--text-muted) !important;
+    color: var(--text-muted) !important;
 }
 
 /* "New Entry" Button */
 a[href*="new"] {
-  background-color: var(--gold-primary) !important;
-  color: var(--text-on-gold) !important;
-  font-weight: 600 !important;
-  border-radius: var(--radius-sm) !important;
-  padding: 8px 16px !important;
-  text-transform: uppercase;
-  font-size: 0.8rem !important;
-  border: none !important;
-  box-shadow: var(--shadow-sm);
+    background-color: var(--gold-primary) !important;
+    color: var(--text-on-gold) !important;
+    font-weight: 600 !important;
+    border-radius: var(--radius-sm) !important;
+    padding: 8px 16px !important;
+    text-transform: uppercase;
+    font-size: 0.8rem !important;
+    border: none !important;
+    box-shadow: var(--shadow-sm);
 }
+
 a[href*="new"]:hover {
-  background-color: var(--gold-hover) !important;
-  box-shadow: var(--shadow-md);
+    background-color: var(--gold-hover) !important;
+    box-shadow: var(--shadow-md);
 }
 
 /* =========================================
    4. EDITOR VIEW (User Friendly)
    ========================================= */
 /* Input Fields & Textareas */
-input, textarea, div[role="textbox"] {
-  background-color: var(--bg-input) !important;
-  border: 1px solid var(--border-color) !important;
-  color: var(--text-main) !important;
-  border-radius: var(--radius-sm) !important;
-  padding: 12px !important;
-  font-size: 0.95rem;
-  transition: border-color 0.2s, box-shadow 0.2s;
+input,
+textarea,
+div[role="textbox"] {
+    background-color: var(--bg-input) !important;
+    border: 1px solid var(--border-color) !important;
+    color: var(--text-main) !important;
+    border-radius: var(--radius-sm) !important;
+    padding: 12px !important;
+    font-size: 0.95rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
 }
 
-input:focus, textarea:focus {
-  outline: none;
-  border-color: var(--gold-primary) !important;
-  box-shadow: 0 0 0 3px var(--gold-dim) !important;
-  background-color: #fff !important;
+input:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--gold-primary) !important;
+    box-shadow: 0 0 0 3px var(--gold-dim) !important;
+    background-color: #fff !important;
 }
 
 /* Field Labels */
 label {
-  color: var(--text-main) !important;
-  font-size: 0.85rem !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.5px;
-  font-weight: 700 !important;
-  margin-bottom: 6px !important;
+    color: var(--text-main) !important;
+    font-size: 0.85rem !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px;
+    font-weight: 700 !important;
+    margin-bottom: 6px !important;
 }
 
 /* Image Widget Wrapper */
 div[class*="ImageWrapper"] {
-  border: 2px dashed var(--border-color) !important;
-  background-color: #fff !important;
-  border-radius: var(--radius-md);
-  padding: 20px;
+    border: 2px dashed var(--border-color) !important;
+    background-color: #fff !important;
+    border-radius: var(--radius-md);
+    padding: 20px;
 }
+
 div[class*="ImageWrapper"]:hover {
-  border-color: var(--gold-primary) !important;
-  background-color: var(--bg-input) !important;
+    border-color: var(--gold-primary) !important;
+    background-color: var(--bg-input) !important;
 }
 
 /* Top Bar in Editor (Sticky) */
 div[class*="EditorToolbar"] {
-  background-color: var(--bg-sidebar) !important;
-  border-bottom: 1px solid var(--border-color) !important;
-  box-shadow: var(--shadow-sm);
+    background-color: var(--bg-sidebar) !important;
+    border-bottom: 1px solid var(--border-color) !important;
+    box-shadow: var(--shadow-sm);
 }
 
 /* Publish Button */
 button[class*="PublishButton"] {
-  background-color: var(--gold-primary) !important;
-  color: var(--text-on-gold) !important;
-  font-weight: 700;
-  box-shadow: var(--shadow-sm);
+    background-color: var(--gold-primary) !important;
+    color: var(--text-on-gold) !important;
+    font-weight: 700;
+    box-shadow: var(--shadow-sm);
 }
+
 button[class*="PublishButton"]:hover {
-  background-color: var(--gold-hover) !important;
+    background-color: var(--gold-hover) !important;
 }
 
 /* Rich Text / Markdown Editor */
 div[class*="RichText"] {
-  background-color: #fff !important;
-  color: var(--text-main) !important;
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-sm);
+    background-color: #fff !important;
+    color: var(--text-main) !important;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
 }
 
 /* =========================================
    5. RESPONSIVE ADJUSTMENTS
    ========================================= */
 @media (max-width: 768px) {
-  /* Hide Sidebar text, show icons only? 
+    /* Hide Sidebar text, show icons only? 
      Decap handles collapsing, but we can adjust spacing. */
-  
-  div[class*="CollectionContainer"] {
-    padding: 16px !important;
-  }
-  
-  /* Make cards stacked */
-  div[class*="MediaLibraryCard"] {
-    width: 100% !important;
-  }
-  
-  /* Inputs larger touch target */
-  input, textarea {
-    font-size: 16px !important; /* Prevent iOS zoom */
-    padding: 14px !important;
-  }
+
+    div[class*="CollectionContainer"] {
+        padding: 16px !important;
+    }
+
+    /* Make cards stacked */
+    div[class*="MediaLibraryCard"] {
+        width: 100% !important;
+    }
+
+    /* Inputs larger touch target */
+    input,
+    textarea {
+        font-size: 16px !important;
+        /* Prevent iOS zoom */
+        padding: 14px !important;
+    }
 }

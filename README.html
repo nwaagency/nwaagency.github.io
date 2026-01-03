@@ -1,0 +1,212 @@
+<h1 id="casino-affiliate-platform---project-documentation"><strong>Casino Affiliate Platform - Project Documentation</strong></h1>
+<h2 id="1-project-overview"><strong>1. Project Overview</strong></h2>
+<p>This is a high-performance casino affiliate website built using <strong>Astro</strong>, designed to be fast, SEO-friendly, and easy to manage. It features geo-targeted content serving, a file-based CMS (Decap CMS) for content management, and component-based UI architecture.</p>
+<p><strong>Key Technologies:</strong></p>
+<ul>
+<li><strong>Framework:</strong> <a href="https://astro.build/">Astro</a></li>
+<li><strong>Content Management:</strong> <a href="https://decapcms.org/">Decap CMS</a> (formerly Netlify CMS)</li>
+<li><strong>Styling:</strong> Native CSS with extensive use of CSS variables (Custom Properties)</li>
+<li><strong>Deployment:</strong> GitHub Actions (CI/CD)</li>
+</ul>
+<h2 id="2-getting-started"><strong>2. Getting Started</strong></h2>
+<h3 id="prerequisites"><strong>Prerequisites</strong></h3>
+<ul>
+<li>Node.js (v18.0.0 or higher recommended)</li>
+<li>npm (Node Package Manager)</li>
+</ul>
+<h3 id="installation"><strong>Installation</strong></h3>
+<p><strong>Clone the repository:</strong><br>
+git clone [<a href="https://github.com/nwaagency/nwaagency.github.io.git%5C">https://github.com/nwaagency/nwaagency.github.io.git\</a>](<a href="https://github.com/nwaagency/nwaagency.github.io.git">https://github.com/nwaagency/nwaagency.github.io.git</a>)<br>
+cd <a href="http://nwaagency.github.io/casino-platform">nwaagency.github.io/casino-platform</a></p>
+<ol>
+<li></li>
+</ol>
+<p><strong>Install dependencies:</strong><br>
+npm install</p>
+<ol start="2">
+<li></li>
+</ol>
+<p><strong>Start the development server:</strong><br>
+npm run dev</p>
+<ol start="3">
+<li>The site will be available at <code>http://localhost:4321</code>.</li>
+</ol>
+<h3 id="build-scripts"><strong>Build Scripts</strong></h3>
+<ul>
+<li><code>npm run dev</code>: Starts local dev server with hot module replacement.</li>
+<li><code>npm run build</code>: Builds the production site to the <code>dist/</code> folder.</li>
+<li><code>npm run preview</code>: Previews the built production site locally.</li>
+</ul>
+<h2 id="3-project-structure"><strong>3. Project Structure</strong></h2>
+<pre><code>casino-platform/  
+├── .github/workflows/   \# CI/CD configurations for deployment  
+├── public/              \# Static assets (images, uploads, admin config)  
+│   ├── admin/           \# Decap CMS configuration and HTML  
+│   └── uploads/         \# User-uploaded images (logos, icons)  
+├── src/  
+│   ├── components/      \# Reusable UI components (CasinoCard.astro)  
+│   ├── content/         \# Content Collections (Markdown data sources)  
+│   │   └── casinos/     \# Individual casino Markdown files  
+│   ├── layouts/         \# Page wrappers (Layout.astro)  
+│   ├── pages/           \# Route definitions  
+│   │   ├── [geo]/       \# Dynamic routing for geo-targeted pages  
+│   │   └── index.astro  \# Homepage  
+│   └── styles/          \# Global CSS files  
+└── astro.config.mjs     \# Astro configuration file
+</code></pre>
+<h2 id="4-content-management"><strong>4. Content Management</strong></h2>
+<p>This project uses <strong>Content Collections</strong> in Astro to manage casino data. You can manage content in two ways:</p>
+<ol>
+<li><strong>Via Code:</strong> Editing Markdown (<code>.md</code>) files in <code>src/content/casinos/</code>.</li>
+<li><strong>Via CMS:</strong> Accessing the <code>/admin</code> dashboard (if configured locally or deployed).</li>
+</ol>
+<h3 id="casino-schema-frontmatter"><strong>Casino Schema (Frontmatter)</strong></h3>
+<p>Each casino file (e.g., <code>sample-casino.md</code>) requires specific metadata in the frontmatter block. This is defined in <code>src/content/config.ts</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>title</code></td>
+<td>String</td>
+<td>Name of the Casino.</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td>String</td>
+<td>Brief SEO description.</td>
+</tr>
+<tr>
+<td><code>thumb</code></td>
+<td>String</td>
+<td>Path to casino logo (e.g., <code>/uploads/logo.png</code>).</td>
+</tr>
+<tr>
+<td><code>rating</code></td>
+<td>Number</td>
+<td>Score out of 5 (e.g., 4.5).</td>
+</tr>
+<tr>
+<td><code>badges</code></td>
+<td>List</td>
+<td>Labels like &quot;New&quot;, &quot;Hot&quot;, &quot;Exclusive&quot;.</td>
+</tr>
+<tr>
+<td><code>bonuses</code></td>
+<td>List</td>
+<td>List of bonus offers (Welcome Bonus, Free Spins).</td>
+</tr>
+<tr>
+<td><code>pros</code></td>
+<td>List</td>
+<td>List of positive features.</td>
+</tr>
+<tr>
+<td><code>cons</code></td>
+<td>List</td>
+<td>List of negative aspects.</td>
+</tr>
+<tr>
+<td><code>paymentMethods</code></td>
+<td>List</td>
+<td>List of supported payment providers.</td>
+</tr>
+<tr>
+<td><code>gameProviders</code></td>
+<td>List</td>
+<td>List of software providers.</td>
+</tr>
+<tr>
+<td><code>termsUrl</code></td>
+<td>String</td>
+<td>Link to terms and conditions.</td>
+</tr>
+<tr>
+<td><code>playUrl</code></td>
+<td>String</td>
+<td>Affiliate tracking link.</td>
+</tr>
+<tr>
+<td><code>geo</code></td>
+<td>String</td>
+<td>Geo-code for targeting (e.g., 'UK', 'DE', 'Global').</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example Frontmatter:</strong></p>
+<pre><code>\---  
+title: &quot;Royal Spin Casino&quot;  
+description: &quot;A royal experience with massive jackpots.&quot;  
+thumb: &quot;/uploads/royal-logo.png&quot;  
+rating: 4.8  
+badges: \[&quot;Exclusive&quot;, &quot;Fast Payout&quot;\]  
+geo: &quot;UK&quot;  
+playUrl: &quot;\[https://affiliate-link.com/royal\](https://affiliate-link.com/royal)&quot;  
+bonuses:  
+  \- &quot;100% up to $500&quot;  
+  \- &quot;50 Free Spins&quot;  
+paymentMethods: \[&quot;Visa&quot;, &quot;Bitcoin&quot;\]  
+gameProviders: \[&quot;NetEnt&quot;, &quot;Evolution&quot;\]  
+\---
+</code></pre>
+<h2 id="5-routing--geo-targeting"><strong>5. Routing &amp; Geo-Targeting</strong></h2>
+<p>The platform uses <strong>Dynamic Routing</strong> to serve content specific to different geographic regions.</p>
+<ul>
+<li><strong>Homepage (<code>/</code>)</strong>: Redirects or shows a default selection (defined in <code>src/pages/index.astro</code>).</li>
+<li><strong>Geo Pages (<code>/[geo]/</code>)</strong>: Defined in <code>src/pages/[geo]/index.astro</code>.
+<ul>
+<li>The file uses <code>getStaticPaths</code> (if SSG) or server-side logic to determine valid <code>geo</code> slugs.</li>
+<li>It filters the <code>casinos</code> content collection to show only casinos matching the requested region.</li>
+</ul>
+</li>
+</ul>
+<p><strong>How it works:</strong> If a user visits <code>/uk/</code>, the page logic inside <code>src/pages/[geo]/index.astro</code>:</p>
+<ol>
+<li>Captures <code>uk</code> as the <code>geo</code> parameter.</li>
+<li>Queries the Content Collection.</li>
+<li>Filters casinos where <code>data.geo</code> equals <code>'UK'</code> (or is included in a geo list).</li>
+<li>Renders the list using the <code>CasinoCard</code> component.</li>
+</ol>
+<h2 id="6-components"><strong>6. Components</strong></h2>
+<h3 id="casinocardastro"><strong><code>CasinoCard.astro</code></strong></h3>
+<p>The primary UI component for displaying a casino listing.</p>
+<ul>
+<li><strong>Props:</strong> Accepts a <code>casino</code> object (from the Content Collection).</li>
+<li><strong>Features:</strong>
+<ul>
+<li>Renders the casino logo and rating stars.</li>
+<li>Displays badges dynamically.</li>
+<li>Lists bonuses and features.</li>
+<li>Includes a &quot;Play Now&quot; CTA button linked to <code>playUrl</code>.</li>
+<li>Toggleable &quot;Terms &amp; Conditions&quot; section.</li>
+</ul>
+</li>
+</ul>
+<h3 id="layoutastro"><strong><code>Layout.astro</code></strong></h3>
+<p>The main shell of the application.</p>
+<ul>
+<li>Handles <code>&lt;head&gt;</code> meta tags (SEO, viewport).</li>
+<li>Imports <code>global.css</code>.</li>
+<li>Wraps all page content in a consistent <code>main</code> container.</li>
+</ul>
+<h2 id="7-deployment"><strong>7. Deployment</strong></h2>
+<p>The project is configured for automated deployment via GitHub Actions.</p>
+<ul>
+<li><strong>Workflow File:</strong> <code>.github/workflows/deploy.yml</code></li>
+<li><strong>Trigger:</strong> Pushes to the <code>main</code> branch.</li>
+<li><strong>Process:</strong>
+<ol>
+<li>Checks out code.</li>
+<li>Installs Node.js dependencies.</li>
+<li>Runs <code>npm run build</code>.</li>
+<li>Deploys the <code>dist/</code> folder to GitHub Pages (or the configured target).</li>
+</ol>
+</li>
+</ul>
+<h3 id="cms-configuration-publicadminconfigyml"><strong>CMS Configuration (<code>public/admin/config.yml</code>)</strong></h3>
+<p>The CMS is configured to store images in <code>public/uploads</code> and create Markdown files in <code>src/content/casinos</code>. When you save content in the CMS, it commits directly to the GitHub repository, triggering a new build and deployment.</p>
