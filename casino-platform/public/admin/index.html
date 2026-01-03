@@ -9,17 +9,66 @@
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   
   <!-- Custom CRM Styles -->
-  <link rel="stylesheet" href="/admin/crm-styles.css">
+  <link rel="stylesheet" href="crm-styles.css">
   
   <!-- Font for Dashboard -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* Immediate Reset to prevent white flash */
+    body {
+      margin: 0;
+      background-color: #0f1115; /* --bg-dark */
+      color: #e2e8f0; /* --text-main */
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* Loading Screen Layout */
+    #nc-root:empty {
+      display: flex;
+      height: 100vh;
+      width: 100vw;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at center, #161920 0%, #0f1115 100%);
+    }
+
+    .loading-container {
+      text-align: center;
+      animation: pulse 2s infinite ease-in-out;
+    }
+
+    .loading-title {
+      color: #D4AF37; /* --brand-gold */
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      font-weight: 800;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      border-bottom: 2px solid #D4AF37;
+      display: inline-block;
+      padding-bottom: 5px;
+    }
+
+    .loading-text {
+      color: #888;
+      font-size: 0.9rem;
+      font-weight: 400;
+    }
+
+    @keyframes pulse {
+      0% { opacity: 0.8; }
+      50% { opacity: 1; text-shadow: 0 0 10px rgba(212, 175, 55, 0.3); }
+      100% { opacity: 0.8; }
+    }
+  </style>
 </head>
 <body>
   <!-- Loading State -->
-  <div id="nc-root" style="display: flex; height: 100vh; align-items: center; justify-content: center; background: #0f1115; color: #D4AF37; font-family: 'Inter', sans-serif;">
-    <div style="text-align: center;">
-      <h2 style="text-transform: uppercase; letter-spacing: 2px;">Casino CRM</h2>
-      <p style="color: #666; font-size: 0.9rem;">Initializing Secure Environment...</p>
+  <div id="nc-root">
+    <div class="loading-container">
+      <h2 class="loading-title">Casino CRM</h2>
+      <p class="loading-text">Initializing Dashboard Environment...</p>
     </div>
   </div>
 
@@ -28,7 +77,7 @@
   
   <!-- Register Styles via CMS API (Ensures styles load inside the preview iframe too) -->
   <script>
-    CMS.registerPreviewStyle("/admin/crm-styles.css");
+    CMS.registerPreviewStyle("crm-styles.css");
   </script>
 
   <!-- Auth Redirect Logic -->
