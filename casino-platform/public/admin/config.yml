@@ -1,6 +1,5 @@
 backend:
-  name: github
-  repo: nwaagency/nwaagency.github.io
+  name: git-gateway
   branch: main
 
 # This defines where uploaded files go
@@ -38,7 +37,6 @@ collections:
       - {label: "License", name: "license", widget: "string"}
       - {label: "Min Deposit", name: "min_deposit", widget: "string"}
       
-      # UPDATED: Now uses 'image' widget for easy selection
       - label: "Banking Methods"
         name: "banking"
         widget: "list"
@@ -47,7 +45,6 @@ collections:
           - {label: "Method Name", name: "method", widget: "string"}
           - {label: "Icon", name: "icon", widget: "image"} 
       
-      # UPDATED: Added Logo support for Providers
       - label: "Game Providers"
         name: "providers"
         widget: "list"
