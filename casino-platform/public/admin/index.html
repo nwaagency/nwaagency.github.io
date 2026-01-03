@@ -15,12 +15,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
-    /* Immediate Reset to prevent white flash */
+    /* Immediate Reset to prevent flash */
     html, body {
       margin: 0;
       height: 100%;
-      background-color: #09090b; /* Matches --bg-app */
-      color: #ECECEC; /* Matches --text-main */
+      background-color: #f3f4f6; /* Matches --bg-app */
+      color: #111827; /* Matches --text-main */
       font-family: 'Inter', sans-serif;
       overflow: hidden; /* Hide scrollbars during load */
     }
@@ -32,7 +32,7 @@
       width: 100vw;
       align-items: center;
       justify-content: center;
-      background: radial-gradient(circle at center, #1c1c1f 0%, #09090b 100%);
+      background: #f3f4f6;
     }
 
     .loader {
@@ -40,12 +40,16 @@
       flex-direction: column;
       align-items: center;
       gap: 1.5rem;
+      background: white;
+      padding: 3rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     }
 
     .loader-icon {
-      width: 60px;
-      height: 60px;
-      border: 4px solid rgba(212, 175, 55, 0.2);
+      width: 50px;
+      height: 50px;
+      border: 4px solid #e5e7eb;
       border-top-color: #D4AF37;
       border-radius: 50%;
       animation: spin 1s linear infinite;
@@ -53,10 +57,10 @@
 
     .loader-text {
       font-size: 0.9rem;
-      color: #A1A1AA;
-      letter-spacing: 1px;
+      color: #6b7280;
+      letter-spacing: 0.5px;
       text-transform: uppercase;
-      font-weight: 500;
+      font-weight: 600;
     }
 
     @keyframes spin {
