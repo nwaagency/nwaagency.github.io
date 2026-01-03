@@ -23,11 +23,28 @@ const { title, description = "Compare the best online casinos with high payouts 
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 
+    <!-- REQUIRED: Netlify Identity Widget for Main Site (Handles Invite Links) -->
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
     <title>{title}</title>
   </head>
   <body>
     <div class="site-wrapper">
       <slot />
     </div>
+
+    <!-- Script to handle the login/invite flow -->
+    <script>
+      if (window.netlifyIdentity) {
+        window.netlifyIdentity.on("init", user => {
+          if (!user) {
+            window.netlifyIdentity.on("login", () => {
+              // If a user logs in via the main site (e.g. invite link), send them to admin
+              document.location.href = "/admin/";
+            });
+          }
+        });
+      }
+    </script>
   </body>
 </html>
