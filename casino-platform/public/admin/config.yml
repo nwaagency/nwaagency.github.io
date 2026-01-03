@@ -7,7 +7,8 @@ site_url: "https://nexoraweb.agency"
 display_url: "nexoraweb.agency"
 logo_url: "https://placehold.co/200x50/111/D4AF37?text=CASINO+CRM" 
 
-media_folder: "public/uploads"
+# CRITICAL FIX: Paths must include the subfolder name
+media_folder: "casino-platform/public/uploads"
 public_folder: "/uploads"
 
 # The Sidebar Structure
@@ -16,7 +17,7 @@ collections:
   - name: "pages"
     label: "Pages"
     icon: "page"
-    folder: "src/content/pages"
+    folder: "casino-platform/src/content/pages" # Updated Path
     create: true
     fields:
       - {label: "Title", name: "title", widget: "string"}
@@ -27,8 +28,8 @@ collections:
   - name: "casinos"
     label: "Casinos"
     label_singular: "Casino"
-    icon: "crown" # Custom icon if supported or mapped in CSS
-    folder: "src/content/casinos"
+    icon: "crown" 
+    folder: "casino-platform/src/content/casinos" # Updated Path
     create: true
     slug: "{{rank}}-{{slug}}"
     summary: "{{rank}}. {{name}} ({{rating}}★)"
@@ -95,7 +96,7 @@ collections:
     files:
       - name: "scripts"
         label: "Tracking Scripts"
-        file: "src/content/settings/scripts.json"
+        file: "casino-platform/src/content/settings/scripts.json" # Updated Path
         fields:
           - {label: "Header Scripts", name: "header_scripts", widget: "code"}
           - {label: "Footer Scripts", name: "footer_scripts", widget: "code"}
@@ -107,7 +108,7 @@ collections:
     files:
       - name: "global"
         label: "Global Config"
-        file: "src/content/settings/global.json"
+        file: "casino-platform/src/content/settings/global.json" # Updated Path
         fields:
           - {label: "Site Title", name: "site_title", widget: "string"}
           - {label: "Meta Description", name: "site_description", widget: "text"}
