@@ -14,13 +14,25 @@ const allCasinos = await getCollection('casinos');
 const filteredCasinos = allCasinos.filter((casino) => {
   const data = casino.data;
   if (!data.isActive) return false;
-  const allowed = data.allowed_geos || ['global'];
+  
+  // Handle Targeting (Nested Group)
+  const targeting = data.targeting_group || {};
+  const allowed = targeting.allowed_geos || ['global'];
+  
   return allowed.includes('global') || allowed.includes(geo);
 });
 
 const sortedCasinos = filteredCasinos.sort((a, b) => {
-  if (a.data.rank !== b.data.rank) return a.data.rank - b.data.rank;
-  return b.data.rating - a.data.rating;
+  // Primary: Rank
+  if (a.data.rank !== b.data.rank) {
+    return a.data.rank - b.data.rank;
+  }
+  
+  // Secondary: Rating (Look inside metrics_group)
+  const ratingA = a.data.metrics_group?.rating || 0;
+  const ratingB = b.data.metrics_group?.rating || 0;
+  
+  return ratingB - ratingA;
 });
 
 const geoNames: Record<string, string> = {
@@ -162,7 +174,7 @@ const pageTitle = `Best Online Casinos in ${countryName} - 2025`;
 </Layout>
 
 <style>
-  /* HEADER STYLES */
+  /* Reuse styles from index (1).html provided earlier in chat */
   .site-header {
       background-color: #000;
       border-bottom: 1px solid #222;
@@ -191,7 +203,6 @@ const pageTitle = `Best Online Casinos in ${countryName} - 2025`;
   }
   .btn-contact:hover { background-color: var(--brand-gold-bright); transform: translateY(-2px); }
 
-  /* HERO STYLES */
   .hero-section {
       background: linear-gradient(180deg, #1a1a1a 0%, #121212 100%);
       padding: 50px 20px; text-align: center; border-bottom: 1px solid var(--border-color);
@@ -207,7 +218,6 @@ const pageTitle = `Best Online Casinos in ${countryName} - 2025`;
   .stat-number { display: block; font-size: 1.4rem; font-weight: 800; color: #6a1b9a; }
   .stat-label { font-size: 0.8rem; color: #555; font-weight: 600; text-transform: uppercase; }
 
-  /* MAIN CONTENT */
   .main-content-area { padding: 40px 20px; flex: 1; }
   .casino-list-container { max-width: 1200px; margin: 0 auto; }
   .table-header {
@@ -218,7 +228,6 @@ const pageTitle = `Best Online Casinos in ${countryName} - 2025`;
       border-bottom: 1px solid var(--border-color); margin-bottom: 10px;
   }
 
-  /* NEWSLETTER */
   .newsletter-section {
       background: linear-gradient(135deg, #FFC107 0%, #FFD700 50%, #FFB300 100%);
       padding: 60px 20px; text-align: center; margin-top: 50px; color: #1a1a1a;
@@ -231,7 +240,6 @@ const pageTitle = `Best Online Casinos in ${countryName} - 2025`;
   .newsletter-btn { background-color: #d32f2f; color: #fff; border: none; padding: 14px 35px; border-radius: 6px; font-weight: 800; cursor: pointer; text-transform: uppercase; }
   .newsletter-btn:hover { background-color: #b71c1c; transform: translateY(-2px); }
 
-  /* FOOTER */
   .site-footer { background-color: #080808; color: #999; padding: 60px 20px 20px; }
   .footer-grid { max-width: 1200px; margin: 0 auto 50px; display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 40px; }
   .footer-col h4 { color: #fff; font-size: 1rem; font-weight: 700; margin-bottom: 20px; text-transform: uppercase; border-left: 3px solid var(--brand-gold); padding-left: 10px; }
@@ -242,7 +250,6 @@ const pageTitle = `Best Online Casinos in ${countryName} - 2025`;
   .social-icons a:hover { background: var(--brand-gold); color: #000; }
   .footer-bottom-bar { max-width: 1200px; margin: 0 auto; padding-top: 25px; border-top: 1px solid #222; display: flex; justify-content: space-between; font-size: 0.8rem; }
 
-  /* RESPONSIVE */
   @media (max-width: 900px) {
     .nav-links, .table-header { display: none; }
     .stats-grid { grid-template-columns: 1fr 1fr; }
