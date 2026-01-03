@@ -2,89 +2,108 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 :root {
-  /* Core Colors */
-  --bg-app: #09090b;       /* Deepest Black */
-  --bg-sidebar: #121214;   /* Dark Grey Sidebar */
-  --bg-card: #1c1c1f;      /* Lighter Grey Card */
-  --bg-input: #27272a;     /* Input Fields */
-  
-  /* Brand Accents */
-  --gold-primary: #D4AF37;
-  --gold-hover: #F2C94C;
-  --gold-dim: rgba(212, 175, 55, 0.1);
-  
-  /* Text */
-  --text-main: #ECECEC;
-  --text-muted: #A1A1AA;
-  
-  /* Borders */
-  --border-color: #27272a;
-  --radius-md: 8px;
-  --radius-sm: 4px;
+    /* Core Colors */
+    --bg-app: #09090b;
+    /* Deepest Black */
+    --bg-sidebar: #121214;
+    /* Dark Grey Sidebar */
+    --bg-card: #1c1c1f;
+    /* Lighter Grey Card */
+    --bg-input: #27272a;
+    /* Input Fields */
+
+    /* Brand Accents */
+    --gold-primary: #D4AF37;
+    --gold-hover: #F2C94C;
+    --gold-dim: rgba(212, 175, 55, 0.1);
+
+    /* Text */
+    --text-main: #ECECEC;
+    --text-muted: #A1A1AA;
+    --text-dark: #000;
+
+    /* Borders */
+    --border-color: #27272a;
+    --radius-md: 8px;
+    --radius-sm: 4px;
 }
 
 /* =========================================
    1. GLOBAL OVERRIDES
    ========================================= */
 body {
-  font-family: 'Inter', sans-serif !important;
-  background-color: var(--bg-app) !important;
-  color: var(--text-main) !important;
-  -webkit-font-smoothing: antialiased;
+    font-family: 'Inter', sans-serif !important;
+    background-color: var(--bg-app) !important;
+    color: var(--text-main) !important;
+    -webkit-font-smoothing: antialiased;
+    width: 100%;
 }
 
 /* Scrollbars */
-::-webkit-scrollbar { width: 8px; height: 8px; }
-::-webkit-scrollbar-track { background: var(--bg-app); }
-::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
-::-webkit-scrollbar-thumb:hover { background: #555; }
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-app);
+}
+
+::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
 
 /* =========================================
    2. SIDEBAR NAVIGATION
    ========================================= */
 /* Target the main sidebar container */
 div[class*="SidebarContainer"] {
-  background-color: var(--bg-sidebar) !important;
-  border-right: 1px solid var(--border-color) !important;
-  width: 280px !important;
+    background-color: var(--bg-sidebar) !important;
+    border-right: 1px solid var(--border-color) !important;
+    width: 280px !important;
 }
 
 /* Brand Area */
 div[class*="SidebarBrand"] {
-  background-color: transparent !important;
-  border-bottom: 1px solid var(--border-color);
-  color: var(--gold-primary) !important;
-  font-size: 1.2rem !important;
-  font-weight: 700 !important;
-  padding: 24px !important;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+    background-color: transparent !important;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--gold-primary) !important;
+    font-size: 1.2rem !important;
+    font-weight: 700 !important;
+    padding: 24px !important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 /* Nav Links */
 a[class*="SidebarNavLink"] {
-  display: flex !important;
-  align-items: center;
-  padding: 12px 24px !important;
-  color: var(--text-muted) !important;
-  font-weight: 500 !important;
-  font-size: 0.95rem !important;
-  border-left: 3px solid transparent;
-  transition: all 0.2s ease;
+    display: flex !important;
+    align-items: center;
+    padding: 12px 24px !important;
+    color: var(--text-dark) !important;
+    font-weight: 500 !important;
+    font-size: 0.95rem !important;
+    border-left: 3px solid transparent;
+    transition: all 0.2s ease;
 }
 
 /* Hover & Active States */
 a[class*="SidebarNavLink"]:hover,
 a[class*="SidebarNavLink"][class*="active"] {
-  background-color: var(--gold-dim) !important;
-  color: var(--gold-primary) !important;
-  border-left-color: var(--gold-primary);
+    background-color: var(--gold-dim) !important;
+    color: var(--gold-primary) !important;
+    border-left-color: var(--gold-primary);
 }
 
 /* Icons in Sidebar (if any) */
 a[class*="SidebarNavLink"] svg {
-  fill: currentColor !important;
-  margin-right: 12px;
+    fill: currentColor !important;
+    margin-right: 12px;
 }
 
 /* =========================================
@@ -92,123 +111,127 @@ a[class*="SidebarNavLink"] svg {
    ========================================= */
 /* Top Header Toolbar */
 div[class*="AppHeader"] {
-  background-color: var(--bg-app) !important;
-  border-bottom: 1px solid var(--border-color) !important;
-  height: 64px;
+    background-color: var(--bg-app) !important;
+    border-bottom: 1px solid var(--border-color) !important;
+    height: 64px;
 }
 
 /* "Casinos" Page Title */
 h1[class*="CollectionLabel"] {
-  color: var(--text-main) !important;
-  font-size: 1.5rem !important;
-  font-weight: 700 !important;
+    color: var(--text-main) !important;
+    font-size: 1.5rem !important;
+    font-weight: 700 !important;
 }
 
 /* The Grid/List Container */
 div[class*="CollectionContainer"] {
-  padding: 32px !important;
+    padding: 32px !important;
 }
 
 /* Individual Entry Cards */
 a[class*="Card"] {
-  background-color: var(--bg-card) !important;
-  border: 1px solid var(--border-color) !important;
-  border-radius: var(--radius-md) !important;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
-  transition: transform 0.2s, border-color 0.2s;
-  overflow: hidden;
+    background-color: var(--bg-card) !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: var(--radius-md) !important;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
+    transition: transform 0.2s, border-color 0.2s;
+    overflow: hidden;
 }
 
 a[class*="Card"]:hover {
-  transform: translateY(-4px);
-  border-color: var(--gold-primary) !important;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3) !important;
+    transform: translateY(-4px);
+    border-color: var(--gold-primary) !important;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3) !important;
 }
 
 /* Card Text */
 a[class*="Card"] h2 {
-  color: var(--text-main) !important;
-  font-size: 1.1rem !important;
-  font-weight: 600 !important;
+    color: var(--text-main) !important;
+    font-size: 1.1rem !important;
+    font-weight: 600 !important;
 }
 
-a[class*="Card"] p, 
+a[class*="Card"] p,
 a[class*="Card"] span {
-  color: var(--text-muted) !important;
+    color: var(--text-muted) !important;
 }
 
 /* "New Entry" Button */
 a[href*="new"] {
-  background-color: var(--gold-primary) !important;
-  color: #000 !important;
-  font-weight: 700 !important;
-  border-radius: var(--radius-sm) !important;
-  padding: 10px 20px !important;
-  text-transform: uppercase;
-  font-size: 0.85rem !important;
-  border: none !important;
+    background-color: var(--gold-primary) !important;
+    color: #000 !important;
+    font-weight: 700 !important;
+    border-radius: var(--radius-sm) !important;
+    padding: 10px 20px !important;
+    text-transform: uppercase;
+    font-size: 0.85rem !important;
+    border: none !important;
 }
+
 a[href*="new"]:hover {
-  background-color: var(--gold-hover) !important;
+    background-color: var(--gold-hover) !important;
 }
 
 /* =========================================
    4. EDITOR VIEW (WRITING CONTENT)
    ========================================= */
 /* Input Fields & Textareas */
-input, textarea, div[role="textbox"] {
-  background-color: var(--bg-input) !important;
-  border: 1px solid var(--border-color) !important;
-  color: var(--text-main) !important;
-  border-radius: var(--radius-sm) !important;
-  padding: 10px !important;
+input,
+textarea,
+div[role="textbox"] {
+    background-color: var(--bg-input) !important;
+    border: 1px solid var(--border-color) !important;
+    color: var(--text-main) !important;
+    border-radius: var(--radius-sm) !important;
+    padding: 10px !important;
 }
 
-input:focus, textarea:focus {
-  outline: none;
-  border-color: var(--gold-primary) !important;
-  box-shadow: 0 0 0 2px var(--gold-dim) !important;
+input:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--gold-primary) !important;
+    box-shadow: 0 0 0 2px var(--gold-dim) !important;
 }
 
 /* Field Labels */
 label {
-  color: var(--text-muted) !important;
-  font-size: 0.85rem !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.5px;
-  font-weight: 600 !important;
-  margin-bottom: 8px !important;
+    color: var(--text-muted) !important;
+    font-size: 0.85rem !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px;
+    font-weight: 600 !important;
+    margin-bottom: 8px !important;
 }
 
 /* Image Widget Wrapper */
 div[class*="ImageWrapper"] {
-  border: 2px dashed var(--border-color) !important;
-  background-color: rgba(255,255,255,0.02) !important;
-  border-radius: var(--radius-md);
+    border: 2px dashed var(--border-color) !important;
+    background-color: rgba(255, 255, 255, 0.02) !important;
+    border-radius: var(--radius-md);
 }
 
 /* Top Bar in Editor (Save/Publish) */
 div[class*="EditorToolbar"] {
-  background-color: var(--bg-sidebar) !important;
-  border-bottom: 1px solid var(--border-color) !important;
+    background-color: var(--bg-sidebar) !important;
+    border-bottom: 1px solid var(--border-color) !important;
 }
 
 /* Publish Button */
 button[class*="PublishButton"] {
-  background-color: var(--gold-primary) !important;
-  color: #000 !important;
-  font-weight: 700;
+    background-color: var(--gold-primary) !important;
+    color: #000 !important;
+    font-weight: 700;
 }
 
 /* Dropdowns/Selects */
 div[class*="Select"] {
-  border-color: var(--border-color) !important;
-  background-color: var(--bg-input) !important;
-  color: var(--text-main) !important;
+    border-color: var(--border-color) !important;
+    background-color: var(--bg-input) !important;
+    color: var(--text-main) !important;
 }
 
 /* Markdown Editor Pane */
 div[class*="RichText"] {
-  background-color: var(--bg-input) !important;
-  color: var(--text-main) !important;
+    background-color: var(--bg-input) !important;
+    color: var(--text-main) !important;
 }
