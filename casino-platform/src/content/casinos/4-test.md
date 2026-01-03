@@ -12,7 +12,7 @@ banking:
   - method: Neteller
   - method: PayPal
 isActive: true
-rank: 4
+rank: 1
 name: Test
 payout_speed: Instant
 rtp: 97.5
