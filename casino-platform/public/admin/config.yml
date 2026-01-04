@@ -1,64 +1,69 @@
 backend:
   name: git-gateway
   branch: main
-  
+
 local_backend: true
-# CRM Branding
 site_url: "https://nexoraweb.agency"
 display_url: "nexoraweb.agency"
 logo_url: "https://placehold.co/200x50/111/D4AF37?text=CASINO+CRM" 
 
-
-# CRITICAL FIX: Paths must include the subfolder name
 media_folder: "casino-platform/public/uploads"
 public_folder: "/uploads"
-# UI Settings
-editor:
-  preview: false # DISABLING PREVIEW PANE (More screen space)
-# The Sidebar Structure
-collections:
-  # 1. PAGES SECTION
-  - name: "pages"
-    label: "Pages"
-    icon: "page"
-    folder: "casino-platform/src/content/pages" 
-    create: true
-    identifier_field: "title" # Fixes slug generation
-    fields:
-      - {label: "Title", name: "title", widget: "string"}
-      - {label: "SEO Description", name: "description", widget: "text"}
-      - {label: "Body", name: "body", widget: "markdown"}
 
-  # 2. CASINOS SECTION (The Core)
+# UI Settings: Full width editor, no split screen
+editor:
+  preview: false 
+
+collections:
+  # 1. BANKING MASTER LIST
+  - name: "banking_data"
+    label: "Banking"
+    icon: "credit-card"
+    folder: "casino-platform/src/content/banking"
+    create: true
+    identifier_field: "name"
+    slug: "{{name}}"
+    format: "json"
+    fields:
+      - {label: "Method Name", name: "name", widget: "string"}
+      - {label: "Default Icon", name: "icon", widget: "image"}
+
+  # 2. PROVIDERS MASTER LIST
+  - name: "providers_data"
+    label: "Providers"
+    icon: "joystick"
+    folder: "casino-platform/src/content/providers"
+    create: true
+    identifier_field: "name"
+    slug: "{{name}}"
+    format: "json"
+    fields:
+      - {label: "Provider Name", name: "name", widget: "string"}
+      - {label: "Default Logo", name: "icon", widget: "image"}
+
+  # 3. CASINOS
   - name: "casinos"
     label: "Casinos"
-    label_singular: "Casino"
     icon: "crown" 
     folder: "casino-platform/src/content/casinos" 
     create: true
-    identifier_field: "name" # Explicitly tell CMS this is the title
-    slug: "{{rank}}-{{name}}" # Cleaner filenames (e.g. 1-royal-spin)
-    summary: "{{rank}}. {{name}} ({{rating}}★)"
+    identifier_field: "name"
+    slug: "{{rank}}-{{name}}"
+    summary: "#{{rank}} {{name}} | {{metrics_group.rating}}★"
     fields:
-      - {label: "ID", name: "id", widget: "hidden"}
-      - {label: "Active", name: "isActive", widget: "boolean", default: true}
-      - {label: "Rank Position", name: "rank", widget: "number", value_type: "int"}
-      - {label: "Casino Name", name: "name", widget: "string"}
-      - {label: "Logo", name: "logo_url", widget: "image"} 
-      - {label: "Affiliate Link", name: "affiliate_url", widget: "string"}
-      
-      - label: "Targeting & SEO"
-        name: "targeting_group"
+      # SECTION 1: IDENTITY
+      - label: "Identity & Status"
+        name: "identity_group"
         widget: "object"
-        collapsed: true
+        collapsed: false
         fields:
-          - label: "Allowed GEOs"
-            name: "allowed_geos"
-            widget: "select"
-            multiple: true
-            options: ["global", "de", "at", "ca", "nz", "ie", "ch"]
-            default: ["global"]
+          - {label: "Active?", name: "isActive", widget: "boolean", default: true}
+          - {label: "Rank Position", name: "rank", widget: "number", value_type: "int", min: 1}
+          - {label: "Casino Name", name: "name", widget: "string"}
+          - {label: "Logo", name: "logo_url", widget: "image"}
+          - {label: "Affiliate Link", name: "affiliate_url", widget: "string"}
 
+      # SECTION 2: METRICS
       - label: "Performance Metrics"
         name: "metrics_group"
         widget: "object"
@@ -67,55 +72,97 @@ collections:
           - {label: "Rating (0-5)", name: "rating", widget: "number", value_type: "float", step: 0.1}
           - {label: "RTP %", name: "rtp", widget: "number", value_type: "float", step: 0.01}
           - {label: "Payout Speed", name: "payout_speed", widget: "string"}
+          - {label: "Min Deposit", name: "min_deposit", widget: "string"}
 
-      - label: "Offer Details"
+      # SECTION 3: OFFER
+      - label: "Welcome Offer"
         name: "offer_group"
         widget: "object"
         collapsed: false
         fields:
-          - {label: "Welcome Bonus Headline", name: "welcome_bonus_headline", widget: "string"}
-          - {label: "Bonus Details HTML", name: "bonus_details", widget: "markdown"}
-          - {label: "Min Deposit", name: "min_deposit", widget: "string"}
-          - {label: "VIP Program", name: "vip_high_roller", widget: "boolean", default: false}
+          - {label: "Headline", name: "welcome_bonus_headline", widget: "string"}
+          - {label: "VIP Badge?", name: "vip_high_roller", widget: "boolean", default: false}
 
-      - label: "Features & Data"
+      # SECTION 4: FEATURES & LISTS
+      - label: "Features & Lists"
         name: "features_group"
         widget: "object"
-        collapsed: true
+        collapsed: false
         fields:
           - {label: "License", name: "license", widget: "string"}
+          
+          # SMART BANKING LIST
+          - label: "Banking Methods"
+            name: "banking_list"
+            widget: "list"
+            summary: "{{data_ref}} {{custom_name}}"
+            fields:
+              - label: "Select from Database"
+                name: "data_ref"
+                widget: "relation"
+                collection: "banking_data"
+                search_fields: ["name"]
+                value_field: "name"
+                display_fields: ["name"]
+                required: false
+                hint: "Select existing method for auto-icon."
+              - label: "OR Custom Name"
+                name: "custom_name"
+                widget: "string"
+                required: false
+                hint: "Type a name if not in database."
+              - label: "Icon Override"
+                name: "custom_icon"
+                widget: "image"
+                required: false
+                hint: "Upload to override default icon or for new items."
+
+          # SMART PROVIDER LIST
+          - label: "Game Providers"
+            name: "providers_list"
+            widget: "list"
+            summary: "{{data_ref}} {{custom_name}}"
+            fields:
+              - label: "Select from Database"
+                name: "data_ref"
+                widget: "relation"
+                collection: "providers_data"
+                search_fields: ["name"]
+                value_field: "name"
+                display_fields: ["name"]
+                required: false
+              - label: "OR Custom Name"
+                name: "custom_name"
+                widget: "string"
+                required: false
+              - label: "Logo Override"
+                name: "custom_icon"
+                widget: "image"
+                required: false
+
           - {label: "Mobile App", name: "mobile_app", widget: "string"}
           - {label: "Customer Service", name: "customer_service", widget: "string"}
-          - label: "Banking Methods"
-            name: "banking"
-            widget: "list"
-            fields: [{label: "Method", name: "method", widget: "string"}, {label: "Icon", name: "icon", widget: "image"}]
-          - label: "Providers"
-            name: "providers"
-            widget: "list"
-            fields: [{label: "Name", name: "name", widget: "string"}, {label: "Logo", name: "logo", widget: "image"}]
 
-  # 3. TOOLS SECTION (Simulated)
-  - name: "tools"
-    label: "Tools"
-    icon: "code"
-    files:
-      - name: "scripts"
-        label: "Tracking Scripts"
-        file: "casino-platform/src/content/settings/scripts.json" 
-        fields:
-          - {label: "Header Scripts", name: "header_scripts", widget: "code"}
-          - {label: "Footer Scripts", name: "footer_scripts", widget: "code"}
+  # 4. PAGES
+  - name: "pages"
+    label: "Pages"
+    icon: "page"
+    folder: "casino-platform/src/content/pages" 
+    create: true
+    identifier_field: "title"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "SEO Description", name: "description", widget: "text"}
+      - {label: "Body", name: "body", widget: "markdown"}
 
-  # 4. SETTINGS SECTION
+  # 5. SETTINGS
   - name: "settings"
     label: "Settings"
     icon: "settings"
     files:
       - name: "global"
-        label: "Global Config"
+        label: "Site Config"
         file: "casino-platform/src/content/settings/global.json" 
         fields:
           - {label: "Site Title", name: "site_title", widget: "string"}
-          - {label: "Meta Description", name: "site_description", widget: "text"}
           - {label: "Contact Email", name: "contact_email", widget: "string"}
