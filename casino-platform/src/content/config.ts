@@ -1,81 +1,99 @@
 import { z, defineCollection } from 'astro:content';
 
-// 1. Casinos Collection (Updated for Nested Groups)
+// 1. Banking & Providers (Master Lists)
+const bankingCollection = defineCollection({
+  type: 'data',
+  schema: ({ image }) => z.object({
+    name: z.string(),
+    icon: z.string().or(image()).optional()
+  })
+});
+
+const providersCollection = defineCollection({
+  type: 'data',
+  schema: ({ image }) => z.object({
+    name: z.string(),
+    icon: z.string().or(image()).optional()
+  })
+});
+
+// 2. Casinos Collection
 const casinosCollection = defineCollection({
   type: 'content', 
   schema: ({ image }) => z.object({
-    id: z.string().uuid().optional(),
+    // ID Removed
     isActive: z.boolean().default(true),
-    rank: z.number().int().min(1),
-    name: z.string().max(50),
-    logo_url: z.string().or(image()).optional(), // Supports uploaded images
-    affiliate_url: z.string().url().optional(),
     
-    // Group 1: Targeting
-    targeting_group: z.object({
-      allowed_geos: z.array(z.string()).default(['global'])
+    // Identity
+    identity_group: z.object({
+      isActive: z.boolean().default(true),
+      rank: z.number().int().min(1),
+      name: z.string(),
+      logo_url: z.string().or(image()).optional(),
+      affiliate_url: z.string().url().optional(),
     }).optional(),
 
-    // Group 2: Metrics
+    // Metrics
     metrics_group: z.object({
       rating: z.number().min(0).max(5).default(0),
       rtp: z.number().min(0).max(100).optional(),
       payout_speed: z.string().optional(),
+      min_deposit: z.string().optional(),
     }).optional(),
 
-    // Group 3: Offer
+    // Offer
     offer_group: z.object({
       welcome_bonus_headline: z.string().optional(),
-      bonus_details: z.string().optional(),
-      min_deposit: z.string().optional(),
       vip_high_roller: z.boolean().default(false),
     }).optional(),
 
-    // Group 4: Features
+    // Features
     features_group: z.object({
       license: z.string().optional(),
       mobile_app: z.string().optional(),
       customer_service: z.string().optional(),
-      banking: z.array(
+      
+      // New List Structure
+      banking_list: z.array(
         z.object({
-          method: z.string(),
-          icon: z.string().or(image()).optional()
+          data_ref: z.string().optional(),
+          custom_name: z.string().optional(),
+          custom_icon: z.string().or(image()).optional()
         })
       ).optional(),
-      providers: z.array(
+      
+      providers_list: z.array(
         z.object({
-          name: z.string(),
-          logo: z.string().or(image()).optional()
+          data_ref: z.string().optional(),
+          custom_name: z.string().optional(),
+          custom_icon: z.string().or(image()).optional()
         })
       ).optional(),
     }).optional(),
   })
 });
 
-// 2. Pages Collection
 const pagesCollection = defineCollection({
   type: 'content',
   schema: z.object({
     title: z.string(),
     description: z.string().optional(),
-    updatedDate: z.date().optional(),
+    body: z.string().optional(),
   })
 });
 
-// 3. Settings Collection
 const settingsCollection = defineCollection({
   type: 'data',
   schema: z.object({
     site_title: z.string().optional(),
-    site_description: z.string().optional(),
-    contact_email: z.string().email().optional(),
-    header_scripts: z.string().optional(),
-    footer_scripts: z.string().optional(),
+    contact_email: z.string().optional(),
   })
 });
 
 export const collections = {
   'casinos': casinosCollection,
+  'banking_data': bankingCollection,
+  'providers_data': providersCollection,
   'pages': pagesCollection,
   'settings': settingsCollection,
 };
