@@ -12,7 +12,9 @@ logo_url: "https://placehold.co/200x50/111/D4AF37?text=CASINO+CRM"
 # CRITICAL FIX: Paths must include the subfolder name
 media_folder: "casino-platform/public/uploads"
 public_folder: "/uploads"
-
+# UI Settings
+editor:
+  preview: false # DISABLING PREVIEW PANE (More screen space)
 # The Sidebar Structure
 collections:
   # 1. PAGES SECTION
@@ -38,7 +40,7 @@ collections:
     slug: "{{rank}}-{{name}}" # Cleaner filenames (e.g. 1-royal-spin)
     summary: "{{rank}}. {{name}} ({{rating}}★)"
     fields:
-      - {label: "ID", name: "id", widget: "uuid"}
+      - {label: "ID", name: "id", widget: "hidden"}
       - {label: "Active", name: "isActive", widget: "boolean", default: true}
       - {label: "Rank Position", name: "rank", widget: "number", value_type: "int"}
       - {label: "Casino Name", name: "name", widget: "string"}

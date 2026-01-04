@@ -103,14 +103,15 @@ a[class*="SidebarNavLink"] {
 /* Hover & Active States */
 a[class*="SidebarNavLink"]:hover,
 a[class*="SidebarNavLink"][class*="active"] {
-    background-color: var(--gold-dim) !important;
-    color: #854d0e !important;
+    background-color: #d6c26e !important;
+    color: var(--text-on-gold) !important;
     /* Darker Gold for text contrast */
     font-weight: 600 !important;
+    border-left-color: var(--border-color);
 }
 
 a[class*="SidebarNavLink"][class*="active"] {
-    background-color: var(--gold-primary) !important;
+    background-color:var(--gold-primary)  !important;
     color: var(--text-on-gold) !important;
     box-shadow: var(--shadow-sm);
 }
@@ -130,7 +131,7 @@ a[class*="SidebarNavLink"] svg {
 div[class*="AppHeader"] {
     background-color: var(--bg-sidebar) !important;
     border-bottom: 1px solid var(--border-color) !important;
-    height: 64px;
+   
     box-shadow: var(--shadow-sm);
 }
 
@@ -219,6 +220,9 @@ div[role="textbox"] {
     transition: border-color 0.2s, box-shadow 0.2s;
 }
 
+input[class*="SearchInput"] {
+    padding: 10px 6px 10px 34px !important;
+}
 input:focus,
 textarea:focus {
     outline: none;
