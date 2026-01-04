@@ -2,7 +2,7 @@ backend:
   name: git-gateway
   branch: main
   
-
+local_backend: true
 # CRM Branding
 site_url: "https://nexoraweb.agency"
 display_url: "nexoraweb.agency"
