@@ -43,13 +43,12 @@ collections:
 
   # 3. CASINOS COLLECTION
   - name: "casinos"
-    preview_path_date_field: "updated_on"
+    preview_path_date_field: "core_identity.date"
     label: "Casinos"
     icon: "crown" 
     folder: "casino-platform/src/content/casinos" 
     create: true
-    editor:
-      visualEditing: true
+    
     sortable_fields:
       - { field: ranking_visibility.rank, default_sort: desc }
     # We use a summary hack because 'name' is now nested
