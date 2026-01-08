@@ -68,7 +68,7 @@ collections:
             name: 'date',
             widget: 'datetime',
             default: '{{now}}',
-            format: 'L',
+            date_format: 'YYYY-MM-DD',
              picker_utc: false
           }
               
