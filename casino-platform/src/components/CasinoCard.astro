@@ -331,16 +331,17 @@ const StarEmpty = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"
 		padding: 15px 20px;
 	}
 
-            .rank-name-wrapper {
-                display: contents;
-            }
+	.rank-name-wrapper {
+		display: contents;
+	}
 
 	/* Identity */
 	.rank-col {
 		display: flex;
-                align-items: left;
-                justify-content: left;
+		align-items: left;
+		justify-content: left;
 	}
+
 	.rank-box {
 		width: 42px;
 		height: 42px;
@@ -350,6 +351,7 @@ const StarEmpty = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		position: relative;
 		transition: transform 0.3s ease;
 	}
 	.casino-card:hover .rank-box {
@@ -357,26 +359,25 @@ const StarEmpty = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"
 	}
 
 	.tier-gold {
-		background: linear-gradient(180deg, #FFF2B0 0%, #FFD700 50%, #C69C3A 100%);
-                color: #1a1205;
-                box-shadow: 0 10px 22px rgba(255, 215, 0, 0.45);
+		background: linear-gradient(180deg, #fff2b0 0%, #ffd700 50%, #c69c3a 100%);
+		color: #1a1205;
+		box-shadow: 0 10px 22px rgba(255, 215, 0, 0.45);
 	}
 	.tier-silver {
-		background: linear-gradient(180deg, #F5F5F5 0%, #C9CCD1 100%);
-                color: #1a1a1a;
-                box-shadow: 0 6px 14px rgba(180, 180, 180, 0.35);
+		background: linear-gradient(180deg, #f5f5f5 0%, #c9ccd1 100%);
+		color: #1a1a1a;
+		box-shadow: 0 6px 14px rgba(180, 180, 180, 0.35);
 	}
 	.tier-bronze {
-		 background: linear-gradient(180deg, #E2B07A 0%, #B87333 100%);
-                color: #1a1205;
-                box-shadow: 0 6px 14px rgba(184, 115, 51, 0.35);
+		background: linear-gradient(180deg, #e2b07a 0%, #b87333 100%);
+		color: #1a1205;
+		box-shadow: 0 6px 14px rgba(184, 115, 51, 0.35);
 	}
 	.tier-muted {
 		background: linear-gradient(180deg, #2a2a2a 0%, #1a1a1a 100%);
-                color: #999;
-                box-shadow: inset 0 0 0 1px #333;
+		color: #999;
+		box-shadow: inset 0 0 0 1px #333;
 	}
-
 
 	.casino-info-col {
 		display: flex;
@@ -433,22 +434,25 @@ const StarEmpty = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"
 	}
 	.bonus-highlight {
 		color: var(--brand-gold);
-		font-size: 1.3rem;
+		font-size: 1.1rem;
 		font-weight: 700;
 		margin-bottom: 4px;
 	}
+
 	.bonus-sub {
 		color: #fff;
-		font-size: 0.9rem;
+		font-size: 0.85rem;
 	}
 
 	/* Rating */
 	.rating-col {
 		display: flex;
+		flex-direction: row;
 		align-items: center;
 		justify-content: center;
 		gap: 8px;
 	}
+
 	.stars {
 		color: var(--brand-gold);
 		font-size: 1rem;
@@ -459,12 +463,18 @@ const StarEmpty = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"
 		animation: pulse 1s infinite;
 	}
 	.score-text {
-		font-size: 1.1rem;
+		font-size: 0.9rem;
 		font-weight: 700;
 		color: #fff;
 	}
 
 	/* RTP (Replacing Payments on Card) */
+	.payment-col {
+		display: flex;
+		justify-content: center;
+		flex-wrap: wrap;
+		gap: 4px;
+	}
 	.rtp-col {
 		display: flex;
 		flex-direction: column;
@@ -673,25 +683,32 @@ const StarEmpty = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"
 		.casino-row-main {
 			grid-template-columns: 1fr 1fr;
 			grid-template-areas: "header header" "bonus bonus" "payments payments" "action action";
+			padding: 15px;
 		}
-		.rank-name-wrapper {
-			grid-area: header;
-			display: grid;
-			grid-template-columns: auto 1fr;
-			gap: 15px;
-			align-items: center;
-		}
-		.name-rating-stack {
+.name-rating-stack {
 			display: flex;
 			flex-direction: row;
 			align-items: center;
 			gap: 12px;
 			flex-wrap: wrap;
 		}
+		.rank-name-wrapper {
+			grid-area: header;
+			display: grid;
+			grid-template-columns: auto 1fr;
+			align-items: center;
+			gap: 15px;
+			padding: 15px 0;
+		}
+
 		.mobile-rating {
 			display: flex;
-			margin-top: 0;
 		}
+
+		.rating-col {
+			display: none;
+		}
+
 		.bonus-col {
 			grid-area: bonus;
 			text-align: center;
@@ -699,19 +716,19 @@ const StarEmpty = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"
 			padding: 10px;
 			border-radius: 6px;
 		}
+
 		.rtp-col {
 			grid-area: payments;
 			margin-top: 5px;
-			flex-direction: row;
+            flex-direction: row;
 			gap: 10px;
 		}
+
 		.action-col {
 			grid-area: action;
 			margin-top: 10px;
 		}
-		.rating-col {
-			display: none;
-		}
+
 		.casino-details-panel {
 			grid-template-columns: 1fr;
 		}
