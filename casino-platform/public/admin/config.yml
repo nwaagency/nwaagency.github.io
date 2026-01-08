@@ -87,7 +87,7 @@ collections:
             widget: "select"
             multiple: true
             options: ["global", "de", "at", "ca", "nz", "ie", "ch"]
-            default: ["global"]
+            default: ["global", "de", "at", "ca", "nz", "ie", "ch"]
             required: true
 
       # GROUP 3: BRANDING & LINKS
@@ -154,6 +154,7 @@ collections:
             name: "providers_list"
             widget: "list"
             summary: "{{data_ref}} {{custom_name}}"
+            default: []
             fields:
               - {label: "Select Provider", name: "data_ref", widget: "relation", collection: "providers", search_fields: ["name"], value_field: "name", display_fields: ["name"], required: false}
               - {label: "Custom Name", name: "custom_name", widget: "string", required: false}

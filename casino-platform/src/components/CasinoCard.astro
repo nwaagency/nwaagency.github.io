@@ -9,8 +9,8 @@ export interface Props {
 const { data, index } = Astro.props;
 
 // 1. Fetch Global Data for Mapping
-const allBanking = await getCollection("banking_data").catch(() => []);
-const allProviders = await getCollection("providers_data").catch(() => []);
+const allBanking = await getCollection("banking").catch(() => []);
+const allProviders = await getCollection("providers").catch(() => []);
 
 // Fallback Map
 const legacyIconMap: Record<string, string> = {
