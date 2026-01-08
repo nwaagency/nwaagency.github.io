@@ -13,7 +13,7 @@ targeting_group:
 logo_url: /uploads/caspero_mini_icon.webp
 offer_group:
   vip_high_roller: true
-  welcome_bonus_headline: "100% up to $500 "
+  welcome_bonus_headline: 100% up to $500 + 200 Free Spins
   bonus_details: "**+ 200 Free Spins**"
   min_deposit: $100
 affiliate_url: https://www.google.com/search?q=https://example.com/play
