@@ -1,6 +1,6 @@
 ---
 metrics_group:
-  rating: 4.1
+  rating: 4.9
   rtp: 99
   payout_speed: 24 Hours
   min_deposit: $10
@@ -35,7 +35,7 @@ features_group:
       logo: /uploads/pragmatic-play.svg
   banking_list:
     - data_ref: Bitcoin
-    - data_ref: Skirll
+    - data_ref: Skrill
     - data_ref: Jeton
     - data_ref: Mastercard
     - data_ref: Visa
