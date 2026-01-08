@@ -9,20 +9,64 @@ export interface Props {
 const { data, index } = Astro.props;
 
 // 1. Fetch Global Data for Mapping
-const allBanking = await getCollection('banking_data');
-const allProviders = await getCollection('providers_data');
+const allBanking = await getCollection('banking_data').catch(() => []);
+const allProviders = await getCollection('providers_data').catch(() => []);
 
-// Helper: Smart Icon Resolution
-// 1. Check override in the casino entry
-// 2. Check master database
+// Fallback Map: Used if database lookup fails
+const legacyIconMap: Record<string, string> = {
+    "netent": "netent.svg",
+    "microgaming": "microgaming.svg",
+    "play'n go": "playn-go.svg",
+    "evolution": "evolution-gaming.svg",
+    "pragmatic play": "pragmatic-play.svg",
+    "thunderkick": "thunderkick.svg",
+    "yggdrasil": "yggdrasil-gaming-logo.svg",
+    "visa": "visa.svg",
+    "mastercard": "mastercard.svg",
+    "skrill": "skrill.svg",
+    "neteller": "neteller.svg",
+    "bitcoin": "bitcoin.svg",
+    "mifinity": "mifinity.svg",
+    "jeton": "jeton.jpg",
+    "paysafecard": "paysafe card.svg",
+    "bank transfer": "bank transfer.svg"
+};
+
+// Helper: Robust Icon Resolution
 const resolveItem = (item: any, globalCollection: any[]) => {
-  const name = item.custom_name || item.data_ref || "Unknown";
-  let icon = item.custom_icon; // First choice: Override
+  // A. Determine the Name (Checks new schema 'custom_name'/'data_ref' AND old schema 'method'/'name')
+  const name = item.custom_name || item.data_ref || item.method || item.name || "Unknown";
+  
+  // B. Determine the Icon
+  // Priority 1: Explicit Override in the Casino Record (New: custom_icon, Old: icon/logo)
+  let icon = item.custom_icon || item.icon || item.logo;
 
-  if (!icon && item.data_ref) {
-    // Second choice: Master DB
-    const globalItem = globalCollection.find(i => i.data.name === item.data_ref);
-    if (globalItem) icon = globalItem.data.icon;
+  // Handle Astro Image Objects
+  if (icon && typeof icon === 'object' && 'src' in icon) icon = icon.src;
+
+  // Priority 2: Master DB Lookup (If no explicit icon found)
+  if (!icon) {
+    // Search key can be the data reference or just the name
+    const lookupKey = item.data_ref || name;
+    
+    if (lookupKey) {
+        const globalItem = globalCollection.find(i => 
+          i.data.name.toLowerCase().trim() === lookupKey.toLowerCase().trim()
+        );
+        
+        if (globalItem && globalItem.data.icon) {
+           icon = globalItem.data.icon;
+           if (typeof icon === 'object' && 'src' in icon) icon = icon.src;
+        }
+    }
+  }
+  
+  // Priority 3: Legacy Fallback (Filename Match)
+  if (!icon) {
+    const key = name.toLowerCase().trim();
+    if (legacyIconMap[key]) {
+      icon = `/uploads/${legacyIconMap[key]}`;
+    }
   }
   
   return { name, icon };
@@ -35,26 +79,29 @@ const offer = data.offer_group || {};
 const features = data.features_group || {};
 
 // 3. Map Fields
-const name = identity.name || "Casino";
-const logo_url = identity.logo_url || "";
-const rank = identity.rank || 0;
-const affiliate_url = identity.affiliate_url || "#";
+const name = identity.name || data.name || "Casino";
+const logo_url = identity.logo_url || data.logo_url || "";
+const rank = identity.rank || data.rank || 0;
+const affiliate_url = identity.affiliate_url || data.affiliate_url || "#";
 
-const rating = metrics.rating || 0;
-const rtp = metrics.rtp || "95.0";
-const payout_speed = metrics.payout_speed || "-";
-const min_deposit = metrics.min_deposit || "-";
+const rating = metrics.rating || data.rating || 0;
+const rtp = metrics.rtp || data.rtp || "95.0";
+const payout_speed = metrics.payout_speed || data.payout_speed || "-";
+const min_deposit = metrics.min_deposit || data.min_deposit || "-";
 
-const welcome_bonus_headline = offer.welcome_bonus_headline || "";
-const vip_high_roller = offer.vip_high_roller || false;
+const welcome_bonus_headline = offer.welcome_bonus_headline || data.welcome_bonus_headline || "";
+const vip_high_roller = offer.vip_high_roller || data.vip_high_roller || false;
 
-const license = features.license || "-";
-const mobile_app = features.mobile_app || "-";
-const customer_service = features.customer_service || "-";
+const license = features.license || data.license || "-";
+const mobile_app = features.mobile_app || data.mobile_app || "-";
+const customer_service = features.customer_service || data.customer_service || "-";
 
-// 4. Resolve Lists
-const bankingList = (features.banking_list || []).map((item: any) => resolveItem(item, allBanking));
-const providerList = (features.providers_list || []).map((item: any) => resolveItem(item, allProviders));
+// 4. Resolve Lists (Checks NEW list first, then OLD list)
+const rawBanking = features.banking_list || features.banking || data.banking || [];
+const rawProviders = features.providers_list || features.providers || data.providers || [];
+
+const bankingList = rawBanking.map((item: any) => resolveItem(item, allBanking));
+const providerList = rawProviders.map((item: any) => resolveItem(item, allProviders));
 
 // Stars & Rank Logic
 const fullStars = Math.floor(rating);
