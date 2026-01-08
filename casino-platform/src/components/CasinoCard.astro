@@ -1,67 +1,69 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection } from "astro:content";
 
 export interface Props {
-  data: any;
-  index: number;
+	data: any;
+	index: number;
 }
 
 const { data, index } = Astro.props;
 
 // 1. Fetch Global Data for Mapping
-const allBanking = await getCollection('banking_data').catch(() => []);
-const allProviders = await getCollection('providers_data').catch(() => []);
+const allBanking = await getCollection("banking_data").catch(() => []);
+const allProviders = await getCollection("providers_data").catch(() => []);
 
 // Fallback Map: Used if database lookup fails
 const legacyIconMap: Record<string, string> = {
-    "netent": "netent.svg",
-    "microgaming": "microgaming.svg",
-    "play'n go": "playn-go.svg",
-    "evolution": "evolution-gaming.svg",
-    "pragmatic play": "pragmatic-play.svg",
-    "thunderkick": "thunderkick.svg",
-    "yggdrasil": "yggdrasil-gaming-logo.svg",
-    "visa": "visa.svg",
-    "mastercard": "mastercard.svg",
-    "skrill": "skrill.svg",
-    "neteller": "neteller.svg",
-    "bitcoin": "bitcoin.svg",
-    "mifinity": "mifinity.svg",
-    "jeton": "jeton.jpg",
-    "paysafecard": "paysafe card.svg",
-    "bank transfer": "bank transfer.svg"
+	netent: "netent.svg",
+	microgaming: "microgaming.svg",
+	"play'n go": "playn-go.svg",
+	evolution: "evolution-gaming.svg",
+	"pragmatic play": "pragmatic-play.svg",
+	thunderkick: "thunderkick.svg",
+	yggdrasil: "yggdrasil-gaming-logo.svg",
+	visa: "visa.svg",
+	mastercard: "mastercard.svg",
+	skrill: "skrill.svg",
+	neteller: "neteller.svg",
+	bitcoin: "bitcoin.svg",
+	mifinity: "mifinity.svg",
+	jeton: "jeton.jpg",
+	paysafecard: "paysafe card.svg",
+	"bank transfer": "bank transfer.svg",
 };
 
 // Helper: Smart Icon Resolution
 const resolveItem = (item: any, globalCollection: any[]) => {
-  const rawName = item.custom_name || item.data_ref || item.method || item.name || "Unknown";
-  const name = rawName; 
-  let icon = item.custom_icon || item.icon || item.logo;
+	const rawName =
+		item.custom_name || item.data_ref || item.method || item.name || "Unknown";
+	const name = rawName;
+	let icon = item.custom_icon || item.icon || item.logo;
 
-  // Handle Astro Image Objects (if schema converts them)
-  if (icon && typeof icon === 'object' && 'src' in icon) icon = icon.src;
+	// Handle Astro Image Objects (if schema converts them)
+	if (icon && typeof icon === "object" && "src" in icon) icon = icon.src;
 
-  if (!icon) {
-    const lookupKey = item.data_ref || name;
-    if (lookupKey) {
-        const globalItem = globalCollection.find(i => 
-          i.data.name.toLowerCase().trim() === lookupKey.toLowerCase().trim()
-        );
-        if (globalItem && globalItem.data.icon) {
-           icon = globalItem.data.icon;
-           if (typeof icon === 'object' && 'src' in icon) icon = icon.src;
-        }
-    }
-  }
-  
-  if (!icon) {
-    const key = name.toLowerCase().trim();
-    if (legacyIconMap[key]) {
-      icon = `/uploads/${legacyIconMap[key]}`;
-    }
-  }
-  
-  return { name, icon };
+	if (!icon) {
+		const lookupKey = item.data_ref || name;
+		if (lookupKey) {
+			const globalItem = globalCollection.find(
+				(i) =>
+					i.data.name.toLowerCase().trim() === lookupKey.toLowerCase().trim()
+			);
+			if (globalItem && globalItem.data.icon) {
+				icon = globalItem.data.icon;
+				if (typeof icon === "object" && "src" in icon) icon = icon.src;
+			}
+		}
+	}
+
+	if (!icon) {
+		const key = name.toLowerCase().trim();
+		if (legacyIconMap[key]) {
+			icon = `/uploads/${legacyIconMap[key]}`;
+		}
+	}
+
+	return { name, icon };
 };
 
 // 2. Destructure Data
@@ -81,19 +83,27 @@ const rtp = metrics.rtp || data.rtp || "95.0";
 const payout_speed = metrics.payout_speed || data.payout_speed || "-";
 const min_deposit = metrics.min_deposit || data.min_deposit || "-";
 
-const welcome_bonus_headline = offer.welcome_bonus_headline || data.welcome_bonus_headline || "";
+const welcome_bonus_headline =
+	offer.welcome_bonus_headline || data.welcome_bonus_headline || "";
 const vip_high_roller = offer.vip_high_roller || data.vip_high_roller || false;
 
 const license = features.license || data.license || "-";
 const mobile_app = features.mobile_app || data.mobile_app || "-";
-const customer_service = features.customer_service || data.customer_service || "-";
+const customer_service =
+	features.customer_service || data.customer_service || "-";
 
 // 4. Resolve Lists
-const rawBanking = features.banking_list || features.banking || data.banking || [];
-const rawProviders = features.providers_list || features.providers || data.providers || [];
+const rawBanking =
+	features.banking_list || features.banking || data.banking || [];
+const rawProviders =
+	features.providers_list || features.providers || data.providers || [];
 
-const bankingList = rawBanking.map((item: any) => resolveItem(item, allBanking));
-const providerList = rawProviders.map((item: any) => resolveItem(item, allProviders));
+const bankingList = rawBanking.map((item: any) =>
+	resolveItem(item, allBanking)
+);
+const providerList = rawProviders.map((item: any) =>
+	resolveItem(item, allProviders)
+);
 
 // Stars & Rank Logic
 const fullStars = Math.floor(rating);
@@ -101,10 +111,10 @@ const hasHalf = rating % 1 >= 0.4;
 const emptyStars = 5 - fullStars - (hasHalf ? 1 : 0);
 
 const getRankTier = (r: number) => {
-  if (r === 1) return 'tier-gold';
-  if (r === 2) return 'tier-silver';
-  if (r === 3) return 'tier-bronze';
-  return 'tier-muted';
+	if (r === 1) return "tier-gold";
+	if (r === 2) return "tier-silver";
+	if (r === 3) return "tier-bronze";
+	return "tier-muted";
 };
 
 // SVGs
@@ -114,275 +124,594 @@ const StarEmpty = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"
 ---
 
 <div class="casino-card" style={`animation-delay: ${index * 0.1}s`}>
-  <div class="casino-row-main">
-    <!-- 1. Rank & Identity -->
-    <div class="rank-name-wrapper">
-      <div class="rank-col">
-        <div class={`rank-box ${getRankTier(rank)}`}>{rank}</div>
-      </div>
-      <div class="casino-info-col">
-        <img src={logo_url} alt={name} class="casino-logo" />
-        <div class="name-rating-stack">
-          <span class="casino-name">{name}</span>
-          <!-- Mobile Rating -->
-          <div class="mobile-rating">
-             <div class="stars">
-              {Array(fullStars).fill(0).map(() => <Fragment set:html={StarFull} />)}
-              {hasHalf && <Fragment set:html={StarHalf} />}
-            </div>
-            <span class="mobile-rating-text">{rating}</span>
-          </div>
-        </div>
-      </div>
-    </div>
+	<div class="casino-row-main">
+		<!-- 1. Rank & Identity -->
+		<div class="rank-name-wrapper">
+			<div class="rank-col">
+				<div class={`rank-box ${getRankTier(rank)}`}>{rank}</div>
+			</div>
+			<div class="casino-info-col">
+				<img src={logo_url} alt={name} class="casino-logo" />
+				<div class="name-rating-stack">
+					<span class="casino-name">{name}</span>
+					<!-- Mobile Rating -->
+					<div class="mobile-rating">
+						<div class="stars">
+							{
+								Array(fullStars)
+									.fill(0)
+									.map(() => <Fragment set:html={StarFull} />)
+							}
+							{hasHalf && <Fragment set:html={StarHalf} />}
+						</div>
+						<span class="mobile-rating-text">{rating}</span>
+					</div>
+				</div>
+			</div>
+		</div>
 
-    <!-- 2. Bonus -->
-    <div class="bonus-col">
-      <span class="bonus-highlight" set:html={welcome_bonus_headline}></span>
-      <span class="bonus-sub">New Player Offer</span>
-    </div>
+		<!-- 2. Bonus -->
+		<div class="bonus-col">
+			<span class="bonus-highlight" set:html={welcome_bonus_headline} />
+			<span class="bonus-sub">New Player Offer</span>
+		</div>
 
-    <!-- 3. Rating (Desktop) -->
-    <div class="rating-col">
-      <div class="stars">
-        {Array(fullStars).fill(0).map(() => <Fragment set:html={StarFull} />)}
-        {hasHalf && <Fragment set:html={StarHalf} />}
-        {Array(emptyStars).fill(0).map(() => <Fragment set:html={StarEmpty} />)}
-      </div>
-      <span class="score-text">{rating}</span>
-    </div>
+		<!-- 3. Rating (Desktop) -->
+		<div class="rating-col">
+			<div class="stars">
+				{
+					Array(fullStars)
+						.fill(0)
+						.map(() => <Fragment set:html={StarFull} />)
+				}
+				{hasHalf && <Fragment set:html={StarHalf} />}
+				{
+					Array(emptyStars)
+						.fill(0)
+						.map(() => <Fragment set:html={StarEmpty} />)
+				}
+			</div>
+			<span class="score-text">{rating}</span>
+		</div>
 
-    <!-- 4. RTP -->
-    <div class="payment-col rtp-col">
-      <span class="rtp-label">RTP</span>
-      <span class="rtp-value">{rtp}%</span>
-    </div>
+		<!-- 4. RTP -->
+		<div class="payment-col rtp-col">
+			<span class="rtp-label">RTP</span>
+			<span class="rtp-value">{rtp}%</span>
+		</div>
 
-    <!-- 5. Actions -->
-    <div class="action-col">
-      <a href={affiliate_url} target="_blank" rel="nofollow noopener" class="btn-play">PLAY NOW</a>
-      <button class="toggle-details" onclick="toggleDetails(this)">
-        Details <i class="fa-solid fa-chevron-down"></i>
-      </button>
-    </div>
-  </div>
+		<!-- 5. Actions -->
+		<div class="action-col">
+			<a
+				href={affiliate_url}
+				target="_blank"
+				rel="nofollow noopener"
+				class="btn-play">PLAY NOW</a
+			>
+			<button class="toggle-details" onclick="toggleDetails(this)">
+				Details <i class="fa-solid fa-chevron-down"></i>
+			</button>
+		</div>
+	</div>
 
-  <!-- DETAILS PANEL -->
-  <div class="casino-details-panel">
-    <div class="detail-box">
-      <span class="detail-title">Banking options</span>
-      <div class="tag-list">
-        {bankingList.map((m) => (
-           m.icon ? 
-             <img src={m.icon} title={m.name} class="bank-tag-img" alt={m.name} /> : 
-             <span class="text-tag">{m.name}</span>
-        ))}
-      </div>
-    </div>
+	<!-- DETAILS PANEL -->
+	<div class="casino-details-panel">
+		<div class="detail-box">
+			<span class="detail-title">Banking options</span>
+			<div class="tag-list">
+				{
+					bankingList.map((m) =>
+						m.icon ? (
+							<img
+								src={m.icon}
+								title={m.name}
+								class="bank-tag-img"
+								alt={m.name}
+							/>
+						) : (
+							<span class="text-tag">{m.name}</span>
+						)
+					)
+				}
+			</div>
+		</div>
 
-    <div class="detail-box">
-      <span class="detail-title">Games & Providers</span>
-      <div class="tag-list">
-        {providerList.map((p) => (
-           p.icon ? 
-             <img src={p.icon} title={p.name} class="provider-tag-img" alt={p.name} /> : 
-             <span class="text-tag">{p.name}</span>
-        ))}
-      </div>
-    </div>
+		<div class="detail-box">
+			<span class="detail-title">Games & Providers</span>
+			<div class="tag-list">
+				{
+					providerList.map((p) =>
+						p.icon ? (
+							<img
+								src={p.icon}
+								title={p.name}
+								class="provider-tag-img"
+								alt={p.name}
+							/>
+						) : (
+							<span class="text-tag">{p.name}</span>
+						)
+					)
+				}
+			</div>
+		</div>
 
-    <div class="detail-box">
-      <span class="detail-title">Bonus Stats</span>
-      <div class="bonus-row">
-        <span class="bonus-label">Min Deposit</span>
-        <span class="bonus-value">{min_deposit}</span>
-      </div>
-      <div class="bonus-row">
-        <span class="bonus-label">Payout Speed</span>
-        <span class="bonus-value">{payout_speed}</span>
-      </div>
-      <div class="bonus-row">
-        <span class="bonus-label">License</span>
-        <span class="bonus-value">{license}</span>
-      </div>
-      <div class="bonus-row">
-        <span class="bonus-label">Wagering</span>
-        <span class="bonus-value">35x</span>
-      </div>
-    </div>
+		<div class="detail-box">
+			<span class="detail-title">Bonus Stats</span>
+			<div class="bonus-row">
+				<span class="bonus-label">Min Deposit</span>
+				<span class="bonus-value">{min_deposit}</span>
+			</div>
+			<div class="bonus-row">
+				<span class="bonus-label">Payout Speed</span>
+				<span class="bonus-value">{payout_speed}</span>
+			</div>
+			<div class="bonus-row">
+				<span class="bonus-label">License</span>
+				<span class="bonus-value">{license}</span>
+			</div>
+			<div class="bonus-row">
+				<span class="bonus-label">Wagering</span>
+				<span class="bonus-value">35x</span>
+			</div>
+		</div>
 
-    <div class="detail-box">
-        <span class="detail-title">VIP Features</span>
-        <div class="detail-content">{vip_high_roller ? "High Roller Program Available" : "-"}</div>
-    </div>
+		<div class="detail-box">
+			<span class="detail-title">VIP Features</span>
+			<div class="detail-content">
+				{vip_high_roller ? "High Roller Program Available" : "-"}
+			</div>
+		</div>
 
-    <div class="detail-box">
-        <span class="detail-title">Mobile App</span>
-        <div class="detail-content">{mobile_app}</div>
-    </div>
+		<div class="detail-box">
+			<span class="detail-title">Mobile App</span>
+			<div class="detail-content">{mobile_app}</div>
+		</div>
 
-    <div class="detail-box">
-        <span class="detail-title">Customer Service</span>
-        <div class="detail-content">{customer_service}</div>
-    </div>
+		<div class="detail-box">
+			<span class="detail-title">Customer Service</span>
+			<div class="detail-content">{customer_service}</div>
+		</div>
 
-    <div class="panel-footer">
-      <div class="license-info">
-        <i class="fa-solid fa-shield-halved"></i> Licensed by {license}
-      </div>
-      <span class="review-link">Read Review &rarr;</span>
-    </div>
-  </div>
+		<div class="panel-footer">
+			<div class="license-info">
+				<i class="fa-solid fa-shield-halved"></i> Licensed by {license}
+			</div>
+			<span class="review-link">Read Review &rarr;</span>
+		</div>
+	</div>
 </div>
 
 <script is:inline>
-  function toggleDetails(btn) {
-    const card = btn.closest('.casino-card');
-    const panel = card.querySelector('.casino-details-panel');
-    const isOpen = panel.classList.toggle('active');
-    btn.classList.toggle('active', isOpen);
-    
-    // Simple Text Swap logic from template
-    btn.innerHTML = isOpen ? 'Less <i class="fa-solid fa-chevron-up"></i>' : 'Details <i class="fa-solid fa-chevron-down"></i>';
-  }
+	function toggleDetails(btn) {
+		const card = btn.closest(".casino-card");
+		const panel = card.querySelector(".casino-details-panel");
+		const isOpen = panel.classList.toggle("active");
+		btn.classList.toggle("active", isOpen);
+
+		// Simple Text Swap logic from template
+		btn.innerHTML = isOpen
+			? 'Less <i class="fa-solid fa-chevron-up"></i>'
+			: 'Details <i class="fa-solid fa-chevron-down"></i>';
+	}
 </script>
 
 <style>
-  /* --- EXACT STYLES FROM TEMPLATE --- */
-  
-  .casino-card {
-    background-color: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    margin-bottom: 12px;
-    overflow: hidden;
-    position: relative;
-    opacity: 0; animation: fadeUp 0.6s ease-out forwards;
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-  }
+	/* --- EXACT STYLES FROM TEMPLATE --- */
 
-  .casino-card:hover {
-    transform: translateY(-5px);
-    border-color: #555;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    z-index: 2;
-  }
+	.casino-card {
+		background-color: var(--bg-card);
+		border: 1px solid var(--border-color);
+		border-radius: 8px;
+		margin-bottom: 12px;
+		overflow: hidden;
+		position: relative;
+		opacity: 0;
+		animation: fadeUp 0.6s ease-out forwards;
+		transition:
+			transform 0.3s ease,
+			box-shadow 0.3s ease,
+			border-color 0.3s ease;
+	}
 
-  /* Grid Layout */
-  .casino-row-main {
-    display: grid;
-    /* Rank | Identity | Bonus | Rating | RTP/Payments | Actions */
-    grid-template-columns: 80px 1.5fr 2fr 1fr 1.2fr 160px;
-    gap: 15px; align-items: center; padding: 15px 20px;
-  }
+	.casino-card:hover {
+		transform: translateY(-5px);
+		border-color: #555;
+		box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+		z-index: 2;
+	}
 
-  /* Identity */
-  .rank-col { display: flex; align-items: center; justify-content: flex-start; }
-  .rank-box {
-    width: 42px; height: 42px;
-    font-size: 1.05rem; font-weight: 900;
-    border-radius: 12px;
-    display: flex; align-items: center; justify-content: center;
-    transition: transform 0.3s ease;
-  }
-  .casino-card:hover .rank-box { transform: scale(1.1); }
-  
-  .tier-gold { background: linear-gradient(180deg, #FFF2B0 0%, #FFD700 50%, #C69C3A 100%); color: #1a1205; box-shadow: 0 10px 22px rgba(255, 215, 0, 0.45); }
-  .tier-silver { background: linear-gradient(180deg, #F5F5F5 0%, #C9CCD1 100%); color: #1a1a1a; box-shadow: 0 6px 14px rgba(180, 180, 180, 0.35); }
-  .tier-bronze { background: linear-gradient(180deg, #E2B07A 0%, #B87333 100%); color: #1a1205; box-shadow: 0 6px 14px rgba(184, 115, 51, 0.35); }
-  .tier-muted { background: linear-gradient(180deg, #2a2a2a 0%, #1a1a1a 100%); color: #999; box-shadow: inset 0 0 0 1px #333; }
+	/* Grid Layout */
+	.casino-row-main {
+		display: grid;
+		/* Rank | Identity | Bonus | Rating | RTP/Payments | Actions */
+		grid-template-columns: 80px 1.5fr 2fr 1fr 1.2fr 160px;
+		gap: 15px;
+		align-items: center;
+		padding: 15px 20px;
+	}
 
-  .rank-name-wrapper { display: contents; }
-  .casino-info-col { display: flex; align-items: center; gap: 12px; }
-  .casino-logo { width: 50px; height: 50px; border-radius: 50%; object-fit: contain; background: #111; transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-  .casino-card:hover .casino-logo { transform: rotate(360deg) scale(1.1); }
-  
-  .name-rating-stack { display: flex; flex-direction: column; justify-content: center; }
-  .casino-name { font-weight: 700; font-size: 1.2rem; color: #fff; line-height: 1.2; }
-  
-  /* Mobile Rating */
-  .mobile-rating { display: none; margin-top: 6px; align-items: center; gap: 8px; }
-  .mobile-rating .stars { font-size: 0.8rem; display: flex; gap: 2px; }
-  .mobile-rating-text { font-size: 0.8rem; color: #ddd; font-weight: 600; }
+	/* Identity */
+	.rank-col {
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+	}
+	.rank-box {
+		width: 42px;
+		height: 42px;
+		font-size: 1.05rem;
+		font-weight: 900;
+		border-radius: 12px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		transition: transform 0.3s ease;
+	}
+	.casino-card:hover .rank-box {
+		transform: scale(1.1);
+	}
 
-  /* Bonus */
-  .bonus-col { display: flex; flex-direction: column; justify-content: center; }
-  .bonus-highlight { color: var(--brand-gold); font-size: 1.3rem; font-weight: 700; margin-bottom: 4px; }
-  .bonus-sub { color: #fff; font-size: 0.9rem; }
+	.tier-gold {
+		background: linear-gradient(180deg, #fff2b0 0%, #ffd700 50%, #c69c3a 100%);
+		color: #1a1205;
+		box-shadow: 0 10px 22px rgba(255, 215, 0, 0.45);
+	}
+	.tier-silver {
+		background: linear-gradient(180deg, #f5f5f5 0%, #c9ccd1 100%);
+		color: #1a1a1a;
+		box-shadow: 0 6px 14px rgba(180, 180, 180, 0.35);
+	}
+	.tier-bronze {
+		background: linear-gradient(180deg, #e2b07a 0%, #b87333 100%);
+		color: #1a1205;
+		box-shadow: 0 6px 14px rgba(184, 115, 51, 0.35);
+	}
+	.tier-muted {
+		background: linear-gradient(180deg, #2a2a2a 0%, #1a1a1a 100%);
+		color: #999;
+		box-shadow: inset 0 0 0 1px #333;
+	}
 
-  /* Rating */
-  .rating-col { display: flex; align-items: center; justify-content: center; gap: 8px; }
-  .stars { color: var(--brand-gold); font-size: 1rem; display: flex; gap: 2px; }
-  .casino-card:hover .stars { animation: pulse 1s infinite; }
-  .score-text { font-size: 1.1rem; font-weight: 700; color: #fff; }
+	.rank-name-wrapper {
+		display: contents;
+	}
+	.casino-info-col {
+		display: flex;
+		align-items: center;
+		gap: 12px;
+	}
+	.casino-logo {
+		width: 50px;
+		height: 50px;
+		border-radius: 50%;
+		object-fit: contain;
+		background: #111;
+		transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+	}
+	.casino-card:hover .casino-logo {
+		transform: rotate(360deg) scale(1.1);
+	}
 
-  /* RTP (Replacing Payments on Card) */
-  .rtp-col { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; }
-  .rtp-label { font-size: 0.85rem; color: #777; font-weight: 700; text-transform: uppercase; }
-  .rtp-value { font-size: 1.3rem; color: var(--brand-gold); font-weight: 700; }
+	.name-rating-stack {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+	.casino-name {
+		font-weight: 700;
+		font-size: 1.2rem;
+		color: #fff;
+		line-height: 1.2;
+	}
 
-  /* Actions */
-  .action-col { display: flex; flex-direction: column; align-items: center; gap: 16px; }
-  
-  .btn-play {
-    background: var(--cta-bg); color: #000; border: none; padding: 10px 16px; width: 100%; border-radius: 5px;
-    font-weight: 900; font-size: 0.85rem; text-transform: uppercase; box-shadow: 0 4px 0px #b37400, 0 4px 12px var(--cta-shadow);
-    position: relative; overflow: hidden; text-align: center; display: block; cursor: pointer;
-  }
-  .btn-play::after {
-    content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent); transition: none;
-  }
-  .btn-play:hover { transform: translateY(-2px); box-shadow: 0 6px 0px #b37400, 0 8px 20px var(--cta-shadow); filter: brightness(1.1); }
-  .btn-play:hover::after { animation: sheen 0.6s ease-in-out; }
+	/* Mobile Rating */
+	.mobile-rating {
+		display: none;
+		margin-top: 6px;
+		align-items: center;
+		gap: 8px;
+	}
+	.mobile-rating .stars {
+		font-size: 0.8rem;
+		display: flex;
+		gap: 2px;
+	}
+	.mobile-rating-text {
+		font-size: 0.8rem;
+		color: #ddd;
+		font-weight: 600;
+	}
 
-  .toggle-details { background: none; border: none; color: #777; cursor: pointer; font-size: 0.75rem; display: flex; align-items: center; gap: 6px; }
-  .toggle-details:hover { color: #fff; }
+	/* Bonus */
+	.bonus-col {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+	.bonus-highlight {
+		color: var(--brand-gold);
+		font-size: 1.3rem;
+		font-weight: 700;
+		margin-bottom: 4px;
+	}
+	.bonus-sub {
+		color: #fff;
+		font-size: 0.9rem;
+	}
 
-  /* Details Panel */
-  .casino-details-panel {
-    display: none; background-color: #0d0d0d; padding: 25px; border-top: 1px solid var(--border-color);
-    grid-template-columns: 1fr 1fr 1fr; gap: 20px; animation: fadeUp 0.4s ease-out;
-  }
-  .casino-details-panel.active { display: grid; }
-  
-  .detail-box {
-    background: #181818; border: 1px solid #2a2a2a; border-radius: 12px; padding: 20px;
-    display: flex; flex-direction: column; gap: 10px; transition: transform 0.2s;
-  }
-  .detail-box:hover { transform: translateY(-2px); border-color: #333; }
+	/* Rating */
+	.rating-col {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 8px;
+	}
+	.stars {
+		color: var(--brand-gold);
+		font-size: 1rem;
+		display: flex;
+		gap: 2px;
+	}
+	.casino-card:hover .stars {
+		animation: pulse 1s infinite;
+	}
+	.score-text {
+		font-size: 1.1rem;
+		font-weight: 700;
+		color: #fff;
+	}
 
-  .detail-title { color: #fff; font-size: 0.95rem; font-weight: 700; margin-bottom: 5px; display: block; }
-  .detail-content { font-size: 0.9rem; line-height: 1.5; color: #ccc; }
-  .tag-list { display: flex; flex-wrap: wrap; gap: 8px; }
+	/* RTP (Replacing Payments on Card) */
+	.rtp-col {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 2px;
+	}
+	.rtp-label {
+		font-size: 0.85rem;
+		color: #777;
+		font-weight: 700;
+		text-transform: uppercase;
+	}
+	.rtp-value {
+		font-size: 1.3rem;
+		color: var(--brand-gold);
+		font-weight: 700;
+	}
 
-  .text-tag { background: #222; padding: 4px 8px; border-radius: 4px; font-size: 0.75rem; color: #ddd; border: 1px solid #333; display: inline-block; margin: 2px; }
-  .bank-tag-img { height: 28px; background: #fff; padding: 2px; border-radius: 4px; object-fit: contain; }
-  .provider-tag-img { height: 28px; width: 28px; background: #fff; padding: 1px; border-radius: 50%; object-fit: contain; }
-  
-  .bonus-row { display: flex; justify-content: space-between; border-bottom: 1px solid #2a2a2a; padding: 8px 0; font-size: 0.9rem; }
-  .bonus-row:last-child { border-bottom: none; }
-  .bonus-label { color: #888; }
-  .bonus-value { color: #fff; font-weight: 600; text-align: right; }
-  
-  .panel-footer { grid-column: 1 / -1; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #2a2a2a; padding-top: 15px; margin-top: 5px; font-size: 0.8rem; }
-  .license-info { display: flex; align-items: center; gap: 8px; color: #777; }
-  .review-link { color: #777; font-weight: 600; cursor: pointer; }
-  .review-link:hover { color: var(--brand-gold); }
+	/* Actions */
+	.action-col {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 16px;
+	}
 
-  /* Responsive Mobile */
-  @media (max-width: 900px) {
-    .casino-row-main {
-      grid-template-columns: 1fr 1fr;
-      grid-template-areas: "header header" "bonus bonus" "payments payments" "action action";
-    }
-    .rank-name-wrapper { grid-area: header; display: grid; grid-template-columns: auto 1fr; gap: 15px; align-items: center; }
-    .name-rating-stack { display: flex; flex-direction: row; align-items: center; gap: 12px; flex-wrap: wrap; }
-    .mobile-rating { display: flex; margin-top: 0; }
-    .bonus-col { grid-area: bonus; text-align: center; background: #222; padding: 10px; border-radius: 6px; }
-    .rtp-col { grid-area: payments; margin-top: 5px; flex-direction: row; gap: 10px; }
-    .action-col { grid-area: action; margin-top: 10px; }
-    .rating-col { display: none; }
-    .casino-details-panel { grid-template-columns: 1fr; }
-  }
+	.btn-play {
+		background: var(--cta-bg);
+		color: #000;
+		border: none;
+		padding: 10px 16px;
+		width: 100%;
+		border-radius: 5px;
+		font-weight: 900;
+		font-size: 0.85rem;
+		text-transform: uppercase;
+		box-shadow:
+			0 4px 0px #b37400,
+			0 4px 12px var(--cta-shadow);
+		position: relative;
+		overflow: hidden;
+		text-align: center;
+		display: block;
+		cursor: pointer;
+	}
+	.btn-play::after {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: -100%;
+		width: 100%;
+		height: 100%;
+		background: linear-gradient(
+			90deg,
+			transparent,
+			rgba(255, 255, 255, 0.4),
+			transparent
+		);
+		transition: none;
+	}
+	.btn-play:hover {
+		transform: translateY(-2px);
+		box-shadow:
+			0 6px 0px #b37400,
+			0 8px 20px var(--cta-shadow);
+		filter: brightness(1.1);
+	}
+	.btn-play:hover::after {
+		animation: sheen 0.6s ease-in-out;
+	}
+
+	.toggle-details {
+		background: none;
+		border: none;
+		color: #777;
+		cursor: pointer;
+		font-size: 0.75rem;
+		display: flex;
+		align-items: center;
+		gap: 6px;
+	}
+	.toggle-details:hover {
+		color: #fff;
+	}
+
+	/* Details Panel */
+	.casino-details-panel {
+		display: none;
+		background-color: #0d0d0d;
+		padding: 25px;
+		border-top: 1px solid var(--border-color);
+		grid-template-columns: 1fr 1fr 1fr;
+		gap: 20px;
+		animation: fadeUp 0.4s ease-out;
+	}
+	.casino-details-panel.active {
+		display: grid;
+	}
+
+	.detail-box {
+		background: #181818;
+		border: 1px solid #2a2a2a;
+		border-radius: 12px;
+		padding: 20px;
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+		transition: transform 0.2s;
+	}
+	.detail-box:hover {
+		transform: translateY(-2px);
+		border-color: #333;
+	}
+
+	.detail-title {
+		color: #fff;
+		font-size: 0.95rem;
+		font-weight: 700;
+		margin-bottom: 5px;
+		display: block;
+	}
+	.detail-content {
+		font-size: 0.9rem;
+		line-height: 1.5;
+		color: #ccc;
+	}
+	.tag-list {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 8px;
+	}
+
+	.text-tag {
+		background: #222;
+		padding: 4px 8px;
+		border-radius: 4px;
+		font-size: 0.75rem;
+		color: #ddd;
+		border: 1px solid #333;
+		display: inline-block;
+		margin: 2px;
+	}
+	.bank-tag-img {
+		height: 28px;
+		background: #fff;
+		padding: 2px;
+		border-radius: 4px;
+		object-fit: contain;
+	}
+	.provider-tag-img {
+		height: 28px;
+		width: 28px;
+		background: #fff;
+		padding: 1px;
+		border-radius: 50%;
+		object-fit: contain;
+	}
+
+	.bonus-row {
+		display: flex;
+		justify-content: space-between;
+		border-bottom: 1px solid #2a2a2a;
+		padding: 8px 0;
+		font-size: 0.9rem;
+	}
+	.bonus-row:last-child {
+		border-bottom: none;
+	}
+	.bonus-label {
+		color: #888;
+	}
+	.bonus-value {
+		color: #fff;
+		font-weight: 600;
+		text-align: right;
+	}
+
+	.panel-footer {
+		grid-column: 1 / -1;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		border-top: 1px solid #2a2a2a;
+		padding-top: 15px;
+		margin-top: 5px;
+		font-size: 0.8rem;
+	}
+	.license-info {
+		display: flex;
+		align-items: center;
+		gap: 8px;
+		color: #777;
+	}
+	.review-link {
+		color: #777;
+		font-weight: 600;
+		cursor: pointer;
+	}
+	.review-link:hover {
+		color: var(--brand-gold);
+	}
+
+	/* Responsive Mobile */
+	@media (max-width: 900px) {
+		.casino-row-main {
+			grid-template-columns: 1fr 1fr;
+			grid-template-areas: "header header" "bonus bonus" "payments payments" "action action";
+		}
+		.rank-name-wrapper {
+			grid-area: header;
+			display: grid;
+			grid-template-columns: auto 1fr;
+			gap: 15px;
+			align-items: center;
+		}
+		.name-rating-stack {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			gap: 12px;
+			flex-wrap: wrap;
+		}
+		.mobile-rating {
+			display: flex;
+			margin-top: 0;
+		}
+		.bonus-col {
+			grid-area: bonus;
+			text-align: center;
+			background: #222;
+			padding: 10px;
+			border-radius: 6px;
+		}
+		.rtp-col {
+			grid-area: payments;
+			margin-top: 5px;
+			flex-direction: row;
+			gap: 10px;
+		}
+		.action-col {
+			grid-area: action;
+			margin-top: 10px;
+		}
+		.rating-col {
+			display: none;
+		}
+		.casino-details-panel {
+			grid-template-columns: 1fr;
+		}
+	}
 </style>
