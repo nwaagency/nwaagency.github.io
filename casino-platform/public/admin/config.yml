@@ -131,6 +131,12 @@ collections:
             name: "banking_list"
             widget: "list"
             summary: "{{data_ref}} {{custom_name}}"
+            default:
+            - {data_ref: "Skrill"}
+            - {data_ref: "Bitcoin"}
+            - {data_ref: "Mastercard"}
+            - {data_ref: "Jeton"}
+            - {data_ref: "Visa"}
             fields:
               - {label: "Select Method", name: "data_ref", widget: "relation", collection: "banking", search_fields: ["name"], value_field: "name", display_fields: ["name"], required: false}
               - {label: "Custom Name", name: "custom_name", widget: "string", required: false}
