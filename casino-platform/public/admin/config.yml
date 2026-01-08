@@ -1,6 +1,7 @@
 backend:
   name: git-gateway
   branch: main
+
 local_backend: true
 site_url: "https://nexoraweb.agency"
 display_url: "nexoraweb.agency"
@@ -9,7 +10,6 @@ logo_url: "https://placehold.co/200x50/111/D4AF37?text=CASINO+CRM"
 media_folder: "casino-platform/public/uploads"
 public_folder: "/uploads"
 
-# UI Settings: Full width editor, no split screen
 editor:
   preview: true 
 
@@ -40,107 +40,118 @@ collections:
       - {label: "Provider Name", name: "name", widget: "string"}
       - {label: "Default Logo", name: "icon", widget: "image"}
 
-  # 3. CASINOS
+  # 3. CASINOS COLLECTION
   - name: "casinos"
     label: "Casinos"
     icon: "crown" 
     folder: "casino-platform/src/content/casinos" 
     create: true
-    identifier_field: "identity_group.name"
-    slug: "{{identity_group.rank}}-{{identity_group.name}}"
-    summary: "#{{rank}} {{identity_group.name}} | {{metrics_group.rating}}★"
+    # We use a summary hack because 'name' is now nested
+    summary: "{{ranking_visibility.rank}} - {{core_identity.name}}"
+    slug: "{{ranking_visibility.rank}}-{{core_identity.name}}"
     fields:
-      # SECTION 1: IDENTITY
-      - label: "Identity & Status"
-        name: "identity_group"
+      # GROUP 1: CORE IDENTITY
+      - label: "Core Identity"
+        name: "core_identity"
         widget: "object"
         collapsed: false
         fields:
-          - {label: "Active?", name: "isActive", widget: "boolean", default: true}
-          - {label: "Rank Position", name: "rank", widget: "number", value_type: "int", min: 1}
-          - {label: "Casino Name", name: "name", widget: "string"}
-          - {label: "Logo", name: "logo_url", widget: "image"}
-          - {label: "Affiliate Link", name: "affiliate_url", widget: "string"}
+          - {label: "Active Status", name: "isActive", widget: "boolean", default: true, required: false}
+          - {label: "Casino Name", name: "name", widget: "string", required: true}
 
-      # SECTION 2: METRICS
-      - label: "Performance Metrics"
-        name: "metrics_group"
+      # GROUP 2: RANKING & VISIBILITY
+      - label: "Ranking & Visibility"
+        name: "ranking_visibility"
         widget: "object"
         collapsed: false
         fields:
-          - {label: "Rating (0-5)", name: "rating", widget: "number", value_type: "float", step: 0.1}
-          - {label: "RTP %", name: "rtp", widget: "number", value_type: "float", step: 0.01}
-          - {label: "Payout Speed", name: "payout_speed", widget: "string"}
-          - {label: "Min Deposit", name: "min_deposit", widget: "string"}
+          - {label: "Rank", name: "rank", widget: "number", value_type: "int", min: 1, required: true}
+          - label: "Allowed Geos"
+            name: "targeting_group"
+            widget: "select"
+            multiple: true
+            options: ["global", "de", "at", "ca", "nz", "ie", "ch"]
+            default: ["global"]
+            required: true
 
-      # SECTION 3: OFFER
-      - label: "Welcome Offer"
-        name: "offer_group"
+      # GROUP 3: BRANDING & LINKS
+      - label: "Branding & Links"
+        name: "branding_links"
         widget: "object"
-        collapsed: false
+        collapsed: true
         fields:
-          - {label: "Headline", name: "welcome_bonus_headline", widget: "string"}
-          - {label: "VIP Badge?", name: "vip_high_roller", widget: "boolean", default: false}
+          - {label: "Logo Image", name: "logo_url", widget: "image", required: true}
+          - {label: "Affiliate Link", name: "affiliate_url", widget: "string", required: true}
 
-      # SECTION 4: FEATURES & LISTS
-      - label: "Features & Lists"
-        name: "features_group"
+      # GROUP 4: RATINGS & METRICS
+      - label: "Ratings & Metrics"
+        name: "ratings_metrics"
         widget: "object"
         collapsed: false
         fields:
-          - {label: "License", name: "license", widget: "string"}
-          - {label: "Mobile App", name: "mobile_app", widget: "string"}
-          - {label: "Customer Service", name: "customer_service", widget: "string"}
-          # SMART BANKING LIST
+          - {label: "Rating Score", name: "rating", widget: "number", value_type: "float", step: 0.1, min: 0, max: 5, default: 0, required: true}
+          - {label: "RTP %", name: "rtp", widget: "number", value_type: "float", step: 0.01, min: 0, max: 100, required: false}
+
+      # GROUP 5: OFFER DATA
+      - label: "Offer Data"
+        name: "offer_data"
+        widget: "object"
+        collapsed: false
+        fields:
+          - {label: "Bonus Headline", name: "bonus_headline", widget: "string", required: true, hint: "100% up to $500 + 200 Free Spins"}
+          - {label: "Time to Wager", name: "wager_time", widget: "string", required: false, hint: "1-3 Days"}
+          - {label: "Wagering Requirement", name: "wagering_req", widget: "string", required: false, hint: "30x"}
+          - {label: "VIP / High Roller Offers", name: "vip_high_roller", widget: "string", required: false, hint: "Yes for deposits over €1000"}
+
+      # GROUP 6: PAYMENT DATA
+      - label: "Payment Data"
+        name: "payment_data"
+        widget: "object"
+        collapsed: true
+        fields:
+          - {label: "Payout Speed", name: "payout_speed", widget: "string", required: true}
+          - {label: "Min Deposit", name: "min_deposit", widget: "string", required: true}
           - label: "Banking Methods"
             name: "banking_list"
             widget: "list"
             summary: "{{data_ref}} {{custom_name}}"
             fields:
-              - label: "Select from Database"
-                name: "data_ref"
-                widget: "relation"
-                collection: "banking_data"
-                search_fields: ["name"]
-                value_field: "name"
-                display_fields: ["name"]
-                required: false
-                hint: "Select existing method for auto-icon."
-              - label: "OR Custom Name"
-                name: "custom_name"
-                widget: "string"
-                required: false
-                hint: "Type a name if not in database."
-              - label: "Icon Override"
-                name: "custom_icon"
-                widget: "image"
-                required: false
-                hint: "Upload to override default icon or for new items."
+              - {label: "Select Method", name: "data_ref", widget: "relation", collection: "banking_data", search_fields: ["name"], value_field: "name", display_fields: ["name"], required: false}
+              - {label: "Custom Name", name: "custom_name", widget: "string", required: false}
+              - {label: "Icon Override", name: "custom_icon", widget: "image", required: false}
 
-          # SMART PROVIDER LIST
-          - label: "Game Providers"
+      # GROUP 7: GAMES & PROVIDERS
+      - label: "Games & Providers"
+        name: "games_providers"
+        widget: "object"
+        collapsed: true
+        fields:
+          - label: "Games Available"
+            name: "game_types"
+            widget: "select"
+            multiple: true
+            options: ["Slots", "Live Casino", "Table Games", "Jackpots", "Poker", "Sportsbook"]
+            default: ["Slots"]
+            required: true
+          - {label: "Games Count", name: "game_count", widget: "number", value_type: "int", required: false}
+          - label: "Providers"
             name: "providers_list"
             widget: "list"
             summary: "{{data_ref}} {{custom_name}}"
             fields:
-              - label: "Select from Database"
-                name: "data_ref"
-                widget: "relation"
-                collection: "providers_data"
-                search_fields: ["name"]
-                value_field: "name"
-                display_fields: ["name"]
-                required: false
-              - label: "OR Custom Name"
-                name: "custom_name"
-                widget: "string"
-                required: false
-              - label: "Logo Override"
-                name: "custom_icon"
-                widget: "image"
-                required: false
+              - {label: "Select Provider", name: "data_ref", widget: "relation", collection: "providers_data", search_fields: ["name"], value_field: "name", display_fields: ["name"], required: false}
+              - {label: "Custom Name", name: "custom_name", widget: "string", required: false}
+              - {label: "Logo Override", name: "custom_icon", widget: "image", required: false}
 
-          
+      # GROUP 8: TECHNICAL DETAILS
+      - label: "Technical Details"
+        name: "technical_details"
+        widget: "object"
+        collapsed: true
+        fields:
+          - {label: "License Info", name: "license", widget: "string", required: true}
+          - {label: "Mobile App", name: "mobile_app", widget: "select", options: ["Android", "iPhone", "iPad", "Mac / PC", "Tablet"], multiple: true, required: false}
+          - {label: "Customer Service", name: "customer_service", widget: "string", required: false}
 
   # 4. PAGES
   - name: "pages"

@@ -12,7 +12,7 @@ const { data, index } = Astro.props;
 const allBanking = await getCollection("banking_data").catch(() => []);
 const allProviders = await getCollection("providers_data").catch(() => []);
 
-// Fallback Map: Used if database lookup fails
+// Fallback Map
 const legacyIconMap: Record<string, string> = {
 	netent: "netent.svg",
 	microgaming: "microgaming.svg",
@@ -34,12 +34,10 @@ const legacyIconMap: Record<string, string> = {
 
 // Helper: Smart Icon Resolution
 const resolveItem = (item: any, globalCollection: any[]) => {
-	const rawName =
-		item.custom_name || item.data_ref || item.method || item.name || "Unknown";
+	const rawName = item.custom_name || item.data_ref || "Unknown";
 	const name = rawName;
-	let icon = item.custom_icon || item.icon || item.logo;
+	let icon = item.custom_icon;
 
-	// Handle Astro Image Objects (if schema converts them)
 	if (icon && typeof icon === "object" && "src" in icon) icon = icon.src;
 
 	if (!icon) {
@@ -66,37 +64,45 @@ const resolveItem = (item: any, globalCollection: any[]) => {
 	return { name, icon };
 };
 
-// 2. Destructure Data
-const identity = data.identity_group || {};
-const metrics = data.metrics_group || {};
-const offer = data.offer_group || {};
-const features = data.features_group || {};
+// 2. Destructure Data using NEW SCHEMA GROUPS
+const core = data.core_identity || {};
+const rankVis = data.ranking_visibility || {};
+const brand = data.branding_links || {};
+const metrics = data.ratings_metrics || {};
+const offer = data.offer_data || {};
+const payments = data.payment_data || {};
+const games = data.games_providers || {};
+const tech = data.technical_details || {};
 
 // 3. Map Fields
-const name = identity.name || data.name || "Casino";
-const logo_url = identity.logo_url || data.logo_url || "";
-const rank = identity.rank || data.rank || 0;
-const affiliate_url = identity.affiliate_url || data.affiliate_url || "#";
+const name = core.name || "Casino";
+const logo_url = brand.logo_url || "";
+const rank = rankVis.rank || 0;
+const affiliate_url = brand.affiliate_url || "#";
 
-const rating = metrics.rating || data.rating || 0;
-const rtp = metrics.rtp || data.rtp || "95.0";
-const payout_speed = metrics.payout_speed || data.payout_speed || "-";
-const min_deposit = metrics.min_deposit || data.min_deposit || "-";
+const rating = metrics.rating || 0;
+const rtp = metrics.rtp || "95.0";
+const payout_speed = payments.payout_speed || "-";
+const min_deposit = payments.min_deposit || "-";
 
-const welcome_bonus_headline =
-	offer.welcome_bonus_headline || data.welcome_bonus_headline || "";
-const vip_high_roller = offer.vip_high_roller || data.vip_high_roller || false;
+const bonus_headline = offer.bonus_headline || "";
+const wagering_req = offer.wagering_req || "30x";
+const wager_time = offer.wager_time || "-";
+const vip_high_roller = offer.vip_high_roller || "Not specified";
 
-const license = features.license || data.license || "-";
-const mobile_app = features.mobile_app || data.mobile_app || "-";
-const customer_service =
-	features.customer_service || data.customer_service || "-";
+const license = tech.license || "-";
+// Mobile App is now an array, join it
+const mobile_app = Array.isArray(tech.mobile_app)
+	? tech.mobile_app.join(", ")
+	: tech.mobile_app || "-";
+const customer_service = tech.customer_service || "-";
+
+// Games
+const game_types = games.game_types || [];
 
 // 4. Resolve Lists
-const rawBanking =
-	features.banking_list || features.banking || data.banking || [];
-const rawProviders =
-	features.providers_list || features.providers || data.providers || [];
+const rawBanking = payments.banking_list || [];
+const rawProviders = games.providers_list || [];
 
 const bankingList = rawBanking.map((item: any) =>
 	resolveItem(item, allBanking)
@@ -134,7 +140,6 @@ const StarEmpty = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"
 				<img src={logo_url} alt={name} class="casino-logo" />
 				<div class="name-rating-stack">
 					<span class="casino-name">{name}</span>
-					<!-- Mobile Rating -->
 					<div class="mobile-rating">
 						<div class="stars">
 							{
@@ -152,8 +157,8 @@ const StarEmpty = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"
 
 		<!-- 2. Bonus -->
 		<div class="bonus-col">
-			<span class="bonus-highlight" set:html={welcome_bonus_headline} />
-		
+			<span class="bonus-highlight" set:html={bonus_headline} />
+			<span class="bonus-sub">New Player Offer</span>
 		</div>
 
 		<!-- 3. Rating (Desktop) -->
@@ -189,7 +194,17 @@ const StarEmpty = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"
 				class="btn-play">PLAY NOW</a
 			>
 			<button class="toggle-details" onclick="toggleDetails(this)">
-				Details <i class="fa-solid fa-chevron-down"></i>
+				Details
+				<svg
+					class="chevron-icon"
+					width="12"
+					height="12"
+					viewBox="0 0 512 512"
+					fill="currentColor">
+					<path
+						d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"
+					></path>
+				</svg>
 			</button>
 		</div>
 	</div>
@@ -217,8 +232,11 @@ const StarEmpty = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"
 		</div>
 
 		<div class="detail-box">
-			<span class="detail-title">Games & Providers</span>
-			<div class="tag-list">
+			<span class="detail-title">Games Available</span>
+			<div class="detail-content" style="color: #aaa; font-size: 0.85rem;">
+				{game_types.join(", ")}
+			</div>
+			<div class="tag-list" style="margin-top: 10px;">
 				{
 					providerList.map((p) =>
 						p.icon ? (
@@ -252,15 +270,17 @@ const StarEmpty = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"
 			</div>
 			<div class="bonus-row">
 				<span class="bonus-label">Wagering</span>
-				<span class="bonus-value">35x</span>
+				<span class="bonus-value">{wagering_req}</span>
+			</div>
+			<div class="bonus-row">
+				<span class="bonus-label">Time to Wager</span>
+				<span class="bonus-value">{wager_time}</span>
 			</div>
 		</div>
 
 		<div class="detail-box">
-			<span class="detail-title">VIP Features</span>
-			<div class="detail-content">
-				{vip_high_roller ? "High Roller Program Available" : "-"}
-			</div>
+			<span class="detail-title">VIP & High Roller Offers</span>
+			<div class="detail-content">{vip_high_roller}</div>
 		</div>
 
 		<div class="detail-box">
@@ -277,7 +297,7 @@ const StarEmpty = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"
 			<div class="license-info">
 				<i class="fa-solid fa-shield-halved"></i> Licensed by {license}
 			</div>
-			<span class="review-link">Read Review &rarr;</span>
+		
 		</div>
 	</div>
 </div>
@@ -289,16 +309,19 @@ const StarEmpty = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"
 		const isOpen = panel.classList.toggle("active");
 		btn.classList.toggle("active", isOpen);
 
-		// Simple Text Swap logic from template
-		btn.innerHTML = isOpen
-			? 'Less <i class="fa-solid fa-chevron-up"></i>'
-			: 'Details <i class="fa-solid fa-chevron-down"></i>';
+		const chevronDown = `<svg class="chevron-icon" width="12" height="12" viewBox="0 0 512 512" fill="currentColor"><path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"/></svg>`;
+		const chevronUp = `<svg class="chevron-icon" width="12" height="12" viewBox="0 0 512 512" fill="currentColor"><path d="M233.4 105.4c12.5-12.5 32.8-12.5 45.3 0l192 192c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L256 173.3 86.6 342.6c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l192-192z"/></svg>`;
+
+		if (isOpen) {
+			btn.innerHTML = `Less ${chevronUp}`;
+		} else {
+			btn.innerHTML = `Details ${chevronDown}`;
+		}
 	}
 </script>
 
 <style>
-	/* --- EXACT STYLES FROM TEMPLATE --- */
-
+	/* --- REUSE EXISTING CSS --- */
 	.casino-card {
 		background-color: var(--bg-card);
 		border: 1px solid var(--border-color);
@@ -321,27 +344,19 @@ const StarEmpty = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"
 		z-index: 2;
 	}
 
-	/* Grid Layout */
 	.casino-row-main {
 		display: grid;
-		/* Rank | Identity | Bonus | Rating | RTP/Payments | Actions */
 		grid-template-columns: 80px 1.5fr 2fr 1fr 1.2fr 160px;
 		gap: 15px;
 		align-items: center;
 		padding: 15px 20px;
 	}
 
-	.rank-name-wrapper {
-		display: contents;
-	}
-
-	/* Identity */
 	.rank-col {
 		display: flex;
-		align-items: left;
-		justify-content: left;
+		align-items: center;
+		justify-content: flex-start;
 	}
-
 	.rank-box {
 		width: 42px;
 		height: 42px;
@@ -351,7 +366,6 @@ const StarEmpty = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		position: relative;
 		transition: transform 0.3s ease;
 	}
 	.casino-card:hover .rank-box {
@@ -379,11 +393,15 @@ const StarEmpty = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"
 		box-shadow: inset 0 0 0 1px #333;
 	}
 
+	.rank-name-wrapper {
+		display: contents;
+	}
 	.casino-info-col {
 		display: flex;
 		align-items: center;
 		gap: 12px;
 	}
+
 	.casino-logo {
 		width: 50px;
 		height: 50px;
@@ -408,7 +426,6 @@ const StarEmpty = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"
 		line-height: 1.2;
 	}
 
-	/* Mobile Rating */
 	.mobile-rating {
 		display: none;
 		margin-top: 6px;
@@ -426,7 +443,6 @@ const StarEmpty = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"
 		font-weight: 600;
 	}
 
-	/* Bonus */
 	.bonus-col {
 		display: flex;
 		flex-direction: column;
@@ -434,25 +450,21 @@ const StarEmpty = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"
 	}
 	.bonus-highlight {
 		color: var(--brand-gold);
-		font-size: 1.1rem;
+		font-size: 1.3rem;
 		font-weight: 700;
 		margin-bottom: 4px;
 	}
-
 	.bonus-sub {
 		color: #fff;
-		font-size: 0.85rem;
+		font-size: 0.9rem;
 	}
 
-	/* Rating */
 	.rating-col {
 		display: flex;
-		flex-direction: row;
 		align-items: center;
 		justify-content: center;
 		gap: 8px;
 	}
-
 	.stars {
 		color: var(--brand-gold);
 		font-size: 1rem;
@@ -463,18 +475,11 @@ const StarEmpty = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"
 		animation: pulse 1s infinite;
 	}
 	.score-text {
-		font-size: 0.9rem;
+		font-size: 1.1rem;
 		font-weight: 700;
 		color: #fff;
 	}
 
-	/* RTP (Replacing Payments on Card) */
-	.payment-col {
-		display: flex;
-		justify-content: center;
-		flex-wrap: wrap;
-		gap: 4px;
-	}
 	.rtp-col {
 		display: flex;
 		flex-direction: column;
@@ -494,7 +499,13 @@ const StarEmpty = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"
 		font-weight: 700;
 	}
 
-	/* Actions */
+	.payment-col {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 4px;
+		justify-content: center;
+	}
+
 	.action-col {
 		display: flex;
 		flex-direction: column;
@@ -521,6 +532,7 @@ const StarEmpty = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"
 		display: block;
 		cursor: pointer;
 	}
+
 	.btn-play::after {
 		content: "";
 		position: absolute;
@@ -560,8 +572,10 @@ const StarEmpty = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"
 	.toggle-details:hover {
 		color: #fff;
 	}
+	.chevron-icon {
+		transition: transform 0.2s;
+	}
 
-	/* Details Panel */
 	.casino-details-panel {
 		display: none;
 		background-color: #0d0d0d;
@@ -678,35 +692,33 @@ const StarEmpty = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"
 		color: var(--brand-gold);
 	}
 
-	/* Responsive Mobile */
 	@media (max-width: 900px) {
 		.casino-row-main {
 			grid-template-columns: 1fr 1fr;
-			grid-template-areas: "header header" "bonus bonus" "payments payments" "action action";
-			padding: 15px;
+			grid-template-areas:
+				"header header"
+				"bonus bonus"
+				"payments payments"
+				"action action";
 		}
-.name-rating-stack {
+		.rank-name-wrapper {
+			grid-area: header;
+			display: grid;
+			grid-template-columns: auto 1fr;
+			gap: 15px;
+			align-items: center;
+		}
+
+		.name-rating-stack {
 			display: flex;
 			flex-direction: row;
 			align-items: center;
 			gap: 12px;
 			flex-wrap: wrap;
 		}
-		.rank-name-wrapper {
-			grid-area: header;
-			display: grid;
-			grid-template-columns: auto 1fr;
-			align-items: center;
-			gap: 15px;
-			padding: 15px 0;
-		}
-
 		.mobile-rating {
 			display: flex;
-		}
-
-		.rating-col {
-			display: none;
+			margin-top: 0;
 		}
 
 		.bonus-col {
@@ -716,21 +728,41 @@ const StarEmpty = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"
 			padding: 10px;
 			border-radius: 6px;
 		}
-
 		.rtp-col {
 			grid-area: payments;
 			margin-top: 5px;
-            flex-direction: row;
+			flex-direction: row;
 			gap: 10px;
 		}
-
 		.action-col {
 			grid-area: action;
 			margin-top: 10px;
 		}
-
+		.rating-col {
+			display: none;
+		}
 		.casino-details-panel {
 			grid-template-columns: 1fr;
+		}
+	}
+
+	@keyframes pulse {
+		0% {
+			transform: scale(1);
+		}
+		50% {
+			transform: scale(1.05);
+		}
+		100% {
+			transform: scale(1);
+		}
+	}
+	@keyframes sheen {
+		0% {
+			left: -100%;
+		}
+		100% {
+			left: 100%;
 		}
 	}
 </style>
