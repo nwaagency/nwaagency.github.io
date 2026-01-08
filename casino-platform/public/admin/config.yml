@@ -46,8 +46,8 @@ collections:
     icon: "crown" 
     folder: "casino-platform/src/content/casinos" 
     create: true
-    identifier_field: "name"
-    slug: "{{name}}"
+    identifier_field: "identity_group.name"
+    slug: "{{identity_group.rank}}-{{identity_group.name}}"
     summary: "#{{rank}} {{identity_group.name}} | {{metrics_group.rating}}★"
     fields:
       # SECTION 1: IDENTITY
@@ -89,7 +89,8 @@ collections:
         collapsed: false
         fields:
           - {label: "License", name: "license", widget: "string"}
-          
+          - {label: "Mobile App", name: "mobile_app", widget: "string"}
+          - {label: "Customer Service", name: "customer_service", widget: "string"}
           # SMART BANKING LIST
           - label: "Banking Methods"
             name: "banking_list"
@@ -139,8 +140,7 @@ collections:
                 widget: "image"
                 required: false
 
-          - {label: "Mobile App", name: "mobile_app", widget: "string"}
-          - {label: "Customer Service", name: "customer_service", widget: "string"}
+          
 
   # 4. PAGES
   - name: "pages"
