@@ -52,10 +52,9 @@ collections:
       visualEditing: true
     sortable_fields:
       - { field: ranking_visibility.rank, default_sort: desc }
-      - core_identity.date
     # We use a summary hack because 'name' is now nested
     summary: "{{ranking_visibility.rank}} - {{core_identity.name}} - {{core_identity.date}}"
-    slug: "{{year}}_{{ranking_visibility.rank}}-{{core_identity.name}} - {{year}}-{{month}}-{{day}}-{{slug}}"
+    slug: "{{ranking_visibility.rank}}-{{core_identity.name}} - {{core_identity.date}}"
     fields:
       # GROUP 1: CORE IDENTITY
       - label: "Core Identity"
