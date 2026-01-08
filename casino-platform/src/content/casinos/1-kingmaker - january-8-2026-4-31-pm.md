@@ -2,7 +2,7 @@
 core_identity:
   isActive: true
   date: January 8, 2026 4:31 PM
-  name: Kingmaker
+  name: Caspero
 ranking_visibility:
   targeting_group:
     - global
@@ -12,13 +12,13 @@ ranking_visibility:
     - nz
     - ie
     - ch
-  rank: 1
+  rank: 2
 branding_links:
-  logo_url: /uploads/casino_logo_1.png
+  logo_url: /uploads/casino_logo_3.png
   affiliate_url: https://theexclusiveoffers.vip/#
 ratings_metrics:
-  rating: 4.4
-  rtp: 99.96
+  rating: 4.2
+  rtp: 99.89
 offer_data:
   bonus_headline: 100% up to $500 + 200 Free Spins
   wager_time: 2 months
