@@ -1,7 +1,7 @@
 ---
 core_identity:
   isActive: true
-  date: 2026-08-01
+  date: 2026-01-08
   name: Caspero
 ranking_visibility:
   targeting_group:
