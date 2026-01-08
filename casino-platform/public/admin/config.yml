@@ -48,8 +48,8 @@ collections:
     folder: "casino-platform/src/content/casinos" 
     create: true
     identifier_field: "name"
-    slug: "{{rank}}-{{name}}"
-    summary: "#{{rank}} {{name}} | {{metrics_group.rating}}★"
+    slug: "{{rank}}-{{identity_group.name}}"
+    summary: "#{{rank}} {{identity_group.name}} | {{metrics_group.rating}}★"
     fields:
       # SECTION 1: IDENTITY
       - label: "Identity & Status"
