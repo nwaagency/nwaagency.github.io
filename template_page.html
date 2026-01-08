@@ -760,7 +760,83 @@
             .review-link:hover {
                 color: var(--brand-gold);
             }
+ @media (max-width: 900px) {
 
+                .nav-links,
+                .table-header {
+                    display: none;
+                }
+
+                .hero-title {
+                    font-size: 1.8rem;
+                }
+
+                .stats-grid {
+                    grid-template-columns: 1fr 1fr;
+                }
+
+                .casino-row-main {
+                    grid-template-columns: 1fr 1fr;
+                    grid-template-areas: "header header" "bonus bonus" "payments payments" "action action";
+                    padding: 15px;
+                }
+
+                .rank-name-wrapper {
+                    grid-area: header;
+                    display: grid;
+                    grid-template-columns: auto 1fr;
+                    align-items: center;
+                    gap: 15px;
+                    padding: 15px 0;
+                }
+
+                .mobile-rating {
+                    display: flex;
+                }
+
+                .rating-col {
+                    display: none;
+                }
+
+                .bonus-col {
+                    grid-area: bonus;
+                    text-align: center;
+                    background: #222;
+                    padding: 10px;
+                    border-radius: 6px;
+                }
+
+                .payment-col {
+                    grid-area: payments;
+                    margin-top: 5px;
+                }
+
+                .action-col {
+                    grid-area: action;
+                    margin-top: 10px;
+                }
+
+                .casino-details-panel {
+                    grid-template-columns: 1fr;
+                }
+
+                .footer-grid {
+                    grid-template-columns: 1fr;
+                    gap: 30px;
+                }
+
+                .footer-bottom-bar {
+                    flex-direction: column;
+                    gap: 10px;
+                    text-align: center;
+                }
+
+                .newsletter-input,
+                .newsletter-btn {
+                    width: 100%;
+                    max-width: 400px;
+                }
+            }
             /* ============================
    5. NEWSLETTER SECTION
    ============================ */
@@ -928,83 +1004,7 @@
             /* ============================
    7. RESPONSIVE
    ============================ */
-            @media (max-width: 900px) {
-
-                .nav-links,
-                .table-header {
-                    display: none;
-                }
-
-                .hero-title {
-                    font-size: 1.8rem;
-                }
-
-                .stats-grid {
-                    grid-template-columns: 1fr 1fr;
-                }
-
-                .casino-row-main {
-                    grid-template-columns: 1fr 1fr;
-                    grid-template-areas: "header header" "bonus bonus" "payments payments" "action action";
-                    padding: 15px;
-                }
-
-                .rank-name-wrapper {
-                    grid-area: header;
-                    display: grid;
-                    grid-template-columns: auto 1fr;
-                    align-items: center;
-                    gap: 15px;
-                    padding: 15px 0;
-                }
-
-                .mobile-rating {
-                    display: flex;
-                }
-
-                .rating-col {
-                    display: none;
-                }
-
-                .bonus-col {
-                    grid-area: bonus;
-                    text-align: center;
-                    background: #222;
-                    padding: 10px;
-                    border-radius: 6px;
-                }
-
-                .payment-col {
-                    grid-area: payments;
-                    margin-top: 5px;
-                }
-
-                .action-col {
-                    grid-area: action;
-                    margin-top: 10px;
-                }
-
-                .casino-details-panel {
-                    grid-template-columns: 1fr;
-                }
-
-                .footer-grid {
-                    grid-template-columns: 1fr;
-                    gap: 30px;
-                }
-
-                .footer-bottom-bar {
-                    flex-direction: column;
-                    gap: 10px;
-                    text-align: center;
-                }
-
-                .newsletter-input,
-                .newsletter-btn {
-                    width: 100%;
-                    max-width: 400px;
-                }
-            }
+           
         </style>
     </head>
 
