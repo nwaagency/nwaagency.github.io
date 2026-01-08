@@ -68,6 +68,7 @@ collections:
             name: 'date',
             widget: 'datetime',
             default: '{{now}}',
+            format: 'L LT',
              picker_utc: false
           }
               
