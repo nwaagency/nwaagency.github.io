@@ -1,7 +1,8 @@
 ---
 core_identity:
   isActive: true
-  name: Caspero
+  name: Kingmaker
+  date: 08.01.2026 15:42
 ranking_visibility:
   targeting_group:
     - global
@@ -11,7 +12,7 @@ ranking_visibility:
     - nz
     - ie
     - ch
-  rank: 1
+  rank: 4
 branding_links:
   logo_url: /uploads/casino_logo_1.png
   affiliate_url: https://theexclusiveoffers.vip/#
@@ -46,6 +47,7 @@ games_providers:
     - data_ref: Pragmatic Play
     - data_ref: Play'n GO
     - data_ref: Thunderkick
+  game_count: 2900
 technical_details:
   license: Curaçao
   mobile_app:

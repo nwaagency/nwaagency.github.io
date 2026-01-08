@@ -15,7 +15,8 @@ editor:
 
 collections:
   # 1. BANKING MASTER LIST
-  - name: "banking_data"
+  - name: "banking"
+    
     label: "Banking"
     icon: "credit-card"
     folder: "casino-platform/src/content/banking"
@@ -28,7 +29,7 @@ collections:
       - {label: "Default Icon", name: "icon", widget: "image"}
 
   # 2. PROVIDERS MASTER LIST
-  - name: "providers_data"
+  - name: "providers"
     label: "Providers"
     icon: "joystick"
     folder: "casino-platform/src/content/providers"
@@ -42,13 +43,19 @@ collections:
 
   # 3. CASINOS COLLECTION
   - name: "casinos"
+    preview_path_date_field: "updated_on"
     label: "Casinos"
     icon: "crown" 
     folder: "casino-platform/src/content/casinos" 
     create: true
+    editor:
+      visualEditing: true
+    sortable_fields:
+      - { field: ranking_visibility.rank, default_sort: desc }
+      - core_identity.date
     # We use a summary hack because 'name' is now nested
-    summary: "{{ranking_visibility.rank}} - {{core_identity.name}}"
-    slug: "{{ranking_visibility.rank}}-{{core_identity.name}}"
+    summary: "{{ranking_visibility.rank}} - {{core_identity.name}} - {{core_identity.date}}"
+    slug: "{{year}}_{{ranking_visibility.rank}}-{{core_identity.name}} - {{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
       # GROUP 1: CORE IDENTITY
       - label: "Core Identity"
@@ -58,6 +65,16 @@ collections:
         fields:
           - {label: "Active Status", name: "isActive", widget: "boolean", default: true, required: false}
           - {label: "Casino Name", name: "name", widget: "string", required: true}
+          - {
+            label: 'Publish Date',
+            name: 'date',
+            widget: 'datetime',
+            format: 'DD.MM.YYYY HH:mm',
+            default: '{{now}}',
+          }
+              
+          
+
 
       # GROUP 2: RANKING & VISIBILITY
       - label: "Ranking & Visibility"
