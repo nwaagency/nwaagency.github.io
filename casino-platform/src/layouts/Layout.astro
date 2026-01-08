@@ -6,24 +6,22 @@ export interface Props {
   description?: string;
 }
 
-const { title, description = "Compare the best online casinos with high payouts and exclusive bonuses." } = Astro.props;
+const { title, description = "Exclusive Offers VIP - Best Online Casinos 2025" } = Astro.props;
 ---
 
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
     
-    <!-- Google Fonts: Inter -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome CDN (Required for Template Design) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- REQUIRED: Netlify Identity Widget for Main Site (Handles Invite Links) -->
+    <!-- Netlify Identity Widget -->
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 
     <title>{title}</title>
@@ -33,31 +31,34 @@ const { title, description = "Compare the best online casinos with high payouts 
       <slot />
     </div>
 
-    <!-- Script to handle the login/invite flow -->
     <script>
-      // Ensure the Netlify Identity widget is loaded
+      // Auth Redirect Logic
       if (window.netlifyIdentity) {
-        
-        // 1. Listen for the 'init' event
         window.netlifyIdentity.on("init", user => {
           if (!user) {
             window.netlifyIdentity.on("login", () => {
-              // If a user logs in via the main site (e.g. invite link), send them to admin
               document.location.href = "/admin/";
             });
           }
         });
-
-        // 2. Initialize the widget explicitly
-        window.netlifyIdentity.init();
-
-        // 3. Force open the widget if a token is present in the URL
-        // This catches cases where the redirect might have confused the auto-detection
+        
+        // Check for recovery token
         if (window.location.hash.includes("recovery_token") || window.location.hash.includes("invite_token")) {
-           console.log("Recovery/Invite token detected, opening widget...");
            window.netlifyIdentity.open();
         }
       }
+
+      // Sticky Header Scroll Effect
+      window.addEventListener('scroll', () => {
+          const header = document.getElementById('siteHeader');
+          if (header) {
+            if (window.scrollY > 20) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+          }
+      });
     </script>
   </body>
 </html>

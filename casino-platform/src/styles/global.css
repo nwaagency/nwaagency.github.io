@@ -1,4 +1,6 @@
-/* 1. GLOBAL VARIABLES & RESET */
+/* ============================
+   1. GLOBAL VARIABLES & RESET ("Dark Luxury" Theme)
+   ============================ */
 :root {
   --bg-body: #121212;
   --bg-card: #1b1b1b;
@@ -17,7 +19,6 @@
   
   --text-white: #ffffff;
   --text-grey: #b0b0b0;
-  --text-muted: #6e6e6e;
   
   --font-main: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   --icon-size: 28px;
@@ -42,6 +43,9 @@ body {
   font-family: var(--font-main);
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 a {
@@ -52,9 +56,13 @@ a {
 
 ul {
   list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
-/* Animations */
+/* ============================
+   ANIMATIONS KEYFRAMES
+   ============================ */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(30px); }
   to { opacity: 1; transform: translateY(0); }
@@ -77,3 +85,8 @@ ul {
   margin: 0 auto;
   padding: 0 20px;
 }
+
+/* Utility Classes for Template Match */
+.text-gold { color: var(--brand-gold); }
+.font-bold { font-weight: 700; }
+.uppercase { text-transform: uppercase; }
