@@ -147,14 +147,14 @@ collections:
             widget: "select"
             multiple: true
             options: ["Slots", "Live Casino", "Table Games", "Jackpots", "Poker", "Sportsbook"]
-            default: ["Slots"]
+            default: ["Slots", "Live Casino", "Table Games", "Jackpots", "Poker", "Sportsbook"]
             required: true
           - {label: "Games Count", name: "game_count", widget: "number", value_type: "int", required: false}
           - label: "Providers"
             name: "providers_list"
             widget: "list"
             summary: "{{data_ref}} {{custom_name}}"
-            default: []
+            default: ["data_ref: MicroGaming","data_ref: NetEnt","data_ref: Play'n GO","data_ref: Pragmatic Play","data_ref: Thunderkick"]
             fields:
               - {label: "Select Provider", name: "data_ref", widget: "relation", collection: "providers", search_fields: ["name"], value_field: "name", display_fields: ["name"], required: false}
               - {label: "Custom Name", name: "custom_name", widget: "string", required: false}
