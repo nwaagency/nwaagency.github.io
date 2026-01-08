@@ -26,7 +26,7 @@ const casinosCollection = defineCollection({
     core_identity: z.object({
       isActive: z.boolean().default(true),
       name: z.string(),
-      date: z.string().date()
+      date: z.date()
     }),
 
     // Group 2: Ranking & Visibility
