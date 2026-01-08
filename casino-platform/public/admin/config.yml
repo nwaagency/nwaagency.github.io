@@ -1,7 +1,7 @@
 backend:
   name: git-gateway
   branch: main
-
+local_backend: true
 site_url: "https://nexoraweb.agency"
 display_url: "nexoraweb.agency"
 logo_url: "https://placehold.co/200x50/111/D4AF37?text=CASINO+CRM" 
@@ -11,7 +11,7 @@ public_folder: "/uploads"
 
 # UI Settings: Full width editor, no split screen
 editor:
-  preview: false 
+  preview: true 
 
 collections:
   # 1. BANKING MASTER LIST
