@@ -19,21 +19,23 @@ The Casino Platform is built on a **JAMstack** architecture, leveraging **Astro 
 5. **Distribution:** The final build is deployed to GitHub Pages (or any static host), serving content via CDN.
 
 ### **1.2 Architecture Diagram**
+```mermaid
+ graph TD
+    User[Content Editor] -->|Updates Content| CMS[Decap CMS / Admin UI]
+    CMS -->|Commits Markdown/JSON| Repo[GitHub Repository]
+    Repo -->|Triggers| Action[GitHub Actions CI]
+    
+    subgraph "Build Pipeline (Astro 5.x)"
+        Action -->|Fetches Data| Collections[Content Collections]
+        Collections -->|Validates Schema| Zod[Zod Validation]
+        Zod -->|Generates Pages| SSG[Static Site Generator]
+    end
+    
+    SSG -->|Outputs| Dist[./dist Folder]
+    Dist -->|Deploys to| Hosting[GitHub Pages / CDN]
+    Hosting -->|Serves HTML| EndUser[Site Visitor]
+```
 
-graph TD  
-    User\[Content Editor\] \--\>|Updates Content| CMS\[Decap CMS / Admin UI\]  
-    CMS \--\>|Commits Markdown/JSON| Repo\[GitHub Repository\]  
-    Repo \--\>|Triggers| Action\[GitHub Actions CI\]  
-      
-    subgraph "Build Pipeline (Astro 5.x)"  
-        Action \--\>|Fetches Data| Collections\[Content Collections\]  
-        Collections \--\>|Validates Schema| Zod\[Zod Validation\]  
-        Zod \--\>|Generates Pages| SSG\[Static Site Generator\]  
-    end  
-      
-    SSG \--\>|Outputs| Dist\[./dist Folder\]  
-    Dist \--\>|Deploys to| Hosting\[GitHub Pages / CDN\]  
-    Hosting \--\>|Serves HTML| EndUser\[Site Visitor\]
 
 ## **2\. System Components**
 
@@ -48,7 +50,7 @@ graph TD
 | **Runtime** | Node.js (v18+) | Development environment and build runner. |
 
 ### **2.2 Directory Structure**
-
+```
 /  
 ├── .github/workflows/    \# CI/CD pipelines (deploy.yml)  
 ├── public/  
@@ -68,6 +70,8 @@ graph TD
 │   └── styles/           \# Global CSS (Tailwind imports)  
 ├── astro.config.mjs      \# Astro configuration  
 └── package.json          \# Dependencies and scripts
+```
+
 
 ## **3\. Functional Overview**
 
@@ -147,6 +151,7 @@ All data models are strictly typed and validated at build time. Failure to adher
 ### **5.1 Internal Build API (Astro)**
 
 Developers access content using Astro's internal modules.
+```
 
 import { getCollection, getEntry } from 'astro:content';
 
@@ -163,6 +168,7 @@ const casino \= allCasinos\[0\];
 const bankingMethods \= await Promise.all(  
   casino.data.bank\_id.map(id \=\> getEntry(id))  
 );
+```
 
 ### **5.2 CMS Configuration (config.yml)**
 
@@ -190,14 +196,16 @@ All commands are run from the project root.
 
 1. **Prerequisites:** Node.js v18.14.1 or higher, Git.  
 2. **Clone Repository:**  
-   git clone \[https://github.com/nwaagency/nwaagency.github.io.git\](https://github.com/nwaagency/nwaagency.github.io.git)  
+```
+   git clone [https://github.com/nwaagency/nwaagency.github.io.git\](https://github.com/nwaagency/nwaagency.github.io.git)  
    cd casino-platform
+```
 
 3. **Install Dependencies:**  
-   npm install
+   `npm install`
 
 4. **Start Server:**  
-   npm run dev
+   `npm run dev`
 
 ### **7.2 Managing Content (Content Editors)**
 
