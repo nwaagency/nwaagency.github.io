@@ -43,28 +43,88 @@
     .delay-300 { transition-delay: 300ms; }
     .delay-400 { transition-delay: 400ms; }
 
-    /* 2. Hero Background Glow Effects */
+    /* 2. Modern Interactive Hero */
     .hero-wrapper {
       position: relative;
-    }
-    
-    .hero-glow {
-      position: absolute;
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, rgba(187,134,252,0.15) 0%, rgba(18,17,18,0) 70%);
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      border-radius: 50%;
-      z-index: -1;
-      pointer-events: none;
-      animation: pulseGlow 6s infinite alternate ease-in-out;
+      min-height: 85vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      border-bottom: 1px solid var(--color-border-subtle);
     }
 
-    @keyframes pulseGlow {
-      0% { transform: translate(-50%, -50%) scale(0.8); opacity: 0.5; }
-      100% { transform: translate(-50%, -50%) scale(1.1); opacity: 1; }
+    .hero-bg-grid {
+      position: absolute;
+      inset: 0;
+      background-size: 40px 40px;
+      background-image:
+        linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      mask-image: linear-gradient(to bottom, black 30%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to bottom, black 30%, transparent 100%);
+      z-index: 0;
+    }
+
+    .hero-mouse-glow {
+      position: absolute;
+      width: 800px;
+      height: 800px;
+      background: radial-gradient(circle, rgba(187, 134, 252, 0.12) 0%, transparent 60%);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 0;
+      transform: translate(-50%, -50%);
+      left: 50%; /* Default center */
+      top: 50%;
+      transition: top 0.1s ease-out, left 0.1s ease-out; /* Smooth cursor tracking */
+    }
+
+    .hero.container {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding-top: 4rem;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      border-radius: 50px;
+      background: rgba(187, 134, 252, 0.08);
+      border: 1px solid rgba(187, 134, 252, 0.2);
+      color: var(--color-primary-accent);
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      margin-bottom: 2rem;
+      letter-spacing: 0.5px;
+    }
+
+    .text-gradient {
+      background: linear-gradient(135deg, #FFFFFF 20%, var(--color-primary-accent) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .hero h1 {
+      font-size: clamp(3rem, 6vw, 5rem);
+      max-width: 900px;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h2 {
+      font-size: clamp(1.1rem, 2vw, 1.25rem);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .hero .cta-group {
+      justify-content: center;
+      margin-top: 2.5rem;
     }
 
     /* 3. Continuous Floating Animations for Icons */
@@ -150,13 +210,15 @@
        MAIN CONTENT: HOME PAGE
        ============================================== -->
   <main>
-    <!-- Component 1: Hero Section -->
-    <div class="hero-wrapper">
-      <div class="hero-glow"></div>
+    <!-- Component 1: Modern Hero Section -->
+    <div class="hero-wrapper" id="hero-wrapper">
+      <div class="hero-bg-grid"></div>
+      <div class="hero-mouse-glow" id="hero-mouse-glow"></div>
       <section class="hero container">
-        <h1 class="reveal">Your Digital Vision, Engineered.</h1>
-        <h2 class="reveal delay-100">High-performance web, mobile, and data solutions for modern businesses.</h2>
-        <div class="cta-group reveal delay-200">
+        <div class="hero-badge reveal">Data-Driven Digital Solutions</div>
+        <h1 class="reveal delay-100">Your <span class="text-gradient">Digital Vision</span>,<br>Engineered.</h1>
+        <h2 class="reveal delay-200">High-performance web, mobile, and data solutions for modern businesses.</h2>
+        <div class="cta-group reveal delay-300">
           <a href="/quote.html" class="btn-primary">Start a Project</a>
           <a href="/services.html" class="btn-secondary">View Services</a>
         </div>
@@ -286,6 +348,27 @@
             card.style.setProperty("--mouse-x", `${x}px`);
             card.style.setProperty("--mouse-y", `${y}px`);
           }
+        });
+      }
+
+      // 3. Hero Mouse Glow Tracking
+      const heroWrapper = document.getElementById('hero-wrapper');
+      const heroGlow = document.getElementById('hero-mouse-glow');
+
+      if (heroWrapper && heroGlow) {
+        heroWrapper.addEventListener('mousemove', (e) => {
+          const rect = heroWrapper.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          
+          heroGlow.style.left = `${x}px`;
+          heroGlow.style.top = `${y}px`;
+        });
+
+        // Re-center glow when mouse leaves the hero section
+        heroWrapper.addEventListener('mouseleave', () => {
+          heroGlow.style.left = '50%';
+          heroGlow.style.top = '50%';
         });
       }
     });
