@@ -1,174 +1,172 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="View featured projects and engineering work by Nexora Web Agency.">
-  <title>Featured Projects | Nexora Web Agency</title>
 
-  <link rel="stylesheet" href="/assets/css/global.css">
-  <link rel="stylesheet" href="/assets/css/utilities.css">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="View featured projects and engineering work by Nexora Web Agency.">
+        <title>Featured Projects | Nexora Web Agency</title>
+        <link rel="stylesheet" href="/assets/css/global.css">
+        <link rel="stylesheet" href="/assets/css/utilities.css">
+        <style>
+            .page-header {
+                padding: 6rem 0 4rem;
+                text-align: center;
+            }
 
-  <style>
-    .page-header {
-      padding: 6rem 0 4rem;
-      text-align: center;
-    }
-    .page-header h1 {
-      font-size: 3rem;
-    }
-    
-    .project-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 2.5rem;
-      padding-bottom: 6rem;
-    }
+            .page-header h1 {
+                font-size: 3rem;
+            }
 
-    .project-card {
-      background-color: var(--color-bg-surface);
-      border: 1px solid var(--color-border-subtle);
-      border-radius: 8px;
-      overflow: hidden;
-      display: block;
-      transition: transform var(--transition-speed) ease, border-color var(--transition-speed) ease;
-    }
+            .project-grid {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2.5rem;
+                padding-bottom: 6rem;
+            }
 
-    .project-card:hover {
-      transform: translateY(-5px);
-      border-color: var(--color-primary-accent);
-    }
+            .project-card {
+                background-color: var(--color-bg-surface);
+                border: 1px solid var(--color-border-subtle);
+                border-radius: 8px;
+                overflow: hidden;
+                display: block;
+                transition: transform var(--transition-speed) ease, border-color var(--transition-speed) ease;
+            }
 
-    .project-image {
-      width: 100%;
-      height: 250px;
-      object-fit: cover;
-      background-color: #2a2a2a; /* Placeholder */
-      border-bottom: 1px solid var(--color-border-subtle);
-    }
+            .project-card:hover {
+                transform: translateY(-5px);
+                border-color: var(--color-primary-accent);
+            }
 
-    .project-info {
-      padding: 2rem;
-    }
+            .project-image {
+                width: 100%;
+                height: 250px;
+                object-fit: cover;
+                background-color: #2a2a2a;
+                /* Placeholder */
+                border-bottom: 1px solid var(--color-border-subtle);
+            }
 
-    .project-info h3 {
-      font-size: 1.5rem;
-      margin-bottom: 0.5rem;
-      color: #fff;
-    }
+            .project-info {
+                padding: 2rem;
+            }
 
-    .project-tags {
-      display: flex;
-      gap: 0.5rem;
-      margin-bottom: 1rem;
-    }
+            .project-info h3 {
+                font-size: 1.5rem;
+                margin-bottom: 0.5rem;
+                color: #fff;
+            }
 
-    .tag {
-      font-family: var(--font-mono);
-      font-size: 0.8rem;
-      color: var(--color-primary-accent);
-      background-color: rgba(187, 134, 252, 0.1);
-      padding: 0.25rem 0.5rem;
-      border-radius: 4px;
-    }
+            .project-tags {
+                display: flex;
+                gap: 0.5rem;
+                margin-bottom: 1rem;
+            }
 
-    @media (max-width: 768px) {
-      .project-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
-</head>
-<body>
+            .tag {
+                font-family: var(--font-mono);
+                font-size: 0.8rem;
+                color: var(--color-primary-accent);
+                background-color: rgba(187, 134, 252, 0.1);
+                padding: 0.25rem 0.5rem;
+                border-radius: 4px;
+            }
 
-  <header class="site-header">
-    <div class="container header-inner">
-      <a href="/" class="logo-text">Nexora<span>.</span></a>
-      <nav class="main-nav">
-        <ul>
-          <li><a href="/">Home</a></li>
-          <li><a href="/about.html">About</a></li>
-          <li><a href="/services.html">Services</a></li>
-          <li><a href="/projects.html">Projects</a></li>
-          <li><a href="/contact.html">Contact</a></li>
-        </ul>
-      </nav>
-      <div class="header-cta"><a href="/quote.html" class="btn-primary">Get a Quote</a></div>
-    </div>
-  </header>
+            @media (max-width: 768px) {
+                .project-grid {
+                    grid-template-columns: 1fr;
+                }
+            }
+        </style>
+    </head>
 
-  <main>
-    <section class="page-header container">
-      <h1>Featured Projects</h1>
-      <p style="color: var(--color-text-secondary); max-width: 600px; margin: 1rem auto 0;">A selection of recent work showcasing our expertise across web solutions and data analytics.</p>
-    </section>
+    <body>
+        <header class="site-header">
+            <div class="container header-inner">
+                <a href="/" class="logo-text">Nexora<span>.</span></a>
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/about.html">About</a></li>
+                        <li><a href="/services.html">Services</a></li>
+                        <li><a href="/projects.html">Projects</a></li>
+                        <li><a href="/contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+                <div class="header-cta"><a href="/quote.html" class="btn-primary">Get a Quote</a></div>
+            </div>
+        </header>
+        <main>
+            <section class="page-header container">
+                <h1>Featured Projects</h1>
+                <p style="color: var(--color-text-secondary); max-width: 600px; margin: 1rem auto 0;">A selection of recent work showcasing our expertise across web solutions and data analytics.</p>
+            </section>
+            <section class="container project-grid">
+                <!-- Project Card 1 -->
+                <a href="#" class="project-card">
+                    <!-- Developer Note: Place actual image in /public/images/projects/bush-creek-mockup.webp -->
+                    <img src="/images/projects/bush-creek-mockup.webp" alt="Bush Creek Guest House Mockup" class="project-image" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 400 250\' fill=\'%231a1a1a\'><rect width=\'400\' height=\'250\'/></svg>'">
+                    <div class="project-info">
+                        <h3>Bush Creek Guest House</h3>
+                        <div class="project-tags">
+                            <span class="tag">Web Solutions</span>
+                            <span class="tag">SEO</span>
+                        </div>
+                        <p style="color: var(--color-text-secondary); font-size: 0.95rem;">COMING SOON</p>
+                    </div>
+                </a>
+                <!-- Project Card 2 -->
+                <a href="#" class="project-card">
+                    <!-- Developer Note: Place actual image in /public/images/projects/cemex-dashboard.webp -->
+                    <img src="/images/projects/cemex-dashboard.webp" alt="CEMEX Project Integrated Dashboard" class="project-image" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 400 250\' fill=\'%231a1a1a\'><rect width=\'400\' height=\'250\'/></svg>'">
+                    <div class="project-info">
+                        <h3>CEMEX Project Integrated</h3>
+                        <div class="project-tags">
+                            <span class="tag">Data Engineering</span>
+                            <span class="tag">Automation</span>
+                        </div>
+                        <p style="color: var(--color-text-secondary); font-size: 0.95rem;">COMING SOON</p>
+                    </div>
+                </a>
+            </section>
+        </main>
+        <footer class="site-footer">
+            <div class="container">
+                <div class="footer-grid">
+                    <div class="footer-col">
+                        <h3>Nexora Web Agency</h3>
+                        <p>Digital Clarity, Delivered.</p>
+                        <p>Your Digital Vision, Engineered.</p>
+                    </div>
+                    <div class="footer-col">
+                        <h3>Quick Links</h3>
+                        <nav>
+                            <a href="/services.html">Services</a>
+                            <a href="/projects.html">Projects</a>
+                            <a href="/about.html">About Us</a>
+                            <a href="/contact.html">Contact</a>
+                            <a href="/quote.html">Get a Quote</a>
+                        </nav>
+                    </div>
+                    <div class="footer-col">
+                        <h3>Contact Us</h3>
+                        <p>Cape Town, South Africa</p>
+                        <a href="tel:+27715332762">+27 71 533 2762</a>
+                        <a href="mailto:joshua.stevenson.100703@gmail.com">joshua.stevenson.100703@gmail.com</a>
+                    </div>
+                    <div class="footer-col">
+                        <h3>Follow Us</h3>
+                        <a href="https://www.linkedin.com/in/joshua-trevor-stevenson" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy;
+                        <script>document.write(new Date().getFullYear())</script> Nexora Web Agency. All rights reserved.
+                    </p>
+                </div>
+            </div>
+        </footer>
+    </body>
 
-    <section class="container project-grid">
-      
-      <!-- Project Card 1 -->
-      <a href="#" class="project-card">
-        <!-- Developer Note: Place actual image in /public/images/projects/bush-creek-mockup.webp -->
-        <img src="/images/projects/bush-creek-mockup.webp" alt="Bush Creek Guest House Mockup" class="project-image" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 400 250\' fill=\'%231a1a1a\'><rect width=\'400\' height=\'250\'/></svg>'">
-        <div class="project-info">
-          <h3>Bush Creek Guest House</h3>
-          <div class="project-tags">
-            <span class="tag">Web Solutions</span>
-            <span class="tag">SEO</span>
-          </div>
-          <p style="color: var(--color-text-secondary); font-size: 0.95rem;">A high-converting, localized web presence designed to boost bookings and increase search engine visibility for a hospitality client.</p>
-        </div>
-      </a>
-
-      <!-- Project Card 2 -->
-      <a href="#" class="project-card">
-        <!-- Developer Note: Place actual image in /public/images/projects/cemex-dashboard.webp -->
-        <img src="/images/projects/cemex-dashboard.webp" alt="CEMEX Project Integrated Dashboard" class="project-image" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 400 250\' fill=\'%231a1a1a\'><rect width=\'400\' height=\'250\'/></svg>'">
-        <div class="project-info">
-          <h3>CEMEX Project Integrated</h3>
-          <div class="project-tags">
-            <span class="tag">Data Engineering</span>
-            <span class="tag">Automation</span>
-          </div>
-          <p style="color: var(--color-text-secondary); font-size: 0.95rem;">An integrated analytics dashboard built to automate manual reporting workflows, significantly reducing error rates and processing times.</p>
-        </div>
-      </a>
-
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-col">
-          <h3>Nexora Web Agency</h3>
-          <p>Digital Clarity, Delivered.</p>
-          <p>Your Digital Vision, Engineered.</p>
-        </div>
-        <div class="footer-col">
-          <h3>Quick Links</h3>
-          <nav>
-            <a href="/services.html">Services</a>
-            <a href="/projects.html">Projects</a>
-            <a href="/about.html">About Us</a>
-            <a href="/contact.html">Contact</a>
-            <a href="/quote.html">Get a Quote</a>
-          </nav>
-        </div>
-        <div class="footer-col">
-          <h3>Contact Us</h3>
-          <p>Cape Town, South Africa</p>
-          <a href="tel:+27715332762">+27 71 533 2762</a>
-          <a href="mailto:joshua.stevenson.100703@gmail.com">joshua.stevenson.100703@gmail.com</a>
-        </div>
-        <div class="footer-col">
-          <h3>Follow Us</h3>
-          <a href="https://www.linkedin.com/in/joshua-trevor-stevenson" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>&copy; <script>document.write(new Date().getFullYear())</script> Nexora Web Agency. All rights reserved.</p>
-      </div>
-    </div>
-  </footer>
-</body>
 </html>
