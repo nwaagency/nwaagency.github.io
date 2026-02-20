@@ -4,7 +4,7 @@
   "private": true,
   "description": "Nexora Web Agency",
   "scripts": {
-    "build": "mkdir -p dist && cp -R src/* dist/ 2>/dev/null || true && cp -R public/* dist/ 2>/dev/null || true"
+    "build": "mkdir -p dist && cp -R src/pages/* dist/ 2>/dev/null || true && cp -R src/assets dist/assets 2>/dev/null || true && cp -R public/* dist/ 2>/dev/null || true"
   },
   "dependencies": {},
   "devDependencies": {}
