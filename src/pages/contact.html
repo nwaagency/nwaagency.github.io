@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contact Nexora Web Agency to discuss your digital and data engineering needs.">
+  <title>Contact Us | Nexora Web Agency</title>
+
+  <link rel="stylesheet" href="/assets/css/global.css">
+  <link rel="stylesheet" href="/assets/css/utilities.css">
+
+  <style>
+    .contact-section {
+      padding: 6rem 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+    }
+
+    .contact-info h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .info-list {
+      margin-top: 3rem;
+    }
+
+    .info-item {
+      margin-bottom: 2rem;
+    }
+
+    .info-item h4 {
+      color: var(--color-primary-accent);
+      font-size: 1rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .info-item p, .info-item a {
+      color: var(--color-text-primary);
+      font-size: 1.1rem;
+    }
+
+    .contact-form-wrapper {
+      background-color: var(--color-bg-surface);
+      padding: 3rem;
+      border-radius: 8px;
+      border: 1px solid var(--color-border-subtle);
+    }
+
+    .input-group {
+      margin-bottom: 1.5rem;
+    }
+    .input-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+      color: var(--color-text-secondary);
+    }
+    .input-group input, .input-group textarea {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      background-color: var(--color-bg-base);
+      border: 1px solid var(--color-border-subtle);
+      border-radius: 4px;
+      color: var(--color-text-primary);
+      font-family: var(--font-sans);
+      font-size: 1rem;
+    }
+    .input-group input:focus, .input-group textarea:focus {
+      outline: none;
+      border-color: var(--color-primary-accent);
+    }
+    .input-group textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    @media (max-width: 768px) {
+      .contact-section {
+        grid-template-columns: 1fr;
+      }
+      .contact-form-wrapper {
+        padding: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="/" class="logo-text">Nexora<span>.</span></a>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/about.html">About</a></li>
+          <li><a href="/services.html">Services</a></li>
+          <li><a href="/projects.html">Projects</a></li>
+          <li><a href="/contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="header-cta"><a href="/quote.html" class="btn-primary">Get a Quote</a></div>
+    </div>
+  </header>
+
+  <main class="container contact-section">
+    <!-- Left Column: Info -->
+    <div class="contact-info">
+      <h1>Let's Connect.</h1>
+      <p style="color: var(--color-text-secondary); font-size: 1.1rem;">Reach out directly for general inquiries, support, or to discuss a custom digital solution.</p>
+      
+      <div class="info-list">
+        <div class="info-item">
+          <h4>Email</h4>
+          <a href="mailto:joshua.stevenson.100703@gmail.com">joshua.stevenson.100703@gmail.com</a>
+        </div>
+        <div class="info-item">
+          <h4>Phone</h4>
+          <a href="tel:+27715332762">+27 71 533 2762</a>
+        </div>
+        <div class="info-item">
+          <h4>Location</h4>
+          <p>Cape Town, South Africa</p>
+        </div>
+        <div class="info-item">
+          <h4>Social</h4>
+          <a href="https://www.linkedin.com/in/joshua-trevor-stevenson" target="_blank" rel="noopener noreferrer">LinkedIn Profile</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Column: Form -->
+    <div class="contact-form-wrapper">
+      <form name="general-contact" method="POST" action="/thank-you.html" data-netlify="true" id="contact-form">
+        <input type="hidden" name="form-name" value="general-contact" />
+
+        <div class="input-group">
+          <label for="name">Your Name</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        
+        <div class="input-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+
+        <div class="input-group">
+          <label for="subject">Subject</label>
+          <input type="text" id="subject" name="subject" required>
+        </div>
+
+        <div class="input-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" required></textarea>
+        </div>
+
+        <button type="submit" class="btn-primary" style="width: 100%;">Send Message</button>
+      </form>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h3>Nexora Web Agency</h3>
+          <p>Digital Clarity, Delivered.</p>
+          <p>Your Digital Vision, Engineered.</p>
+        </div>
+        <div class="footer-col">
+          <h3>Quick Links</h3>
+          <nav>
+            <a href="/services.html">Services</a>
+            <a href="/projects.html">Projects</a>
+            <a href="/about.html">About Us</a>
+            <a href="/contact.html">Contact</a>
+            <a href="/quote.html">Get a Quote</a>
+          </nav>
+        </div>
+        <div class="footer-col">
+          <h3>Contact Us</h3>
+          <p>Cape Town, South Africa</p>
+          <a href="tel:+27715332762">+27 71 533 2762</a>
+          <a href="mailto:joshua.stevenson.100703@gmail.com">joshua.stevenson.100703@gmail.com</a>
+        </div>
+        <div class="footer-col">
+          <h3>Follow Us</h3>
+          <a href="https://www.linkedin.com/in/joshua-trevor-stevenson" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; <script>document.write(new Date().getFullYear())</script> Nexora Web Agency. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

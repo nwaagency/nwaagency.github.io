@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Learn about Nexora Web Agency and its founder, Joshua Stevenson, a Data Analytics Engineer based in Cape Town.">
+  <title>About Nexora & Founder Joshua Stevenson</title>
+
+  <!-- Global CSS -->
+  <link rel="stylesheet" href="/assets/css/global.css">
+  <link rel="stylesheet" href="/assets/css/utilities.css">
+
+  <style>
+    .page-header {
+      padding: 6rem 0 3rem;
+      text-align: center;
+      border-bottom: 1px solid var(--color-border-subtle);
+    }
+    
+    .profile-section {
+      padding: 5rem 0;
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 4rem;
+    }
+
+    .profile-sidebar {
+      background-color: var(--color-bg-surface);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--color-border-subtle);
+      text-align: center;
+    }
+
+    .profile-image {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 0 auto 1.5rem;
+      border: 2px solid var(--color-primary-accent);
+      background-color: var(--color-bg-base); /* Placeholder background */
+    }
+
+    .contact-links a {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-size: 0.95rem;
+      color: var(--color-text-secondary);
+    }
+
+    .contact-links a:hover {
+      color: var(--color-primary-accent);
+    }
+
+    .bio-content h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: var(--color-primary-accent);
+    }
+
+    /* Timeline Styles */
+    .timeline {
+      margin-top: 3rem;
+      padding-left: 1.5rem;
+      border-left: 2px solid var(--color-border-subtle);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 2rem;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -1.5rem;
+      top: 0.25rem;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background-color: var(--color-primary-accent);
+      transform: translateX(-50%);
+    }
+
+    .timeline-date {
+      font-size: 0.85rem;
+      color: var(--color-text-secondary);
+      font-family: var(--font-mono);
+      margin-bottom: 0.25rem;
+      display: block;
+    }
+
+    .timeline-title {
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: #fff;
+    }
+
+    /* Skills Tags */
+    .skills-matrix {
+      margin-top: 3rem;
+    }
+    .skill-tag {
+      display: inline-block;
+      background-color: rgba(187, 134, 252, 0.1);
+      color: var(--color-primary-accent);
+      padding: 0.4rem 0.8rem;
+      border-radius: 4px;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      margin: 0 0.5rem 0.5rem 0;
+      border: 1px solid rgba(187, 134, 252, 0.3);
+    }
+
+    @media (max-width: 768px) {
+      .profile-section {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="/" class="logo-text">Nexora<span>.</span></a>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/about.html">About</a></li>
+          <li><a href="/services.html">Services</a></li>
+          <li><a href="/projects.html">Projects</a></li>
+          <li><a href="/contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="header-cta"><a href="/quote.html" class="btn-primary">Get a Quote</a></div>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-header container">
+      <h1>About Nexora Web Agency</h1>
+    </section>
+
+    <section class="profile-section container">
+      <!-- Left Column: Sidebar -->
+      <aside class="profile-sidebar">
+        <!-- Developer Note: Place actual image in /public/images/founder/joshua-stevenson.webp -->
+        <img src="/images/founder/joshua-stevenson.webp" alt="Joshua Stevenson" class="profile-image" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 150 150\' fill=\'%23121112\'><rect width=\'150\' height=\'150\'/></svg>'">
+        <h3 style="margin-bottom: 0.5rem;">Joshua Stevenson</h3>
+        <p style="color: var(--color-text-secondary); font-size: 0.9rem; margin-bottom: 1.5rem;">Cape Town, South Africa</p>
+        
+        <div class="contact-links">
+          <a href="mailto:joshua.stevenson.100703@gmail.com">joshua.stevenson.100703@gmail.com</a>
+          <a href="tel:+27715332762">+27 71 533 2762</a>
+          <a href="https://www.linkedin.com/in/joshua-trevor-stevenson" target="_blank" rel="noopener noreferrer" style="color: var(--color-primary-accent); margin-top: 1rem; font-weight: 600;">View LinkedIn &rarr;</a>
+        </div>
+      </aside>
+
+      <!-- Right Column: Bio & Experience -->
+      <div class="bio-content">
+        <h2>Founder & Data Analytics Engineer</h2>
+        <p>Joshua Stevenson is a dynamic Data Analytics Engineer with over 2 years of experience delivering high-impact data solutions across the financial services, media, and marketing sectors. He specialises in transforming complex datasets into actionable business intelligence through expert data visualisation, database querying, and process automation.</p>
+        <p>With a technical foundation in Computer Science and Data Science, Joshua has a proven track record of optimising workflows and building robust reporting pipelines that drive efficiency and data-informed decision-making.</p>
+
+        <!-- Experience Timeline -->
+        <h3 style="margin-top: 3rem; border-bottom: 1px solid var(--color-border-subtle); padding-bottom: 0.5rem;">Professional Experience</h3>
+        <div class="timeline">
+          <div class="timeline-item">
+            <span class="timeline-date">Sep 2025 – Present</span>
+            <div class="timeline-title">Data Specialist</div>
+          </div>
+          <div class="timeline-item">
+            <span class="timeline-date">May 2025 – Sep 2025</span>
+            <div class="timeline-title">Growth Analyst</div>
+          </div>
+          <div class="timeline-item">
+            <span class="timeline-date">Jan 2025 – May 2025</span>
+            <div class="timeline-title">Data Engineer (Financial Services)</div>
+          </div>
+          <div class="timeline-item">
+            <span class="timeline-date">Dec 2023 – Jan 2025</span>
+            <div class="timeline-title">Data Analyst</div>
+          </div>
+          <div class="timeline-item">
+            <span class="timeline-date">Dec 2022 – Dec 2023</span>
+            <div class="timeline-title">Junior Data Analyst</div>
+          </div>
+          <div class="timeline-item">
+            <span class="timeline-date">Jun 2022 – Dec 2022</span>
+            <div class="timeline-title">Business Intelligence Intern</div>
+          </div>
+        </div>
+
+        <!-- Education & Skills -->
+        <div class="skills-matrix">
+          <h3 style="border-bottom: 1px solid var(--color-border-subtle); padding-bottom: 0.5rem; margin-bottom: 1.5rem;">Education & Technical Arsenal</h3>
+          <p style="margin-bottom: 1rem;"><strong>BSc Computer Science & Data Science</strong> — Stellenbosch University</p>
+          <div>
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">SQL</span>
+            <span class="skill-tag">BigQuery</span>
+            <span class="skill-tag">Tableau</span>
+            <span class="skill-tag">GA4</span>
+            <span class="skill-tag">GTM</span>
+            <span class="skill-tag">Aspera</span>
+            <span class="skill-tag">Signiant</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h3>Nexora Web Agency</h3>
+          <p>Digital Clarity, Delivered.</p>
+          <p>Your Digital Vision, Engineered.</p>
+        </div>
+        <div class="footer-col">
+          <h3>Quick Links</h3>
+          <nav>
+            <a href="/services.html">Services</a>
+            <a href="/projects.html">Projects</a>
+            <a href="/about.html">About Us</a>
+            <a href="/contact.html">Contact</a>
+            <a href="/quote.html">Get a Quote</a>
+          </nav>
+        </div>
+        <div class="footer-col">
+          <h3>Contact Us</h3>
+          <p>Cape Town, South Africa</p>
+          <a href="tel:+27715332762">+27 71 533 2762</a>
+          <a href="mailto:joshua.stevenson.100703@gmail.com">joshua.stevenson.100703@gmail.com</a>
+        </div>
+        <div class="footer-col">
+          <h3>Follow Us</h3>
+          <a href="https://www.linkedin.com/in/joshua-trevor-stevenson" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; <script>document.write(new Date().getFullYear())</script> Nexora Web Agency. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
