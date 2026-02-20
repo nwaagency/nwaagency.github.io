@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Request a custom digital blueprint from Nexora Web Agency.">
+  <title>Get a Quote | Nexora Web Agency</title>
+
+  <!-- Global CSS -->
+  <link rel="stylesheet" href="/assets/css/global.css">
+  <link rel="stylesheet" href="/assets/css/utilities.css">
+
+  <style>
+    /* Quote Form Specific Styles */
+    .quote-section {
+      padding: 4rem 0 8rem;
+    }
+    .quote-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    .form-container {
+      max-width: 700px;
+      margin: 0 auto;
+      background-color: var(--color-bg-surface);
+      padding: 3rem;
+      border-radius: 8px;
+      border: 1px solid var(--color-border-subtle);
+    }
+    
+    /* Progress Indicator */
+    .form-progress {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 2rem;
+      position: relative;
+    }
+    .form-progress::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: var(--color-border-subtle);
+      z-index: 1;
+      transform: translateY(-50%);
+    }
+    .progress-step {
+      width: 30px;
+      height: 30px;
+      background-color: var(--color-bg-base);
+      border: 2px solid var(--color-border-subtle);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 0.85rem;
+      color: var(--color-text-secondary);
+      position: relative;
+      z-index: 2;
+      transition: all var(--transition-speed) ease;
+    }
+    .progress-step.active {
+      border-color: var(--color-primary-accent);
+      color: var(--color-primary-accent);
+      background-color: rgba(187, 134, 252, 0.1);
+    }
+    .progress-step.completed {
+      background-color: var(--color-primary-accent);
+      border-color: var(--color-primary-accent);
+      color: #000;
+    }
+
+    /* Form Steps & Inputs */
+    .form-step {
+      display: none;
+      animation: fadeIn 0.4s ease forwards;
+    }
+    .form-step.active {
+      display: block;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .form-step h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+      color: #fff;
+    }
+
+    /* Custom Checkboxes & Radios */
+    .selection-grid {
+      display: grid;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .selection-label {
+      display: flex;
+      align-items: center;
+      padding: 1rem 1.5rem;
+      border: 1px solid var(--color-border-subtle);
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-weight: 500;
+    }
+    .selection-label:hover {
+      border-color: var(--color-text-secondary);
+    }
+    .selection-label input {
+      margin-right: 1rem;
+      transform: scale(1.2);
+      accent-color: var(--color-primary-accent);
+    }
+    /* Highlight label when input is checked via JS logic or CSS wrapper (simplified here) */
+    .selection-label:has(input:checked) {
+      border-color: var(--color-primary-accent);
+      background-color: rgba(187, 134, 252, 0.05);
+    }
+
+    /* Standard Inputs */
+    .input-group {
+      margin-bottom: 1.5rem;
+    }
+    .input-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+      color: var(--color-text-secondary);
+    }
+    .input-group input, .input-group textarea {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      background-color: var(--color-bg-base);
+      border: 1px solid var(--color-border-subtle);
+      border-radius: 4px;
+      color: var(--color-text-primary);
+      font-family: var(--font-sans);
+      font-size: 1rem;
+      transition: border-color 0.2s ease;
+    }
+    .input-group input:focus, .input-group textarea:focus {
+      outline: none;
+      border-color: var(--color-primary-accent);
+    }
+    .input-group textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .form-actions {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--color-border-subtle);
+    }
+    
+    @media (max-width: 768px) {
+      .form-container {
+        padding: 2rem 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==============================================
+       HEADER COMPONENT (Copied for static HTML)
+       ============================================== -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="/" class="logo-text">Nexora<span>.</span></a>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/about.html">About</a></li>
+          <li><a href="/services.html">Services</a></li>
+          <li><a href="/projects.html">Projects</a></li>
+          <li><a href="/contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="header-cta">
+        <a href="/quote.html" class="btn-primary">Get a Quote</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==============================================
+       MAIN CONTENT: MULTI-STEP QUOTE FORM
+       ============================================== -->
+  <main class="quote-section container">
+    <div class="quote-header">
+      <h1>Let's Build Something Great.</h1>
+      <p style="color: var(--color-text-secondary); max-width: 600px; margin: 1rem auto 0;">Tell us about your digital vision, and we'll engineer a custom blueprint tailored to your exact needs.</p>
+    </div>
+
+    <div class="form-container">
+      <!-- Progress Bar -->
+      <div class="form-progress">
+        <div class="progress-step active" id="indicator-1">1</div>
+        <div class="progress-step" id="indicator-2">2</div>
+        <div class="progress-step" id="indicator-3">3</div>
+      </div>
+
+      <!-- Netlify Form -->
+      <form name="quote-request" method="POST" action="/thank-you.html" data-netlify="true" id="quote-form">
+        <!-- Hidden input helps Netlify securely parse the form name -->
+        <input type="hidden" name="form-name" value="quote-request" />
+
+        <!-- STEP 1: Service Selection -->
+        <div class="form-step active" id="step-1">
+          <h3>What services are you looking for?</h3>
+          <div class="selection-grid">
+            <label class="selection-label">
+              <input type="checkbox" name="services" value="Web Development"> Custom Website Development
+            </label>
+            <label class="selection-label">
+              <input type="checkbox" name="services" value="Mobile App"> Mobile Application
+            </label>
+            <label class="selection-label">
+              <input type="checkbox" name="services" value="Data Analytics"> Data & Analytics Engineering
+            </label>
+            <label class="selection-label">
+              <input type="checkbox" name="services" value="SEO"> Advanced SEO Optimisation
+            </label>
+            <label class="selection-label">
+              <input type="checkbox" name="services" value="Retainer"> Monthly Support Retainer
+            </label>
+          </div>
+          <div class="form-actions" style="justify-content: flex-end;">
+            <button type="button" class="btn-primary btn-next">Next Step</button>
+          </div>
+        </div>
+
+        <!-- STEP 2: Scope & Budget -->
+        <div class="form-step" id="step-2">
+          <h3>What is your estimated budget?</h3>
+          <div class="selection-grid">
+            <label class="selection-label">
+              <input type="radio" name="budget" value="Template (R500-R2000)" required> 
+              Rapid Template (R500 – R2,000)
+            </label>
+            <label class="selection-label">
+              <input type="radio" name="budget" value="Custom Web (R3k-R10k)"> 
+              Custom Web Solution (R3,000 – R10,000)
+            </label>
+            <label class="selection-label">
+              <input type="radio" name="budget" value="Custom Data/App"> 
+              Custom Data or Mobile App Project (Let's Talk)
+            </label>
+          </div>
+          <div class="form-actions">
+            <button type="button" class="btn-secondary btn-prev">Back</button>
+            <button type="button" class="btn-primary btn-next">Next Step</button>
+          </div>
+        </div>
+
+        <!-- STEP 3: Client Details -->
+        <div class="form-step" id="step-3">
+          <h3>Tell us about you & your project</h3>
+          
+          <div class="input-group">
+            <label for="clientName">Full Name *</label>
+            <input type="text" id="clientName" name="name" required placeholder="Jane Doe">
+          </div>
+          
+          <div class="input-group">
+            <label for="companyName">Company / Project Name</label>
+            <input type="text" id="companyName" name="company" placeholder="Acme Corp">
+          </div>
+          
+          <div class="input-group">
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" name="email" required placeholder="jane@example.com">
+          </div>
+          
+          <div class="input-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="+27 71 123 4567">
+          </div>
+
+          <div class="input-group">
+            <label for="projectBrief">Project Brief *</label>
+            <textarea id="projectBrief" name="brief" required placeholder="Briefly describe your goals, current pain points, and what you hope to achieve..."></textarea>
+          </div>
+
+          <div class="form-actions">
+            <button type="button" class="btn-secondary btn-prev">Back</button>
+            <button type="submit" class="btn-primary">Request Custom Blueprint</button>
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </main>
+
+  <!-- ==============================================
+       FOOTER COMPONENT
+       ============================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h3>Nexora Web Agency</h3>
+          <p>Digital Clarity, Delivered.</p>
+          <p>Your Digital Vision, Engineered.</p>
+        </div>
+        <div class="footer-col">
+          <h3>Quick Links</h3>
+          <nav>
+            <a href="/services.html">Services</a>
+            <a href="/projects.html">Projects</a>
+            <a href="/about.html">About Us</a>
+            <a href="/contact.html">Contact</a>
+            <a href="/quote.html">Get a Quote</a>
+          </nav>
+        </div>
+        <div class="footer-col">
+          <h3>Contact Us</h3>
+          <p>Cape Town, South Africa</p>
+          <a href="tel:+27715332762">+27 71 533 2762</a>
+          <a href="mailto:joshua.stevenson.100703@gmail.com">joshua.stevenson.100703@gmail.com</a>
+        </div>
+        <div class="footer-col">
+          <h3>Follow Us</h3>
+          <a href="https://www.linkedin.com/in/joshua-trevor-stevenson" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; <script>document.write(new Date().getFullYear())</script> Nexora Web Agency. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Link the forms logic script -->
+  <script src="/assets/js/forms.js"></script>
+</body>
+</html>
