@@ -40,29 +40,7 @@
 /* ==========================================================================
    Service Cards
    ========================================================================== */
-.section-title {
-  font-size: 2.5rem;
-  margin-bottom: 3rem;
-  text-align: center;
-}
 
-
-.service-icon {
-  width: 48px;
-  height: 48px;
-  margin-bottom: 1.5rem;
-  color: var(--color-primary-accent);
-}
-
-.service-card h3 {
-  font-size: 1.25rem;
-  margin-bottom: 1rem;
-}
-
-.service-card p {
-  color: var(--color-text-secondary);
-  font-size: 0.95rem;
-}
 
 /* ==========================================================================
    Founder Snippet & Global CTA
