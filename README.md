@@ -26,6 +26,7 @@ The project solves the need for a lightning-fast, SEO-optimized, and highly secu
 ## **Architecture**
 
 ### **Project Structure**
+```
 
 ├── netlify.toml               \# Edge configuration, security headers, and routing rules  
 ├── package.json               \# Build orchestration  
@@ -40,6 +41,7 @@ The project solves the need for a lightning-fast, SEO-optimized, and highly secu
     │   └── global/            \# Extracted UI components (Header.html, Footer.html)  
     └── pages/                 \# Core route pages (index, about, contact, etc.)  
         └── services/          \# Individual nested service pages
+```
 
 ### **Application Flow**
 
@@ -59,17 +61,17 @@ The project solves the need for a lightning-fast, SEO-optimized, and highly secu
 ### **Setup**
 
 1. **Clone the repository**  
-   git clone \<repository-url\>  
-   cd nwaagency.github.io
+   `git clone \<repository-url\> ` 
+   `cd nwaagency.github.io`
 
 2. **Install dependencies** *(Note: This project relies entirely on native system commands for the build, so no heavy node\_modules are required.)*  
-   npm install
+   `npm install`
 
 3. **Build the project**  
-   npm run build
+   `npm run build`
 
 4. **Run development server** Since this is a static site, you can serve the compiled dist/ directory using any static server:  
-   npx serve dist
+   `npx serve dist`
 
 ### **Environment Variables**
 
