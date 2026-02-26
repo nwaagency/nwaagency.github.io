@@ -7,51 +7,56 @@
    CSS Variables (Design System)
    ========================================================================== */
 :root {
-  /* Brand Colors */
-  --color-primary-accent: #BB86FC;
-  --color-bg-base: #121112;
-  --color-bg-surface: #1E1E1E;
-  --color-text-primary: #E0E0E0;
-  --color-text-secondary: #A0A0A0;
-  --color-border-subtle: #333333;
+    /* Brand Colors */
+    --color-primary-accent: #BB86FC;
+    --color-bg-base: #121112;
+    --color-bg-surface: #1E1E1E;
+    --color-text-primary: #E0E0E0;
+    --color-text-secondary: #A0A0A0;
+    --color-border-subtle: #333333;
 
-  /* Typography */
-  --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
+    /* Typography */
+    --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
 
-  /* Layout & Spacing */
-  --container-max-width: 1200px;
-  --spacing-unit: 1rem;
-  --header-height: 80px;
-  
-  /* Transitions */
-  --transition-speed: 0.3s;
+    /* Layout & Spacing */
+    --container-max-width: 1200px;
+    --spacing-unit: 1rem;
+    --header-height: 80px;
+
+    /* Transitions */
+    --transition-speed: 0.3s;
 }
 
 /* ==========================================================================
    CSS Resets & Base Styles
    ========================================================================== */
 
-
-h1, h2, h3, h4, h5, h6 {
-  color: #FFFFFF;
-  line-height: 1.2;
-  font-weight: 600;
-  margin-bottom: var(--spacing-unit);
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #FFFFFF;
+    line-height: 1.2;
+    font-weight: 600;
+    margin-bottom: var(--spacing-unit);
 }
 
 a {
-  color: var(--color-primary-accent);
-  text-decoration: none;
-  transition: opacity var(--transition-speed) ease;
+    color: var(--color-primary-accent);
+    text-decoration: none;
+    transition: opacity var(--transition-speed) ease;
 }
 
 a:hover {
-  opacity: 0.8;
+    opacity: 0.8;
 }
 
-ul, ol {
-  list-style: none;
+ul,
+ol {
+    list-style: none;
 }
 
 /* ==========================================================================
@@ -60,136 +65,140 @@ ul, ol {
 
 
 .btn-primary {
-  display: inline-block;
-  background-color: var(--color-primary-accent);
-  color: #000000; /* High contrast black text on light purple */
-  font-weight: 600;
-  padding: 0.75rem 1.5rem;
-  border-radius: 4px;
-  text-align: center;
-  border: none;
-  cursor: pointer;
-  transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+    display: inline-block;
+    background-color: var(--color-primary-accent);
+    color: #000000;
+    /* High contrast black text on light purple */
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
 }
 
 .btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(187, 134, 252, 0.3);
-  opacity: 1; /* override default a:hover opacity */
-  color: #000000;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(187, 134, 252, 0.3);
+    opacity: 1;
+    /* override default a:hover opacity */
+    color: #000000;
 }
 
 .mono-text {
-  font-family: var(--font-mono);
-  font-size: 0.9em;
+    font-family: var(--font-mono);
+    font-size: 0.9em;
 }
 
 /* ==========================================================================
    Component: Header
    ========================================================================== */
 .site-header {
-  position: sticky;
-  top: 0;
-  width: 100%;
-  height: var(--header-height);
-  background-color: rgba(18, 17, 18, 0.95);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--color-border-subtle);
-  z-index: 1000;
-  display: flex;
-  align-items: center;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: var(--header-height);
+    background-color: rgba(18, 17, 18, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--color-border-subtle);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
 }
 
 .header-inner {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .logo-text {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #FFFFFF;
-  letter-spacing: -0.5px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #FFFFFF;
+    letter-spacing: -0.5px;
 }
 
 .logo-text span {
-  color: var(--color-primary-accent);
+    color: var(--color-primary-accent);
 }
 
 .main-nav ul {
-  display: flex;
-  gap: 2rem;
+    display: flex;
+    gap: 2rem;
 }
 
 .main-nav a {
-  color: var(--color-text-primary);
-  font-weight: 500;
-  font-size: 0.95rem;
+    color: var(--color-text-primary);
+    font-weight: 500;
+    font-size: 0.95rem;
 }
 
 .main-nav a:hover {
-  color: var(--color-primary-accent);
+    color: var(--color-primary-accent);
 }
 
 /* Responsive Header */
 @media (max-width: 768px) {
-  .main-nav {
-    display: none; /* In Phase 3, we can add a hamburger menu toggle */
-  }
+    .main-nav {
+        display: none;
+        /* In Phase 3, we can add a hamburger menu toggle */
+    }
 }
 
 /* ==========================================================================
    Component: Footer
    ========================================================================== */
 .site-footer {
-  background-color: var(--color-bg-surface);
-  border-top: 1px solid var(--color-border-subtle);
-  padding: 4rem 0 2rem;
-  margin-top: 4rem;
+    background-color: var(--color-bg-surface);
+    border-top: 1px solid var(--color-border-subtle);
+    padding: 4rem 0 2rem;
+    margin-top: 4rem;
 }
 
 .footer-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 2rem;
-  margin-bottom: 3rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    margin-bottom: 3rem;
 }
 
 .footer-col h3 {
-  font-size: 1.1rem;
-  margin-bottom: 1.5rem;
-  color: #FFFFFF;
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    color: #FFFFFF;
 }
 
-.footer-col p, .footer-col a {
-  color: var(--color-text-secondary);
-  font-size: 0.95rem;
-  margin-bottom: 0.75rem;
-  display: block;
+.footer-col p,
+.footer-col a {
+    color: var(--color-text-secondary);
+    font-size: 0.95rem;
+    margin-bottom: 0.75rem;
+    display: block;
 }
 
 .footer-col a:hover {
-  color: var(--color-primary-accent);
+    color: var(--color-primary-accent);
 }
 
 .footer-bottom {
-  text-align: center;
-  padding-top: 2rem;
-  border-top: 1px solid var(--color-border-subtle);
-  color: var(--color-text-secondary);
-  font-size: 0.85rem;
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid var(--color-border-subtle);
+    color: var(--color-text-secondary);
+    font-size: 0.85rem;
 }
 
 /* Responsive Footer */
 @media (max-width: 992px) {
-  .footer-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+    .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 @media (max-width: 576px) {
-  .footer-grid {
-    grid-template-columns: 1fr;
-  }
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
 }

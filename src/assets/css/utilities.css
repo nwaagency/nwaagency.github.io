@@ -35,19 +35,7 @@
   text-align: left; /* Can be centered depending on design preference */
 }
 
-.hero h1 {
-  font-size: clamp(2.5rem, 5vw, 4rem);
-  letter-spacing: -1px;
-  max-width: 800px;
-}
 
-.hero h2 {
-  font-size: clamp(1.1rem, 2vw, 1.5rem);
-  color: var(--color-text-secondary);
-  font-weight: 400;
-  max-width: 700px;
-  margin-top: 1.5rem;
-}
 
 /* ==========================================================================
    Grid Systems
@@ -79,22 +67,6 @@
   text-align: center;
 }
 
-.services-section {
-  padding: 5rem 0;
-}
-
-.service-card {
-  background-color: var(--color-bg-surface);
-  border: 1px solid var(--color-border-subtle);
-  border-radius: 8px;
-  padding: 2.5rem;
-  transition: transform var(--transition-speed) ease, border-color var(--transition-speed) ease;
-}
-
-.service-card:hover {
-  transform: translateY(-5px);
-  border-color: var(--color-primary-accent);
-}
 
 .service-icon {
   width: 48px;
@@ -116,17 +88,7 @@
 /* ==========================================================================
    Founder Snippet & Global CTA
    ========================================================================== */
-.founder-section {
-  padding: 5rem 0;
-  background-color: var(--color-bg-surface);
-  margin: 4rem 0;
-}
 
-.founder-content {
-  max-width: 800px;
-  margin: 0 auto;
-  text-align: center;
-}
 
 .global-cta {
   padding: 6rem 0;
