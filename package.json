@@ -8,7 +8,8 @@
     "build:minify-css": "clean-css-cli -o dist/assets/css/global.css dist/assets/css/global.css && clean-css-cli -o dist/assets/css/utilities.css dist/assets/css/utilities.css",
     "build:minify-js": "terser dist/assets/js/forms.js -o dist/assets/js/forms.js -c -m",
     "build:minify-html": "html-minifier-terser --collapse-whitespace --remove-comments --minify-css true --minify-js true --input-dir dist --output-dir dist",
-    "build": "npm run build:copy && npm run build:minify-css && npm run build:minify-js && npm run build:minify-html"
+    "build": "npm run build:copy && npm run build:minify-css && npm run build:minify-js && npm run build:minify-html",
+    "dev": "npm run build && npx serve dist"
   },
   "dependencies": {},
   "devDependencies": {
