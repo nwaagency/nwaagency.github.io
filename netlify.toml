@@ -50,4 +50,4 @@
   # Reduced Caching for Unhashed CSS/JS (24 Hours)
   for = "/assets/*"
   [headers.values]
-    Cache-Control = "public, max-age=86400, must-revalidate"
+    Cache-Control = "public, max-age=31536000, immutable"
