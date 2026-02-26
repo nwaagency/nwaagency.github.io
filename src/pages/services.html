@@ -4,105 +4,86 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Explore Nexora's engineering & digital services: Website Solutions, Mobile Apps, and Data & Analytics Engineering.">
-  <title>Our Engineering & Digital Services | Nexora</title>
+  <title>Engineering & Digital Services | Nexora</title>
 
-  <!-- Global CSS -->
   <link rel="stylesheet" href="/assets/css/global.css">
   <link rel="stylesheet" href="/assets/css/utilities.css">
 
   <style>
-    .page-header {
-      padding: 6rem 0 4rem;
-      text-align: center;
-    }
-    .page-header h1 {
-      font-size: 3rem;
-    }
+    /* Premium Page Styles */
+    .page-hero { padding: 6rem 0 4rem; position: relative; border-bottom: 1px solid var(--color-border-subtle); overflow: hidden; background: radial-gradient(circle at top right, rgba(187,134,252,0.08), transparent 50%); text-align: center; }
+    .hero-badge { display: inline-block; padding: 0.4rem 1rem; border-radius: 50px; background: rgba(187, 134, 252, 0.1); border: 1px solid rgba(187, 134, 252, 0.2); color: var(--color-primary-accent); font-family: var(--font-mono); font-size: 0.85rem; margin-bottom: 1.5rem; }
+    .text-gradient { background: linear-gradient(135deg, #FFFFFF 20%, var(--color-primary-accent) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .page-hero h1 { font-size: clamp(2.5rem, 5vw, 4.5rem); max-width: 900px; line-height: 1.1; margin: 0 auto 1.25rem; letter-spacing: -1px; }
+    .hero-subtitle { font-size: 1.2rem; color: var(--color-text-secondary); max-width: 600px; line-height: 1.6; margin: 0 auto; }
 
-    /* Native HTML Accordion Styles */
-    .services-accordion {
-      max-width: 900px;
-      margin: 0 auto 6rem;
-    }
+    .services-hub { max-width: 1000px; margin: 5rem auto 8rem; padding: 0 var(--spacing-unit); }
 
+    /* Custom Sleek Accordion */
     details {
-      background-color: var(--color-bg-surface);
+      background: linear-gradient(145deg, var(--color-bg-surface), #151515);
       border: 1px solid var(--color-border-subtle);
-      border-radius: 8px;
-      margin-bottom: 1rem;
+      border-radius: 12px;
+      margin-bottom: 1.5rem;
       overflow: hidden;
+      transition: border-color 0.3s, box-shadow 0.3s;
     }
+    details:hover { border-color: rgba(187, 134, 252, 0.3); }
+    details[open] { border-color: var(--color-primary-accent); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
 
     summary {
-      padding: 1.5rem 2rem;
-      font-size: 1.25rem;
+      padding: 1.75rem 2.5rem;
+      font-size: 1.4rem;
       font-weight: 600;
       color: #fff;
       cursor: pointer;
-      list-style: none; /* Hide default arrow */
+      list-style: none;
       display: flex;
       justify-content: space-between;
       align-items: center;
       transition: background-color 0.2s ease;
     }
-
-    summary::-webkit-details-marker {
-      display: none;
-    }
-
-    summary:hover {
-      background-color: rgba(187, 134, 252, 0.05);
-    }
-
+    summary::-webkit-details-marker { display: none; }
     summary::after {
       content: '+';
-      font-size: 1.5rem;
+      font-size: 1.8rem;
+      font-weight: 400;
       color: var(--color-primary-accent);
       transition: transform 0.3s ease;
+      display: inline-block;
+      width: 24px; text-align: center;
     }
+    details[open] summary::after { transform: rotate(45deg); }
+    details[open] summary { border-bottom: 1px solid rgba(255,255,255,0.05); background: rgba(187, 134, 252, 0.03); }
 
-    details[open] summary::after {
-      transform: rotate(45deg);
-    }
-
-    details[open] summary {
-      border-bottom: 1px solid var(--color-border-subtle);
-    }
-
-    .details-content {
-      padding: 2rem;
-    }
+    .details-content { padding: 2.5rem; display: grid; grid-template-columns: repeat(2, 1fr); gap: 2.5rem; }
 
     .service-item {
-      margin-bottom: 2rem;
+      background-color: var(--color-bg-base);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--color-border-subtle);
+      transition: transform 0.2s, border-color 0.2s;
     }
+    .service-item:hover { transform: translateY(-3px); border-color: rgba(187, 134, 252, 0.4); }
     
-    .service-item:last-child {
-      margin-bottom: 0;
-    }
+    .service-link { color: #fff; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; font-weight: 600; font-size: 1.15rem; margin-bottom: 0.75rem; transition: color 0.2s; }
+    .service-link svg { width: 18px; height: 18px; color: var(--color-primary-accent); transition: transform 0.2s; }
+    .service-item:hover .service-link { color: var(--color-primary-accent); }
+    .service-item:hover .service-link svg { transform: translateX(3px); }
 
-    .service-item h4 {
-      color: var(--color-primary-accent);
-      font-size: 1.1rem;
-      margin-bottom: 0.5rem;
-    }
+    .service-item p { color: var(--color-text-secondary); font-size: 0.95rem; line-height: 1.6; }
 
-    .service-link {
-      color: var(--color-primary-accent);
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      transition: opacity 0.2s ease;
-    }
+    /* Animation classes */
+    .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
+    .reveal.active { opacity: 1; transform: translateY(0); }
+    .delay-100 { transition-delay: 100ms; }
+    .delay-200 { transition-delay: 200ms; }
+    .delay-300 { transition-delay: 300ms; }
 
-    .service-link:hover {
-      opacity: 0.8;
-      text-decoration: underline;
-    }
-
-    .service-item p {
-      color: var(--color-text-secondary);
-      font-size: 0.95rem;
+    @media (max-width: 768px) {
+      .details-content { grid-template-columns: 1fr; gap: 1.5rem; padding: 1.5rem; }
+      summary { padding: 1.5rem; font-size: 1.2rem; }
     }
   </style>
 </head>
@@ -125,78 +106,113 @@
   </header>
 
   <main>
-    <section class="page-header container">
-      <h1>Our Engineering & Digital Services</h1>
-      <p style="color: var(--color-text-secondary); max-width: 600px; margin: 1rem auto 0;">Comprehensive technical solutions designed to scale your digital presence and optimize your data infrastructure.</p>
+    <section class="page-hero">
+      <div class="container">
+        <div class="reveal">
+          <div class="hero-badge">Our Capabilities</div>
+          <h1>Engineering & <span class="text-gradient">Digital Services</span></h1>
+          <p class="hero-subtitle">Comprehensive technical solutions designed to scale your digital presence and optimize your data infrastructure.</p>
+        </div>
+      </div>
     </section>
 
-    <section class="services-accordion container">
+    <section class="services-hub">
       
       <!-- Category 1 -->
-      <details open id="web">
+      <details open id="web" class="reveal delay-100">
         <summary>Website Solutions</summary>
         <div class="details-content">
           <div class="service-item">
-            <h4><a href="/services/custom-website-development.html" class="service-link">Custom Website Development &rarr;</a></h4>
-            <p>We build bespoke, responsive, and secure websites tailored to your unique brand identity. Focus is placed heavily on UX, conversion, and bespoke design to ensure your site acts as a growth engine.</p>
+            <a href="/services/custom-website-development.html" class="service-link">
+              Custom Web Development
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            </a>
+            <p>Bespoke, responsive, and secure websites tailored to your unique brand. Engineered for maximum UX and conversion rate optimisation.</p>
           </div>
           <div class="service-item">
-            <h4><a href="/services/rapid-website-templates.html" class="service-link">Rapid Website Templates &rarr;</a></h4>
-            <p>An affordable, high-speed solution ideal for startups seeking a professional presence without the custom price tag. Pre-built frameworks optimized for mobile performance.</p>
+            <a href="/services/rapid-website-templates.html" class="service-link">
+              Rapid Website Templates
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            </a>
+            <p>Affordable, high-speed solutions ideal for startups. Pre-built frameworks strictly optimized for mobile performance and rapid deployment.</p>
           </div>
           <div class="service-item">
-            <h4><a href="/services/gtm-analytics-integration.html" class="service-link">GTM & Analytics Integration &rarr;</a></h4>
-            <p>Expert GA4 and Google Tag Manager setups. We build the tracking infrastructure required to capture user behaviors and monitor professional-grade performance.</p>
+            <a href="/services/gtm-analytics-integration.html" class="service-link">
+              GTM & Analytics Integration
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            </a>
+            <p>Expert GA4 and Google Tag Manager setups. Build the tracking infrastructure required to capture user behaviors flawlessly.</p>
           </div>
           <div class="service-item">
-            <h4><a href="/services/advanced-seo-optimisation.html" class="service-link">Advanced SEO Optimisation &rarr;</a></h4>
-            <p>Deep technical audits, meticulous on-page optimization, and strategic keyword mapping to increase your organic reach and search ranking authority.</p>
+            <a href="/services/advanced-seo-optimisation.html" class="service-link">
+              Advanced SEO Optimisation
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            </a>
+            <p>Deep technical audits, meticulous on-page optimization, and strategic keyword mapping to increase your search ranking authority.</p>
           </div>
         </div>
       </details>
 
       <!-- Category 2 -->
-      <details id="mobile">
-        <summary>Mobile Application Services</summary>
+      <details id="mobile" class="reveal delay-200">
+        <summary>Mobile Applications</summary>
         <div class="details-content">
           <div class="service-item">
-            <h4><a href="/services/ios-development.html" class="service-link">iOS Development & Lifecycle Management &rarr;</a></h4>
-            <p>Premium, native iOS applications designed for the Apple ecosystem. We provide comprehensive maintenance to ensure stability, security compliance, and UI/UX iterations.</p>
+            <a href="/services/ios-development.html" class="service-link">
+              iOS Development
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            </a>
+            <p>Premium, native iOS applications designed for the Apple ecosystem. Comprehensive maintenance to ensure stability and compliance.</p>
           </div>
           <div class="service-item">
-            <h4><a href="/services/android-development.html" class="service-link">Android Development & Lifecycle Management &rarr;</a></h4>
-            <p>High-performance applications tailored for the diverse Android landscape. End-to-end service covers custom development, system efficiency, and vital security updates.</p>
+            <a href="/services/android-development.html" class="service-link">
+              Android Development
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            </a>
+            <p>High-performance applications tailored for the diverse Android landscape, covering full lifecycle management and security updates.</p>
           </div>
         </div>
       </details>
 
       <!-- Category 3 -->
-      <details id="data">
+      <details id="data" class="reveal delay-300">
         <summary>Data & Analytics Engineering</summary>
         <div class="details-content">
           <div class="service-item">
-            <h4><a href="/services/strategic-dashboards.html" class="service-link">Strategic Dashboards & Reporting &rarr;</a></h4>
-            <p>Visualize your success with custom-built reports in Tableau or Power BI. We translate complex datasets into actionable insights for both technical teams and stakeholders.</p>
+            <a href="/services/strategic-dashboards.html" class="service-link">
+              Strategic Dashboards
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            </a>
+            <p>Visualize your success with custom-built reports in Tableau or Power BI. Translate complex datasets into actionable executive insights.</p>
           </div>
           <div class="service-item">
-            <h4><a href="/services/scalable-data-pipelines.html" class="service-link">Scalable Data Pipelines &rarr;</a></h4>
-            <p>We design, build, and test sophisticated ETL logic that ensures your data flows seamlessly, accurately, and securely from source systems to storage environments.</p>
+            <a href="/services/scalable-data-pipelines.html" class="service-link">
+              Scalable Data Pipelines
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            </a>
+            <p>Design, build, and test sophisticated ETL logic ensuring data flows seamlessly, accurately, and securely across your infrastructure.</p>
           </div>
           <div class="service-item">
-            <h4><a href="/services/data-modelling.html" class="service-link">Data Modelling & Architecture &rarr;</a></h4>
-            <p>Build a foundation for scale. We manage high-capacity data warehouses and lakes utilizing SQL or NoSQL to ensure maximum accessibility and integrity.</p>
+            <a href="/services/data-modelling.html" class="service-link">
+              Data Modelling & Architecture
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            </a>
+            <p>Build a foundation for scale. We manage high-capacity data warehouses utilizing SQL/NoSQL to ensure maximum accessibility.</p>
           </div>
           <div class="service-item">
-            <h4><a href="/services/workflow-optimisation.html" class="service-link">Workflow & Processing Optimisation &rarr;</a></h4>
-            <p>Maximize your data ecosystem's efficiency. We audit and enhance existing processing workflows to improve system performance and reduce latency in high-volume environments.</p>
+            <a href="/services/workflow-optimisation.html" class="service-link">
+              Workflow Optimisation
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            </a>
+            <p>Maximize ecosystem efficiency. We audit and enhance existing processing workflows to improve performance and reduce latency.</p>
           </div>
         </div>
       </details>
 
     </section>
 
-    <section class="global-cta container" style="padding-bottom: 6rem;">
-      <h2>Ready to start your project?</h2>
+    <section class="global-cta container reveal" style="padding-bottom: 6rem; text-align: center;">
+      <h2 style="font-size: 2.5rem; margin-bottom: 2rem;">Ready to start your project?</h2>
       <a href="/quote.html" class="btn-primary">Request a Custom Blueprint</a>
     </section>
   </main>
@@ -207,7 +223,6 @@
         <div class="footer-col">
           <h3>Nexora Web Agency</h3>
           <p>Digital Clarity, Delivered.</p>
-          <p>Your Digital Vision, Engineered.</p>
         </div>
         <div class="footer-col">
           <h3>Quick Links</h3>
@@ -216,13 +231,11 @@
             <a href="/projects.html">Projects</a>
             <a href="/about.html">About Us</a>
             <a href="/contact.html">Contact</a>
-            <a href="/quote.html">Get a Quote</a>
           </nav>
         </div>
         <div class="footer-col">
           <h3>Contact Us</h3>
           <p>Cape Town, South Africa</p>
-          <a href="tel:+27715332762">+27 71 533 2762</a>
           <a href="mailto:joshua.stevenson.100703@gmail.com">joshua.stevenson.100703@gmail.com</a>
         </div>
         <div class="footer-col">
@@ -230,10 +243,20 @@
           <a href="https://www.linkedin.com/in/joshua-trevor-stevenson" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         </div>
       </div>
-      <div class="footer-bottom">
-        <p>&copy; <script>document.write(new Date().getFullYear())</script> Nexora Web Agency. All rights reserved.</p>
-      </div>
     </div>
   </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+          }
+        });
+      }, { threshold: 0.1 });
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    });
+  </script>
 </body>
 </html>

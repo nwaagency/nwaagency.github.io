@@ -6,124 +6,62 @@
   <meta name="description" content="Learn about Nexora Web Agency and its founder, Joshua Stevenson, a Data Analytics Engineer based in Cape Town.">
   <title>About Nexora & Founder Joshua Stevenson</title>
 
-  <!-- Global CSS -->
   <link rel="stylesheet" href="/assets/css/global.css">
   <link rel="stylesheet" href="/assets/css/utilities.css">
 
   <style>
-    .page-header {
-      padding: 6rem 0 3rem;
-      text-align: center;
-      border-bottom: 1px solid var(--color-border-subtle);
-    }
-    
-    .profile-section {
-      padding: 5rem 0;
-      display: grid;
-      grid-template-columns: 1fr 2fr;
-      gap: 4rem;
-    }
+    /* Premium Page Styles */
+    .page-hero { padding: 6rem 0 4rem; position: relative; border-bottom: 1px solid var(--color-border-subtle); overflow: hidden; background: radial-gradient(circle at top right, rgba(187,134,252,0.08), transparent 50%); text-align: center; }
+    .hero-badge { display: inline-block; padding: 0.4rem 1rem; border-radius: 50px; background: rgba(187, 134, 252, 0.1); border: 1px solid rgba(187, 134, 252, 0.2); color: var(--color-primary-accent); font-family: var(--font-mono); font-size: 0.85rem; margin-bottom: 1.5rem; }
+    .text-gradient { background: linear-gradient(135deg, #FFFFFF 20%, var(--color-primary-accent) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .page-hero h1 { font-size: clamp(2.5rem, 5vw, 4.5rem); max-width: 900px; line-height: 1.1; margin: 0 auto 1.25rem; letter-spacing: -1px; }
+    .hero-subtitle { font-size: 1.2rem; color: var(--color-text-secondary); max-width: 600px; line-height: 1.6; margin: 0 auto; }
 
+    .profile-section { padding: 6rem 0; display: grid; grid-template-columns: 1fr 2fr; gap: 5rem; }
+
+    /* Sticky Profile Sidebar */
     .profile-sidebar {
-      background-color: var(--color-bg-surface);
-      padding: 2rem;
-      border-radius: 8px;
+      background: linear-gradient(145deg, var(--color-bg-surface), #151515);
+      padding: 2.5rem;
+      border-radius: 12px;
       border: 1px solid var(--color-border-subtle);
       text-align: center;
+      position: sticky;
+      top: 100px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+      height: fit-content;
     }
+    .profile-image { width: 100%; aspect-ratio: 3/4; border-radius: 8px; object-fit: cover; margin: 0 auto 2rem; border: 1px solid var(--color-border-subtle); background-color: var(--color-bg-base); display: block; filter: grayscale(20%); transition: filter 0.3s; }
+    .profile-image:hover { filter: grayscale(0%); }
+    .contact-links a { display: block; margin-bottom: 0.75rem; font-size: 0.95rem; color: var(--color-text-secondary); transition: color 0.2s; }
+    .contact-links a:hover { color: var(--color-primary-accent); }
 
-    .profile-image {
-      width: 100%;
-      height: auto;
-      aspect-ratio: 3 / 4; /* Portrait aspect ratio */
-      border-radius: 12px; /* Soft edges instead of a circle */
-      object-fit: cover;
-      margin: 0 auto 2rem;
-      border: 1px solid var(--color-border-subtle);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
-      background-color: var(--color-bg-base); /* Placeholder background */
-      display: block;
-    }
+    /* Bio Content */
+    .bio-content h2 { font-size: 2rem; margin-bottom: 1rem; color: #fff; }
+    .bio-content p { font-size: 1.1rem; color: var(--color-text-secondary); margin-bottom: 1.5rem; line-height: 1.8; }
 
-    .contact-links a {
-      display: block;
-      margin-bottom: 0.5rem;
-      font-size: 0.95rem;
-      color: var(--color-text-secondary);
-    }
+    /* Premium Timeline */
+    .timeline { margin-top: 4rem; padding-left: 1.5rem; border-left: 2px solid rgba(187, 134, 252, 0.2); }
+    .timeline-item { position: relative; margin-bottom: 2.5rem; }
+    .timeline-item::before { content: ''; position: absolute; left: -1.5rem; top: 0.35rem; width: 14px; height: 14px; border-radius: 50%; background-color: var(--color-bg-base); border: 2px solid var(--color-primary-accent); transform: translateX(-50%); box-shadow: 0 0 10px rgba(187, 134, 252, 0.4); transition: background-color 0.3s; }
+    .timeline-item:hover::before { background-color: var(--color-primary-accent); }
+    .timeline-date { font-size: 0.85rem; color: var(--color-primary-accent); font-family: var(--font-mono); margin-bottom: 0.4rem; display: block; letter-spacing: 0.5px; }
+    .timeline-title { font-weight: 600; font-size: 1.2rem; color: #fff; }
 
-    .contact-links a:hover {
-      color: var(--color-primary-accent);
-    }
+    /* Skills Matrix */
+    .skills-matrix { margin-top: 4rem; padding-top: 3rem; border-top: 1px solid var(--color-border-subtle); }
+    .skill-tag { display: inline-block; background-color: rgba(187, 134, 252, 0.05); color: #fff; padding: 0.5rem 1rem; border-radius: 50px; font-family: var(--font-mono); font-size: 0.85rem; margin: 0 0.5rem 0.75rem 0; border: 1px solid rgba(187, 134, 252, 0.2); transition: all 0.2s; }
+    .skill-tag:hover { background-color: rgba(187, 134, 252, 0.15); border-color: var(--color-primary-accent); transform: translateY(-2px); }
 
-    .bio-content h2 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-      color: var(--color-primary-accent);
-    }
+    /* Animation classes */
+    .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
+    .reveal.active { opacity: 1; transform: translateY(0); }
+    .delay-100 { transition-delay: 100ms; }
+    .delay-200 { transition-delay: 200ms; }
 
-    /* Timeline Styles */
-    .timeline {
-      margin-top: 3rem;
-      padding-left: 1.5rem;
-      border-left: 2px solid var(--color-border-subtle);
-    }
-
-    .timeline-item {
-      position: relative;
-      margin-bottom: 2rem;
-    }
-
-    .timeline-item::before {
-      content: '';
-      position: absolute;
-      left: -1.5rem;
-      top: 0.25rem;
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background-color: var(--color-primary-accent);
-      transform: translateX(-50%);
-    }
-
-    .timeline-date {
-      font-size: 0.85rem;
-      color: var(--color-text-secondary);
-      font-family: var(--font-mono);
-      margin-bottom: 0.25rem;
-      display: block;
-    }
-
-    .timeline-title {
-      font-weight: 600;
-      font-size: 1.1rem;
-      color: #fff;
-    }
-
-    /* Skills Tags */
-    .skills-matrix {
-      margin-top: 3rem;
-    }
-    .skill-tag {
-      display: inline-block;
-      background-color: rgba(187, 134, 252, 0.1);
-      color: var(--color-primary-accent);
-      padding: 0.4rem 0.8rem;
-      border-radius: 4px;
-      font-family: var(--font-mono);
-      font-size: 0.85rem;
-      margin: 0 0.5rem 0.5rem 0;
-      border: 1px solid rgba(187, 134, 252, 0.3);
-    }
-
-    @media (max-width: 768px) {
-      .profile-section {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-      }
-      .profile-image {
-        max-width: 320px;
-      }
+    @media (max-width: 992px) {
+      .profile-section { grid-template-columns: 1fr; gap: 3rem; }
+      .profile-sidebar { position: relative; top: 0; max-width: 400px; margin: 0 auto; }
     }
   </style>
 </head>
@@ -146,34 +84,39 @@
   </header>
 
   <main>
-    <section class="page-header container">
-      <h1>About Nexora Web Agency</h1>
+    <section class="page-hero">
+      <div class="container">
+        <div class="reveal">
+          <div class="hero-badge">Our Story</div>
+          <h1>About <span class="text-gradient">Nexora</span></h1>
+          <p class="hero-subtitle">Engineered for performance, driven by data, built for the modern web.</p>
+        </div>
+      </div>
     </section>
 
     <section class="profile-section container">
-      <!-- Left Column: Sidebar -->
-      <aside class="profile-sidebar">
-        <!-- Developer Note: Place actual image in /public/images/founder/joshua-stevenson.webp -->
-        <img src="/images/founder/profile_pic.webp" alt="Joshua Stevenson" class="profile-image" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 300 400\' fill=\'%23121112\'><rect width=\'300\' height=\'400\'/></svg>'">
-        <h3 style="margin-bottom: 0.5rem; font-size: 1.5rem;">Joshua Stevenson</h3>
-        <p style="color: var(--color-text-secondary); font-size: 0.95rem; margin-bottom: 1.5rem;">Cape Town, South Africa</p>
+      <aside class="profile-sidebar reveal delay-100">
+        <img src="/images/founder/profile_pic.webp" alt="Joshua Stevenson" class="profile-image" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 300 400\' fill=\'%231a1a1a\'><rect width=\'300\' height=\'400\'/></svg>'">
+        <h3 style="margin-bottom: 0.25rem; font-size: 1.5rem; color: #fff;">Joshua Stevenson</h3>
+        <p style="color: var(--color-primary-accent); font-family: var(--font-mono); font-size: 0.85rem; margin-bottom: 1.5rem;">Founder & Lead Engineer</p>
         
-        <div class="contact-links">
+        <div class="contact-links" style="border-top: 1px solid var(--color-border-subtle); padding-top: 1.5rem;">
           <a href="mailto:joshua.stevenson.100703@gmail.com">joshua.stevenson.100703@gmail.com</a>
           <a href="tel:+27715332762">+27 71 533 2762</a>
-          <a href="https://www.linkedin.com/in/joshua-trevor-stevenson" target="_blank" rel="noopener noreferrer" style="color: var(--color-primary-accent); margin-top: 1rem; font-weight: 600;">View LinkedIn &rarr;</a>
+          <a href="https://www.linkedin.com/in/joshua-trevor-stevenson" target="_blank" rel="noopener noreferrer" style="color: var(--color-primary-accent); margin-top: 1rem; font-weight: 600; display: inline-flex; align-items: center; gap: 0.5rem; justify-content: center;">
+            View LinkedIn 
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
         </div>
       </aside>
 
-      <!-- Right Column: Bio & Experience -->
-      <div class="bio-content">
-        <h2>Founder & Data Analytics Engineer</h2>
-        <p>Joshua Stevenson is a dynamic Data Analytics Engineer with over 2 years of experience delivering high-impact data solutions across the financial services, media, and marketing sectors. He specialises in transforming complex datasets into actionable business intelligence through expert data visualisation, database querying, and process automation.</p>
-        <p>With a technical foundation in Computer Science and Data Science, Joshua has a proven track record of optimising workflows and building robust reporting pipelines that drive efficiency and data-informed decision-making.</p>
+      <div class="bio-content reveal delay-200">
+        <h2>Bridging the Gap Between Engineering & Analytics</h2>
+        <p>Nexora Web Agency was founded on a simple premise: digital products shouldn't just look good; they need to perform, scale, and generate measurable results. We fuse high-end web and mobile development with rigorous data engineering.</p>
+        <p>Led by Joshua Stevenson—a Data Analytics Engineer with extensive experience across financial services, media, and tech sectors—Nexora approaches every project with an analytical mindset. We build robust reporting pipelines, automate workflows, and create digital storefronts optimized for both users and search engines.</p>
 
-        <!-- Experience Timeline -->
-        <h3 style="margin-top: 3rem; border-bottom: 1px solid var(--color-border-subtle); padding-bottom: 0.5rem;">Professional Experience</h3>
         <div class="timeline">
+          <h3 style="margin-bottom: 2rem; font-size: 1.5rem; color: #fff;">Professional Background</h3>
           <div class="timeline-item">
             <span class="timeline-date">Sep 2025 – Present</span>
             <div class="timeline-title">Data Specialist</div>
@@ -190,20 +133,11 @@
             <span class="timeline-date">Dec 2023 – Jan 2025</span>
             <div class="timeline-title">Data Analyst</div>
           </div>
-          <div class="timeline-item">
-            <span class="timeline-date">Dec 2022 – Dec 2023</span>
-            <div class="timeline-title">Junior Data Analyst</div>
-          </div>
-          <div class="timeline-item">
-            <span class="timeline-date">Jun 2022 – Dec 2022</span>
-            <div class="timeline-title">Business Intelligence Intern</div>
-          </div>
         </div>
 
-        <!-- Education & Skills -->
         <div class="skills-matrix">
-          <h3 style="border-bottom: 1px solid var(--color-border-subtle); padding-bottom: 0.5rem; margin-bottom: 1.5rem;">Education & Technical Arsenal</h3>
-          <p style="margin-bottom: 1rem;"><strong>BSc Computer Science & Data Science</strong> — Stellenbosch University</p>
+          <h3 style="margin-bottom: 1rem; font-size: 1.5rem; color: #fff;">Technical Arsenal</h3>
+          <p style="margin-bottom: 1.5rem; color: var(--color-text-secondary);"><strong>BSc Computer Science & Data Science</strong> — Stellenbosch University</p>
           <div>
             <span class="skill-tag">Python</span>
             <span class="skill-tag">SQL</span>
@@ -211,8 +145,8 @@
             <span class="skill-tag">Tableau</span>
             <span class="skill-tag">GA4</span>
             <span class="skill-tag">GTM</span>
-            <span class="skill-tag">Aspera</span>
-            <span class="skill-tag">Signiant</span>
+            <span class="skill-tag">JavaScript / ES6+</span>
+            <span class="skill-tag">Native iOS/Android</span>
           </div>
         </div>
       </div>
@@ -225,7 +159,6 @@
         <div class="footer-col">
           <h3>Nexora Web Agency</h3>
           <p>Digital Clarity, Delivered.</p>
-          <p>Your Digital Vision, Engineered.</p>
         </div>
         <div class="footer-col">
           <h3>Quick Links</h3>
@@ -234,13 +167,11 @@
             <a href="/projects.html">Projects</a>
             <a href="/about.html">About Us</a>
             <a href="/contact.html">Contact</a>
-            <a href="/quote.html">Get a Quote</a>
           </nav>
         </div>
         <div class="footer-col">
           <h3>Contact Us</h3>
           <p>Cape Town, South Africa</p>
-          <a href="tel:+27715332762">+27 71 533 2762</a>
           <a href="mailto:joshua.stevenson.100703@gmail.com">joshua.stevenson.100703@gmail.com</a>
         </div>
         <div class="footer-col">
@@ -248,10 +179,20 @@
           <a href="https://www.linkedin.com/in/joshua-trevor-stevenson" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         </div>
       </div>
-      <div class="footer-bottom">
-        <p>&copy; <script>document.write(new Date().getFullYear())</script> Nexora Web Agency. All rights reserved.</p>
-      </div>
     </div>
   </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+          }
+        });
+      }, { threshold: 0.1 });
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    });
+  </script>
 </body>
 </html>
