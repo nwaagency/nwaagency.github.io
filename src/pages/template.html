@@ -1,21 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="Nexora Web Agency provides high-performance web, mobile, and data solutions for modern businesses. Digital Clarity, Delivered.">
-    <title>Nexora Web Agency | Digital Clarity, Delivered</title>
-    <!-- Favicons -->
-    <link href="/icons/emblem.svg" rel="icon" />
-    <link href="/icons/nexora_emblem.png" rel="apple-touch-icon" />
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Archivo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
-    
-    <style>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description"
+            content="Nexora Web Agency provides high-performance web, mobile, and data solutions for modern businesses. Digital Clarity, Delivered.">
+        <title>Nexora Web Agency | Digital Clarity, Delivered</title>
+        <!-- Favicons -->
+        <link href="/icons/emblem.svg" rel="icon" />
+        <link href="/icons/nexora_emblem.png" rel="apple-touch-icon" />
+        <!-- Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+            rel="stylesheet">
+        <style>
         :root {
             /* Brand Colors */
             --color-primary-accent: #BB86FC;
@@ -30,8 +31,9 @@
             --color-accent-dim: #9B66DC;
             
             /* Typography */
-            --font-display: 'Archivo', sans-serif;
-            --font-mono: 'Space Mono', monospace;
+  --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
         }
 
         * {
@@ -41,12 +43,12 @@
         }
 
         body {
-            font-family: var(--font-display);
+            font-family: var(--font-sans);
             background: var(--color-bg-base);
             color: var(--color-text-primary);
             overflow-x: hidden;
             line-height: 1.6;
-         
+          
         }
 
         /* ==================== CUSTOM CURSOR ==================== */
@@ -844,247 +846,287 @@
             transform: translateY(0);
         }
     </style>
-</head>
+    </head>
 
-<body>
-    <!-- HEADER -->
-    <header class="site-header">
-        <div class="header-inner">
-            <a href="/" class="logo-link">
-                <img src="/icons/header_logo.svg" alt="Nexora Logo" class="nav-logo"
-                    onerror="this.src='/images/nexora-logo.svg'">
-            </a>
-            <nav class="main-nav">
-                <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/about.html">About</a></li>
-                    <li><a href="/services.html">Services</a></li>
-                    <li><a href="/projects.html">Projects</a></li>
-                    <li><a href="/contact.html">Contact</a></li>
-                </ul>
-            </nav>
-            <div class="header-cta">
-                <a href="/quote.html" class="btn-primary">Get a Quote</a>
-            </div>
-        </div>
-    </header>
-
-    <!-- HERO SECTION -->
-    <section class="hero-section">
-        <div class="grid-bg"></div>
-        <div class="scan-line"></div>
-        <div class="hero-content">
-            <div class="hero-label">// DIGITAL ENGINEERING</div>
-            <h1 class="hero-title">
-                <span class="line">Build. Scale.</span>
-                <span class="line"><span class="accent">Dominate.</span></span>
-            </h1>
-            <p class="hero-subtitle">
-                High-performance web, mobile, and data infrastructure for businesses that refuse to settle for mediocre digital presence.
-            </p>
-            <div class="hero-cta-group">
-                <a href="/quote.html" class="btn btn-primary-hero">Start Your Project</a>
-                <a href="/services.html" class="btn btn-secondary-hero">Explore Services</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- METRICS SECTION -->
-    <section class="metrics-section">
-        <div class="metrics-grid">
-            <div class="metric-item">
-                <div class="metric-number">100%</div>
-                <div class="metric-label">Custom Code</div>
-            </div>
-            <div class="metric-item">
-                <div class="metric-number">24/7</div>
-                <div class="metric-label">Support Available</div>
-            </div>
-            <div class="metric-item">
-                <div class="metric-number">10+</div>
-                <div class="metric-label">Services Offered</div>
-            </div>
-            <div class="metric-item">
-                <div class="metric-number">&lt;1s</div>
-                <div class="metric-label">Load Times</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SERVICES SECTION -->
-    <section class="services-section">
-        <div class="section-header reveal">
-            <div class="section-label">// OUR CAPABILITIES</div>
-            <h2 class="section-title">Engineering Excellence</h2>
-            <p class="section-subtitle">Full-stack solutions spanning frontend aesthetics to backend data architecture.</p>
-        </div>
-
-        <div class="services-grid">
-            <a href="/services.html#web" class="service-card reveal">
-                <div class="service-number">[01]</div>
-                <svg class="service-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                        d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-                </svg>
-                <h3 class="service-title">Website Solutions</h3>
-                <p class="service-description">
-                    Custom development from rapid templates to fully bespoke platforms. SEO-optimized, conversion-focused, built to scale.
-                </p>
-                <span class="service-link">
-                    Explore Web Services →
-                </span>
-            </a>
-
-            <a href="/services.html#mobile" class="service-card reveal">
-                <div class="service-number">[02]</div>
-                <svg class="service-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                        d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
-                </svg>
-                <h3 class="service-title">Mobile Applications</h3>
-                <p class="service-description">
-                    Native iOS and Android development with complete lifecycle management. Premium user experiences across all devices.
-                </p>
-                <span class="service-link">
-                    Explore Mobile Services →
-                </span>
-            </a>
-
-            <a href="/services.html#data" class="service-card reveal">
-                <div class="service-number">[03]</div>
-                <svg class="service-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                        d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"></path>
-                </svg>
-                <h3 class="service-title">Data & Analytics</h3>
-                <p class="service-description">
-                    Scalable pipelines, strategic dashboards, and advanced workflow optimization. Turn data into competitive advantage.
-                </p>
-                <span class="service-link">
-                    Explore Data Services →
-                </span>
-            </a>
-        </div>
-    </section>
-
-    <!-- FOUNDER SECTION -->
-    <section class="founder-section">
-        <div class="founder-container">
-            <div class="founder-image-wrapper reveal">
-                <div class="founder-image-frame">
-                    <img src="/images/founder/profile_pic.webp" alt="Joshua Stevenson - Founder" class="founder-image"
-                        onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 400 500\' fill=\'%23111111\'><rect width=\'400\' height=\'500\'/></svg>'">
+    <body>
+        <!-- HEADER -->
+        <header class="site-header">
+            <div class="header-inner">
+                <a href="/" class="logo-link">
+                    <img src="/icons/header_logo.svg" alt="Nexora Logo"
+                        class="nav-logo"
+                        onerror="this.src='/images/nexora-logo.svg'">
+                </a>
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/about.html">About</a></li>
+                        <li><a href="/services.html">Services</a></li>
+                        <li><a href="/projects.html">Projects</a></li>
+                        <li><a href="/contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+                <div class="header-cta">
+                    <a href="/quote.html" class="btn-primary">Get a Quote</a>
                 </div>
             </div>
-            <div class="founder-content reveal">
-                <h2>Built by an Engineer,<br>Driven by Data</h2>
-                <p>
-                    Nexora is led by Joshua Stevenson, a Data Analytics Engineer with extensive experience transforming complex datasets into actionable business intelligence and high-performance digital products.
+        </header>
+
+        <!-- HERO SECTION -->
+        <section class="hero-section">
+            <div class="grid-bg"></div>
+            <div class="scan-line"></div>
+            <div class="hero-content">
+                <div class="hero-label">// DIGITAL ENGINEERING</div>
+                <h1 class="hero-title">
+                    <span class="line">Build. Scale.</span>
+                    <span class="line"><span
+                            class="accent">Dominate.</span></span>
+                </h1>
+                <p class="hero-subtitle">
+                    High-performance web, mobile, and data infrastructure for
+                    businesses that refuse to settle for mediocre digital
+                    presence.
                 </p>
-                <p>
-                    With a background spanning financial services, media, and tech sectors, Joshua brings an analytical rigor to every project—ensuring your digital infrastructure isn't just beautiful, but measurably effective.
-                </p>
-                <div class="founder-stats">
-                    <div class="stat-item">
-                        <span class="stat-value">BSc</span>
-                        <span class="stat-label">Computer Science & Data Science</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-value">5+</span>
-                        <span class="stat-label">Years Experience</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-value">10+</span>
-                        <span class="stat-label">Tech Specializations</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-value">100%</span>
-                        <span class="stat-label">Client Satisfaction</span>
-                    </div>
+                <div class="hero-cta-group">
+                    <a href="/quote.html" class="btn btn-primary-hero">Start
+                        Your Project</a>
+                    <a href="/services.html"
+                        class="btn btn-secondary-hero">Explore Services</a>
                 </div>
-                <a href="/about.html" class="btn btn-secondary-hero founder-cta">Learn More About Joshua</a>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- TESTIMONIAL SECTION -->
-    <section class="testimonial-section reveal">
-        <div class="testimonial-content">
-            <div class="quote-icon">"</div>
-            <blockquote class="testimonial-text">
-                Excellence isn't an act, it's a habit. Every line of code, every dashboard, every deployment—engineered for impact.
-            </blockquote>
-            <cite class="testimonial-author">— Nexora Philosophy</cite>
-        </div>
-    </section>
+        <!-- METRICS SECTION -->
+        <section class="metrics-section">
+            <div class="metrics-grid">
+                <div class="metric-item">
+                    <div class="metric-number">100%</div>
+                    <div class="metric-label">Custom Code</div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-number">24/7</div>
+                    <div class="metric-label">Support Available</div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-number">10+</div>
+                    <div class="metric-label">Services Offered</div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-number">&lt;1s</div>
+                    <div class="metric-label">Load Times</div>
+                </div>
+            </div>
+        </section>
 
-    <!-- CTA SECTION -->
-    <section class="cta-section">
-        <div class="cta-content reveal">
-            <h2>Ready to Build Something Exceptional?</h2>
-            <p>Let's architect a digital solution that doesn't just meet expectations—it exceeds them by orders of magnitude.</p>
-            <a href="/quote.html" class="btn btn-primary-hero">Get Your Custom Quote</a>
-        </div>
-    </section>
+        <!-- SERVICES SECTION -->
+        <section class="services-section">
+            <div class="section-header reveal">
+                <div class="section-label">// OUR CAPABILITIES</div>
+                <h2 class="section-title">Engineering Excellence</h2>
+                <p class="section-subtitle">Full-stack solutions spanning
+                    frontend aesthetics to backend data architecture.</p>
+            </div>
 
-    <!-- FOOTER -->
-    <footer class="site-footer">
-        <div class="footer-container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <a href="/">
-                        <img src="/icons/logo_nobg.svg" alt="Nexora Web Agency Logo" class="footer-logo"
-                            onerror="this.src='/images/nexora-logo.svg'">
-                    </a>
-                    <p class="footer-tagline">
-                        Digital Clarity, Delivered. High-performance engineering for modern businesses.
+            <div class="services-grid">
+                <a href="/services.html#web" class="service-card reveal">
+                    <div class="service-number">[01]</div>
+                    <svg class="service-icon" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            stroke-width="1.5"
+                            d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                    </svg>
+                    <h3 class="service-title">Website Solutions</h3>
+                    <p class="service-description">
+                        Custom development from rapid templates to fully bespoke
+                        platforms. SEO-optimized, conversion-focused, built to
+                        scale.
                     </p>
-                </div>
+                    <span class="service-link">
+                        Explore Web Services →
+                    </span>
+                </a>
 
-                <div class="footer-col">
-                    <h3>Quick Links</h3>
-                    <nav>
-                        <a href="/services.html">Services</a>
-                        <a href="/projects.html">Projects</a>
-                        <a href="/about.html">About Us</a>
-                        <a href="/contact.html">Contact</a>
-                        <a href="/quote.html">Get a Quote</a>
-                    </nav>
-                </div>
+                <a href="/services.html#mobile" class="service-card reveal">
+                    <div class="service-number">[02]</div>
+                    <svg class="service-icon" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            stroke-width="1.5"
+                            d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+                    </svg>
+                    <h3 class="service-title">Mobile Applications</h3>
+                    <p class="service-description">
+                        Native iOS and Android development with complete
+                        lifecycle management. Premium user experiences across
+                        all devices.
+                    </p>
+                    <span class="service-link">
+                        Explore Mobile Services →
+                    </span>
+                </a>
 
-                <div class="footer-col">
-                    <h3>Contact</h3>
-                    <nav>
-                        <a href="tel:+27715332762">+27 71 533 2762</a>
-                        <a href="mailto:joshua.stevenson.100703@gmail.com">Send Email</a>
-                        <a>Cape Town, SA</a>
-                    </nav>
-                </div>
+                <a href="/services.html#data" class="service-card reveal">
+                    <div class="service-number">[03]</div>
+                    <svg class="service-icon" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            stroke-width="1.5"
+                            d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"></path>
+                    </svg>
+                    <h3 class="service-title">Data & Analytics</h3>
+                    <p class="service-description">
+                        Scalable pipelines, strategic dashboards, and advanced
+                        workflow optimization. Turn data into competitive
+                        advantage.
+                    </p>
+                    <span class="service-link">
+                        Explore Data Services →
+                    </span>
+                </a>
+            </div>
+        </section>
 
-                <div class="footer-col">
-                    <h3>Connect</h3>
-                    <nav>
-                        <a href="https://www.linkedin.com/in/joshua-trevor-stevenson" target="_blank"
-                            rel="noopener noreferrer">LinkedIn</a>
-                    </nav>
+        <!-- FOUNDER SECTION -->
+        <section class="founder-section">
+            <div class="founder-container">
+                <div class="founder-image-wrapper reveal">
+                    <div class="founder-image-frame">
+                        <img src="/images/founder/profile_pic.webp"
+                            alt="Joshua Stevenson - Founder"
+                            class="founder-image"
+                            onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 400 500\' fill=\'%23111111\'><rect width=\'400\' height=\'500\'/></svg>'">
+                    </div>
+                </div>
+                <div class="founder-content reveal">
+                    <h2>Built by an Engineer,<br>Driven by Data</h2>
+                    <p>
+                        Nexora is led by Joshua Stevenson, a Data Analytics
+                        Engineer with extensive experience transforming complex
+                        datasets into actionable business intelligence and
+                        high-performance digital products.
+                    </p>
+                    <p>
+                        With a background spanning financial services, media,
+                        and tech sectors, Joshua brings an analytical rigor to
+                        every project—ensuring your digital infrastructure isn't
+                        just beautiful, but measurably effective.
+                    </p>
+                    <div class="founder-stats">
+                        <div class="stat-item">
+                            <span class="stat-value">BSc</span>
+                            <span class="stat-label">Computer Science & Data
+                                Science</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value">5+</span>
+                            <span class="stat-label">Years Experience</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value">10+</span>
+                            <span class="stat-label">Tech Specializations</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value">100%</span>
+                            <span class="stat-label">Client Satisfaction</span>
+                        </div>
+                    </div>
+                    <a href="/about.html"
+                        class="btn btn-secondary-hero founder-cta">Learn More
+                        About Joshua</a>
                 </div>
             </div>
+        </section>
 
-            <div class="footer-bottom">
-                <p>&copy; <span id="year"></span> Nexora Web Agency. All rights reserved.</p>
+        <!-- TESTIMONIAL SECTION -->
+        <section class="testimonial-section reveal">
+            <div class="testimonial-content">
+                <div class="quote-icon">"</div>
+                <blockquote class="testimonial-text">
+                    Excellence isn't an act, it's a habit. Every line of code,
+                    every dashboard, every deployment—engineered for impact.
+                </blockquote>
+                <cite class="testimonial-author">— Nexora Philosophy</cite>
             </div>
-        </div>
-    </footer>
+        </section>
 
-    <!-- CUSTOM CURSOR -->
-    <div class="cursor"></div>
-    <div class="cursor-follower"></div>
-    
-    <!-- SCROLL PROGRESS BAR -->
-    <div class="scroll-progress"></div>
+        <!-- CTA SECTION -->
+        <section class="cta-section">
+            <div class="cta-content reveal">
+                <h2>Ready to Build Something Exceptional?</h2>
+                <p>Let's architect a digital solution that doesn't just meet
+                    expectations—it exceeds them by orders of magnitude.</p>
+                <a href="/quote.html" class="btn btn-primary-hero">Get Your
+                    Custom Quote</a>
+            </div>
+        </section>
 
-    <!-- SCRIPTS -->
-    <script>
+        <!-- FOOTER -->
+        <footer class="site-footer">
+            <div class="footer-container">
+                <div class="footer-grid">
+                    <div class="footer-col">
+                        <a href="/">
+                            <img src="/icons/logo_nobg.svg"
+                                alt="Nexora Web Agency Logo" class="footer-logo"
+                                onerror="this.src='/images/nexora-logo.svg'">
+                        </a>
+                        <p class="footer-tagline">
+                            Digital Clarity, Delivered. High-performance
+                            engineering for modern businesses.
+                        </p>
+                    </div>
+
+                    <div class="footer-col">
+                        <h3>Quick Links</h3>
+                        <nav>
+                            <a href="/services.html">Services</a>
+                            <a href="/projects.html">Projects</a>
+                            <a href="/about.html">About Us</a>
+                            <a href="/contact.html">Contact</a>
+                            <a href="/quote.html">Get a Quote</a>
+                        </nav>
+                    </div>
+
+                    <div class="footer-col">
+                        <h3>Contact</h3>
+                        <nav>
+                            <a href="tel:+27715332762">+27 71 533 2762</a>
+                            <a
+                                href="mailto:joshua.stevenson.100703@gmail.com">Send
+                                Email</a>
+                            <a>Cape Town, SA</a>
+                        </nav>
+                    </div>
+
+                    <div class="footer-col">
+                        <h3>Connect</h3>
+                        <nav>
+                            <a
+                                href="https://www.linkedin.com/in/joshua-trevor-stevenson"
+                                target="_blank"
+                                rel="noopener noreferrer">LinkedIn</a>
+                        </nav>
+                    </div>
+                </div>
+
+                <div class="footer-bottom">
+                    <p>&copy; <span id="year"></span> Nexora Web Agency. All
+                        rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- CUSTOM CURSOR -->
+        <div class="cursor"></div>
+        <div class="cursor-follower"></div>
+
+        <!-- SCROLL PROGRESS BAR -->
+        <div class="scroll-progress"></div>
+
+        <!-- SCRIPTS -->
+        <script>
         // ==================== DYNAMIC YEAR ====================
         document.getElementById('year').textContent = new Date().getFullYear();
 
@@ -1321,6 +1363,6 @@
             }
         });
     </script>
-</body>
+    </body>
 
 </html>
