@@ -1,33 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description"
-            content="Request a custom digital blueprint from Nexora Web Agency.">
+        <meta name="description" content="Request a custom digital blueprint from Nexora Web Agency.">
         <title>Get a Quote | Nexora Web Agency</title>
         <meta name="description" content />
         <meta name="keywords" content />
         <!-- Favicons -->
         <link href="/icons/emblem.svg" rel="icon" />
         <link href="/icons/nexora_emblem.png" rel="apple-touch-icon" />
-
         <link rel="stylesheet" href="/assets/css/global.css">
         <link rel="stylesheet" href="/assets/css/utilities.css">
-
         <link rel="stylesheet" href="/assets/css/main.css">
     </head>
-    <body>
 
-          <header class="site-header">
+    <body>
+        <header class="site-header">
             <div class="container header-inner">
                 <!-- Logo -->
-                <a href="/" class="logo-link">
-                    <img src="/icons/header_logo.svg" alt="Nexora Logo"
-                        class="nav-logo"
-                        onerror="this.src='/images/nexora-logo.svg'">
-
-                </a>
+                <img src="/icons/header_logo.svg" alt="Nexora Logo" class="nav-logo" onerror="this.src='/images/nexora-logo.svg'" style="height: 70px;width: auto;">
                 <nav class="main-nav">
                     <ul>
                         <li><a href="/">Home</a></li>
@@ -42,164 +35,97 @@
                 </div>
             </div>
         </header>
-
         <main class="quote-section container">
             <div class="quote-header reveal">
                 <div class="hero-badge">Project Estimation</div>
-                <h1>Build Your <span
-                        class="text-gradient">Blueprint.</span></h1>
-                <p
-                    style="color: var(--color-text-secondary); max-width: 600px; margin: 1rem auto 0; font-size: 1.1rem;">Tell
-                    us about your digital vision, and we'll architect a custom
-                    strategy tailored to your exact operational needs.</p>
+                <h1>Build Your <span class="text-gradient">Blueprint.</span></h1>
+                <p style="color: var(--color-text-secondary); max-width: 600px; margin: 1rem auto 0; font-size: 1.1rem;">Tell us about your digital vision, and we'll architect a custom strategy tailored to your exact operational needs.</p>
             </div>
-
             <div class="form-container reveal delay-100">
                 <div class="form-progress">
                     <div class="progress-step active" id="indicator-1">1</div>
                     <div class="progress-step" id="indicator-2">2</div>
                     <div class="progress-step" id="indicator-3">3</div>
                 </div>
-
-                <form name="quote-request" method="POST"
-                    action="/thank-you.html" data-netlify="true"
-                    id="quote-form">
-                    <input type="hidden" name="form-name"
-                        value="quote-request" />
-
+                <form name="quote-request" method="POST" action="/thank-you.html" data-netlify="true" id="quote-form">
+                    <input type="hidden" name="form-name" value="quote-request" />
                     <!-- STEP 1 -->
                     <div class="form-step active" id="step-1">
                         <h3>1. What services do you require?</h3>
                         <div class="selection-grid">
                             <label class="selection-label">
-                                <input type="checkbox" name="services"
-                                    value="Web Development"> Custom Website
-                                Development
-                            </label>
+                                <input type="checkbox" name="services" value="Web Development"> Custom Website Development </label>
                             <label class="selection-label">
-                                <input type="checkbox" name="services"
-                                    value="Mobile App"> Mobile Application
-                                (iOS/Android)
-                            </label>
+                                <input type="checkbox" name="services" value="Mobile App"> Mobile Application (iOS/Android) </label>
                             <label class="selection-label">
-                                <input type="checkbox" name="services"
-                                    value="Data Analytics"> Data & Analytics
-                                Engineering
-                            </label>
+                                <input type="checkbox" name="services" value="Data Analytics"> Data & Analytics Engineering </label>
                             <label class="selection-label">
-                                <input type="checkbox" name="services"
-                                    value="SEO"> Advanced SEO Optimisation
-                            </label>
+                                <input type="checkbox" name="services" value="SEO"> Advanced SEO Optimisation </label>
                             <label class="selection-label">
-                                <input type="checkbox" name="services"
-                                    value="Retainer"> Monthly Support Retainer
-                            </label>
+                                <input type="checkbox" name="services" value="Retainer"> Monthly Support Retainer </label>
                         </div>
-                        <div class="form-actions"
-                            style="justify-content: flex-end;">
-                            <button type="button"
-                                class="btn-primary btn-next">Continue
-                                &rarr;</button>
+                        <div class="form-actions" style="justify-content: flex-end;">
+                            <button type="button" class="btn-primary btn-next">Continue &rarr;</button>
                         </div>
                     </div>
-
                     <!-- STEP 2 -->
                     <div class="form-step" id="step-2">
                         <h3>2. What is your estimated budget?</h3>
                         <div class="selection-grid">
                             <label class="selection-label">
-                                <input type="radio" name="budget"
-                                    value="Template (R500-R2000)" required>
-                                Rapid Template (R500 – R2,000)
-                            </label>
+                                <input type="radio" name="budget" value="Template (R500-R2000)" required> Rapid Template (R500 – R2,000) </label>
                             <label class="selection-label">
-                                <input type="radio" name="budget"
-                                    value="Custom Web (R3k-R10k)">
-                                Custom Web Solution (R3,000 – R10,000)
-                            </label>
+                                <input type="radio" name="budget" value="Custom Web (R3k-R10k)"> Custom Web Solution (R3,000 – R10,000) </label>
                             <label class="selection-label">
-                                <input type="radio" name="budget"
-                                    value="Custom Data/App">
-                                Custom Data / Mobile App (Let's Talk)
-                            </label>
+                                <input type="radio" name="budget" value="Custom Data/App"> Custom Data / Mobile App (Let's Talk) </label>
                         </div>
                         <div class="form-actions">
-                            <button type="button"
-                                class="btn-secondary btn-prev">&larr;
-                                Back</button>
-                            <button type="button"
-                                class="btn-primary btn-next">Continue
-                                &rarr;</button>
+                            <button type="button" class="btn-secondary btn-prev">&larr; Back</button>
+                            <button type="button" class="btn-primary btn-next">Continue &rarr;</button>
                         </div>
                     </div>
-
                     <!-- STEP 3 -->
                     <div class="form-step" id="step-3">
                         <h3>3. Project Details & Contact</h3>
-
-                        <div
-                            style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
                             <div class="input-group">
                                 <label for="clientName">Full Name *</label>
-                                <input type="text" id="clientName" name="name"
-                                    required placeholder="Jane Doe">
+                                <input type="text" id="clientName" name="name" required placeholder="Jane Doe">
                             </div>
                             <div class="input-group">
-                                <label for="companyName">Company / Project
-                                    Name</label>
-                                <input type="text" id="companyName"
-                                    name="company" placeholder="Acme Corp">
+                                <label for="companyName">Company / Project Name</label>
+                                <input type="text" id="companyName" name="company" placeholder="Acme Corp">
                             </div>
                         </div>
-
-                        <div
-                            style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
                             <div class="input-group">
                                 <label for="email">Email Address *</label>
-                                <input type="email" id="email" name="email"
-                                    required placeholder="jane@example.com">
+                                <input type="email" id="email" name="email" required placeholder="jane@example.com">
                             </div>
                             <div class="input-group">
                                 <label for="phone">Phone Number</label>
-                                <input type="tel" id="phone" name="phone"
-                                    placeholder="+27 71 123 4567">
+                                <input type="tel" id="phone" name="phone" placeholder="+27 71 123 4567">
                             </div>
                         </div>
-
                         <div class="input-group">
                             <label for="projectBrief">Project Brief *</label>
-                            <textarea id="projectBrief" name="brief" required
-                                placeholder="Describe your goals, current bottlenecks, and what you hope to achieve..."></textarea>
+                            <textarea id="projectBrief" name="brief" required placeholder="Describe your goals, current bottlenecks, and what you hope to achieve..."></textarea>
                         </div>
-
                         <div class="form-actions">
-                            <button type="button"
-                                class="btn-secondary btn-prev">&larr;
-                                Back</button>
-                            <button type="submit" class="btn-primary">Submit
-                                Blueprint Request</button>
+                            <button type="button" class="btn-secondary btn-prev">&larr; Back</button>
+                            <button type="submit" class="btn-primary">Submit Blueprint Request</button>
                         </div>
                     </div>
-
                 </form>
             </div>
         </main>
-
         <footer class="site-footer">
             <div class="container">
                 <div class="footer-grid">
-
                     <!-- Column 1: Brand & Tagline -->
                     <div class="footer-col reveal">
-                        <a href="/"
-                            style="text-decoration: none; display: inline-block;">
-                            <img src="/icons/logo_nobg.svg"
-                                alt="Nexora Web Agency Logo" class="footer-logo"
-                                onerror="this.src='/images/nexora-logo.svg'">
-                        </a>
-
+                        <img src="/icons/logo_nobg.svg" alt="Nexora Web Agency Logo" class="footer-logo" onerror="this.src='/images/nexora-logo.svg'" style="height: 180px;width: auto">
                     </div>
-
                     <!-- Column 2: Sitemap Links -->
                     <div class="footer-col reveal delay-100">
                         <h3>Quick Links</h3>
@@ -211,48 +137,39 @@
                             <a href="/quote.html">Get a Quote</a>
                         </nav>
                     </div>
-
                     <!-- Column 3: Contact Info -->
                     <div class="footer-col reveal delay-200">
                         <h3>Contact Us</h3>
                         <p>Cape Town, South Africa</p>
-                        
-                        <a
-                            href="mailto:nwa.agency.josh@gmail.com">nwa.agency.josh@gmail.com</a>
+                        <a href="mailto:nwa.agency.josh@gmail.com">nwa.agency.josh@gmail.com</a>
                     </div>
-
                     <!-- Column 4: Socials -->
                     <div class="footer-col reveal delay-300">
                         <h3>Follow Us</h3>
-                        <a
-                            href="https://www.linkedin.com/in/joshua-trevor-stevenson"
-                            target="_blank"
-                            rel="noopener noreferrer">LinkedIn</a>
+                        <a href="https://www.linkedin.com/in/joshua-trevor-stevenson" target="_blank" rel="noopener noreferrer">LinkedIn</a>
                     </div>
-
                 </div>
-
                 <!-- Footer Bottom: Copyright -->
                 <div class="footer-bottom reveal delay-400">
                     <p>&copy;
-                        <script>document.write(new Date().getFullYear())</script>
-                        Nexora Web Agency. All rights reserved.</p>
+                        <script>document.write(new Date().getFullYear())</script> Nexora Web Agency. All rights reserved.
+                    </p>
                 </div>
             </div>
         </footer>
-
         <script src="/assets/js/forms.js"></script>
         <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('active');
-          }
-        });
-      }, { threshold: 0.1 });
-      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-    });
-  </script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('active');
+                        }
+                    });
+                }, { threshold: 0.1 });
+                document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+            });
+        </script>
     </body>
+
 </html>
