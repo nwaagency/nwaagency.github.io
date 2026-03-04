@@ -26,22 +26,81 @@ The project solves the need for a lightning-fast, SEO-optimized, and highly secu
 ## **Architecture**
 
 ### **Project Structure**
+# Project Structure
+
 ```
 
-├── netlify.toml               \# Edge configuration, security headers, and routing rules  
-├── package.json               \# Build orchestration  
-├── public/                    \# Unprocessed static assets  
-│   ├── icons/                 \# SVG icons and logos  
-│   └── images/                \# Founder and project images  
-└── src/  
-    ├── assets/  
-    │   ├── css/               \# Global design system, resets, and utility classes  
-    │   └── js/                \# Core interactive logic (e.g., forms.js)  
-    ├── components/  
-    │   └── global/            \# Extracted UI components (Header.html, Footer.html)  
-    └── pages/                 \# Core route pages (index, about, contact, etc.)  
-        └── services/          \# Individual nested service pages
+├── public                            # Unprocessed static assets
+│   ├── icons                         # SVG icons and logos
+│   │   ├── Nexora_Logos_No-Background.svg
+│   │   ├── emblem.svg
+│   │   ├── header_logo.svg
+│   │   ├── logo_nobg.svg
+│   │   └── nexora_emblem.png
+│   └── images                        # Founder and project images
+│       ├── founder
+│       │   ├── founder_1.webp
+│       │   ├── founder_2.webp
+│       │   ├── profile_pic.png
+│       │   └── profile_pic.webp
+│       ├── projects
+│       │   ├── bushcreek.png
+│       │   └── cpil.png
+│       └── nexora-logo.svg
+├── src
+│   ├── assets
+│   │   ├── css                       # Global design system, resets, and utility classes
+│   │   │   ├── global.css
+│   │   │   ├── home.css
+│   │   │   ├── main.css
+│   │   │   └── utilities.css
+│   │   └── js                        # Core interactive logic (e.g., forms.js)
+│   │       └── forms.js
+│   ├── components
+│   │   ├── global                    # Extracted UI components (Header.html, Footer.html)
+│   │   │   ├── Footer.html
+│   │   │   └── Header.html
+│   │   ├── sections
+│   │   │   ├── FounderSnippet.html
+│   │   │   ├── GlobalCTA.html
+│   │   │   ├── Hero.html
+│   │   │   └── ServiceGrid.html
+│   │   └── ui
+│   │       ├── Button.html
+│   │       ├── Card.html
+│   │       └── FormInput.html
+│   ├── layouts
+│   │   └── BaseLayout.html
+│   └── pages                         # Core route pages (index, about, contact, etc.)
+│       ├── projects
+│       │   ├── bush-creek.html
+│       │   └── cemex.html
+│       ├── services                  # Individual nested service pages
+│       │   ├── advanced-seo-optimisation.html
+│       │   ├── android-development.html
+│       │   ├── custom-website-development.html
+│       │   ├── data-modelling.html
+│       │   ├── gtm-analytics-integration.html
+│       │   ├── ios-development.html
+│       │   ├── rapid-website-templates.html
+│       │   ├── scalable-data-pipelines.html
+│       │   ├── strategic-dashboards.html
+│       │   └── workflow-optimisation.html
+│       ├── about.html
+│       ├── contact.html
+│       ├── index.html
+│       ├── projects.html
+│       ├── quote.html
+│       ├── services.html
+│       ├── template.html
+│       └── thank-you.html
+├── .gitignore
+├── README.md
+├── netlify.toml                      # Edge configuration, security headers, and routing rules
+├── package-lock.json
+└── package.json                      # Build orchestration
 ```
+
 
 ### **Application Flow**
 

@@ -2,7 +2,7 @@ Build output
 
 dist/
 .vscode/
-
+docs/
 Dependencies
 
 node_modules/
