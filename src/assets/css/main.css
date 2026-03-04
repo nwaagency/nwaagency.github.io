@@ -178,12 +178,13 @@ ol {
 
 .logo-link {
   display: flex;
+   align-items: center;
+                text-decoration: none;
 }
 
 .nav-logo {
   height: 70px;
   width: auto;
-  display: block;
 }
 
 .logo-text {
@@ -353,9 +354,9 @@ ol {
 
 .footer-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 2rem;
-  margin-bottom: 3rem;
+                grid-template-columns: 2fr 1fr 1fr 1fr;
+                gap: 4rem;
+                margin-bottom: 3rem;
 }
 
 .footer-logo {
@@ -363,7 +364,7 @@ ol {
   height: 180px;
   width: auto;
 
-  display: block;
+ 
  
 }
 
