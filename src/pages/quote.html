@@ -2,18 +2,19 @@
 <html lang="en">
 
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Request a custom digital blueprint from Nexora Web Agency.">
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- Primary SEO -->
         <title>Get a Quote | Nexora Web Agency</title>
-        <meta name="description" content />
-        <meta name="keywords" content />
+        <meta name="description" content="Request a custom digital blueprint from Nexora Web Agency." />
         <!-- Favicons -->
         <link href="/icons/emblem.svg" rel="icon" />
         <link href="/icons/nexora_emblem.png" rel="apple-touch-icon" />
-        <link rel="stylesheet" href="/assets/css/global.css">
-        <link rel="stylesheet" href="/assets/css/utilities.css">
-        <link rel="stylesheet" href="/assets/css/main.css">
+        <!-- Styles -->
+        <link rel="stylesheet" href="/assets/css/global.css" />
+        <link rel="stylesheet" href="/assets/css/utilities.css" />
+        <link rel="stylesheet" href="/assets/css/main.css" />
+       <link rel="stylesheet" href="/assets/css/quote.css" />
     </head>
 
     <body>
@@ -21,9 +22,9 @@
             <div class="container header-inner">
                 <!-- Logo -->
                 <a href="/index.html" class="logo-link">
-                    <img src="/icons/header_logo.svg" alt="Nexora Logo" class="nav-logo" onerror="this.src='/images/nexora-logo.svg'" style="height: 70px; width: auto;">
+                    <img src="/icons/header_logo.svg" alt="Nexora Logo" class="nav-logo" onerror="this.src='/images/nexora-logo.svg'" style="height: 70px; width: auto;" />
                 </a>
-                <nav class="main-nav">
+                <nav class="main-nav" aria-label="Primary">
                     <ul>
                         <li><a href="/">Home</a></li>
                         <li><a href="/about.html">About</a></li>
@@ -33,7 +34,7 @@
                     </ul>
                 </nav>
                 <div class="header-cta">
-                    <a href="/quote.html" class="btn-primary">Get a Quote</a>
+                    <a href="/quote.html" class="btn-primary" aria-current="page">Get a Quote</a>
                 </div>
             </div>
         </header>
@@ -41,7 +42,7 @@
             <div class="quote-header reveal">
                 <div class="hero-badge">Project Estimation</div>
                 <h1>Build Your <span class="text-gradient">Blueprint.</span></h1>
-                <p style="color: var(--color-text-secondary); max-width: 600px; margin: 1rem auto 0; font-size: 1.1rem;">Tell us about your digital vision, and we'll architect a custom strategy tailored to your exact operational needs.</p>
+                <p style="color: var(--color-text-secondary); max-width: 600px; margin: 1rem auto 0; font-size: 1.1rem;"> Tell us about your digital vision, and we'll architect a custom strategy tailored to your exact operational needs. </p>
             </div>
             <div class="form-container reveal delay-100">
                 <div class="form-progress">
@@ -51,62 +52,215 @@
                 </div>
                 <form name="quote-request" method="POST" action="/thank-you.html" data-netlify="true" id="quote-form">
                     <input type="hidden" name="form-name" value="quote-request" />
+                    <!-- Budget fields (persisted for Netlify submissions) -->
+                    <input type="hidden" name="budget_min" value="" />
+                    <input type="hidden" name="budget_max" value="" />
+                    <input type="hidden" name="budget_target" value="" />
                     <!-- STEP 1 -->
                     <div class="form-step active" id="step-1">
-                        <h3>1. What services do you require?</h3>
-                        <div class="selection-grid">
-                            <label class="selection-label">
-                                <input type="checkbox" name="services" value="Web Development"> Custom Website Development </label>
-                            <label class="selection-label">
-                                <input type="checkbox" name="services" value="Mobile App"> Mobile Application (iOS/Android) </label>
-                            <label class="selection-label">
-                                <input type="checkbox" name="services" value="Data Analytics"> Data & Analytics Engineering </label>
-                            <label class="selection-label">
-                                <input type="checkbox" name="services" value="SEO"> Advanced SEO Optimisation </label>
-                            <label class="selection-label">
-                                <input type="checkbox" name="services" value="Retainer"> Monthly Support Retainer </label>
+                        <h3>1. Select your services</h3>
+                        <div class="step1-shell">
+                            <section class="services-selection">
+                                <!-- Website Solutions -->
+                                <details id="web" class="service-category reveal delay-100">
+                                    <summary>
+                                        <div class="cat-title">Website Solutions</div>
+                                    </summary>
+                                    <div class="details-content">
+                                        <div class="service-item">
+                                            <label class="service-row">
+                                                <div class="service-name">Custom Website Development</div>
+                                                <div class="service-select" aria-hidden="true">
+                                                    <input type="checkbox" name="services" value="Custom Website Development" data-min="3000" data-max="10000" />
+                                                </div>
+                                            </label>
+                                        </div>
+                                        <div class="service-item">
+                                            <label class="service-row">
+                                                <div class="service-name">Rapid Website Templates</div>
+                                                <div class="service-select" aria-hidden="true">
+                                                    <input type="checkbox" name="services" value="Rapid Website Templates" data-min="500" data-max="2000" />
+                                                </div>
+                                            </label>
+                                        </div>
+                                        <div class="service-item">
+                                            <label class="service-row">
+                                                <div class="service-name">GTM &amp; Analytics Integration</div>
+                                                <div class="service-select" aria-hidden="true">
+                                                    <input type="checkbox" name="services" value="GTM & Analytics Integration" data-min="500" data-max="2000" />
+                                                </div>
+                                            </label>
+                                        </div>
+                                        <div class="service-item">
+                                            <label class="service-row">
+                                                <div class="service-name">Advanced SEO Optimisation</div>
+                                                <div class="service-select" aria-hidden="true">
+                                                    <input type="checkbox" name="services" value="Advanced SEO Optimisation" data-min="500" data-max="2000" />
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </details>
+                                <!-- Mobile App Services -->
+                                <details id="mobile" class="service-category reveal delay-200">
+                                    <summary>
+                                        <div class="cat-title">Mobile App Services</div>
+                                    </summary>
+                                    <div class="details-content">
+                                        <div class="service-item">
+                                            <label class="service-row">
+                                                <div class="service-name">iOS Development &amp; Lifecycle</div>
+                                                <div class="service-select" aria-hidden="true">
+                                                    <input type="checkbox" name="services" value="iOS Development & Lifecycle" data-min="25000" data-max="65000" />
+                                                </div>
+                                            </label>
+                                        </div>
+                                        <div class="service-item">
+                                            <label class="service-row">
+                                                <div class="service-name">Android Development &amp; Lifecycle</div>
+                                                <div class="service-select" aria-hidden="true">
+                                                    <input type="checkbox" name="services" value="Android Development & Lifecycle" data-min="20000" data-max="55000" />
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </details>
+                                <!-- Data & Analytics -->
+                                <details id="data" class="service-category reveal delay-300">
+                                    <summary>
+                                        <div class="cat-title">Data &amp; Analytics Engineering</div>
+                                    </summary>
+                                    <div class="details-content">
+                                        <div class="service-item">
+                                            <label class="service-row">
+                                                <div class="service-name">Strategic Dashboards &amp; Reporting</div>
+                                                <div class="service-select" aria-hidden="true">
+                                                    <input type="checkbox" name="services" value="Strategic Dashboards & Reporting" data-min="6000" data-max="15000" />
+                                                </div>
+                                            </label>
+                                        </div>
+                                        <div class="service-item">
+                                            <label class="service-row">
+                                                <div class="service-name">Scalable Data Pipelines</div>
+                                                <div class="service-select" aria-hidden="true">
+                                                    <input type="checkbox" name="services" value="Scalable Data Pipelines" data-min="8500" data-max="22000" />
+                                                </div>
+                                            </label>
+                                        </div>
+                                        <div class="service-item">
+                                            <label class="service-row">
+                                                <div class="service-name">Data Modelling &amp; Architecture</div>
+                                                <div class="service-select" aria-hidden="true">
+                                                    <input type="checkbox" name="services" value="Data Modelling & Architecture" data-min="12000" data-max="30000" />
+                                                </div>
+                                            </label>
+                                        </div>
+                                        <div class="service-item">
+                                            <label class="service-row">
+                                                <div class="service-name">Workflow &amp; Processing Optimisation</div>
+                                                <div class="service-select" aria-hidden="true">
+                                                    <input type="checkbox" name="services" value="Workflow & Processing Optimisation" data-min="7500" data-max="18000" />
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </details>
+                            </section>
                         </div>
-                        <div class="form-actions" style="justify-content: flex-end;">
+                        <div class="form-actions" style="justify-content: flex-end; margin-top: 2rem;">
                             <button type="button" class="btn-primary btn-next">Continue &rarr;</button>
                         </div>
                     </div>
-                    <!-- STEP 2 -->
+                    <!-- STEP 2 (Responsive) -->
                     <div class="form-step" id="step-2">
-                        <h3>2. What is your estimated budget?</h3>
-                        <div class="selection-grid">
-                            <label class="selection-label">
-                                <input type="radio" name="budget" value="Template (R500-R2000)" required> Rapid Template (R500 – R2,000) </label>
-                            <label class="selection-label">
-                                <input type="radio" name="budget" value="Custom Web (R3k-R10k)"> Custom Web Solution (R3,000 – R10,000) </label>
-                            <label class="selection-label">
-                                <input type="radio" name="budget" value="Custom Data/App"> Custom Data / Mobile App (Let's Talk) </label>
+                        <h3>2. Budget Preference</h3>
+                        <p style="color: var(--color-text-secondary); margin-top: 0.5rem;"> Choose how you want to set budget expectations. We’ll use this to align scope and delivery milestones. </p>
+                        <!-- Mode Cards -->
+                        <div class="budget-mode-grid">
+                            <label class="selection-label budget-mode-card">
+                                <div class="budget-mode-card-inner">
+                                    <input type="radio" name="budget_mode" value="target" checked style="margin-top: 0.15rem;" />
+                                    <div class="budget-mode-copy">
+                                        <div class="budget-mode-title">Baseline + Target</div>
+                                        <div class="budget-mode-text"> We calculate a baseline from your service selection, then you set a target. </div>
+                                    </div>
+                                </div>
+                            </label>
+                            <label class="selection-label budget-mode-card">
+                                <div class="budget-mode-card-inner">
+                                    <input type="radio" name="budget_mode" value="custom" style="margin-top: 0.15rem;" />
+                                    <div class="budget-mode-copy">
+                                        <div class="budget-mode-title">Custom Proposal</div>
+                                        <div class="budget-mode-text"> Provide a range and we’ll return a tailored proposal aligned to it. </div>
+                                    </div>
+                                </div>
+                            </label>
                         </div>
-                        <div class="form-actions">
+                        <!-- Baseline Snapshot -->
+                        <div class="budget-summary-card">
+                            <div class="budget-summary-row">
+                                <div>
+                                    <div class="budget-summary-label">Estimated baseline from selection</div>
+                                    <div id="budget-range-display" class="text-gradient budget-range-value">R0 - R0</div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Target Slider Panel -->
+                        <div id="budget-slider-panel" class="budget-slider-card">
+                            <div class="budget-slider-header">
+                                <div class="budget-slider-title">Set your target</div>
+                                <div class="budget-slider-target"> Target: <span id="slider-value-display" class="text-gradient">R0</span>
+                                </div>
+                            </div>
+                            <div class="budget-slider-wrap">
+                                 <input type="range" id="budgetSlider" name="budget" min="0" max="10000" step="500" value="0" class="budget-slider-input" />
+                                <div class="budget-slider-scale">
+                                    <span>Lower</span>
+                                    <span>Higher</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Custom Proposal Panel -->
+                        <div id="budget-custom-panel" class="budget-custom-card" style="display: none;">
+                            <div class="budget-custom-title">Enter a proposal range</div>
+                            <p class="budget-custom-text"> We’ll structure scope, milestones, and trade-offs around this range. </p>
+                            <div class="budget-custom-grid">
+                                <div class="input-group">
+                                    <label for="customBudgetMin">Budget Minimum (ZAR) *</label>
+                                    <input type="number" id="customBudgetMin" inputmode="numeric" min="0" step="500" placeholder="e.g. 15000" />
+                                </div>
+                                <div class="input-group">
+                                    <label for="customBudgetMax">Budget Maximum (ZAR) *</label>
+                                    <input type="number" id="customBudgetMax" inputmode="numeric" min="0" step="500" placeholder="e.g. 50000" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-actions" style="margin-top: 1.5rem;">
                             <button type="button" class="btn-secondary btn-prev">&larr; Back</button>
                             <button type="button" class="btn-primary btn-next">Continue &rarr;</button>
                         </div>
                     </div>
                     <!-- STEP 3 -->
                     <div class="form-step" id="step-3">
-                        <h3>3. Project Details & Contact</h3>
+                        <h3>3. Project Details &amp; Contact</h3>
                         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
                             <div class="input-group">
                                 <label for="clientName">Full Name *</label>
-                                <input type="text" id="clientName" name="name" required placeholder="Jane Doe">
+                                <input type="text" id="clientName" name="name" required placeholder="Jane Doe" />
                             </div>
                             <div class="input-group">
-                                <label for="companyName">Company / Project Name</label>
-                                <input type="text" id="companyName" name="company" placeholder="Acme Corp">
+                                <label for="companyName">Company Name</label>
+                                <input type="text" id="companyName" name="company" placeholder="Acme Corp" />
                             </div>
                         </div>
                         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
                             <div class="input-group">
                                 <label for="email">Email Address *</label>
-                                <input type="email" id="email" name="email" required placeholder="jane@example.com">
+                                <input type="email" id="email" name="email" required placeholder="jane@example.com" />
                             </div>
                             <div class="input-group">
                                 <label for="phone">Phone Number</label>
-                                <input type="tel" id="phone" name="phone" placeholder="+27 71 123 4567">
+                                <input type="tel" id="phone" name="phone" placeholder="+27 71 123 4567" />
                             </div>
                         </div>
                         <div class="input-group">
@@ -124,54 +278,55 @@
         <footer class="site-footer">
             <div class="container">
                 <div class="footer-grid">
-                    <!-- Column 1: Brand & Tagline -->
                     <div class="footer-col reveal">
                         <a href="/index.html">
-                            <img src="/icons/logo_nobg.svg" alt="Nexora Web Agency Logo" class="footer-logo" onerror="this.src='/images/nexora-logo.svg'" style="height: 180px; width: auto;">
+                            <img src="/icons/logo_nobg.svg" alt="Nexora Web Agency Logo" class="footer-logo" onerror="this.src='/images/nexora-logo.svg'" style="height: 180px; width: auto;" />
                         </a>
                     </div>
-                    <!-- Column 2: Sitemap Links -->
                     <div class="footer-col reveal delay-100">
                         <h3>Quick Links</h3>
-                        <nav>
+                        <nav aria-label="Footer">
                             <a href="/services.html">Services</a>
                             <a href="/projects.html">Projects</a>
                             <a href="/about.html">About Us</a>
                             <a href="/contact.html">Contact</a>
-                            <a href="/quote.html">Get a Quote</a>
+                            <a href="/quote.html" aria-current="page">Get a Quote</a>
                         </nav>
                     </div>
-                    <!-- Column 3: Contact Info -->
                     <div class="footer-col reveal delay-200">
                         <h3>Contact Us</h3>
                         <p>Cape Town, South Africa</p>
                         <a href="mailto:nwa.agency.josh@gmail.com">nwa.agency.josh@gmail.com</a>
                     </div>
-                    <!-- Column 4: Socials -->
                     <div class="footer-col reveal delay-300">
                         <h3>Follow Us</h3>
-                        <a href="https://www.linkedin.com/in/joshua-trevor-stevenson" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                        <a href="https://www.linkedin.com/in/joshua-trevor-stevenson" target="_blank" rel="noopener noreferrer"> LinkedIn </a>
                     </div>
                 </div>
-                <!-- Footer Bottom: Copyright -->
                 <div class="footer-bottom reveal delay-400">
-                    <p>&copy;
+                    <p> &copy;
                         <script>document.write(new Date().getFullYear())</script> Nexora Web Agency. All rights reserved.
                     </p>
                 </div>
             </div>
         </footer>
         <script src="/assets/js/forms.js"></script>
+        <!-- Reveal-on-scroll -->
         <script>
-            document.addEventListener('DOMContentLoaded', () => {
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add('active');
-                        }
-                    });
-                }, { threshold: 0.1 });
-                document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+            document.addEventListener("DOMContentLoaded", () => {
+                const observer = new IntersectionObserver(
+                    (entries, obs) => {
+                        entries.forEach((entry) => {
+                            if (entry.isIntersecting) {
+                                entry.target.classList.add("active");
+                                obs.unobserve(entry.target);
+                            }
+                        });
+                    },
+                    { threshold: 0.1 }
+                );
+
+                document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
             });
         </script>
     </body>

@@ -1,91 +1,129 @@
-# **Nexora Web Agency**
+# Nexora Web Agency
 
-## **Overview**
+![Netlify](https://img.shields.io/badge/deploy-netlify-success)
+![Static Site](https://img.shields.io/badge/architecture-static--site-blue)
+![License](https://img.shields.io/badge/license-MIT-green)
 
-Nexora Web Agency is a high-performance, statically generated portfolio and service website designed for a digital engineering agency. It offers a professional showcase of Web, Mobile, and Data Analytics engineering services.
+High‑performance, componentized static website for a digital engineering agency. Built with **HTML, CSS, and Vanilla JavaScript** using a lightweight **layout + components architecture**, assembled via npm scripts and deployed through **Netlify CDN infrastructure**.
 
-The project solves the need for a lightning-fast, SEO-optimized, and highly secure digital storefront. It targets businesses and enterprise clients seeking custom digital solutions. Architecturally, the application is a pure static frontend (HTML/CSS/JS) decoupled from a traditional backend, utilizing serverless form handling for lead generation and client inquiries.
+---
 
-## **Tech Stack**
+# Quick Start
 
-* **Frontend Framework:** Plain HTML5, CSS3 (Custom Properties/Variables)  
-* **Scripting:** Vanilla JavaScript (ES6+)  
-* **Hosting / Deployment:** Netlify (Inferred via netlify.toml)  
-* **Backend / API:** Serverless Form Processing (Netlify Forms)  
-* **Build Tools:** Native npm scripts (Bash copy commands)  
-* **Fonts & Typography:** Google Fonts (Inter, JetBrains Mono)
+Clone the repository:
 
-## **Features**
-
-* **Multi-Step Interactive Quoting System:** A custom 3-step lead generation form (forms.js) utilizing Vanilla JS DOM manipulation for state management, step validation, and progress tracking.  
-* **Serverless Form Handling:** Forms are instrumented with data-netlify="true", allowing Netlify to automatically intercept POST requests, parse submissions, and handle spam filtering without a dedicated backend server.  
-* **Scroll-Triggered Animations:** Implements the native IntersectionObserver API to orchestrate staggered, high-performance CSS reveal animations as elements enter the viewport.  
-* **Interactive UI Elements:** Features custom cursor-tracking glow effects and radial gradient hover states calculated dynamically via mouse position tracking in JavaScript.  
-* **Robust Security Headers:** Hardened edge delivery utilizing netlify.toml to enforce strict security headers (Clickjacking prevention, XSS blocking, and strict referrer policies).
-
-## **Architecture**
-
-### **Project Structure**
-# Project Structure
-
+```bash
+git clone https://github.com/nwaagency/nwaagency.github.io.git
+cd nwaagency.github.io
 ```
 
-├── public                            # Unprocessed static assets
-│   ├── icons                         # SVG icons and logos
-│   │   ├── Nexora_Logos_No-Background.svg
-│   │   ├── emblem.svg
-│   │   ├── header_logo.svg
-│   │   ├── logo_nobg.svg
-│   │   └── nexora_emblem.png
-│   └── images                        # Founder and project images
-│       ├── founder
-│       │   ├── founder_1.webp
-│       │   ├── founder_2.webp
-│       │   ├── profile_pic.png
-│       │   └── profile_pic.webp
-│       ├── projects
-│       │   ├── bushcreek.png
-│       │   └── cpil.png
-│       └── nexora-logo.svg
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start development:
+
+```bash
+npm run dev
+```
+
+If no dev server exists:
+
+```bash
+npx serve .
+```
+
+---
+
+# Table of Contents
+
+1. Overview
+2. Technology Stack
+3. Repository Structure
+4. Source vs Public Architecture
+5. Website Sitemap
+6. Routing Architecture
+7. Layout System
+8. Component System
+9. Styling Architecture
+10. JavaScript Architecture
+11. System Architecture
+12. Component Dependency Graph
+13. Performance Strategy
+14. SEO Architecture
+15. Security Architecture
+16. Netlify Configuration
+17. Development Environment
+18. Development Workflow
+19. Coding Standards
+20. Git Workflow
+21. Deployment Pipeline
+22. Future Improvements
+23. License
+
+---
+
+# Overview
+
+Nexora Web Agency is a **static marketing and portfolio website** designed to:
+
+* Present digital engineering services
+* Showcase projects and case studies
+* Capture leads through a multi‑step quote form
+
+The system is intentionally built using **static architecture** to maximize:
+
+* performance
+* SEO visibility
+* security
+* deployment simplicity
+
+Maintainability is achieved through:
+
+* centralized **BaseLayout**
+* reusable **HTML components**
+* modular CSS layers
+* minimal structured JavaScript
+* strict separation between **source (`src/`) and assets (`public/`)**
+
+---
+
+# Technology Stack
+
+## Frontend
+
+* HTML (layout + component partials)
+* CSS (custom design system)
+* Vanilla JavaScript (UI interactions)
+
+## Infrastructure
+
+* Netlify (hosting + CDN)
+* npm (build orchestration)
+
+---
+
+# Repository Structure
+
+```text
+├── public
+│   ├── icons
+│   └── images
 ├── src
 │   ├── assets
-│   │   ├── css                       # Global design system, resets, and utility classes
-│   │   │   ├── global.css
-│   │   │   ├── home.css
-│   │   │   ├── main.css
-│   │   │   └── utilities.css
-│   │   └── js                        # Core interactive logic (e.g., forms.js)
-│   │       └── forms.js
+│   │   ├── css
+│   │   └── js
 │   ├── components
-│   │   ├── global                    # Extracted UI components (Header.html, Footer.html)
-│   │   │   ├── Footer.html
-│   │   │   └── Header.html
+│   │   ├── global
 │   │   ├── sections
-│   │   │   ├── FounderSnippet.html
-│   │   │   ├── GlobalCTA.html
-│   │   │   ├── Hero.html
-│   │   │   └── ServiceGrid.html
 │   │   └── ui
-│   │       ├── Button.html
-│   │       ├── Card.html
-│   │       └── FormInput.html
 │   ├── layouts
 │   │   └── BaseLayout.html
-│   └── pages                         # Core route pages (index, about, contact, etc.)
+│   └── pages
+│       ├── services
 │       ├── projects
-│       │   ├── bush-creek.html
-│       │   └── cemex.html
-│       ├── services                  # Individual nested service pages
-│       │   ├── advanced-seo-optimisation.html
-│       │   ├── android-development.html
-│       │   ├── custom-website-development.html
-│       │   ├── data-modelling.html
-│       │   ├── gtm-analytics-integration.html
-│       │   ├── ios-development.html
-│       │   ├── rapid-website-templates.html
-│       │   ├── scalable-data-pipelines.html
-│       │   ├── strategic-dashboards.html
-│       │   └── workflow-optimisation.html
 │       ├── about.html
 │       ├── contact.html
 │       ├── index.html
@@ -94,76 +132,570 @@ The project solves the need for a lightning-fast, SEO-optimized, and highly secu
 │       ├── services.html
 │       ├── template.html
 │       └── thank-you.html
-├── .gitignore
-├── README.md
-├── netlify.toml                      # Edge configuration, security headers, and routing rules
-├── package-lock.json
-└── package.json                      # Build orchestration
+├── netlify.toml
+├── package.json
+└── README.md
 ```
 
+---
 
-### **Application Flow**
+# Source vs Public Architecture
 
-* **Routing Logic:** File-based static routing. Requests map directly to .html files in the dist folder. Netlify handles clean URLs and 404 fallbacks.  
-* **State Management:** Localized DOM state is used exclusively. The multi-step form tracks the currentStep index in memory to toggle CSS classes (.active, .completed) without full page reloads.  
-* **API Communication:** No internal REST/GraphQL APIs. Data egress is handled strictly through form-encoded POST requests intercepted at the edge by Netlify.  
-* **Data Flow:** Purely unidirectional UI rendering. Client interacts with DOM \-\> JS updates classes \-\> CSS handles visual transitions.
+## public/
 
-## **Installation**
+Contains **static assets** referenced directly by HTML.
 
-### **Prerequisites**
+Examples:
 
-* **Node.js**: v20.x (as strictly defined in netlify.toml)  
-* **npm**: v9+ (or equivalent package manager)  
-* **Static File Server**: e.g., npx serve, live-server, or http-server
+* brand logos
+* SVG icons
+* founder imagery
+* project screenshots
 
-### **Setup**
+---
 
-1. **Clone the repository**  
-   `git clone \<repository-url\> ` 
-   `cd nwaagency.github.io`
+## src/
 
-2. **Install dependencies** *(Note: This project relies entirely on native system commands for the build, so no heavy node\_modules are required.)*  
-   `npm install`
+Contains the **structured website source**.
 
-3. **Build the project**  
-   `npm run build`
+Key directories:
 
-4. **Run development server** Since this is a static site, you can serve the compiled dist/ directory using any static server:  
-   `npx serve dist`
+* `pages/` — route pages
+* `layouts/` — shared layouts
+* `components/` — reusable UI
+* `assets/` — CSS and JavaScript
 
-### **Environment Variables**
+---
 
-No .env variables are strictly required for local compilation. However, netlify.toml reserves space for NODE\_VERSION="20". Any future API keys (e.g., for analytics tracking or third-party integrations) should be configured directly in the Netlify UI.
+# Website Sitemap
 
-## **Available Scripts**
+```mermaid
+graph TD
+A[Home]
+A --> B[About]
+A --> C[Services]
+A --> D[Projects]
+A --> E[Quote]
+A --> F[Contact]
 
-* npm run build: Executes a bash script that creates a dist directory, then safely copies src/pages/, src/assets/, and public/ into the distribution folder, suppressing errors if directories are empty.
+C --> C1[Custom Website Development]
+C --> C2[Rapid Website Templates]
+C --> C3[GTM Analytics Integration]
+C --> C4[Advanced SEO]
+C --> C5[iOS Development]
+C --> C6[Android Development]
+C --> C7[Strategic Dashboards]
+C --> C8[Scalable Data Pipelines]
+C --> C9[Data Modelling]
+C --> C10[Workflow Optimisation]
 
-## **Build & Deployment**
+D --> D1[Bush Creek Project]
+D --> D2[CEMEX Project]
+```
 
-* **Production Build:** The production build simply structures the static assets. Run npm run build to generate the /dist folder.  
-* **Deployment Process:** Continuous Deployment (CD) is assumed to be handled by Netlify via Git webhooks. Pushing to the main branch automatically triggers the build command.  
-* **Hosting Compatibility:** While optimized for Netlify via netlify.toml, the output in /dist is completely platform-agnostic and can be deployed to Vercel, AWS S3, GitHub Pages, or any standard web server (Nginx/Apache).
+---
 
-## **Security Notes**
+# Routing Architecture
 
-* **Headers Configured:** \- X-Frame-Options \= "DENY"  
-  * X-Content-Type-Options \= "nosniff"  
-  * X-XSS-Protection \= "1; mode=block"  
-  * Referrer-Policy \= "strict-origin-when-cross-origin"  
-* **Authentication:** No authentication layer is implemented. The application is entirely public-facing.  
-* **Data Privacy:** Form submissions contain PII (Names, Emails, Phone numbers). Netlify Forms handles this data securely, but ensure compliance with GDPR/POPIA regarding data retention in the Netlify dashboard.
+Routes are generated directly from:
 
-## **Contributing**
+```
+src/pages
+```
 
-* **Branching Strategy:** Use standard feature branching (feature/your-feature-name or fix/issue-description).  
-* **Code Style:** \- CSS: Utilize BEM-adjacent class naming. Rely on the variables defined in global.css for colors and spacing.  
-  * JS: Use ES6 syntax, avoid global scope pollution, and wrap logic in DOMContentLoaded event listeners.
+Examples:
 
-## **Improvements & Recommendations**
+| File                              | Route                         |
+| --------------------------------- | ----------------------------- |
+| index.html                        | /                             |
+| about.html                        | /about                        |
+| services.html                     | /services                     |
+| services/android-development.html | /services/android-development |
+| projects/bush-creek.html          | /projects/bush-creek          |
 
-1. **Templating Engine Integration:** The Header.html and Footer.html snippets are currently duplicated across all .html files in src/pages/. Migrating to a lightweight Static Site Generator (SSG) like Eleventy (11ty) or Astro would DRY up the codebase and allow dynamic component inclusion.  
-2. **Remove SPA Redirect Rule:** In netlify.toml, the rule from \= "/\*" to \= "/index.html" status \= 200 is designed for Single Page Applications (React/Vue). Because this is a multi-page static site, this rule can hijack legitimate 404s. It should be removed, relying solely on the defined 404 fallback.  
-3. **Asset Minification:** The current build script strictly copies files. Adding tools like cssnano or terser to the build pipeline would minify CSS and JavaScript, further reducing Time to Interactive (TTI).  
-4. **Local Dev Environment:** Add a local dev script to package.json utilizing a tool like browser-sync or vite to enable Hot Module Replacement (HMR) during frontend development.
+---
+
+# Layout System
+
+Location:
+
+```
+src/layouts/BaseLayout.html
+```
+
+Responsibilities:
+
+* global document structure
+* metadata configuration
+* stylesheet loading
+* header/footer inclusion
+* page content slot
+
+This layout ensures consistency across all pages.
+
+---
+
+# Component System
+
+## Global Components
+
+Location:
+
+```
+src/components/global
+```
+
+Examples:
+
+* Header
+* Footer
+
+---
+
+## Section Components
+
+Location:
+
+```
+src/components/sections
+```
+
+Examples:
+
+* Hero
+* ServiceGrid
+* FounderSnippet
+* GlobalCTA
+
+---
+
+## UI Components
+
+Location:
+
+```
+src/components/ui
+```
+
+Examples:
+
+* Button
+* Card
+* FormInput
+
+---
+
+# Design System Documentation
+
+The Nexora design system provides a consistent visual and interaction language across the entire website. It is implemented primarily through **CSS tokens, reusable UI components, and structured layout primitives**.
+
+The goals of the design system are:
+
+* visual consistency
+* maintainability
+* predictable UI behavior
+* easy extensibility
+
+---
+
+## Design Tokens
+
+Design tokens are defined inside:
+
+```
+src/assets/css/global.css
+```
+
+Typical tokens include:
+
+* color palette
+* spacing scale
+* typography scale
+* border radii
+* elevation/shadow values
+
+Example structure:
+
+```css
+:root {
+  --color-primary-accent: #BB86FC;
+
+  --color-bg-base: #121112;
+  --color-bg-surface: #1E1E1E;
+
+  --color-text-primary: #E0E0E0;
+  --color-border-subtle: #333333;
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+}
+```
+
+Tokens should always be used instead of hardcoded values when styling components.
+
+---
+
+## Typography System
+
+Typography is designed for **professional, developer‑focused readability**.
+
+Primary font stack typically includes:
+
+```
+Inter, system-ui, sans-serif
+```
+
+Recommended scale:
+
+| Role            | Example Size |
+| --------------- | ------------ |
+| Hero Heading    | 40–56px      |
+| Section Heading | 28–36px      |
+| Subheading      | 20–24px      |
+| Body Text       | 16–18px      |
+| Small Text      | 14px         |
+
+Typography rules:
+
+* maintain strong hierarchy
+* avoid excessive font weights
+* ensure accessible contrast
+
+---
+
+## Spacing System
+
+Spacing should follow a **consistent scale** to maintain layout rhythm.
+
+Typical scale:
+
+```
+4px
+8px
+16px
+24px
+32px
+48px
+64px
+```
+
+Spacing should be applied using utility classes or variables rather than arbitrary values.
+
+---
+
+## Component Patterns
+
+Components are organized by abstraction level:
+
+### UI Primitives
+
+Location:
+
+```
+src/components/ui
+```
+
+Examples:
+
+* Button
+* Card
+* FormInput
+
+These components are designed to be **small, reusable building blocks**.
+
+---
+
+### Section Components
+
+Location:
+
+```
+src/components/sections
+```
+
+Examples:
+
+* Hero
+* ServiceGrid
+* FounderSnippet
+* GlobalCTA
+
+These compose primitives into larger layout sections.
+
+---
+
+### Global Components
+
+Location:
+
+```
+src/components/global
+```
+
+Examples:
+
+* Header
+* Footer
+
+These components appear across most pages.
+
+---
+
+## Interaction Patterns
+
+Interactive elements follow consistent patterns:
+
+Buttons:
+
+* clear hover state
+* subtle transition animations
+* strong contrast
+
+Forms:
+
+* labeled inputs
+* clear validation feedback
+* predictable focus states
+
+---
+
+## Accessibility Guidelines
+
+The design system aims to maintain accessibility standards:
+
+* sufficient color contrast
+* semantic HTML
+* accessible form labels
+* keyboard navigability
+
+Future improvements may include:
+
+* WCAG auditing
+* automated accessibility testing
+
+---
+
+# Styling Architecture
+
+CSS files are located in:
+
+```
+src/assets/css
+```
+
+Layered structure:
+
+1. `global.css` — tokens and resets
+2. `main.css` — layout and components
+3. `utilities.css` — utility classes
+4. `home.css` — page‑specific styling
+
+---
+
+# JavaScript Architecture
+
+JavaScript modules are located in:
+
+```
+src/assets/js
+```
+
+### forms.js
+
+Handles:
+
+* multi‑step quote form
+* validation
+* submission readiness
+
+JavaScript is intentionally minimal to maintain performance.
+
+---
+
+# System Architecture
+
+```mermaid
+graph LR
+Browser --> CDN[Netlify CDN]
+CDN --> HTML[Static HTML Pages]
+HTML --> Layout[BaseLayout]
+Layout --> Components
+Components --> Assets
+Assets --> CSS
+Assets --> JS
+Assets --> Images
+```
+
+---
+
+# Component Dependency Graph
+
+```mermaid
+graph TD
+BaseLayout --> Header
+BaseLayout --> Footer
+BaseLayout --> Pages
+
+Pages --> Hero
+Pages --> ServiceGrid
+Pages --> GlobalCTA
+Pages --> FounderSnippet
+
+Hero --> Button
+ServiceGrid --> Card
+Forms --> FormInput
+```
+
+---
+
+# Performance Strategy
+
+Performance optimizations include:
+
+* static rendering
+* minimal JavaScript
+* CDN distribution
+* optimized images
+
+Benefits:
+
+* strong Core Web Vitals
+* fast load times
+* high Lighthouse scores
+
+---
+
+# SEO Architecture
+
+SEO is supported through:
+
+* dedicated service landing pages
+* semantic HTML structure
+* fast static rendering
+
+Each service page targets a specific keyword cluster.
+
+---
+
+# Security Architecture
+
+Security is enforced primarily through **Netlify edge configuration**.
+
+Configured in:
+
+```
+netlify.toml
+```
+
+Typical protections:
+
+* security headers
+* HTTPS enforcement
+* cache rules
+
+Because the system is static, the **attack surface is minimal**.
+
+---
+
+# Netlify Configuration
+
+`netlify.toml` defines:
+
+* headers
+* redirects
+* routing rules
+
+---
+
+# Development Environment
+
+Requirements:
+
+* Node.js (LTS)
+* npm
+* Git
+
+Recommended tools:
+
+* VS Code
+* Prettier
+* ESLint
+
+---
+
+# Development Workflow
+
+Create a new page:
+
+1. Duplicate `template.html`
+2. Place inside the appropriate directory
+3. Update content
+
+Create components:
+
+* primitives → `ui/`
+* sections → `sections/`
+* layout elements → `global/`
+
+---
+
+# Coding Standards
+
+## HTML
+
+* semantic markup
+* minimal nesting
+* reusable components
+
+## CSS
+
+* use design tokens
+* avoid hardcoded values
+* isolate components
+
+## JavaScript
+
+* ES6 syntax
+* modular structure
+* avoid global state
+
+---
+
+# Git Workflow
+
+Recommended branching model:
+
+```
+main
+ ├─ feature/<feature>
+ ├─ fix/<bug>
+ └─ improvement/<task>
+```
+
+Workflow:
+
+1. create branch
+2. commit changes
+3. open PR
+4. review and merge
+
+---
+
+# Deployment Pipeline
+
+```mermaid
+graph LR
+GitPush --> NetlifyBuild
+NetlifyBuild --> StaticDeploy
+StaticDeploy --> CDN
+```
+
+Netlify handles:
+
+* build pipeline
+* CDN hosting
+* edge configuration
+
+---
+
