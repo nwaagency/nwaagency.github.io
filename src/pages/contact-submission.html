@@ -5,13 +5,13 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Thank You | Nexora Web Agency</title>
-        <meta name="description" content="Thank you for contacting Nexora Web Agency. Your quote request has been received and our team will review it shortly." />
-        <!-- Favicons -->
+        <meta name="description" content="Thank you for contacting Nexora Web Agency. Your message has been received and our team will respond shortly." />
         <link href="/icons/emblem.svg" rel="icon" />
         <link href="/icons/nexora_emblem.png" rel="apple-touch-icon" />
         <link rel="stylesheet" href="/assets/css/global.css" />
         <link rel="stylesheet" href="/assets/css/utilities.css" />
         <link rel="stylesheet" href="/assets/css/main.css" />
+
         <style>
             .thank-you-page {
                 min-height: calc(100vh - 160px);
@@ -80,6 +80,11 @@
             .thank-you-icon {
                 width: 40px;
                 height: 40px;
+                stroke: currentColor;
+                fill: none;
+                stroke-width: 2;
+                stroke-linecap: round;
+                stroke-linejoin: round;
             }
 
             .thank-you-title {
@@ -109,25 +114,70 @@
             }
 
             .thank-you-panel h2 {
-                margin: 0 0 0.85rem;
+                margin: 0 0 0.95rem;
                 font-size: 1rem;
                 font-weight: 700;
                 color: #fff;
                 letter-spacing: -0.01em;
             }
 
-            .thank-you-panel ul {
+            .thank-you-steps {
+                display: grid;
+                gap: 0.9rem;
+            }
+
+            .thank-you-step {
+                display: flex;
+                align-items: flex-start;
+                gap: 0.9rem;
+                padding: 1rem 1.05rem;
+                border-radius: 14px;
+                border: 1px solid rgba(255, 255, 255, 0.05);
+                background: rgba(255, 255, 255, 0.02);
+                transition: border-color 0.25s ease, background 0.25s ease, transform 0.2s ease;
+            }
+
+            .thank-you-step:hover {
+                border-color: rgba(187, 134, 252, 0.35);
+                background: rgba(255, 255, 255, 0.03);
+                transform: translateY(-2px);
+            }
+
+            .step-icon {
+                width: 44px;
+                height: 44px;
+                flex: 0 0 44px;
+                border-radius: 12px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: rgba(187, 134, 252, 0.08);
+                border: 1px solid rgba(187, 134, 252, 0.25);
+                color: var(--color-primary-accent);
+            }
+
+            .step-svg {
+                width: 22px;
+                height: 22px;
+                stroke: currentColor;
+                fill: none;
+                stroke-width: 2;
+                stroke-linecap: round;
+                stroke-linejoin: round;
+            }
+
+            .step-content h3 {
+                margin: 0 0 0.2rem;
+                font-size: 0.96rem;
+                font-weight: 700;
+                color: #fff;
+            }
+
+            .step-content p {
                 margin: 0;
-                padding-left: 1.1rem;
+                font-size: 0.95rem;
+                line-height: 1.65;
                 color: var(--color-text-secondary);
-            }
-
-            .thank-you-panel li {
-                line-height: 1.7;
-            }
-
-            .thank-you-panel li+li {
-                margin-top: 0.45rem;
             }
 
             .thank-you-actions {
@@ -188,6 +238,21 @@
                     border-radius: 14px;
                 }
 
+                .thank-you-step {
+                    padding: 0.9rem;
+                }
+
+                .step-icon {
+                    width: 40px;
+                    height: 40px;
+                    flex-basis: 40px;
+                }
+
+                .step-svg {
+                    width: 20px;
+                    height: 20px;
+                }
+
                 .thank-you-actions {
                     flex-direction: column;
                     align-items: stretch;
@@ -199,71 +264,6 @@
                     min-width: 0;
                 }
             }
-
-            .thank-you-steps {
-                display: grid;
-                gap: 1rem;
-                margin-top: 1rem;
-            }
-
-            .thank-you-step {
-                display: flex;
-                align-items: flex-start;
-                gap: 0.9rem;
-                padding: 1rem 1.1rem;
-                border-radius: 14px;
-                border: 1px solid var(--color-border-subtle);
-                background: rgba(255, 255, 255, 0.02);
-                transition: border-color 0.25s ease, background 0.25s ease, transform 0.2s ease;
-            }
-
-            .thank-you-step:hover {
-                border-color: rgba(187, 134, 252, 0.35);
-                background: rgba(255, 255, 255, 0.03);
-                transform: translateY(-2px);
-            }
-
-            .step-icon {
-                width: 44px;
-                height: 44px;
-                flex: 0 0 44px;
-                border-radius: 12px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                background: rgba(187, 134, 252, 0.08);
-                border: 1px solid rgba(187, 134, 252, 0.25);
-                color: var(--color-primary-accent);
-            }
-
-            .step-svg {
-                width: 22px;
-                height: 22px;
-                stroke: currentColor;
-                fill: none;
-                stroke-width: 2;
-                stroke-linecap: round;
-                stroke-linejoin: round;
-            }
-
-            .step-content h3 {
-                margin: 0 0 0.2rem;
-                font-size: 0.95rem;
-                font-weight: 700;
-                color: #fff;
-            }
-
-            .step-content p {
-                margin: 0;
-                font-size: 0.95rem;
-                line-height: 1.6;
-                color: var(--color-text-secondary);
-            }
-
-            .thank-you-step:hover .step-icon {
-                background: rgba(187, 134, 252, 0.14);
-                border-color: rgba(187, 134, 252, 0.45);
-            }
         </style>
     </head>
 
@@ -273,6 +273,7 @@
                 <a href="/index.html" class="logo-link">
                     <img src="/icons/header_logo.svg" alt="Nexora Logo" class="nav-logo" onerror="this.src='/images/nexora-logo.svg'" style="height: 70px; width: auto;" />
                 </a>
+
                 <nav class="main-nav" aria-label="Primary">
                     <ul>
                         <li><a href="/">Home</a></li>
@@ -282,25 +283,35 @@
                         <li><a href="/contact.html">Contact</a></li>
                     </ul>
                 </nav>
+
                 <div class="header-cta">
                     <a href="/quote.html" class="btn-primary">Get a Quote</a>
                 </div>
             </div>
         </header>
+
         <main class="container thank-you-page">
             <div class="thank-you-shell">
                 <section class="thank-you-card" aria-labelledby="thank-you-title">
                     <div class="thank-you-icon-wrap" aria-hidden="true">
-                        <svg class="thank-you-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        <svg class="thank-you-icon" viewBox="0 0 24 24">
+                            <path d="M4 6h16v12H4z"></path>
+                            <path d="M4 8l8 6 8-6"></path>
                         </svg>
                     </div>
-                  
-                    <h1 id="thank-you-title" class="thank-you-title"> Thank You <br><span class="text-gradient">We’ve Received Your Request.</span>
+
+
+                    <h1 id="thank-you-title" class="thank-you-title">
+                        Thank You<br><span class="text-gradient">We’ve Received Your Message.</span>
                     </h1>
-                    <p class="thank-you-copy"> We appreciate you reaching out to Nexora Web Agency. Your submission has been successfully received, and our team will review your requirements carefully before contacting you with the next recommended steps. </p>
+
+                    <p class="thank-you-copy">
+                        Thank you for contacting Nexora Web Agency. Your message has been successfully submitted, and a member of our team will review it and respond as soon as possible.
+                    </p>
+
                     <div class="thank-you-panel">
                         <h2>What happens next</h2>
+
                         <div class="thank-you-steps">
                             <div class="thank-you-step">
                                 <div class="step-icon">
@@ -310,10 +321,11 @@
                                     </svg>
                                 </div>
                                 <div class="step-content">
-                                    <h3>Project Review</h3>
-                                    <p>We review your selected services, project brief, and budget expectations.</p>
+                                    <h3>Message Review</h3>
+                                    <p>We’ll review your enquiry and assess the best way to assist with your request.</p>
                                 </div>
                             </div>
+
                             <div class="thank-you-step">
                                 <div class="step-icon">
                                     <svg viewBox="0 0 24 24" class="step-svg">
@@ -321,10 +333,11 @@
                                     </svg>
                                 </div>
                                 <div class="step-content">
-                                    <h3>Solution Planning</h3>
-                                    <p>Our team evaluates the best architecture, timeline, and scope for your project.</p>
+                                    <h3>Internal Assessment</h3>
+                                    <p>Our team will determine the most relevant service, response path, or next recommendation.</p>
                                 </div>
                             </div>
+
                             <div class="thank-you-step">
                                 <div class="step-icon">
                                     <svg viewBox="0 0 24 24" class="step-svg">
@@ -334,14 +347,15 @@
                                 </div>
                                 <div class="step-content">
                                     <h3>Follow-Up</h3>
-                                    <p>We’ll contact you shortly with the recommended next steps and proposal direction.</p>
+                                    <p>You can expect a reply shortly with the appropriate next steps from our team.</p>
                                 </div>
                             </div>
                         </div>
                     </div>
+
                     <div class="thank-you-actions">
                         <a href="/" class="btn-primary">Return Home</a>
-                        <a href="/projects.html" class="btn-secondary">View Our Work</a>
+                        <a href="/services.html" class="btn-secondary">Explore Services</a>
                     </div>
                 </section>
             </div>
