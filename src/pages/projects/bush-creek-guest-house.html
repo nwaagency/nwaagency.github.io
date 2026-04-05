@@ -1,24 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Bush Creek Guest House Case Study | Nexora — South African Hospitality Web Design</title>
-        <meta name="description" content="How Nexora built a farm accommodation website with 6 individual room pages, an availability checker, and immersive visual design for a KZN guest house. Full case study." />
+        <title>Bush Creek Guest House Case Study | Nexora — South African
+            Hospitality Web Design</title>
+        <meta name="description"
+            content="How Nexora built a farm accommodation website with 6 individual room pages, an availability checker, and immersive visual design for a KZN guest house. Full case study." />
         <meta property="og:type" content="article" />
-        <meta property="og:title" content="Bush Creek Guest House — Case Study | Nexora Web Agency" />
-        <meta property="og:description" content="A KZN farm stay with 6 uniquely themed rooms — finally with a website that makes guests want to book before they finish scrolling." />
-        <meta property="og:url" content="https://nwaagency.github.io/projects/bush-creek-guest-house.html" />
+        <meta property="og:title"
+            content="Bush Creek Guest House — Case Study | Nexora Web Agency" />
+        <meta property="og:description"
+            content="A KZN farm stay with 6 uniquely themed rooms — finally with a website that makes guests want to book before they finish scrolling." />
+        <meta property="og:image"
+            content="/images/projects/bush-creek/og-image.jpg" />
+        <meta property="og:url"
+            content="https://nwaagency.github.io/projects/bush-creek-guest-house.html" />
         <meta name="twitter:card" content="summary_large_image" />
-        <link rel="canonical" href="https://nwaagency.github.io/projects/bush-creek-guest-house.html" />
+        <link rel="canonical"
+            href="https://nwaagency.github.io/projects/bush-creek-guest-house.html" />
         <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "CreativeWork",
     "name": "Bush Creek Guest House — Website Design & Development",
+    "description": "Full hospitality website for Bush Creek Guest House, Mooi River KZN — 6 room pages, availability checker, gallery, activities, and direct booking flow.",
     "creator": { "@type": "Organization", "name": "Nexora Web Agency", "url": "https://nwaagency.github.io" },
-    "about": { "@type": "LodgingBusiness", "name": "Bush Creek Guest House", "url": "https://bushcreekguesthouse.co.za" }
+    "about": { "@type": "LodgingBusiness", "name": "Bush Creek Guest House", "url": "https://bushcreekguesthouse.co.za", "address": { "@type": "PostalAddress", "addressLocality": "Mooi River", "addressRegion": "KwaZulu-Natal", "addressCountry": "ZA" } }
   }
   </script>
         <link rel="icon" href="/icons/emblem.svg" />
@@ -28,22 +36,22 @@
         <link rel="stylesheet" href="/assets/css/main.css" />
         <link rel="stylesheet" href="/assets/css/case-study.css" />
         <style>
-            :root {
-                --cs-accent: #84CC16;
-            }
-
-            .cs-hero {
-                background: radial-gradient(circle at top right, rgba(132, 204, 22, 0.07), transparent 55%);
-            }
-        </style>
+    :root { --cs-accent: #84CC16; }
+    .cs-hero { background: radial-gradient(circle at top right, rgba(132,204,22,0.07), transparent 55%); }
+  </style>
     </head>
-
     <body>
+
         <div class="cs-progress" aria-hidden="true"></div>
+
+        <!-- ── Site Header ─────────────────────────────────────────────────────── -->
         <header class="site-header">
             <div class="container header-inner">
                 <a href="/index.html" class="logo-link">
-                    <img src="/icons/header_logo.svg" alt="Nexora Logo" class="nav-logo" onerror="this.src='/images/nexora-logo.svg'" style="height:70px;width:auto;">
+                    <img src="/icons/header_logo.svg" alt="Nexora Logo"
+                        class="nav-logo"
+                        onerror="this.src='/images/nexora-logo.svg'"
+                        style="height:70px;width:auto;">
                 </a>
                 <nav class="main-nav">
                     <ul>
@@ -59,26 +67,42 @@
                 </div>
             </div>
         </header>
+
+        <!-- ── Breadcrumb ──────────────────────────────────────────────────────── -->
         <nav class="cs-breadcrumb" aria-label="Breadcrumb">
             <div class="container">
                 <a href="/projects.html">← Projects</a>
-                <span class="cs-breadcrumb__sep" aria-hidden="true">/</span>
-                <span class="cs-breadcrumb__current">Bush Creek Guest House</span>
+                <span aria-hidden="true">/</span>
+                <span>Bush Creek Guest House</span>
             </div>
         </nav>
+
         <main>
-            <!-- HERO -->
+
+            <!-- ══ S01 HERO ════════════════════════════════════════════════════════ -->
             <section class="cs-section cs-hero" aria-labelledby="hero-heading">
                 <div class="container cs-hero__inner">
-                    <div>
-                        <span class="cs-label reveal">Rural Hospitality · Mooi River, KwaZulu-Natal</span>
-                        <h1 class="cs-hero__title reveal delay-100" id="hero-heading"> A Farm Stay Website That <span class="text-gradient">Makes Guests Book</span><br>Before They Finish Scrolling </h1>
-                        <p class="cs-hero__desc reveal delay-200"> Six uniquely named rooms on a working KZN farm — finally with a digital presence as beautiful and inviting as the property itself. </p>
+                    <div class="cs-hero__content">
+                        <div class="cs-eyebrow reveal">Rural Hospitality · Mooi
+                            River, KwaZulu-Natal</div>
+                        <h1 class="reveal delay-100" id="hero-heading">
+                            A Farm Stay Website That <span
+                                class="text-gradient">Makes Guests Book</span>
+                            Before They Finish Scrolling
+                        </h1>
+                        <p class="cs-hero__desc reveal delay-200">
+                            Six uniquely named rooms on a working KZN farm —
+                            finally with a digital presence as beautiful and
+                            inviting as the property itself.
+                        </p>
                         <div class="cs-hero__actions reveal delay-300">
-                            <a href="https://bushcreekguesthouse.co.za" target="_blank" rel="noopener" class="btn-primary">View Live Site ↗</a>
-                            <a href="#challenge" class="btn-secondary">Read Case Study</a>
+                            <a href="https://bushcreekguesthouse.co.za"
+                                target="_blank" rel="noopener"
+                                class="btn-primary">View Live Site ↗</a>
+                            <a href="#challenge" class="cs-btn-outline">Read the
+                                Case Study</a>
                         </div>
-                        <div class="cs-hero__tags reveal delay-400">
+                        <div class="cs-tags reveal delay-400">
                             <span class="cs-tag">Hospitality Design</span>
                             <span class="cs-tag">Booking Integration</span>
                             <span class="cs-tag">6 Room Pages</span>
@@ -86,440 +110,827 @@
                             <span class="cs-tag">South Africa</span>
                         </div>
                     </div>
-                    <div class="reveal delay-200" aria-hidden="true">
-                        <div
-                                class="cs-image-frame cs-hero-shot cs-hero-shot--glow">
-                                <img
-                                    src="/images/projects/bushcreek/hero-desktop-homepage.png"
-                                    alt="Bush Creek homepage"
-                                    class="cs-image cs-hero-shot__img"
-                                    loading="eager" />
+                    <div class="cs-hero__visual reveal delay-200"
+                        aria-hidden="true">
+                        <div class="cs-mockup cs-mockup--browser">
+                            <div class="cs-mockup__bar">
+                                <span class="cs-mockup__dot"></span>
+                                <span class="cs-mockup__dot"></span>
+                                <span class="cs-mockup__dot"></span>
+                                <span
+                                    class="cs-mockup__url">bushcreekguesthouse.co.za</span>
                             </div>
+                            <img
+                                src="/images/projects/bush-creek/hero-desktop.webp"
+                                alt="Bush Creek Guest House homepage — desktop view showing farm hero photography and booking CTA"
+                                style="width:100%;height:320px;object-fit:cover;display:block;"
+                                loading="lazy">
+                        </div>
                     </div>
                 </div>
             </section>
-            <!-- STATS STRIP -->
-            <section class="cs-section cs-section--surface" aria-label="Project overview">
+
+            <!-- ══ S02 PROJECT OVERVIEW ════════════════════════════════════════════ -->
+            <section class="cs-section cs-section--surface"
+                aria-label="Project overview">
                 <div class="container">
                     <div class="cs-stats-strip reveal">
                         <div class="cs-stat">
                             <span class="cs-stat__value">10+</span>
                             <span class="cs-stat__label">Pages Built</span>
-                            <span class="cs-stat__context">Rooms, Gallery, Activities, Location, Reviews, Contact</span>
+                            <span class="cs-stat__context">Rooms, Gallery,
+                                Activities, Location, Reviews, Contact</span>
                         </div>
                         <div class="cs-stat">
                             <span class="cs-stat__value">6</span>
                             <span class="cs-stat__label">Room Pages</span>
-                            <span class="cs-stat__context">Protea · Rock Rose · Acacia · Aloe · Arum · Jacaranda</span>
+                            <span class="cs-stat__context">Protea · Rock Rose ·
+                                Acacia · Aloe · Arum · Jacaranda</span>
                         </div>
                         <div class="cs-stat">
                             <span class="cs-stat__value">3</span>
                             <span class="cs-stat__label">Guest Types</span>
-                            <span class="cs-stat__context">Couples · Families · Honeymoon Pairs</span>
+                            <span class="cs-stat__context">Couples · Families ·
+                                Honeymoon pairs</span>
                         </div>
                         <div class="cs-stat">
                             <span class="cs-stat__value">KZN</span>
                             <span class="cs-stat__label">Mooi River, SA</span>
-                            <span class="cs-stat__context">KwaZulu-Natal, South Africa</span>
+                            <span class="cs-stat__context">KwaZulu-Natal, South
+                                Africa</span>
                         </div>
                         <div class="cs-stat">
                             <span class="cs-stat__value">2025</span>
                             <span class="cs-stat__label">Year Delivered</span>
-                            <span class="cs-stat__context">Live at bushcreekguesthouse.co.za</span>
+                            <span class="cs-stat__context">Live at
+                                bushcreekguesthouse.co.za</span>
                         </div>
                     </div>
                 </div>
             </section>
-            <!-- CLIENT CHALLENGE -->
-            <section id="challenge" class="cs-section" aria-labelledby="challenge-heading">
+
+            <!-- ══ S03 CLIENT CHALLENGE ════════════════════════════════════════════ -->
+            <section id="challenge" class="cs-section"
+                aria-labelledby="challenge-heading">
                 <div class="container">
-                    <span class="cs-label reveal">03 — Client Challenge</span>
-                    <h2 class="cs-heading reveal delay-100" id="challenge-heading">A Magical Place That Was Invisible Online</h2>
-                    <p class="cs-subheading reveal delay-200"> Every night the Bush Creek dam went unfished and the Protea room sat empty was a night of lost revenue — and it was happening because the website did not make people want to come. </p>
+                    <div class="cs-section-label reveal">03 — Client
+                        Challenge</div>
+                    <h2 class="reveal delay-100" id="challenge-heading">A
+                        Magical Place That Was Invisible Online</h2>
+                    <p class="cs-section-sub reveal delay-200">
+                        Every night the Bush Creek dam went unfished and the
+                        Protea room sat empty was a night of lost revenue — and
+                        it was happening because the website didn't make people
+                        want to come.
+                    </p>
                     <div class="cs-two-col cs-two-col--60-40">
-                        <div class="reveal delay-100">
-                            <p class="cs-body">Bush Creek Guest House is a working farm in Mooi River, KwaZulu-Natal — six uniquely themed rooms, a natural swimming dam, scenic river walks, and genuine farm life. The product is extraordinary. The digital presence was not communicating any of it.</p>
-                            <p class="cs-body">Rural hospitality properties lose enormous revenue to OTA platforms not because they are inferior products, but because their own websites do not convert. A guest browsing on mobile needs to feel the pull of the place before they will commit to a booking.</p>
+                        <div class="cs-two-col__text reveal delay-100">
+                            <p>Bush Creek Guest House is a working farm in Mooi
+                                River, KwaZulu-Natal — six uniquely themed
+                                rooms, a natural swimming dam, scenic river
+                                walks, and genuine farm life. The product is
+                                extraordinary. The digital presence was not
+                                communicating any of it.</p>
+                            <p>Rural hospitality properties lose enormous
+                                revenue to OTA platforms (Booking.com, Airbnb)
+                                not because they're inferior products, but
+                                because their own websites don't convert. A
+                                guest browsing on mobile needs to feel the pull
+                                of the place before they'll commit to a
+                                booking.</p>
                             <ul class="cs-list">
-                                <li class="cs-list__item">
-                                    <span class="cs-list__icon" aria-hidden="true">—</span>
-                                    <span>No individual room pages — guests could not preview their specific accommodation before booking</span>
-                                </li>
-                                <li class="cs-list__item">
-                                    <span class="cs-list__icon" aria-hidden="true">—</span>
-                                    <span>No availability checker — every enquiry required a slow back-and-forth email exchange, losing impatient mobile browsers instantly</span>
-                                </li>
-                                <li class="cs-list__item">
-                                    <span class="cs-list__icon" aria-hidden="true">—</span>
-                                    <span>No dedicated gallery — the property's most powerful sales asset, its visual beauty, was largely hidden</span>
-                                </li>
-                                <li class="cs-list__item">
-                                    <span class="cs-list__icon" aria-hidden="true">—</span>
-                                    <span>No activities section — potential guests could not see what they would do beyond sleep, making multi-night bookings harder to justify</span>
-                                </li>
+                                <li><span
+                                        class="cs-list__arrow">→</span><span>No
+                                        individual room pages — guests couldn't
+                                        preview their specific accommodation
+                                        before booking</span></li>
+                                <li><span
+                                        class="cs-list__arrow">→</span><span>No
+                                        availability checker — every enquiry
+                                        required a slow back-and-forth email
+                                        exchange, losing impatient mobile
+                                        browsers instantly</span></li>
+                                <li><span
+                                        class="cs-list__arrow">→</span><span>No
+                                        dedicated gallery — the property's most
+                                        powerful sales asset (its visual beauty)
+                                        was largely hidden</span></li>
+                                <li><span
+                                        class="cs-list__arrow">→</span><span>No
+                                        activities section — potential guests
+                                        couldn't see what they'd do beyond
+                                        sleep, making multi-night bookings
+                                        harder to justify</span></li>
                             </ul>
                         </div>
-                        <div class="reveal delay-200">
+                        <div class="cs-two-col__visual reveal delay-200">
                             <div class="cs-compare">
                                 <div class="cs-compare__before">
-                                    <span class="cs-compare__tag cs-compare__tag--before">Before</span>
-                                    <div class="cs-compare__placeholder">Basic info page</div>
+                                    <span
+                                        class="cs-compare__tag cs-compare__tag--before">Before</span>
+                                    <img
+                                        src="/images/projects/bush-creek/before-screenshot.webp"
+                                        alt="Bush Creek Guest House old website — basic info page with no room pages or booking flow"
+                                        style="width:100%;height:180px;object-fit:cover;display:block;"
+                                        loading="lazy">
                                 </div>
                                 <div class="cs-compare__after">
-                                    <span class="cs-compare__tag cs-compare__tag--after">After</span>
-                                    <div class="cs-compare__placeholder">Rooms grid</div>
+                                    <span
+                                        class="cs-compare__tag cs-compare__tag--after">After</span>
+                                    <img
+                                        src="/images/projects/bush-creek/rooms-grid.webp"
+                                        alt="Bush Creek Guest House redesigned rooms grid — six uniquely named room cards with thumbnails"
+                                        style="width:100%;height:180px;object-fit:cover;display:block;"
+                                        loading="lazy">
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
-            <!-- RESEARCH -->
-            <section class="cs-section cs-section--surface" aria-labelledby="research-heading">
+
+            <!-- ══ S04 RESEARCH & DISCOVERY ════════════════════════════════════════ -->
+            <section class="cs-section cs-section--surface"
+                aria-labelledby="research-heading">
                 <div class="container">
-                    <span class="cs-label reveal">04 — Research &amp; Discovery</span>
-                    <h2 class="cs-heading reveal delay-100" id="research-heading">Understanding the Farm Stay Guest</h2>
-                    <p class="cs-subheading reveal delay-200"> The typical Bush Creek guest is not looking for a hotel. They are escaping one. We designed for that psychology. </p>
+                    <div class="cs-section-label reveal">04 — Research &
+                        Discovery</div>
+                    <h2 class="reveal delay-100"
+                        id="research-heading">Understanding the Farm Stay
+                        Guest</h2>
+                    <p class="cs-section-sub reveal delay-200">
+                        The typical Bush Creek guest isn't looking for a hotel.
+                        They're escaping one. We designed for that psychology.
+                    </p>
                     <div class="cs-process reveal delay-100">
                         <div class="cs-process-step">
-                            <div class="cs-process-step__num" aria-hidden="true">01</div>
-                            <h3 class="cs-process-step__title">Guest Persona Mapping</h3>
-                            <p class="cs-process-step__body">Three primary guest profiles: The Escape Couple (urban professionals seeking a weekend in nature), The Family Adventure (school holidays, farm experiences for children), and The Honeymoon Pair (Protea suite — romance and privacy). Each needed different copy emphasis and visual cues.</p>
+                            <div class="cs-process-step__num"
+                                aria-hidden="true">01</div>
+                            <h3 class="cs-process-step__title">Guest Persona
+                                Mapping</h3>
+                            <p>Three primary guest profiles: The Escape Couple
+                                (urban professionals seeking a weekend in
+                                nature), The Family Adventure (school holidays,
+                                farm experiences for children), and The
+                                Honeymoon Pair (Protea suite — romance and
+                                privacy). Each needed different copy emphasis
+                                and visual cues.</p>
                         </div>
                         <div class="cs-process-step">
-                            <div class="cs-process-step__num" aria-hidden="true">02</div>
-                            <h3 class="cs-process-step__title">Booking Behaviour</h3>
-                            <p class="cs-process-step__body">Rural accommodation guests spend the most time on the Gallery and Rooms pages. Design weight was shifted heavily toward these sections. The booking checker was placed on the homepage for maximum conversion reach.</p>
+                            <div class="cs-process-step__num"
+                                aria-hidden="true">02</div>
+                            <h3 class="cs-process-step__title">Booking
+                                Behaviour</h3>
+                            <p>Rural accommodation guests spend the most time on
+                                the Gallery and Rooms pages — not the homepage.
+                                Design weight was shifted heavily toward these
+                                sections. The booking checker was placed on the
+                                homepage for maximum conversion reach.</p>
                         </div>
                         <div class="cs-process-step">
-                            <div class="cs-process-step__num" aria-hidden="true">03</div>
-                            <h3 class="cs-process-step__title">Activities as Justification</h3>
-                            <p class="cs-process-step__body">Research showed guests book longer stays when they can see enough activities. Dam, river walks, local restaurants, and on-farm activities were separated into a dedicated section — giving guests permission to stay longer.</p>
+                            <div class="cs-process-step__num"
+                                aria-hidden="true">03</div>
+                            <h3 class="cs-process-step__title">Activities as
+                                Justification</h3>
+                            <p>Research showed guests book longer stays when
+                                they can see enough activities. Dam, river
+                                walks, local restaurants, and on-farm activities
+                                were separated into a dedicated section and
+                                sub-pages — giving guests permission to stay
+                                longer.</p>
                         </div>
                         <div class="cs-process-step">
-                            <div class="cs-process-step__num" aria-hidden="true">04</div>
-                            <h3 class="cs-process-step__title">Mobile-First Leisure</h3>
-                            <p class="cs-process-step__body">South African leisure travellers frequently browse accommodation on mobile during commutes and evenings. The availability checker, room gallery, and Book Now CTA were all designed for touch-first interaction before any desktop consideration.</p>
+                            <div class="cs-process-step__num"
+                                aria-hidden="true">04</div>
+                            <h3 class="cs-process-step__title">Mobile-First
+                                Leisure</h3>
+                            <p>South African leisure travellers frequently
+                                browse accommodation on mobile during commutes
+                                and evenings. The availability checker, room
+                                gallery, and "Book Now" CTA were all designed
+                                for touch-first interaction before any desktop
+                                consideration.</p>
                         </div>
                     </div>
                 </div>
             </section>
-            <!-- STRATEGY -->
-            <section class="cs-section cs-section--bordered" aria-labelledby="strategy-heading">
+
+            <!-- ══ S05 STRATEGY ════════════════════════════════════════════════════ -->
+            <section class="cs-section cs-section--bordered"
+                aria-labelledby="strategy-heading">
                 <div class="container">
-                    <span class="cs-label reveal">05 — Strategy</span>
-                    <h2 class="cs-heading reveal delay-100" id="strategy-heading">Sell the Feeling Before the Room</h2>
-                    <p class="cs-subheading reveal delay-200"> The best hospitality websites do not describe a place — they make you feel like you are already there. </p>
+                    <div class="cs-section-label reveal">05 — Strategy</div>
+                    <h2 class="reveal delay-100" id="strategy-heading">Sell the
+                        Feeling Before the Room</h2>
+                    <p class="cs-section-sub reveal delay-200">
+                        The best hospitality websites don't describe a place —
+                        they make you feel like you're already there.
+                    </p>
                     <div class="cs-two-col reveal delay-100">
                         <div>
                             <ul class="cs-list">
-                                <li class="cs-list__item">
-                                    <span class="cs-list__icon" aria-hidden="true">—</span>
-                                    <span><strong>Immersion-first hero:</strong> Full-width farm photography as the opening visual. The visitor should feel the farm air before they read a word.</span>
-                                </li>
-                                <li class="cs-list__item">
-                                    <span class="cs-list__icon" aria-hidden="true">—</span>
-                                    <span><strong>Six-room individual page architecture:</strong> Each room gets its own URL, heading, photos, and description. Enables SEO per room type and gives guests the depth they need to commit.</span>
-                                </li>
-                                <li class="cs-list__item">
-                                    <span class="cs-list__icon" aria-hidden="true">—</span>
-                                    <span><strong>Availability checker on homepage:</strong> Removes the biggest friction point in the consideration-to-booking transition. Date picker is front and centre.</span>
-                                </li>
+                                <li><span
+                                        class="cs-list__arrow">→</span><span><strong>Immersion-first
+                                            hero:</strong> Full-width farm
+                                        photography as the opening visual — the
+                                        property's beauty is the most powerful
+                                        sales tool. The visitor should feel the
+                                        farm air before they read a
+                                        word.</span></li>
+                                <li><span
+                                        class="cs-list__arrow">→</span><span><strong>Six-room
+                                            individual page
+                                            architecture:</strong> Each room
+                                        gets its own URL, heading, photos, and
+                                        description. Enables SEO per room type
+                                        and gives guests the depth they need to
+                                        commit.</span></li>
+                                <li><span
+                                        class="cs-list__arrow">→</span><span><strong>Availability
+                                            checker on homepage:</strong>
+                                        Removes the biggest friction point in
+                                        the consideration-to-booking transition.
+                                        Date picker is front and centre — no
+                                        hunting required.</span></li>
                             </ul>
                         </div>
                         <div>
                             <ul class="cs-list">
-                                <li class="cs-list__item">
-                                    <span class="cs-list__icon" aria-hidden="true">—</span>
-                                    <span><strong>Activities as a destination:</strong> Dedicated section and sub-pages reinforce that Bush Creek is a destination, not just a place to sleep — justifying longer stays and higher booking value.</span>
-                                </li>
-                                <li class="cs-list__item">
-                                    <span class="cs-list__icon" aria-hidden="true">—</span>
-                                    <span><strong>Nature-forward copy:</strong> Every headline and body copy line was written to evoke the sensory experience — the cool dam, the river, the morning farm air.</span>
-                                </li>
-                                <li class="cs-list__item">
-                                    <span class="cs-list__icon" aria-hidden="true">—</span>
-                                    <span><strong>Reviews page confidence signal:</strong> A dedicated Reviews page communicates guest experience confidence. It builds trust before it holds content.</span>
-                                </li>
+                                <li><span
+                                        class="cs-list__arrow">→</span><span><strong>Activities
+                                            as a destination:</strong> Dedicated
+                                        section and sub-pages reinforce that
+                                        Bush Creek is a destination, not just a
+                                        place to sleep — justifying longer stays
+                                        and higher booking value.</span></li>
+                                <li><span
+                                        class="cs-list__arrow">→</span><span><strong>Nature-forward
+                                            copy:</strong> Every headline and
+                                        body copy line was written to evoke the
+                                        sensory experience — the cool dam, the
+                                        river, the morning farm air. Copy sells
+                                        the atmosphere, not the thread
+                                        count.</span></li>
+                                <li><span
+                                        class="cs-list__arrow">→</span><span><strong>Reviews
+                                            page confidence signal:</strong> A
+                                        dedicated Reviews page communicates
+                                        "we are so confident in our guests' experience that we made this page."
+                                        It builds trust before it holds
+                                        content.</span></li>
                             </ul>
                         </div>
                     </div>
                     <div class="cs-callout reveal delay-200">
                         <p class="cs-callout__label">Strategic Principle</p>
-                        <p class="cs-callout__body">Rural hospitality guests do not want information — they want permission to escape. Every page was designed to give them that permission.</p>
+                        <p>Rural hospitality guests don't want information —
+                            they want permission to escape. Every page was
+                            designed to give them that permission.</p>
                     </div>
                 </div>
             </section>
-            <!-- DESIGN PROCESS -->
+
+            <!-- ══ S06 DESIGN PROCESS ══════════════════════════════════════════════ -->
             <section class="cs-section" aria-labelledby="design-heading">
                 <div class="container">
-                    <span class="cs-label reveal">06 — Design Process</span>
-                    <h2 class="cs-heading reveal delay-100" id="design-heading">Designing Rustic Elegance</h2>
-                    <p class="cs-subheading reveal delay-200"> The visual language of Bush Creek had to feel as natural as the property itself — earthy, warm, unforced. </p>
-                    <h3 class="cs-subhead reveal">Colour Palette</h3>
+                    <div class="cs-section-label reveal">06 — Design
+                        Process</div>
+                    <h2 class="reveal delay-100" id="design-heading">Designing
+                        Rustic Elegance</h2>
+                    <p class="cs-section-sub reveal delay-200">
+                        The visual language of Bush Creek had to feel as natural
+                        as the property itself — earthy, warm, unforced.
+                    </p>
+
+                    <h3 class="cs-subheading reveal">Colour Palette</h3>
                     <div class="cs-palette reveal delay-100">
                         <div class="cs-swatch">
-                            <div class="cs-swatch__color" style="background:#65A30D;"></div>
+                            <div class="cs-swatch__color"
+                                style="background:#65A30D;"
+                                aria-label="Nature Green"></div>
                             <span class="cs-swatch__name">Nature Green</span>
                             <span class="cs-swatch__hex">#65A30D</span>
                         </div>
                         <div class="cs-swatch">
-                            <div class="cs-swatch__color" style="background:#365314;"></div>
+                            <div class="cs-swatch__color"
+                                style="background:#365314;"
+                                aria-label="Forest Dark"></div>
                             <span class="cs-swatch__name">Forest Dark</span>
                             <span class="cs-swatch__hex">#365314</span>
                         </div>
                         <div class="cs-swatch">
-                            <div class="cs-swatch__color" style="background:#92400E;"></div>
+                            <div class="cs-swatch__color"
+                                style="background:#92400E;"
+                                aria-label="Earth Brown"></div>
                             <span class="cs-swatch__name">Earth Brown</span>
                             <span class="cs-swatch__hex">#92400E</span>
                         </div>
                         <div class="cs-swatch">
-                            <div class="cs-swatch__color" style="background:#F0FDF4;border:1px solid var(--color-border-subtle);"></div>
+                            <div class="cs-swatch__color"
+                                style="background:#F0FDF4;border:1px solid rgba(255,255,255,.12);"
+                                aria-label="Soft Mint"></div>
                             <span class="cs-swatch__name">Soft Mint</span>
                             <span class="cs-swatch__hex">#F0FDF4</span>
                         </div>
                         <div class="cs-swatch">
-                            <div class="cs-swatch__color" style="background:#FFFBEB;border:1px solid var(--color-border-subtle);"></div>
+                            <div class="cs-swatch__color"
+                                style="background:#FFFBEB;border:1px solid rgba(255,255,255,.12);"
+                                aria-label="Warm Cream"></div>
                             <span class="cs-swatch__name">Warm Cream</span>
                             <span class="cs-swatch__hex">#FFFBEB</span>
                         </div>
                     </div>
+
                     <div class="cs-divider reveal" aria-hidden="true"></div>
+
                     <div class="cs-design-grid reveal delay-100">
                         <div class="cs-design-card">
-                            <h3 class="cs-design-card__title">Flora-Named Room System</h3>
-                            <p class="cs-design-card__body">Six rooms named for indigenous South African plants — Protea, Rock Rose, Acacia, Aloe, Arum, Jacaranda. Creates a memorable identity system guests recall before they arrive and share after they leave.</p>
+                            <div class="cs-design-card__icon"
+                                aria-hidden="true">🌿</div>
+                            <h3 class="cs-design-card__title">Flora-Named Room
+                                System</h3>
+                            <p>Six rooms named for indigenous South African
+                                plants — Protea, Rock Rose, Acacia, Aloe, Arum,
+                                Jacaranda. Creates a memorable identity system
+                                guests recall before they arrive and share after
+                                they leave.</p>
                         </div>
                         <div class="cs-design-card">
-                            <h3 class="cs-design-card__title">Photography-First Layout</h3>
-                            <p class="cs-design-card__body">Farm photography curated to show the property at its most atmospheric — dam at golden hour, river walk in morning light, room interiors with natural sunlight. Images are the primary sales mechanism; copy is secondary.</p>
+                            <div class="cs-design-card__icon"
+                                aria-hidden="true">📸</div>
+                            <h3 class="cs-design-card__title">Photography-First
+                                Layout</h3>
+                            <p>Farm photography curated to show the property at
+                                its most atmospheric — dam at golden hour, river
+                                walk in morning light, room interiors with
+                                natural sunlight. Images are the primary sales
+                                mechanism, copy is secondary.</p>
                         </div>
                         <div class="cs-design-card">
-                            <h3 class="cs-design-card__title">Room Card Grid</h3>
-                            <p class="cs-design-card__body">Three-column room cards allow guests to visually compare all six options side by side. Each card shows room name, capacity, and a compelling thumbnail — inviting click-through to the full room page.</p>
+                            <div class="cs-design-card__icon"
+                                aria-hidden="true">🏠</div>
+                            <h3 class="cs-design-card__title">Room Card
+                                Grid</h3>
+                            <p>Three-column room cards allow guests to visually
+                                compare all six options side by side. Each card
+                                shows room name, capacity, and a compelling
+                                thumbnail — inviting click-through to the full
+                                room page.</p>
                         </div>
                         <div class="cs-design-card">
-                            <h3 class="cs-design-card__title">Availability Checker UI</h3>
-                            <p class="cs-design-card__body">Check-in and check-out date picker embedded on the homepage — the most important conversion tool on any accommodation website. Designed to be the first interactive element a visitor reaches after the hero.</p>
+                            <div class="cs-design-card__icon"
+                                aria-hidden="true">🗓️</div>
+                            <h3 class="cs-design-card__title">Availability
+                                Checker UI</h3>
+                            <p>Check-in/check-out date picker embedded on the
+                                homepage — the most important conversion tool on
+                                any accommodation website. Designed to be the
+                                first interactive element a visitor reaches
+                                after the hero.</p>
                         </div>
                         <div class="cs-design-card">
-                            <h3 class="cs-design-card__title">Navigation with Local Value</h3>
-                            <p class="cs-design-card__body">Activities sub-menu covering local restaurants, on-site, and local activities adds genuine area value — positioning the site as a destination guide, not just a booking page.</p>
+                            <div class="cs-design-card__icon"
+                                aria-hidden="true">🧭</div>
+                            <h3 class="cs-design-card__title">Navigation with
+                                Local Value</h3>
+                            <p>Activities sub-menu (Local Restaurants, Bush
+                                Creek Activities, Local Activities) adds genuine
+                                local area value — positions the site as a
+                                destination guide, not just a booking page.</p>
                         </div>
                         <div class="cs-design-card">
-                            <h3 class="cs-design-card__title">Evocative Copywriting</h3>
-                            <p class="cs-design-card__body">"Where the past lingers, the present unwinds, and nature welcomes you home." Copy tone mirrors the sensory experience of the farm — escaping, breathing, slowing down. Not "comfortable rooms available."</p>
+                            <div class="cs-design-card__icon"
+                                aria-hidden="true">🌟</div>
+                            <h3 class="cs-design-card__title">Evocative
+                                Copywriting</h3>
+                            <p>"Where the past lingers, the present unwinds, and nature welcomes you home."
+                                Copy tone mirrors the sensory experience of the
+                                farm — escaping, breathing, slowing down. Not
+                                "comfortable rooms available."</p>
                         </div>
                     </div>
-                    <div class="cs-two-col reveal delay-200" style="margin-top:3rem;">
+
+                    <div class="cs-two-col reveal delay-200"
+                        style="margin-top:3rem;">
                         <div>
-                            <div class="cs-placeholder" style="height:220px;border-radius:12px;">Rooms grid screenshot</div>
-                            <p class="cs-placeholder--caption">Six-room grid — individual pages per room</p>
+                            <img
+                                src="/images/projects/bush-creek/rooms-grid.webp"
+                                alt="Bush Creek Guest House six-room grid — Protea, Rock Rose, Acacia, Aloe, Arum, Jacaranda cards"
+                                style="width:100%;height:220px;object-fit:cover;display:block;border-radius:12px;"
+                                loading="lazy">
+                            <p class="cs-img-caption">Six-room grid — individual
+                                pages per room</p>
                         </div>
                         <div>
-                            <div class="cs-placeholder" style="height:220px;border-radius:12px;">Availability checker screenshot</div>
-                            <p class="cs-placeholder--caption">Availability checker — friction-free booking path</p>
+                            <img
+                                src="/images/projects/bush-creek/availability.webp"
+                                alt="Bush Creek Guest House availability checker — date picker embedded on homepage for direct booking"
+                                style="width:100%;height:220px;object-fit:cover;display:block;border-radius:12px;"
+                                loading="lazy">
+                            <p class="cs-img-caption">Availability checker —
+                                friction-free booking path</p>
                         </div>
                     </div>
                 </div>
             </section>
-            <!-- DEVELOPMENT -->
-            <section class="cs-section cs-section--surface" aria-labelledby="dev-heading">
+
+            <!-- ══ S07 DEVELOPMENT ═════════════════════════════════════════════════ -->
+            <section class="cs-section cs-section--surface"
+                aria-labelledby="dev-heading">
                 <div class="container">
-                    <span class="cs-label reveal">07 — Development Process</span>
-                    <h2 class="cs-heading reveal delay-100" id="dev-heading">Built for the Guest Who Books on the Go</h2>
-                    <p class="cs-subheading reveal delay-200"> South African leisure travellers browse on mobile, late at night, comparing options in real time. Every technical decision was made for that moment. </p>
+                    <div class="cs-section-label reveal">07 — Development
+                        Process</div>
+                    <h2 class="reveal delay-100" id="dev-heading">Built for the
+                        Guest Who Books on the Go</h2>
+                    <p class="cs-section-sub reveal delay-200">
+                        South African leisure travellers browse on mobile, late
+                        at night, comparing options in real time. Every
+                        technical decision was made for that moment.
+                    </p>
                     <div class="cs-two-col reveal delay-100">
                         <div>
                             <ul class="cs-list">
-                                <li class="cs-list__item">
-                                    <span class="cs-list__icon" aria-hidden="true">—</span>
-                                    <span><strong>Individual room pages:</strong> Six separate URL-addressable pages — SEO-optimisable and independently linkable for direct sharing.</span>
-                                </li>
-                                <li class="cs-list__item">
-                                    <span class="cs-list__icon" aria-hidden="true">—</span>
-                                    <span><strong>Availability date picker:</strong> Date range input component embedded on homepage and rooms pages — immediate response, no email required.</span>
-                                </li>
-                                <li class="cs-list__item">
-                                    <span class="cs-list__icon" aria-hidden="true">—</span>
-                                    <span><strong>Image carousel:</strong> Smooth touch-enabled navigation with indicator dots — primary interaction pattern for a visual-led property on mobile.</span>
-                                </li>
+                                <li><span
+                                        class="cs-list__arrow">→</span><span><strong>Individual
+                                            room pages:</strong> Six separate
+                                        URL-addressable pages (/rooms/protea,
+                                        /rooms/jacaranda etc.) — SEO-optimisable
+                                        and independently linkable for direct
+                                        sharing.</span></li>
+                                <li><span
+                                        class="cs-list__arrow">→</span><span><strong>Availability
+                                            date picker:</strong> Date range
+                                        input component embedded on homepage and
+                                        rooms pages — immediate response, no
+                                        email required.</span></li>
+                                <li><span
+                                        class="cs-list__arrow">→</span><span><strong>Image
+                                            carousel:</strong> Smooth
+                                        touch-enabled left-right swipe
+                                        navigation with indicator dots — primary
+                                        interaction pattern for a visual-led
+                                        property on mobile.</span></li>
                             </ul>
                         </div>
                         <div>
                             <ul class="cs-list">
-                                <li class="cs-list__item">
-                                    <span class="cs-list__icon" aria-hidden="true">—</span>
-                                    <span><strong>Google Maps embed:</strong> Interactive map on the Location page removes pre-arrival anxiety — guests can confirm the route before committing to the trip.</span>
-                                </li>
-                                <li class="cs-list__item">
-                                    <span class="cs-list__icon" aria-hidden="true">—</span>
-                                    <span><strong>Click-to-contact links:</strong> Phone number formatted as a <code>tel:</code> link for one-tap calling; email as a <code>mailto:</code> link — zero friction on mobile.</span>
-                                </li>
-                                <li class="cs-list__item">
-                                    <span class="cs-list__icon" aria-hidden="true">—</span>
-                                    <span><strong>Responsive image loading:</strong> Large farm photographs use responsive srcset attributes — fast load even on South Africa's rural and 3G connections.</span>
-                                </li>
+                                <li><span
+                                        class="cs-list__arrow">→</span><span><strong>Google
+                                            Maps embed:</strong> Interactive map
+                                        on Location page removes pre-arrival
+                                        anxiety — guests can confirm the route
+                                        before they commit to the
+                                        trip.</span></li>
+                                <li><span
+                                        class="cs-list__arrow">→</span><span><strong>Click-to-contact
+                                            links:</strong> Phone number
+                                        formatted as a <code>tel:</code> link
+                                        for one-tap calling; email as a
+                                        <code>mailto:</code> link — zero
+                                        friction on mobile.</span></li>
+                                <li><span
+                                        class="cs-list__arrow">→</span><span><strong>Responsive
+                                            image loading:</strong> Large farm
+                                        photographs use responsive srcset
+                                        attributes — fast load even on South
+                                        Africa's rural and 3G
+                                        connections.</span></li>
                             </ul>
                         </div>
                     </div>
                     <div class="cs-callout reveal delay-200">
                         <p class="cs-callout__label">Tech Stack</p>
-                        <p class="cs-callout__body">HTML5 · CSS3 (responsive grid, custom properties) · Vanilla JavaScript · Touch-optimised carousel · Date-range availability component · Google Maps embed · WebP optimised photography · Schema.org BedAndBreakfast markup</p>
+                        <p>HTML5 · CSS3 (responsive grid, custom properties) ·
+                            Vanilla JavaScript · Touch-optimised carousel ·
+                            Date-range availability component · Google Maps
+                            embed · WebP optimised photography · Schema.org
+                            BedAndBreakfast markup</p>
                     </div>
                 </div>
             </section>
-            <!-- MOBILE -->
-            <section class="cs-section" aria-labelledby="mobile-heading">
+
+            <!-- ══ S08 ANIMATIONS & INTERACTIONS ══════════════════════════════════ -->
+            <section class="cs-section" aria-labelledby="anim-heading">
                 <div class="container">
-                    <span class="cs-label reveal">08 — Mobile Responsiveness</span>
-                    <h2 class="cs-heading reveal delay-100" id="mobile-heading">Book a Farm Stay from Your Commute</h2>
-                    <p class="cs-subheading reveal delay-200"> Full feature parity across all devices. The experience of booking Bush Creek is just as beautiful on a 5-inch screen as on a 27-inch monitor. </p>
+                    <div class="cs-section-label reveal">08 — Animations &
+                        Interactions</div>
+                    <h2 class="reveal delay-100" id="anim-heading">Interactions
+                        That Feel Like the Farm Itself — Natural, Unhurried</h2>
+                    <div class="cs-process reveal delay-100">
+                        <div class="cs-process-step">
+                            <div class="cs-process-step__num"
+                                aria-hidden="true">01</div>
+                            <h3 class="cs-process-step__title">Image
+                                Carousel</h3>
+                            <p>Smooth left-right swipe on room pages and the
+                                gallery section. Touch-friendly swipe gestures
+                                with momentum — the primary interaction for
+                                mobile guests browsing the property.</p>
+                        </div>
+                        <div class="cs-process-step">
+                            <div class="cs-process-step__num"
+                                aria-hidden="true">02</div>
+                            <h3 class="cs-process-step__title">Availability
+                                Picker</h3>
+                            <p>Date picker with visual calendar — interactive,
+                                immediate, satisfying to use. The animation on
+                                date selection confirms the choice and invites
+                                the next step.</p>
+                        </div>
+                        <div class="cs-process-step">
+                            <div class="cs-process-step__num"
+                                aria-hidden="true">03</div>
+                            <h3 class="cs-process-step__title">Room Card
+                                Hover</h3>
+                            <p>Subtle image zoom and card lift on hover —
+                                communicates interactivity without distracting
+                                from the photography that's doing the
+                                selling.</p>
+                        </div>
+                        <div class="cs-process-step">
+                            <div class="cs-process-step__num"
+                                aria-hidden="true">04</div>
+                            <h3 class="cs-process-step__title">Scroll
+                                Reveals</h3>
+                            <p>Property feature sections fade gently into view —
+                                matches the unhurried, peaceful atmosphere of
+                                the farm. No fast snaps or jarring
+                                transitions.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ══ S09 MOBILE RESPONSIVENESS ══════════════════════════════════════ -->
+            <section class="cs-section cs-section--surface"
+                aria-labelledby="mobile-heading">
+                <div class="container">
+                    <div class="cs-section-label reveal">09 — Mobile
+                        Responsiveness</div>
+                    <h2 class="reveal delay-100" id="mobile-heading">Book a Farm
+                        Stay from Your Commute</h2>
+                    <p class="cs-section-sub reveal delay-200">
+                        Full feature parity across all devices. The experience
+                        of booking Bush Creek is just as beautiful on a 5-inch
+                        screen as on a 27-inch monitor.
+                    </p>
                     <div class="cs-two-col reveal delay-100">
                         <div>
                             <ul class="cs-list">
-                                <li class="cs-list__item">
-                                    <span class="cs-list__icon" aria-hidden="true">—</span>
-                                    <span>Farm hero photography loads beautifully on mobile — atmosphere maintained at every screen size</span>
-                                </li>
-                                <li class="cs-list__item">
-                                    <span class="cs-list__icon" aria-hidden="true">—</span>
-                                    <span>Three-column room grid collapses to single-column stacked cards — each card fully tappable with a clear View Room CTA</span>
-                                </li>
-                                <li class="cs-list__item">
-                                    <span class="cs-list__icon" aria-hidden="true">—</span>
-                                    <span>Availability checker uses native mobile date pickers — no third-party calendar that breaks on smaller screens</span>
-                                </li>
-                                <li class="cs-list__item">
-                                    <span class="cs-list__icon" aria-hidden="true">—</span>
-                                    <span>Gallery becomes a swipe-enabled photo carousel on mobile — natural touch interaction pattern for visual browsing</span>
-                                </li>
+                                <li><span
+                                        class="cs-list__arrow">→</span><span>Farm
+                                        hero photography loads beautifully on
+                                        mobile — atmosphere maintained at every
+                                        screen size, no cropped or compressed
+                                        feel</span></li>
+                                <li><span
+                                        class="cs-list__arrow">→</span><span>3-column
+                                        room grid collapses to single-column
+                                        stacked cards — each card fully tappable
+                                        with clear "View Room" CTA</span></li>
+                                <li><span
+                                        class="cs-list__arrow">→</span><span>Availability
+                                        checker uses native mobile date pickers
+                                        — no third-party calendar that breaks on
+                                        smaller screens</span></li>
+                                <li><span
+                                        class="cs-list__arrow">→</span><span>Gallery
+                                        becomes a swipe-enabled photo carousel
+                                        on mobile — natural touch interaction
+                                        pattern for visual browsing</span></li>
                             </ul>
                         </div>
                         <div class="cs-mobile-pair reveal delay-200">
                             <div class="cs-mockup cs-mockup--mobile">
-                                <div class="cs-placeholder" style="height:260px;border-radius:20px;">Hero — mobile</div>
+                                <img
+                                    src="/images/projects/bush-creek/hero-mobile.webp"
+                                    alt="Bush Creek Guest House homepage on mobile — farm hero image and Book Now CTA"
+                                    style="width:100%;height:260px;object-fit:cover;display:block;border-radius:20px;"
+                                    loading="lazy">
                             </div>
                             <div class="cs-mockup cs-mockup--mobile">
-                                <div class="cs-placeholder" style="height:260px;border-radius:20px;">Rooms — mobile</div>
+                                <img
+                                    src="/images/projects/bush-creek/rooms-mobile.webp"
+                                    alt="Bush Creek Guest House rooms page on mobile — stacked room cards with thumbnails"
+                                    style="width:100%;height:260px;object-fit:cover;display:block;border-radius:20px;"
+                                    loading="lazy">
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
-            <!-- SEO -->
-            <section class="cs-section cs-section--surface" aria-labelledby="seo-heading">
+
+            <!-- ══ S10 SEO & PERFORMANCE ═══════════════════════════════════════════ -->
+            <section class="cs-section" aria-labelledby="seo-heading">
                 <div class="container">
-                    <span class="cs-label reveal">09 — SEO &amp; Performance</span>
-                    <h2 class="cs-heading reveal delay-100" id="seo-heading">Found Before the OTA</h2>
-                    <p class="cs-subheading reveal delay-200"> Individual room pages, location-specific targeting, and activity content create a search footprint that OTA listings cannot replicate. </p>
+                    <div class="cs-section-label reveal">10 — SEO &
+                        Performance</div>
+                    <h2 class="reveal delay-100" id="seo-heading">Found Before
+                        the OTA</h2>
+                    <p class="cs-section-sub reveal delay-200">
+                        Individual room pages, location-specific targeting, and
+                        activity content create a search footprint that OTA
+                        listings can't replicate.
+                    </p>
                     <div class="cs-two-col reveal delay-100">
                         <div>
-                            <h3 class="cs-subhead">SEO Architecture</h3>
+                            <h3 class="cs-subheading">SEO Architecture</h3>
                             <ul class="cs-list">
-                                <li class="cs-list__item"><span class="cs-list__icon" aria-hidden="true">—</span><span>Individual room URLs — targeting "honeymoon suite KwaZulu-Natal" and similar high-intent searches</span></li>
-                                <li class="cs-list__item"><span class="cs-list__icon" aria-hidden="true">—</span><span>Location page targeting "Mooi River guest house" and "farm accommodation near Mooi River"</span></li>
-                                <li class="cs-list__item"><span class="cs-list__icon" aria-hidden="true">—</span><span>Activities pages for "things to do near Mooi River" — informational content that drives discovery</span></li>
-                                <li class="cs-list__item"><span class="cs-list__icon" aria-hidden="true">—</span><span>BedAndBreakfast + LodgingBusiness schema for Google Knowledge Panel eligibility</span></li>
+                                <li><span
+                                        class="cs-list__arrow">→</span><span>Individual
+                                        room URLs: /rooms/protea — target
+                                        "honeymoon suite KwaZulu-Natal" and
+                                        similar high-intent searches</span></li>
+                                <li><span
+                                        class="cs-list__arrow">→</span><span>Location
+                                        page: "Mooi River guest house" and
+                                        "farm accommodation near Mooi River" —
+                                        local search intent</span></li>
+                                <li><span
+                                        class="cs-list__arrow">→</span><span>Activities
+                                        pages: "things to do near Mooi River" —
+                                        informational content that drives
+                                        discovery</span></li>
+                                <li><span
+                                        class="cs-list__arrow">→</span><span>BedAndBreakfast
+                                        + LodgingBusiness schema for Google
+                                        Knowledge Panel eligibility</span></li>
                             </ul>
                         </div>
                         <div>
-                            <h3 class="cs-subhead">Performance</h3>
+                            <h3 class="cs-subheading">Performance</h3>
                             <ul class="cs-list">
-                                <li class="cs-list__item"><span class="cs-list__icon" aria-hidden="true">—</span><span>Farm photography optimised in WebP with responsive srcset — fast on rural and 3G connections</span></li>
-                                <li class="cs-list__item"><span class="cs-list__icon" aria-hidden="true">—</span><span>Lazy-loading on gallery images — no unnecessary data usage on initial page load</span></li>
-                                <li class="cs-list__item"><span class="cs-list__icon" aria-hidden="true">—</span><span>Reviews page creates future UGC signal — Google rewards businesses with structured review presence</span></li>
-                                <li class="cs-list__item"><span class="cs-list__icon" aria-hidden="true">—</span><span>Lighthouse score target: 88+ mobile, 95+ desktop</span></li>
+                                <li><span
+                                        class="cs-list__arrow">→</span><span>Farm
+                                        photography optimised in WebP with
+                                        responsive srcset — fast on rural/3G
+                                        connections</span></li>
+                                <li><span
+                                        class="cs-list__arrow">→</span><span>Lazy-loading
+                                        on gallery images — no unnecessary data
+                                        usage on initial page load</span></li>
+                                <li><span
+                                        class="cs-list__arrow">→</span><span>Reviews
+                                        page: future UGC signal — Google rewards
+                                        businesses with structured review
+                                        presence</span></li>
+                                <li><span
+                                        class="cs-list__arrow">→</span><span>Lighthouse
+                                        score target: 88+ mobile, 95+
+                                        desktop</span></li>
                             </ul>
                         </div>
                     </div>
                 </div>
             </section>
-            <!-- OUTCOMES -->
-            <section class="cs-section cs-section--bordered" aria-labelledby="outcomes-heading">
+
+            <!-- ══ S11 OUTCOMES ════════════════════════════════════════════════════ -->
+            <section class="cs-section cs-section--bordered"
+                aria-labelledby="outcomes-heading">
                 <div class="container">
-                    <span class="cs-label reveal">10 — Outcomes &amp; Results</span>
-                    <h2 class="cs-heading reveal delay-100" id="outcomes-heading">A Digital Home as Beautiful as the Farm Itself</h2>
-                    <p class="cs-subheading reveal delay-200"> Bush Creek Guest House now has a direct booking capability, a brand identity as warm as the property, and a website that does what the best hospitality websites do — make you want to be there. </p>
+                    <div class="cs-section-label reveal">11 — Outcomes &
+                        Results</div>
+                    <h2 class="reveal delay-100" id="outcomes-heading">A Digital
+                        Home as Beautiful as the Farm Itself</h2>
+                    <p class="cs-section-sub reveal delay-200">
+                        Bush Creek Guest House now has a direct booking
+                        capability, a brand identity as warm as the property,
+                        and a website that does what the best hospitality
+                        websites do — make you want to be there.
+                    </p>
                     <div class="cs-outcomes-grid reveal delay-100">
                         <div class="cs-outcome-card">
                             <span class="cs-outcome-card__value">10+</span>
-                            <span class="cs-outcome-card__label">Pages Delivered</span>
-                            <span class="cs-outcome-card__context">Home, 6 Rooms, Gallery, Activities, Location, Reviews, Contact</span>
+                            <span class="cs-outcome-card__label">Pages
+                                Delivered</span>
+                            <span class="cs-outcome-card__context">Home, 6
+                                Rooms, Gallery, Activities, Location, Reviews,
+                                Contact</span>
                         </div>
                         <div class="cs-outcome-card">
                             <span class="cs-outcome-card__value">6</span>
-                            <span class="cs-outcome-card__label">Room Pages</span>
-                            <span class="cs-outcome-card__context">Each with individual images, descriptions, and booking CTAs</span>
+                            <span class="cs-outcome-card__label">Room
+                                Pages</span>
+                            <span class="cs-outcome-card__context">Each with
+                                individual images, descriptions, and booking
+                                CTAs</span>
                         </div>
                         <div class="cs-outcome-card">
                             <span class="cs-outcome-card__value">Live</span>
-                            <span class="cs-outcome-card__label">Booking Channel</span>
-                            <span class="cs-outcome-card__context">Direct alternative to OTA platforms — no commission</span>
+                            <span class="cs-outcome-card__label">Booking
+                                Channel</span>
+                            <span class="cs-outcome-card__context">Direct
+                                alternative to OTA platforms — no
+                                commission</span>
                         </div>
                         <div class="cs-outcome-card">
                             <span class="cs-outcome-card__value">3</span>
-                            <span class="cs-outcome-card__label">Activity Sub-pages</span>
-                            <span class="cs-outcome-card__context">Local restaurants, on-site, and local activities</span>
+                            <span class="cs-outcome-card__label">Activity
+                                Sub-pages</span>
+                            <span class="cs-outcome-card__context">Local
+                                restaurants, on-site, and local
+                                activities</span>
                         </div>
                         <div class="cs-outcome-card">
                             <span class="cs-outcome-card__value">100%</span>
-                            <span class="cs-outcome-card__label">Mobile Ready</span>
-                            <span class="cs-outcome-card__context">Book from any device, any screen size</span>
+                            <span class="cs-outcome-card__label">Mobile
+                                Ready</span>
+                            <span class="cs-outcome-card__context">Book from any
+                                device, any screen size</span>
                         </div>
                         <div class="cs-outcome-card">
                             <span class="cs-outcome-card__value">SEO</span>
-                            <span class="cs-outcome-card__label">Local Foundation</span>
-                            <span class="cs-outcome-card__context">KZN hospitality search terms targeted across 10+ pages</span>
+                            <span class="cs-outcome-card__label">Local
+                                Foundation</span>
+                            <span class="cs-outcome-card__context">KZN
+                                hospitality search terms targeted across 10+
+                                pages</span>
                         </div>
                     </div>
                 </div>
             </section>
-            <!-- TESTIMONIAL -->
-            <section class="cs-section cs-section--surface" aria-labelledby="testimonial-heading">
+
+            <!-- ══ S12 TESTIMONIAL ════════════════════════════════════════════════ -->
+            <section class="cs-section cs-section--surface"
+                aria-labelledby="testimonial-heading">
                 <div class="container" style="text-align:center;">
-                    <span class="cs-label reveal" style="display:block;text-align:center;">11 — Client Voice</span>
-                    <h2 class="cs-heading reveal delay-100" id="testimonial-heading" style="text-align:center;max-width:600px;margin:0 auto 2rem;">What Bush Creek Said</h2>
+                    <div class="cs-section-label reveal"
+                        style="text-align:center;">12 — Client Voice</div>
+                    <h2 class="reveal delay-100" id="testimonial-heading"
+                        style="text-align:center;max-width:600px;margin:0 auto 2rem;">What
+                        Bush Creek Said</h2>
                     <div class="cs-testimonial reveal delay-200">
-                        <p class="cs-testimonial__stars" aria-label="5 star rating">★ ★ ★ ★ ★</p>
-                        <p class="cs-testimonial__pending">Testimonial being collected from Bush Creek Guest House owner — check back soon.</p>
+                        <div class="cs-testimonial__stars"
+                            aria-label="5 star rating">★★★★★</div>
+                        <p class="cs-testimonial__pending">✏️ Testimonial being
+                            collected from Bush Creek Guest House owner — check
+                            back soon.</p>
                     </div>
                 </div>
             </section>
-            <!-- CTA -->
+
+            <!-- ══ S13 CTA ═════════════════════════════════════════════════════════ -->
             <section class="cs-cta-section" aria-labelledby="cta-heading">
-                <div class="container" style="text-align:center;">
-                    <p class="cs-cta-section .cs-eyebrow reveal">Ready to fill your rooms?</p>
-                    <h2 class="reveal delay-100" id="cta-heading">Do You Run a Guest House, Lodge,<br>Hotel, or Hospitality Brand?</h2>
-                    <p class="reveal delay-200">We build hospitality websites that make guests want to book before they finish their first scroll. Let's build yours.</p>
-                    <div class="cs-cta-buttons reveal delay-300">
-                        <a href="/quote.html" class="btn-primary">Start a Project with Nexora →</a>
-                        <a href="/projects.html" class="btn-secondary">View All Projects</a>
-                    </div>
-                    <div class="cs-related reveal delay-400" aria-label="Related projects">
-                        <p class="cs-related__label">More Projects</p>
-                        <div class="cs-related__grid">
-                            <a href="/projects/red-wolf-security.html" class="cs-related-card">
-                                <span class="cs-related-card__industry" style="color:#EF4444;">Corporate Security · Nigeria</span>
-                                <span class="cs-related-card__name">Red Wolf Security</span>
-                                <span class="cs-related-card__link">redwolfsecuirty.com ↗</span>
-                            </a>
-                            <a href="/projects/cpil.html" class="cs-related-card">
-                                <span class="cs-related-card__industry" style="color:#60A5FA;">Infrastructure · Nigeria</span>
-                                <span class="cs-related-card__name">CPIL — Cemex Project Integrated</span>
-                                <span class="cs-related-card__link">cpil.com.ng ↗</span>
-                            </a>
+                <div class="container">
+                    <div class="cs-cta">
+                        <p class="cs-cta__eyebrow reveal">Ready to fill your
+                            rooms?</p>
+                        <h2 class="reveal delay-100" id="cta-heading">Do You Run
+                            a Guest House, Lodge,<br>Hotel, or Hospitality
+                            Brand?</h2>
+                        <p class="reveal delay-200">We build hospitality
+                            websites that make guests want to book before they
+                            finish their first scroll. Let's build yours.</p>
+                        <div class="cs-cta__actions reveal delay-300">
+                            <a href="/quote.html" class="btn-primary">Start a
+                                Project with Nexora →</a>
+                            <a href="/projects.html" class="cs-btn-outline">View
+                                All Projects</a>
+                        </div>
+                        <div class="cs-related reveal delay-400"
+                            aria-label="Related projects">
+                            <p class="cs-related__label">More Projects</p>
+                            <div class="cs-related__grid">
+                                <a href="/projects/red-wolf-security.html"
+                                    class="cs-related-card">
+                                    <span class="cs-related-card__industry"
+                                        style="color:#EF4444;">Corporate
+                                        Security · Nigeria</span>
+                                    <span class="cs-related-card__name">Red Wolf
+                                        Security</span>
+                                    <span
+                                        class="cs-related-card__link">redwolfsecuirty.com
+                                        ↗</span>
+                                </a>
+                                <a href="/projects/cpil.html"
+                                    class="cs-related-card">
+                                    <span class="cs-related-card__industry"
+                                        style="color:#60A5FA;">Infrastructure ·
+                                        Nigeria</span>
+                                    <span class="cs-related-card__name">CPIL —
+                                        Cemex Project Integrated</span>
+                                    <span
+                                        class="cs-related-card__link">cpil.com.ng
+                                        ↗</span>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </section>
+
         </main>
+
+        <!-- ── Site Footer ─────────────────────────────────────────────────────── -->
         <footer class="site-footer">
             <div class="container">
                 <div class="footer-grid">
                     <div class="footer-col reveal">
                         <a href="/index.html">
-                            <img src="/icons/logo_nobg.svg" alt="Nexora Web Agency Logo" class="footer-logo" onerror="this.src='/images/nexora-logo.svg'" style="height:180px;width:auto;">
+                            <img src="/icons/logo_nobg.svg"
+                                alt="Nexora Web Agency Logo" class="footer-logo"
+                                onerror="this.src='/images/nexora-logo.svg'"
+                                style="height:180px;width:auto;">
                         </a>
                     </div>
                     <div class="footer-col reveal delay-100">
@@ -535,40 +946,45 @@
                     <div class="footer-col reveal delay-200">
                         <h3>Contact Us</h3>
                         <p>Cape Town, South Africa</p>
-                        <a href="mailto:nwa.agency.josh@gmail.com">nwa.agency.josh@gmail.com</a>
+                        <a
+                            href="mailto:nwa.agency.josh@gmail.com">nwa.agency.josh@gmail.com</a>
                     </div>
                     <div class="footer-col reveal delay-300">
                         <h3>Follow Us</h3>
-                        <a href="https://www.linkedin.com/in/joshua-trevor-stevenson" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                        <a
+                            href="https://www.linkedin.com/in/joshua-trevor-stevenson"
+                            target="_blank"
+                            rel="noopener noreferrer">LinkedIn</a>
                     </div>
                 </div>
                 <div class="footer-bottom reveal delay-400">
                     <p>&copy;
-                        <script>document.write(new Date().getFullYear())</script> Nexora Web Agency. All rights reserved.
-                    </p>
+                        <script>document.write(new Date().getFullYear())</script>
+                        Nexora Web Agency. All rights reserved.</p>
                 </div>
             </div>
         </footer>
-        <script>
-                (function () {
-                    const bar = document.querySelector('.cs-progress');
-                    if (bar) {
-                        window.addEventListener('scroll', function () {
-                            const scrollTop = window.scrollY;
-                            const docH = document.documentElement.scrollHeight - window.innerHeight;
-                            bar.style.width = (docH > 0 ? (scrollTop / docH) * 100 : 0) + '%';
-                        }, { passive: true });
-                    }
-                })();
-            document.addEventListener('DOMContentLoaded', function () {
-                const observer = new IntersectionObserver(function (entries) {
-                    entries.forEach(function (entry) {
-                        if (entry.isIntersecting) entry.target.classList.add('active');
-                    });
-                }, { threshold: 0.08 });
-                document.querySelectorAll('.reveal').forEach(function (el) { observer.observe(el); });
-            });
-        </script>
-    </body>
 
+        <script>
+    (function () {
+      const bar = document.querySelector('.cs-progress');
+      if (bar) {
+        window.addEventListener('scroll', function () {
+          const scrollTop = window.scrollY;
+          const docH = document.documentElement.scrollHeight - window.innerHeight;
+          bar.style.width = (docH > 0 ? (scrollTop / docH) * 100 : 0) + '%';
+        }, { passive: true });
+      }
+    })();
+    document.addEventListener('DOMContentLoaded', function () {
+      const observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) entry.target.classList.add('active');
+        });
+      }, { threshold: 0.08 });
+      document.querySelectorAll('.reveal').forEach(function (el) { observer.observe(el); });
+    });
+  </script>
+
+    </body>
 </html>
