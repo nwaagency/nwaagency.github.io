@@ -699,3 +699,79 @@ Netlify handles:
 
 ---
 
+
+
+```
+nwaagency.github.io
+ ┣ public
+ ┃ ┣ icons
+ ┃ ┃ ┣ Nexora_Logos_No-Background.svg
+ ┃ ┃ ┣ emblem.svg
+ ┃ ┃ ┣ header_logo.svg
+ ┃ ┃ ┣ logo_nobg.svg
+ ┃ ┃ ┗ nexora_emblem.png
+ ┃ ┗ images
+ ┃ ┃ ┣ founder
+ ┃ ┃ ┃ ┣ founder_1.webp
+ ┃ ┃ ┃ ┣ founder_2.webp
+ ┃ ┃ ┃ ┣ profile_pic.png
+ ┃ ┃ ┃ ┗ profile_pic.webp
+ ┃ ┃ ┣ projects
+ ┃ ┃ ┃ ┣ bushcreek.png
+ ┃ ┃ ┃ ┗ cpil.png
+ ┃ ┃ ┗ nexora-logo.svg
+ ┣ src
+ ┃ ┣ assets
+ ┃ ┃ ┣ css
+ ┃ ┃ ┃ ┣ global.css
+ ┃ ┃ ┃ ┣ home.css
+ ┃ ┃ ┃ ┣ main.css
+ ┃ ┃ ┃ ┣ quote.css
+ ┃ ┃ ┃ ┗ utilities.css
+ ┃ ┃ ┗ js
+ ┃ ┃ ┃ ┗ forms.js
+ ┃ ┣ components
+ ┃ ┃ ┣ global
+ ┃ ┃ ┃ ┣ Footer.html
+ ┃ ┃ ┃ ┗ Header.html
+ ┃ ┃ ┣ sections
+ ┃ ┃ ┃ ┣ FounderSnippet.html
+ ┃ ┃ ┃ ┣ GlobalCTA.html
+ ┃ ┃ ┃ ┣ Hero.html
+ ┃ ┃ ┃ ┗ ServiceGrid.html
+ ┃ ┃ ┗ ui
+ ┃ ┃ ┃ ┣ Button.html
+ ┃ ┃ ┃ ┣ Card.html
+ ┃ ┃ ┃ ┗ FormInput.html
+ ┃ ┣ layouts
+ ┃ ┃ ┗ BaseLayout.html
+ ┃ ┗ pages
+ ┃ ┃ ┣ projects
+ ┃ ┃ ┃ ┣ bush-creek.html
+ ┃ ┃ ┃ ┗ cemex.html
+ ┃ ┃ ┣ services
+ ┃ ┃ ┃ ┣ advanced-seo-optimisation.html
+ ┃ ┃ ┃ ┣ android-development.html
+ ┃ ┃ ┃ ┣ custom-website-development.html
+ ┃ ┃ ┃ ┣ data-modelling.html
+ ┃ ┃ ┃ ┣ gtm-analytics-integration.html
+ ┃ ┃ ┃ ┣ ios-development.html
+ ┃ ┃ ┃ ┣ rapid-website-templates.html
+ ┃ ┃ ┃ ┣ scalable-data-pipelines.html
+ ┃ ┃ ┃ ┣ strategic-dashboards.html
+ ┃ ┃ ┃ ┗ workflow-optimisation.html
+ ┃ ┃ ┣ about.html
+ ┃ ┃ ┣ contact-submission.html
+ ┃ ┃ ┣ contact.html
+ ┃ ┃ ┣ index.html
+ ┃ ┃ ┣ projects.html
+ ┃ ┃ ┣ quote.html
+ ┃ ┃ ┣ services.html
+ ┃ ┃ ┣ template.html
+ ┃ ┃ ┗ thank-you.html
+ ┣ .gitignore
+ ┣ README.md
+ ┣ netlify.toml
+ ┣ package-lock.json
+ ┗ package.json
+```

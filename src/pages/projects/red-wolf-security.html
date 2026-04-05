@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- ═══════════════════════════════════════════════════════════════════
+     SEO CONFIG — edit values in this block only
+     ═══════════════════════════════════════════════════════════════════ -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Red Wolf Security Case Study | Nexora Web Agency — Nigerian B2B Web Design</title>
+  <meta name="description" content="See how Nexora built Nigeria's most authoritative security company website — 15+ pages, 9 individual service pages, conversion architecture, and mobile-first design. Full case study." />
+  <!-- Open Graph -->
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Red Wolf Security — Case Study | Nexora Web Agency" />
+  <meta property="og:description" content="How Nexora built a multi-service Nigerian security company's authoritative digital presence." />
+  <meta property="og:image" content="/images/projects/red-wolf/og-image.jpg" />
+  <meta property="og:url" content="https://nwaagency.github.io/projects/red-wolf-security.html" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="canonical" href="https://nwaagency.github.io/projects/red-wolf-security.html" />
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    "name": "Red Wolf Security — Website Design & Development",
+    "description": "Full-service web design and development for Red Wolf Security, a multi-service Nigerian security company offering guarding, CCTV, access control, smart home, and more.",
+    "creator": {
+      "@type": "Organization",
+      "name": "Nexora Web Agency",
+      "url": "https://nwaagency.github.io"
+    },
+    "about": {
+      "@type": "Organization",
+      "name": "Red Wolf Security",
+      "url": "https://redwolfsecuirty.com",
+      "description": "Nigerian corporate security company — guarding, surveillance, access control, smart home, investigation services.",
+      "areaServed": "Nigeria"
+    },
+    "keywords": "web design security company Nigeria, corporate security website, B2B web design Africa"
+  }
+  </script>
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <!-- Shared styles -->
+  <link rel="icon" href="/icons/emblem.svg" /><link rel="apple-touch-icon" href="/icons/nexora_emblem.png" /><link rel="stylesheet" href="/assets/css/portfolio.css" />
+  <!-- ═══ PROJECT COLOUR OVERRIDES ═══════════════════════════════════════ -->
+  <style>
+    :root {
+      --project-primary: #B91C1C;
+      --project-dark:    #7F1D1D;
+      --project-light:   #FEF2F2;
+      --project-accent:  #F87171;
+    }
+    #hero {
+      background: linear-gradient(135deg, #0A0F1E 0%, #1a0505 60%, #2d0808 100%);
+    }
+    .pf-callout {
+      border-top-color: var(--project-primary);
+      background: var(--project-light);
+    }
+    .pf-nav__links a.active { color: var(--project-accent); }
+  </style>
+</head>
+
+<body>
+  <!-- ─── Scroll progress bar ─────────────────────────────────────────────── -->
+  <div class="pf-progress" aria-hidden="true"></div>
+
+  <!-- ─── Navigation ──────────────────────────────────────────────────────── -->
+  <header class="pf-nav" role="banner">
+    <a href="/" class="pf-nav__logo">Nexora<span>.</span></a>
+    <nav class="pf-nav__links" aria-label="Portfolio navigation">
+      <a href="/projects.html">← All Projects</a>
+      <a href="/services.html">Services</a>
+      <a href="/quote.html" class="pf-btn pf-btn--sm pf-btn--primary">Start a Project</a>
+    </nav>
+  </header>
+
+  <!-- ════════════════════════════════════════════════════════════════════
+     S01 — HERO
+     ════════════════════════════════════════════════════════════════════ -->
+  <section id="hero" class="pf-section" aria-labelledby="hero-heading" style="opacity:1;transform:none;">
+    <div class="pf-hero pf-container">
+      <div class="pf-hero__content">
+        <div class="pf-hero__eyebrow">Corporate Security · Nigeria</div>
+        <h1 class="pf-hero__title" id="hero-heading">
+          Building Nigeria's Most <span>Authoritative</span> Security Website
+        </h1>
+        <p class="pf-hero__desc">
+          A multi-service Nigerian security company protecting hospitals, hotels, and estates — finally with a digital presence to match their operational excellence.
+        </p>
+        <div class="pf-hero__actions">
+          <a href="https://redwolfsecuirty.com" target="_blank" rel="noopener" class="pf-btn pf-btn--project" aria-label="View the live Red Wolf Security website">
+            View Live Site ↗
+          </a>
+          <a href="#challenge" class="pf-btn pf-btn--outline">Read the Case Study</a>
+        </div>
+        <div class="pf-hero__tags" aria-label="Project tags">
+          <span class="pf-tag">Web Design</span>
+          <span class="pf-tag">UX Architecture</span>
+          <span class="pf-tag">Multi-page Build</span>
+          <span class="pf-tag">Mobile-First</span>
+          <span class="pf-tag">SEO</span>
+          <span class="pf-tag">Nigeria</span>
+        </div>
+      </div><!-- /pf-hero__content -->
+      <div class="pf-hero__visual" aria-hidden="true">
+        <div class="pf-mockup pf-mockup--browser">
+          <div class="pf-mockup__bar">
+            <span class="pf-mockup__dot"></span>
+            <span class="pf-mockup__dot"></span>
+            <span class="pf-mockup__dot"></span>
+            <span class="pf-mockup__url">redwolfsecuirty.com</span>
+          </div>
+          <!-- <img class="pf-mockup__screen" src="/images/projects/red-wolf/hero-desktop.jpg"
+               alt="Red Wolf Security homepage — hero section showing 'Absolute Safety Without Compromise' tagline" /> -->
+          <div class="pf-mockup__placeholder">[ Add hero-desktop.jpg — 1440×900 ]</div>
+        </div>
+      </div><!-- /pf-hero__visual -->
+    </div>
+  </section><!-- /S01 hero -->
+
+  <!-- ════════════════════════════════════════════════════════════════════
+     S02 — PROJECT OVERVIEW (stats strip)
+     ════════════════════════════════════════════════════════════════════ -->
+  <section id="overview" class="pf-section pf-section--tint" aria-label="Project overview">
+    <div class="pf-container">
+      <div class="pf-stats-strip" data-animate="stagger" role="list">
+        <div class="pf-stat" role="listitem">
+          <span class="pf-stat__value" data-count="15" data-suffix="+">15+</span>
+          <span class="pf-stat__label">Pages Built</span>
+          <span class="pf-stat__context">Including 9 individual service sub-pages</span>
+        </div>
+        <div class="pf-stat" role="listitem">
+          <span class="pf-stat__value" data-count="9" data-suffix="">9</span>
+          <span class="pf-stat__label">Service Lines</span>
+          <span class="pf-stat__context">Each with dedicated page and conversion path</span>
+        </div>
+        <div class="pf-stat" role="listitem">
+          <span class="pf-stat__value" data-count="3" data-suffix="">3</span>
+          <span class="pf-stat__label">Buyer Flows</span>
+          <span class="pf-stat__context">Corporate · Residential · Event segments</span>
+        </div>
+        <div class="pf-stat" role="listitem">
+          <span class="pf-stat__value" data-count="12" data-suffix="">12</span>
+          <span class="pf-stat__label">Industry Verticals</span>
+          <span class="pf-stat__context">Hospitals, hotels, construction, education & more</span>
+        </div>
+        <div class="pf-stat" role="listitem">
+          <span class="pf-stat__value">2025</span>
+          <span class="pf-stat__label">Year Delivered</span>
+          <span class="pf-stat__context">Live at redwolfsecuirty.com</span>
+        </div>
+      </div><!-- /pf-stats-strip -->
+    </div>
+  </section><!-- /S02 overview -->
+
+  <!-- ════════════════════════════════════════════════════════════════════
+     S03 — CLIENT CHALLENGE
+     ════════════════════════════════════════════════════════════════════ -->
+  <section id="challenge" class="pf-section pf-section--light" aria-labelledby="challenge-heading">
+    <div class="pf-container">
+      <div class="pf-label">03 — Client Challenge</div>
+      <h2 class="pf-heading" id="challenge-heading" data-animate="fade-up">
+        Nine Services. Zero Digital Clarity.
+      </h2>
+      <p class="pf-subheading" data-animate="fade-up">
+        Red Wolf Security protects Nigeria's hospitals, estates, hotels, and corporations. Their old web presence said none of that.
+      </p>
+      <div class="pf-two-col pf-two-col--60-40">
+        <div class="pf-two-col__text" data-animate="slide-left">
+          <p class="pf-body-text">
+            Red Wolf Security operates at the intersection of physical security, surveillance technology, smart home automation, and corporate investigations — nine distinct service lines spanning every major industry vertical in Nigeria. The challenge was not the quality of their service. It was invisibility.
+          </p>
+          <p class="pf-body-text">
+            Decision-makers at Nigerian corporations, government institutions, and property developers evaluate security vendors online before any conversation takes place. Without a website that communicated depth, range, and professional standards, Red Wolf was losing contracts to competitors before the first call was made.
+          </p>
+          <ul class="pf-list" aria-label="Key challenges">
+            <li class="pf-list__item">
+              <span class="pf-list__icon" aria-hidden="true">→</span>
+              <span class="pf-list__text">Nine service lines were impossible to navigate — buyers couldn't find what they needed</span>
+            </li>
+            <li class="pf-list__item">
+              <span class="pf-list__icon" aria-hidden="true">→</span>
+              <span class="pf-list__text">No industry-specific messaging — corporate procurement officers saw the same copy as homeowners</span>
+            </li>
+            <li class="pf-list__item">
+              <span class="pf-list__icon" aria-hidden="true">→</span>
+              <span class="pf-list__text">No clear enquiry pathway — "Contact Us" was the only next step regardless of service interest</span>
+            </li>
+            <li class="pf-list__item">
+              <span class="pf-list__icon" aria-hidden="true">→</span>
+              <span class="pf-list__text">No trust signals — no certifications, no industry credentials, no differentiators visible on arrival</span>
+            </li>
+          </ul>
+        </div>
+        <div class="pf-two-col__visual" data-animate="slide-right">
+          <div class="pf-compare">
+            <div class="pf-compare__before">
+              <span class="pf-compare__tag pf-compare__tag--before">Before</span>
+              <!-- <img class="pf-compare__img" src="/images/projects/red-wolf/before-screenshot.jpg" alt="Before: generic undifferentiated service listing" /> -->
+              <div class="pf-compare__placeholder">[ before-screenshot.jpg ]</div>
+            </div>
+            <div class="pf-compare__after">
+              <span class="pf-compare__tag pf-compare__tag--after">After</span>
+              <!-- <img class="pf-compare__img" src="/images/projects/red-wolf/service-grid.jpg" alt="After: clean 9-service card grid with clear navigation" /> -->
+              <div class="pf-compare__placeholder">[ service-grid.jpg ]</div>
+            </div>
+          </div>
+        </div>
+      </div><!-- /pf-two-col -->
+    </div>
+  </section><!-- /S03 challenge -->
+
+  <!-- ════════════════════════════════════════════════════════════════════
+     S04 — RESEARCH & DISCOVERY
+     ════════════════════════════════════════════════════════════════════ -->
+  <section id="research" class="pf-section pf-section--tint" aria-labelledby="research-heading">
+    <div class="pf-container">
+      <div class="pf-label">04 — Research & Discovery</div>
+      <h2 class="pf-heading" id="research-heading" data-animate="fade-up">
+        Understanding the Security Buyer
+      </h2>
+      <p class="pf-subheading" data-animate="fade-up">
+        Before designing a single pixel, we mapped exactly who visits a security company's website — and what they need to see to say yes.
+      </p>
+      <div class="pf-process" data-animate="stagger">
+        <div class="pf-process-step">
+          <div class="pf-process-step__num" aria-hidden="true">01</div>
+          <h3 class="pf-process-step__title">Audience Segmentation</h3>
+          <p class="pf-process-step__body">
+            Three primary buyer types identified: Corporate Procurement (formal tenders), Residential/Estate Managers (comparison shopping), and Event Organisers (urgent, short-cycle decisions). Each required different messaging and conversion paths.
+          </p>
+        </div>
+        <div class="pf-process-step">
+          <div class="pf-process-step__num" aria-hidden="true">02</div>
+          <h3 class="pf-process-step__title">Trust Factor Audit</h3>
+          <p class="pf-process-step__body">
+            Security buyers prioritise credibility signals in this order: (1) proof of certification, (2) 24/7 availability, (3) industry-specific experience, (4) company history. The design architecture was built around surfacing these in sequence.
+          </p>
+        </div>
+        <div class="pf-process-step">
+          <div class="pf-process-step__num" aria-hidden="true">03</div>
+          <h3 class="pf-process-step__title">Service-to-Industry Mapping</h3>
+          <p class="pf-process-step__body">
+            Each of Red Wolf's nine services was mapped to specific industry use cases — CCTV with night vision for manufacturing; Smart Home for residential estates; GPS tracking for fleet operators. This became the navigational logic of the site.
+          </p>
+        </div>
+        <div class="pf-process-step">
+          <div class="pf-process-step__num" aria-hidden="true">04</div>
+          <h3 class="pf-process-step__title">Mobile-First Reality</h3>
+          <p class="pf-process-step__body">
+            Nigerian corporate buyers increasingly research vendors on mobile. Over 60% of Nigerian B2B browsing happens on devices under 768px. Mobile-first design was not optional — it was the primary design constraint.
+          </p>
+        </div>
+      </div><!-- /pf-process -->
+    </div>
+  </section><!-- /S04 research -->
+
+  <!-- ════════════════════════════════════════════════════════════════════
+     S05 — STRATEGY
+     ════════════════════════════════════════════════════════════════════ -->
+  <section id="strategy" class="pf-section pf-section--dark" aria-labelledby="strategy-heading">
+    <div class="pf-container">
+      <div class="pf-label">05 — Strategy</div>
+      <h2 class="pf-heading" id="strategy-heading" data-animate="fade-up">
+        Authority Architecture
+      </h2>
+      <p class="pf-subheading" data-animate="fade-up">
+        We built the site around one principle: a serious security company deserves a website that looks exactly as serious as they are.
+      </p>
+      <div class="pf-two-col" data-animate="fade-up">
+        <div>
+          <ul class="pf-list">
+            <li class="pf-list__item">
+              <span class="pf-list__icon" aria-hidden="true">→</span>
+              <span class="pf-list__text"><strong>Integration positioning:</strong> Red Wolf was repositioned not as a guarding company or a tech company, but as an <em>integrated security solutions provider</em> — a rarer, premium category that justifies higher contract values.</span>
+            </li>
+            <li class="pf-list__item">
+              <span class="pf-list__icon" aria-hidden="true">→</span>
+              <span class="pf-list__text"><strong>Industry-first navigation:</strong> Service discovery organised by what the client needs to protect, not by what Red Wolf does — reduces cognitive load and speeds up the decision.</span>
+            </li>
+            <li class="pf-list__item">
+              <span class="pf-list__icon" aria-hidden="true">→</span>
+              <span class="pf-list__text"><strong>Dual CTA architecture:</strong> "Explore Solutions" for research-stage visitors; "Get a Quote" for decision-stage visitors — two conversion paths running simultaneously.</span>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <ul class="pf-list">
+            <li class="pf-list__item">
+              <span class="pf-list__icon" aria-hidden="true">→</span>
+              <span class="pf-list__text"><strong>Trust-forward hero:</strong> The first section communicates brand authority, certifications, and 24/7 commitment before any service detail — because in security, trust is the product.</span>
+            </li>
+            <li class="pf-list__item">
+              <span class="pf-list__icon" aria-hidden="true">→</span>
+              <span class="pf-list__text"><strong>Service routing in contact form:</strong> Dropdown maps every enquiry to a specific service from the moment of submission — pre-qualifies leads before the sales team sees them.</span>
+            </li>
+            <li class="pf-list__item">
+              <span class="pf-list__icon" aria-hidden="true">→</span>
+              <span class="pf-list__text"><strong>Social proof architecture:</strong> "Why Choose Us" section with six distinct value propositions deliberately mirrors how procurement decision-makers evaluate vendors.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="pf-callout pf-callout--dark" data-animate="fade-up">
+        <p class="pf-callout__label">Core Insight</p>
+        <p class="pf-callout__body">
+          In the security industry, the website has to make a buyer feel safe before they've read a single word. Every design decision was evaluated against that standard.
+        </p>
+      </div>
+    </div>
+  </section><!-- /S05 strategy -->
+
+  <!-- ════════════════════════════════════════════════════════════════════
+     S06 — DESIGN PROCESS
+     ════════════════════════════════════════════════════════════════════ -->
+  <section id="design" class="pf-section pf-section--light" aria-labelledby="design-heading">
+    <div class="pf-container">
+      <div class="pf-label">06 — Design Process</div>
+      <h2 class="pf-heading" id="design-heading" data-animate="fade-up">
+        Designed for Authority
+      </h2>
+      <p class="pf-subheading" data-animate="fade-up">
+        Every visual decision was evaluated against a single question: does this make a corporate buyer trust us more?
+      </p>
+
+      <h3 style="font-size:1.125rem;font-weight:700;margin-bottom:1rem;" data-animate="fade-up">Colour Palette</h3>
+      <div class="pf-palette" data-animate="stagger">
+        <div class="pf-swatch">
+          <div class="pf-swatch__color" style="background:#B91C1C;" role="img" aria-label="Primary Red"></div>
+          <span class="pf-swatch__name">Primary</span>
+          <span class="pf-swatch__hex">#B91C1C</span>
+        </div>
+        <div class="pf-swatch">
+          <div class="pf-swatch__color" style="background:#7F1D1D;" role="img" aria-label="Dark Red"></div>
+          <span class="pf-swatch__name">Dark</span>
+          <span class="pf-swatch__hex">#7F1D1D</span>
+        </div>
+        <div class="pf-swatch">
+          <div class="pf-swatch__color" style="background:#0A0F1E;" role="img" aria-label="Brand Dark"></div>
+          <span class="pf-swatch__name">Brand Dark</span>
+          <span class="pf-swatch__hex">#0A0F1E</span>
+        </div>
+        <div class="pf-swatch">
+          <div class="pf-swatch__color" style="background:#FEF2F2;border:1px solid #E5E7EB;" role="img" aria-label="Light Pink"></div>
+          <span class="pf-swatch__name">Light</span>
+          <span class="pf-swatch__hex">#FEF2F2</span>
+        </div>
+        <div class="pf-swatch">
+          <div class="pf-swatch__color" style="background:#FFFFFF;border:1px solid #E5E7EB;" role="img" aria-label="White"></div>
+          <span class="pf-swatch__name">White</span>
+          <span class="pf-swatch__hex">#FFFFFF</span>
+        </div>
+      </div>
+
+      <div class="pf-divider" aria-hidden="true"></div>
+
+      <div class="pf-design-grid" data-animate="stagger">
+        <div class="pf-design-card">
+          <div class="pf-design-card__icon" aria-hidden="true">🛡️</div>
+          <h3 class="pf-design-card__title">Trust-Forward Hero</h3>
+          <p class="pf-design-card__body">Bold red and dark palette communicates authority before a word is read. The "Absolute Safety Without Compromise" tagline is placed at maximum size — the most important claim positioned where it has the most visual weight.</p>
+        </div>
+        <div class="pf-design-card">
+          <div class="pf-design-card__icon" aria-hidden="true">🔤</div>
+          <h3 class="pf-design-card__title">Typography for Scanning</h3>
+          <p class="pf-design-card__body">Modern clean sans-serif chosen for scan-ability. Security decision-makers skim, they don't read. Tight hierarchy: H1 statement → H2 service category → body detail, all legible in under 3 seconds.</p>
+        </div>
+        <div class="pf-design-card">
+          <div class="pf-design-card__icon" aria-hidden="true">🔲</div>
+          <h3 class="pf-design-card__title">Service Card System</h3>
+          <p class="pf-design-card__body">Custom iconography for each of the nine service lines creates visual shortcuts. The 3-column card grid presents all services as visually equal — no hierarchy confusion, no secondary service appearing "less important."</p>
+        </div>
+        <div class="pf-design-card">
+          <div class="pf-design-card__icon" aria-hidden="true">✅</div>
+          <h3 class="pf-design-card__title">Differentiator Section</h3>
+          <p class="pf-design-card__body">"Why Choose Us" section with six distinct value propositions mirrors how procurement decision-makers evaluate security vendors — built as a visual checklist that self-qualifies Red Wolf as the right choice.</p>
+        </div>
+        <div class="pf-design-card">
+          <div class="pf-design-card__icon" aria-hidden="true">📋</div>
+          <h3 class="pf-design-card__title">Contact Form Routing</h3>
+          <p class="pf-design-card__body">Service-specific dropdown on every enquiry form maps the lead to the correct service line before it reaches the sales team — reducing response time and pre-qualifying interest from the first click.</p>
+        </div>
+        <div class="pf-design-card">
+          <div class="pf-design-card__icon" aria-hidden="true">📱</div>
+          <h3 class="pf-design-card__title">Mobile-First Layout</h3>
+          <p class="pf-design-card__body">Every layout decision was made at 375px first, then scaled up to desktop. Service grid, hero tagline, and contact form all render with full clarity on the smallest screens in Nigeria's 4G environment.</p>
+        </div>
+      </div><!-- /pf-design-grid -->
+
+      <div class="pf-two-col" style="margin-top:3rem;" data-animate="fade-up">
+        <div>
+          <!-- <img src="/images/projects/red-wolf/hero-tagline.jpg" alt="Red Wolf Security hero section — 'Absolute Safety Without Compromise' tagline" /> -->
+          <div class="pf-compare__placeholder" style="height:220px;border-radius:12px;">[ hero-tagline.jpg ]</div>
+          <p style="font-size:.875rem;color:#6B7280;margin-top:.5rem;">Hero section — brand authority above the fold</p>
+        </div>
+        <div>
+          <!-- <img src="/images/projects/red-wolf/why-choose-us.jpg" alt="Red Wolf Security 'Why Choose Us' 6-point differentiator section" /> -->
+          <div class="pf-compare__placeholder" style="height:220px;border-radius:12px;">[ why-choose-us.jpg ]</div>
+          <p style="font-size:.875rem;color:#6B7280;margin-top:.5rem;">Differentiator section — six value propositions</p>
+        </div>
+      </div>
+    </div>
+  </section><!-- /S06 design -->
+
+  <!-- ════════════════════════════════════════════════════════════════════
+     S07 — DEVELOPMENT PROCESS
+     ════════════════════════════════════════════════════════════════════ -->
+  <section id="development" class="pf-section pf-section--tint" aria-labelledby="dev-heading">
+    <div class="pf-container">
+      <div class="pf-label">07 — Development Process</div>
+      <h2 class="pf-heading" id="dev-heading" data-animate="fade-up">
+        Built for Performance and Reliability
+      </h2>
+      <p class="pf-subheading" data-animate="fade-up">
+        A security company's website has to load fast, work on every device, and never fail — just like the services it represents.
+      </p>
+      <div class="pf-two-col" data-animate="fade-up">
+        <div>
+          <ul class="pf-list">
+            <li class="pf-list__item">
+              <span class="pf-list__icon" aria-hidden="true">→</span>
+              <span class="pf-list__text"><strong>Responsive HTML/CSS/JS:</strong> Pixel-perfect rendering across all screen sizes from 320px mobile to 2560px widescreen — no layout breaks at any breakpoint.</span>
+            </li>
+            <li class="pf-list__item">
+              <span class="pf-list__icon" aria-hidden="true">→</span>
+              <span class="pf-list__text"><strong>Performance-first build:</strong> Clean semantic code, optimised images in WebP format, no unnecessary scripts — sub-2-second load times on Nigeria's 4G mobile network.</span>
+            </li>
+            <li class="pf-list__item">
+              <span class="pf-list__icon" aria-hidden="true">→</span>
+              <span class="pf-list__text"><strong>Multi-page architecture:</strong> 15+ individual pages — each service line has its own URL, unique meta content, and dedicated conversion path for SEO and UX.</span>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <ul class="pf-list">
+            <li class="pf-list__item">
+              <span class="pf-list__icon" aria-hidden="true">→</span>
+              <span class="pf-list__text"><strong>Service form routing:</strong> Contact form dropdown pre-selects the enquiry type — reduces sales team friction and captures richer lead data from the first interaction.</span>
+            </li>
+            <li class="pf-list__item">
+              <span class="pf-list__icon" aria-hidden="true">→</span>
+              <span class="pf-list__text"><strong>Video fallback handling:</strong> Graceful degradation for browsers that don't support embedded video — no broken UI elements on any connection type.</span>
+            </li>
+            <li class="pf-list__item">
+              <span class="pf-list__icon" aria-hidden="true">→</span>
+              <span class="pf-list__text"><strong>Semantic HTML5:</strong> Proper heading hierarchy, ARIA labels, and structured markup for both accessibility and search engine crawlability.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="pf-callout pf-callout--gold" data-animate="fade-up">
+        <p class="pf-callout__label">Tech Stack</p>
+        <p class="pf-callout__body">
+          HTML5 · CSS3 (custom properties, flexbox, grid) · Vanilla JavaScript · WebP optimised images · Responsive design (mobile-first methodology) · Schema.org structured data · Google Analytics 4 ready
+        </p>
+      </div>
+    </div>
+  </section><!-- /S07 development -->
+
+  <!-- ════════════════════════════════════════════════════════════════════
+     S08 — ANIMATIONS & INTERACTIONS
+     ════════════════════════════════════════════════════════════════════ -->
+  <section id="animations" class="pf-section pf-section--light" aria-labelledby="anim-heading">
+    <div class="pf-container">
+      <div class="pf-label">08 — Animations & Interactions</div>
+      <h2 class="pf-heading" id="anim-heading" data-animate="fade-up">
+        Interactions That Feel As Precise As the Brand
+      </h2>
+      <p class="pf-subheading" data-animate="fade-up">
+        Motion was used to guide attention, confirm actions, and reinforce Red Wolf's promise of precision — not for decoration.
+      </p>
+      <div class="pf-process" data-animate="stagger">
+        <div class="pf-process-step">
+          <div class="pf-process-step__num" aria-hidden="true">01</div>
+          <h3 class="pf-process-step__title">Scroll Reveal</h3>
+          <p class="pf-process-step__body">Service cards animate into view as the user scrolls — staggered fade-up sequence creates visual momentum without overwhelming.</p>
+        </div>
+        <div class="pf-process-step">
+          <div class="pf-process-step__num" aria-hidden="true">02</div>
+          <h3 class="pf-process-step__title">CTA Hover States</h3>
+          <p class="pf-process-step__body">"Explore Solutions" and "Get a Quote" buttons have polished lift and colour-shift hover effects that reinforce click intent without being distracting.</p>
+        </div>
+        <div class="pf-process-step">
+          <div class="pf-process-step__num" aria-hidden="true">03</div>
+          <h3 class="pf-process-step__title">Navigation Dropdowns</h3>
+          <p class="pf-process-step__body">Smooth slide-down animation on the service navigation dropdown — communicates organisation and control, both key trust signals for a security brand.</p>
+        </div>
+        <div class="pf-process-step">
+          <div class="pf-process-step__num" aria-hidden="true">04</div>
+          <h3 class="pf-process-step__title">Form Micro-interactions</h3>
+          <p class="pf-process-step__body">Input field focus states, dropdown selection animations, error validation, and success confirmation — every form interaction is deliberate and reassuring.</p>
+        </div>
+      </div>
+    </div>
+  </section><!-- /S08 animations -->
+
+  <!-- ════════════════════════════════════════════════════════════════════
+     S09 — MOBILE RESPONSIVENESS
+     ════════════════════════════════════════════════════════════════════ -->
+  <section id="mobile" class="pf-section pf-section--tint" aria-labelledby="mobile-heading">
+    <div class="pf-container">
+      <div class="pf-label">09 — Mobile Responsiveness</div>
+      <h2 class="pf-heading" id="mobile-heading" data-animate="fade-up">
+        Security Decisions Are Made on Mobile. We Built for That.
+      </h2>
+      <div class="pf-two-col" data-animate="fade-up">
+        <div>
+          <ul class="pf-list">
+            <li class="pf-list__item">
+              <span class="pf-list__icon" aria-hidden="true">→</span>
+              <span class="pf-list__text">3-column service grid collapses to single-column stack — clean and scannable at every screen size</span>
+            </li>
+            <li class="pf-list__item">
+              <span class="pf-list__icon" aria-hidden="true">→</span>
+              <span class="pf-list__text">Hero tagline and CTA remain dominant at all breakpoints — no truncation, no reflow issues</span>
+            </li>
+            <li class="pf-list__item">
+              <span class="pf-list__icon" aria-hidden="true">→</span>
+              <span class="pf-list__text">Navigation: desktop horizontal menu transforms to hamburger with smooth slide-in drawer</span>
+            </li>
+            <li class="pf-list__item">
+              <span class="pf-list__icon" aria-hidden="true">→</span>
+              <span class="pf-list__text">Contact form: full-width input fields on mobile — easy thumb targeting, no pinch-to-zoom required</span>
+            </li>
+          </ul>
+        </div>
+        <div class="pf-mobile-grid" style="grid-template-columns:1fr 1fr;gap:1.5rem;">
+          <div class="pf-mockup pf-mockup--mobile">
+            <!-- <img class="pf-mockup__screen" src="/images/projects/red-wolf/hero-mobile.jpg" alt="Red Wolf Security mobile homepage" /> -->
+            <div class="pf-mockup__placeholder" style="height:280px;border-radius:24px;">[ hero-mobile.jpg ]</div>
+          </div>
+          <div class="pf-mockup pf-mockup--mobile">
+            <!-- <img class="pf-mockup__screen" src="/images/projects/red-wolf/service-grid.jpg" alt="Red Wolf Security service grid on mobile" /> -->
+            <div class="pf-mockup__placeholder" style="height:280px;border-radius:24px;">[ service-grid mobile ]</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section><!-- /S09 mobile -->
+
+  <!-- ════════════════════════════════════════════════════════════════════
+     S10 — SEO & PERFORMANCE
+     ════════════════════════════════════════════════════════════════════ -->
+  <section id="seo" class="pf-section pf-section--light" aria-labelledby="seo-heading">
+    <div class="pf-container">
+      <div class="pf-label">10 — SEO & Performance</div>
+      <h2 class="pf-heading" id="seo-heading" data-animate="fade-up">
+        Built to Be Found
+      </h2>
+      <p class="pf-subheading" data-animate="fade-up">
+        15+ indexable pages targeting service-specific keywords for Nigeria's corporate security search market.
+      </p>
+      <div class="pf-two-col" data-animate="fade-up">
+        <div>
+          <h3 style="font-weight:700;margin-bottom:1rem;">SEO Implementation</h3>
+          <ul class="pf-list">
+            <li class="pf-list__item"><span class="pf-list__icon" aria-hidden="true">→</span><span class="pf-list__text">Unique title tags and meta descriptions per service page — each targets a specific keyword e.g. "CCTV surveillance services Nigeria"</span></li>
+            <li class="pf-list__item"><span class="pf-list__icon" aria-hidden="true">→</span><span class="pf-list__text">Nine individual service sub-pages create nine separate keyword-ranking opportunities</span></li>
+            <li class="pf-list__item"><span class="pf-list__icon" aria-hidden="true">→</span><span class="pf-list__text">LocalBusiness schema markup targeting Nigeria service area</span></li>
+            <li class="pf-list__item"><span class="pf-list__icon" aria-hidden="true">→</span><span class="pf-list__text">Image alt text optimised for accessibility and search indexing</span></li>
+          </ul>
+        </div>
+        <div>
+          <h3 style="font-weight:700;margin-bottom:1rem;">Performance Targets</h3>
+          <ul class="pf-list">
+            <li class="pf-list__item"><span class="pf-list__icon" aria-hidden="true">→</span><span class="pf-list__text">Lighthouse Performance: 90+ mobile / 96+ desktop</span></li>
+            <li class="pf-list__item"><span class="pf-list__icon" aria-hidden="true">→</span><span class="pf-list__text">Core Web Vitals: LCP &lt; 2.5s, CLS &lt; 0.1, FID &lt; 100ms</span></li>
+            <li class="pf-list__item"><span class="pf-list__icon" aria-hidden="true">→</span><span class="pf-list__text">WebP image format with legacy fallbacks</span></li>
+            <li class="pf-list__item"><span class="pf-list__icon" aria-hidden="true">→</span><span class="pf-list__text">Sub-2 second load on Nigerian 4G mobile network</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section><!-- /S10 seo -->
+
+  <!-- ════════════════════════════════════════════════════════════════════
+     S11 — OUTCOMES & RESULTS
+     ════════════════════════════════════════════════════════════════════ -->
+  <section id="outcomes" class="pf-section pf-section--dark" aria-labelledby="outcomes-heading">
+    <div class="pf-container">
+      <div class="pf-label">11 — Outcomes & Results</div>
+      <h2 class="pf-heading" id="outcomes-heading" data-animate="fade-up">
+        A Website That Commands Respect.<br>And Generates Enquiries.
+      </h2>
+      <p class="pf-subheading" data-animate="fade-up">
+        Red Wolf Security now presents as Nigeria's most professionally structured security company online — digital credibility that matches operational expertise.
+      </p>
+      <div class="pf-outcomes-grid">
+        <div class="pf-outcome-card">
+          <span class="pf-outcome-card__value" data-count="15" data-suffix="+">15+</span>
+          <span class="pf-outcome-card__label">Pages Built</span>
+          <span class="pf-outcome-card__context">Including 9 individual service sub-pages</span>
+        </div>
+        <div class="pf-outcome-card">
+          <span class="pf-outcome-card__value" data-count="9" data-suffix="">9</span>
+          <span class="pf-outcome-card__label">Service Lines</span>
+          <span class="pf-outcome-card__context">Each fully presented with dedicated pages</span>
+        </div>
+        <div class="pf-outcome-card">
+          <span class="pf-outcome-card__value" data-count="3" data-suffix="">3</span>
+          <span class="pf-outcome-card__label">Buyer Flows</span>
+          <span class="pf-outcome-card__context">Corporate · Residential · Events</span>
+        </div>
+        <div class="pf-outcome-card">
+          <span class="pf-outcome-card__value" data-count="12" data-suffix="">12</span>
+          <span class="pf-outcome-card__label">Industries Addressed</span>
+          <span class="pf-outcome-card__context">Explicit verticals across the site</span>
+        </div>
+        <div class="pf-outcome-card">
+          <span class="pf-outcome-card__value" data-count="100" data-suffix="%">100%</span>
+          <span class="pf-outcome-card__label">Mobile Parity</span>
+          <span class="pf-outcome-card__context">Zero layout breaks across all devices</span>
+        </div>
+        <div class="pf-outcome-card">
+          <span class="pf-outcome-card__value" data-count="2" data-suffix="s">&lt;2s</span>
+          <span class="pf-outcome-card__label">Load Time</span>
+          <span class="pf-outcome-card__context">Target on Nigerian 4G mobile</span>
+        </div>
+      </div>
+    </div>
+  </section><!-- /S11 outcomes -->
+
+  <!-- ════════════════════════════════════════════════════════════════════
+     S12 — TESTIMONIAL / SOCIAL PROOF
+     ════════════════════════════════════════════════════════════════════ -->
+  <section id="testimonial" class="pf-section pf-section--tint" aria-labelledby="testimonial-heading">
+    <div class="pf-container">
+      <div class="pf-label" style="display:block;text-align:center;">12 — Client Voice</div>
+      <h2 class="pf-heading" id="testimonial-heading" style="text-align:center;margin:0 auto 2rem;" data-animate="fade-up">
+        What Red Wolf Security Said
+      </h2>
+      <div class="pf-testimonial" data-animate="fade-up">
+        <div class="pf-testimonial__stars" aria-label="5 star rating">★★★★★</div>
+        <!-- TODO: Replace with real testimonial once collected from client -->
+        <p class="pf-testimonial__pending" aria-label="Testimonial pending">
+          ✏️ Testimonial being collected from Red Wolf Security — check back soon.
+        </p>
+        <!--
+        <blockquote class="pf-testimonial__quote">
+          "Quote text here."
+        </blockquote>
+        <div class="pf-testimonial__attribution">
+          <div class="pf-testimonial__avatar-placeholder" aria-hidden="true">RW</div>
+          <div>
+            <p class="pf-testimonial__name">Client Name</p>
+            <p class="pf-testimonial__role">Title, Red Wolf Security</p>
+          </div>
+        </div>
+        -->
+      </div>
+      <div style="text-align:center;margin-top:2rem;" data-animate="fade-up">
+        <p style="font-size:.875rem;color:#6B7280;margin-bottom:.5rem;">
+          Nexora attribution on the live site footer:
+        </p>
+        <!-- <img src="/images/projects/red-wolf/footer-attribution.jpg" alt="Red Wolf Security footer showing 'Designed by Nexora Web Agency'" style="max-width:400px;margin:0 auto;border-radius:8px;box-shadow:0 4px 16px rgba(0,0,0,.1);" /> -->
+        <div style="max-width:400px;margin:0 auto;padding:1rem;background:#f9fafb;border:1px dashed #E5E7EB;border-radius:8px;color:#9CA3AF;font-size:.875rem;font-style:italic;">
+          [ footer-attribution.jpg ]
+        </div>
+      </div>
+    </div>
+  </section><!-- /S12 testimonial -->
+
+  <!-- ════════════════════════════════════════════════════════════════════
+     S13 — CTA
+     ════════════════════════════════════════════════════════════════════ -->
+  <section id="cta" class="pf-section pf-section--brand" style="opacity:1;transform:none;" aria-labelledby="cta-heading">
+    <div class="pf-container">
+      <div class="pf-cta">
+        <p class="pf-cta__eyebrow">Ready to build something like this?</p>
+        <h2 class="pf-cta__heading" id="cta-heading">
+          Do You Run a Security, B2B Services,<br>or Enterprise Business?
+        </h2>
+        <p class="pf-cta__body">
+          We build websites that make serious buyers take you seriously — before a single word is read. Let's talk about what we'd build for your brand.
+        </p>
+        <div class="pf-cta__buttons">
+          <a href="/quote.html" class="pf-btn pf-btn--primary">Start a Project with Nexora →</a>
+          <a href="/projects.html" class="pf-btn pf-btn--ghost">View All Projects</a>
+        </div>
+        <div class="pf-related" aria-label="Related projects">
+          <p class="pf-related__label">More Projects</p>
+          <div class="pf-related__grid">
+            <a href="/projects/bush-creek-guest-house.html" class="pf-related-card">
+              <span class="pf-related-card__industry" style="color:#65A30D;">Hospitality · South Africa</span>
+              <span class="pf-related-card__name">Bush Creek Guest House</span>
+              <span class="pf-related-card__link">bushcreekguesthouse.co.za ↗</span>
+            </a>
+            <a href="/projects/cpil.html" class="pf-related-card">
+              <span class="pf-related-card__industry" style="color:#3B82F6;">Infrastructure · Nigeria</span>
+              <span class="pf-related-card__name">CPIL — Cemex Project Integrated</span>
+              <span class="pf-related-card__link">cpil.com.ng ↗</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section><!-- /S13 cta -->
+
+  <!-- ─── Footer ──────────────────────────────────────────────────────────── -->
+  <footer class="pf-footer" role="contentinfo">
+    <a href="/" class="pf-footer__logo">Nexora<span>.</span></a>
+    <p class="pf-footer__copy">
+      © 2025 Nexora Web Agency · Cape Town, South Africa ·
+      <a href="mailto:nwa.agency.josh@gmail.com" style="color:rgba(255,255,255,.35);">nwa.agency.josh@gmail.com</a>
+    </p>
+  </footer>
+
+  <!-- ─── Scripts ────────────────────────────────────────────────────────── -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+  <script src="/assets/js/animations.js" defer></script>
+</body>
+</html>

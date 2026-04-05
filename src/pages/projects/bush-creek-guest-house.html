@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- ═══════════════════════════════════════════════════════════════════
+     SEO CONFIG
+     ═══════════════════════════════════════════════════════════════════ -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bush Creek Guest House Case Study | Nexora — South African Hospitality Web Design</title>
+  <meta name="description" content="How Nexora built a farm accommodation website with 6 individual room pages, an availability checker, and immersive visual design for a KZN guest house. Full case study." />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Bush Creek Guest House — Case Study | Nexora Web Agency" />
+  <meta property="og:description" content="A KZN farm stay with 6 uniquely themed rooms — finally with a website that makes guests want to book before they finish scrolling." />
+  <meta property="og:image" content="/images/projects/bush-creek/og-image.jpg" />
+  <meta property="og:url" content="https://nwaagency.github.io/projects/bush-creek-guest-house.html" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="canonical" href="https://nwaagency.github.io/projects/bush-creek-guest-house.html" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    "name": "Bush Creek Guest House — Website Design & Development",
+    "description": "Full hospitality website for Bush Creek Guest House, Mooi River KZN — 6 room pages, availability checker, gallery, activities, and direct booking flow.",
+    "creator": {
+      "@type": "Organization",
+      "name": "Nexora Web Agency",
+      "url": "https://nwaagency.github.io"
+    },
+    "about": {
+      "@type": "LodgingBusiness",
+      "name": "Bush Creek Guest House",
+      "url": "https://bushcreekguesthouse.co.za",
+      "description": "Rural farm accommodation in Mooi River, KwaZulu-Natal, South Africa",
+      "address": { "@type": "PostalAddress", "addressLocality": "Mooi River", "addressRegion": "KwaZulu-Natal", "addressCountry": "ZA" }
+    },
+    "keywords": "hospitality web design South Africa, guest house website KZN, farm stay website design"
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="icon" href="/icons/emblem.svg" /><link rel="apple-touch-icon" href="/icons/nexora_emblem.png" /><link rel="stylesheet" href="/assets/css/portfolio.css" />
+  <!-- ═══ PROJECT COLOUR OVERRIDES ═══════════════════════════════════════ -->
+  <style>
+    :root {
+      --project-primary: #65A30D;
+      --project-dark:    #365314;
+      --project-light:   #F0FDF4;
+      --project-accent:  #86EFAC;
+    }
+    #hero {
+      background: linear-gradient(135deg, #0A0F1E 0%, #0d1a08 55%, #1a2e0a 100%);
+    }
+    .pf-callout {
+      border-top-color: var(--project-primary);
+      background: var(--project-light);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="pf-progress" aria-hidden="true"></div>
+
+  <header class="pf-nav" role="banner">
+    <a href="/" class="pf-nav__logo">Nexora<span>.</span></a>
+    <nav class="pf-nav__links" aria-label="Portfolio navigation">
+      <a href="/projects.html">← All Projects</a>
+      <a href="/services.html">Services</a>
+      <a href="/quote.html" class="pf-btn pf-btn--sm pf-btn--primary">Start a Project</a>
+    </nav>
+  </header>
+
+  <!-- ════════════════════════════════════════════════════════════════════
+     S01 — HERO
+     ════════════════════════════════════════════════════════════════════ -->
+  <section id="hero" class="pf-section" aria-labelledby="hero-heading" style="opacity:1;transform:none;">
+    <div class="pf-hero pf-container">
+      <div class="pf-hero__content">
+        <div class="pf-hero__eyebrow">Rural Hospitality · Mooi River, KwaZulu-Natal</div>
+        <h1 class="pf-hero__title" id="hero-heading">
+          A Farm Stay Website That <span>Makes Guests Book</span> Before They Finish Scrolling
+        </h1>
+        <p class="pf-hero__desc">
+          Six uniquely named rooms on a working KZN farm — finally with a digital presence as beautiful and inviting as the property itself.
+        </p>
+        <div class="pf-hero__actions">
+          <a href="https://bushcreekguesthouse.co.za" target="_blank" rel="noopener" class="pf-btn pf-btn--project" aria-label="View the live Bush Creek Guest House website">
+            View Live Site ↗
+          </a>
+          <a href="#challenge" class="pf-btn pf-btn--outline">Read the Case Study</a>
+        </div>
+        <div class="pf-hero__tags">
+          <span class="pf-tag">Hospitality Design</span>
+          <span class="pf-tag">Booking Integration</span>
+          <span class="pf-tag">6 Room Pages</span>
+          <span class="pf-tag">Gallery</span>
+          <span class="pf-tag">South Africa</span>
+        </div>
+      </div>
+      <div class="pf-hero__visual" aria-hidden="true">
+        <div class="pf-mockup pf-mockup--browser">
+          <div class="pf-mockup__bar">
+            <span class="pf-mockup__dot"></span>
+            <span class="pf-mockup__dot"></span>
+            <span class="pf-mockup__dot"></span>
+            <span class="pf-mockup__url">bushcreekguesthouse.co.za</span>
+          </div>
+          <!-- <img class="pf-mockup__screen" src="/images/projects/bush-creek/hero-desktop.jpg"
+               alt="Bush Creek Guest House homepage — farm photography with 'Where the Past Lingers' tagline" /> -->
+          <div class="pf-mockup__placeholder">[ Add hero-desktop.jpg — 1440×900 ]</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════════════
+     S02 — PROJECT OVERVIEW
+     ════════════════════════════════════════════════════════════════════ -->
+  <section id="overview" class="pf-section pf-section--tint" aria-label="Project overview">
+    <div class="pf-container">
+      <div class="pf-stats-strip" data-animate="stagger" role="list">
+        <div class="pf-stat" role="listitem">
+          <span class="pf-stat__value" data-count="10" data-suffix="+">10+</span>
+          <span class="pf-stat__label">Pages Built</span>
+          <span class="pf-stat__context">Rooms, Gallery, Activities, Location, Reviews, Contact</span>
+        </div>
+        <div class="pf-stat" role="listitem">
+          <span class="pf-stat__value" data-count="6" data-suffix="">6</span>
+          <span class="pf-stat__label">Room Pages</span>
+          <span class="pf-stat__context">Protea · Rock Rose · Acacia · Aloe · Arum · Jacaranda</span>
+        </div>
+        <div class="pf-stat" role="listitem">
+          <span class="pf-stat__value" data-count="3" data-suffix="">3</span>
+          <span class="pf-stat__label">Guest Types</span>
+          <span class="pf-stat__context">Couples · Families · Honeymoon pairs</span>
+        </div>
+        <div class="pf-stat" role="listitem">
+          <span class="pf-stat__value">KZN</span>
+          <span class="pf-stat__label">Mooi River, SA</span>
+          <span class="pf-stat__context">KwaZulu-Natal, South Africa</span>
+        </div>
+        <div class="pf-stat" role="listitem">
+          <span class="pf-stat__value">2025</span>
+          <span class="pf-stat__label">Year Delivered</span>
+          <span class="pf-stat__context">Live at bushcreekguesthouse.co.za</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════════════
+     S03 — CLIENT CHALLENGE
+     ════════════════════════════════════════════════════════════════════ -->
+  <section id="challenge" class="pf-section pf-section--light" aria-labelledby="challenge-heading">
+    <div class="pf-container">
+      <div class="pf-label">03 — Client Challenge</div>
+      <h2 class="pf-heading" id="challenge-heading" data-animate="fade-up">
+        A Magical Place That Was Invisible Online
+      </h2>
+      <p class="pf-subheading" data-animate="fade-up">
+        Every night the Bush Creek dam went unfished and the Protea room sat empty was a night of lost revenue — and it was happening because the website didn't make people want to come.
+      </p>
+      <div class="pf-two-col pf-two-col--60-40">
+        <div class="pf-two-col__text" data-animate="slide-left">
+          <p class="pf-body-text">
+            Bush Creek Guest House is a working farm in Mooi River, KwaZulu-Natal — six uniquely themed rooms, a natural swimming dam, scenic river walks, and genuine farm life. The product is extraordinary. The digital presence was not communicating any of it.
+          </p>
+          <p class="pf-body-text">
+            Rural hospitality properties lose enormous revenue to OTA platforms (Booking.com, Airbnb) not because they're inferior products, but because their own websites don't convert. A guest browsing on mobile needs to feel the pull of the place before they'll commit to a booking.
+          </p>
+          <ul class="pf-list">
+            <li class="pf-list__item">
+              <span class="pf-list__icon" aria-hidden="true">→</span>
+              <span class="pf-list__text">No individual room pages — guests couldn't preview their specific accommodation before booking</span>
+            </li>
+            <li class="pf-list__item">
+              <span class="pf-list__icon" aria-hidden="true">→</span>
+              <span class="pf-list__text">No availability checker — every enquiry required a slow back-and-forth email exchange, losing impatient mobile browsers instantly</span>
+            </li>
+            <li class="pf-list__item">
+              <span class="pf-list__icon" aria-hidden="true">→</span>
+              <span class="pf-list__text">No dedicated gallery — the property's most powerful sales asset (its visual beauty) was largely hidden</span>
+            </li>
+            <li class="pf-list__item">
+              <span class="pf-list__icon" aria-hidden="true">→</span>
+              <span class="pf-list__text">No activities section — potential guests couldn't see what they'd do beyond sleep, making multi-night bookings harder to justify</span>
+            </li>
+          </ul>
+        </div>
+        <div class="pf-two-col__visual" data-animate="slide-right">
+          <div class="pf-compare">
+            <div class="pf-compare__before">
+              <span class="pf-compare__tag pf-compare__tag--before">Before</span>
+              <div class="pf-compare__placeholder">[ Before: basic info page ]</div>
+            </div>
+            <div class="pf-compare__after">
+              <span class="pf-compare__tag pf-compare__tag--after">After</span>
+              <!-- <img class="pf-compare__img" src="/images/projects/bush-creek/rooms-grid.jpg" alt="After: six-room grid with individual pages" /> -->
+              <div class="pf-compare__placeholder">[ rooms-grid.jpg ]</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════════════
+     S04 — RESEARCH & DISCOVERY
+     ════════════════════════════════════════════════════════════════════ -->
+  <section id="research" class="pf-section pf-section--tint" aria-labelledby="research-heading">
+    <div class="pf-container">
+      <div class="pf-label">04 — Research & Discovery</div>
+      <h2 class="pf-heading" id="research-heading" data-animate="fade-up">
+        Understanding the Farm Stay Guest
+      </h2>
+      <p class="pf-subheading" data-animate="fade-up">
+        The typical Bush Creek guest isn't looking for a hotel. They're escaping one. We designed for that psychology.
+      </p>
+      <div class="pf-process" data-animate="stagger">
+        <div class="pf-process-step">
+          <div class="pf-process-step__num" aria-hidden="true">01</div>
+          <h3 class="pf-process-step__title">Guest Persona Mapping</h3>
+          <p class="pf-process-step__body">
+            Three primary guest profiles: The Escape Couple (urban professionals seeking a weekend in nature), The Family Adventure (school holidays, farm experiences for children), and The Honeymoon Pair (Protea suite — romance and privacy). Each needed different copy emphasis and visual cues.
+          </p>
+        </div>
+        <div class="pf-process-step">
+          <div class="pf-process-step__num" aria-hidden="true">02</div>
+          <h3 class="pf-process-step__title">Booking Behaviour</h3>
+          <p class="pf-process-step__body">
+            Rural accommodation guests spend the most time on the Gallery and Rooms pages — not the homepage. Design weight was shifted heavily toward these sections. The booking checker was placed on the homepage for maximum conversion reach.
+          </p>
+        </div>
+        <div class="pf-process-step">
+          <div class="pf-process-step__num" aria-hidden="true">03</div>
+          <h3 class="pf-process-step__title">Activities as Justification</h3>
+          <p class="pf-process-step__body">
+            Research showed guests book longer stays when they can see enough activities. Dam, river walks, local restaurants, and on-farm activities were separated into a dedicated section and sub-pages — giving guests permission to stay longer.
+          </p>
+        </div>
+        <div class="pf-process-step">
+          <div class="pf-process-step__num" aria-hidden="true">04</div>
+          <h3 class="pf-process-step__title">Mobile-First Leisure</h3>
+          <p class="pf-process-step__body">
+            South African leisure travellers frequently browse accommodation on mobile during commutes and evenings. The availability checker, room gallery, and "Book Now" CTA were all designed for touch-first interaction before any desktop consideration.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════════════
+     S05 — STRATEGY
+     ════════════════════════════════════════════════════════════════════ -->
+  <section id="strategy" class="pf-section pf-section--dark" aria-labelledby="strategy-heading">
+    <div class="pf-container">
+      <div class="pf-label">05 — Strategy</div>
+      <h2 class="pf-heading" id="strategy-heading" data-animate="fade-up">
+        Sell the Feeling Before the Room
+      </h2>
+      <p class="pf-subheading" data-animate="fade-up">
+        The best hospitality websites don't describe a place — they make you feel like you're already there.
+      </p>
+      <div class="pf-two-col" data-animate="fade-up">
+        <div>
+          <ul class="pf-list">
+            <li class="pf-list__item">
+              <span class="pf-list__icon" aria-hidden="true">→</span>
+              <span class="pf-list__text"><strong>Immersion-first hero:</strong> Full-width farm photography as the opening visual — the property's beauty is the most powerful sales tool. The visitor should feel the farm air before they read a word.</span>
+            </li>
+            <li class="pf-list__item">
+              <span class="pf-list__icon" aria-hidden="true">→</span>
+              <span class="pf-list__text"><strong>Six-room individual page architecture:</strong> Each room gets its own URL, heading, photos, and description. Enables SEO per room type and gives guests the depth they need to commit.</span>
+            </li>
+            <li class="pf-list__item">
+              <span class="pf-list__icon" aria-hidden="true">→</span>
+              <span class="pf-list__text"><strong>Availability checker on homepage:</strong> Removes the biggest friction point in the consideration-to-booking transition. Date picker is front and centre — no hunting required.</span>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <ul class="pf-list">
+            <li class="pf-list__item">
+              <span class="pf-list__icon" aria-hidden="true">→</span>
+              <span class="pf-list__text"><strong>Activities as a destination:</strong> Dedicated section and sub-pages reinforce that Bush Creek is a destination, not just a place to sleep — justifying longer stays and higher booking value.</span>
+            </li>
+            <li class="pf-list__item">
+              <span class="pf-list__icon" aria-hidden="true">→</span>
+              <span class="pf-list__text"><strong>Nature-forward copy:</strong> Every headline and body copy line was written to evoke the sensory experience — the cool dam, the river, the morning farm air. Copy sells the atmosphere, not the thread count.</span>
+            </li>
+            <li class="pf-list__item">
+              <span class="pf-list__icon" aria-hidden="true">→</span>
+              <span class="pf-list__text"><strong>Reviews page confidence signal:</strong> Even without visible reviews, a dedicated Reviews page communicates "we are so confident in our guests' experience that we made this page." It builds trust before it holds content.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="pf-callout pf-callout--dark" data-animate="fade-up">
+        <p class="pf-callout__label">Strategic Principle</p>
+        <p class="pf-callout__body">
+          Rural hospitality guests don't want information — they want permission to escape. Every page was designed to give them that permission.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════════════
+     S06 — DESIGN PROCESS
+     ════════════════════════════════════════════════════════════════════ -->
+  <section id="design" class="pf-section pf-section--light" aria-labelledby="design-heading">
+    <div class="pf-container">
+      <div class="pf-label">06 — Design Process</div>
+      <h2 class="pf-heading" id="design-heading" data-animate="fade-up">
+        Designing Rustic Elegance
+      </h2>
+      <p class="pf-subheading" data-animate="fade-up">
+        The visual language of Bush Creek had to feel as natural as the property itself — earthy, warm, unforced.
+      </p>
+
+      <h3 style="font-size:1.125rem;font-weight:700;margin-bottom:1rem;" data-animate="fade-up">Colour Palette</h3>
+      <div class="pf-palette" data-animate="stagger">
+        <div class="pf-swatch">
+          <div class="pf-swatch__color" style="background:#65A30D;"></div>
+          <span class="pf-swatch__name">Nature Green</span>
+          <span class="pf-swatch__hex">#65A30D</span>
+        </div>
+        <div class="pf-swatch">
+          <div class="pf-swatch__color" style="background:#365314;"></div>
+          <span class="pf-swatch__name">Forest Dark</span>
+          <span class="pf-swatch__hex">#365314</span>
+        </div>
+        <div class="pf-swatch">
+          <div class="pf-swatch__color" style="background:#92400E;"></div>
+          <span class="pf-swatch__name">Earth Brown</span>
+          <span class="pf-swatch__hex">#92400E</span>
+        </div>
+        <div class="pf-swatch">
+          <div class="pf-swatch__color" style="background:#F0FDF4;border:1px solid #E5E7EB;"></div>
+          <span class="pf-swatch__name">Soft Mint</span>
+          <span class="pf-swatch__hex">#F0FDF4</span>
+        </div>
+        <div class="pf-swatch">
+          <div class="pf-swatch__color" style="background:#FFFBEB;border:1px solid #E5E7EB;"></div>
+          <span class="pf-swatch__name">Warm Cream</span>
+          <span class="pf-swatch__hex">#FFFBEB</span>
+        </div>
+      </div>
+
+      <div class="pf-divider" aria-hidden="true"></div>
+
+      <div class="pf-design-grid" data-animate="stagger">
+        <div class="pf-design-card">
+          <div class="pf-design-card__icon" aria-hidden="true">🌿</div>
+          <h3 class="pf-design-card__title">Flora-Named Room System</h3>
+          <p class="pf-design-card__body">Six rooms named for indigenous South African plants — Protea, Rock Rose, Acacia, Aloe, Arum, Jacaranda. Creates a memorable identity system guests recall before they arrive and share after they leave.</p>
+        </div>
+        <div class="pf-design-card">
+          <div class="pf-design-card__icon" aria-hidden="true">📸</div>
+          <h3 class="pf-design-card__title">Photography-First Layout</h3>
+          <p class="pf-design-card__body">Farm photography curated to show the property at its most atmospheric — dam at golden hour, river walk in morning light, room interiors with natural sunlight. Images are the primary sales mechanism, copy is secondary.</p>
+        </div>
+        <div class="pf-design-card">
+          <div class="pf-design-card__icon" aria-hidden="true">🏠</div>
+          <h3 class="pf-design-card__title">Room Card Grid</h3>
+          <p class="pf-design-card__body">Three-column room cards allow guests to visually compare all six options side by side. Each card shows room name, capacity, and a compelling thumbnail — inviting click-through to the full room page.</p>
+        </div>
+        <div class="pf-design-card">
+          <div class="pf-design-card__icon" aria-hidden="true">🗓️</div>
+          <h3 class="pf-design-card__title">Availability Checker UI</h3>
+          <p class="pf-design-card__body">Check-in/check-out date picker embedded on the homepage — the most important conversion tool on any accommodation website. Designed to be the first interactive element a visitor reaches after the hero.</p>
+        </div>
+        <div class="pf-design-card">
+          <div class="pf-design-card__icon" aria-hidden="true">🧭</div>
+          <h3 class="pf-design-card__title">Navigation with Local Value</h3>
+          <p class="pf-design-card__body">Activities sub-menu (Local Restaurants, Bush Creek Activities, Local Activities) adds genuine local area value — positions the site as a destination guide, not just a booking page.</p>
+        </div>
+        <div class="pf-design-card">
+          <div class="pf-design-card__icon" aria-hidden="true">🌟</div>
+          <h3 class="pf-design-card__title">Evocative Copywriting</h3>
+          <p class="pf-design-card__body">"Where the past lingers, the present unwinds, and nature welcomes you home." Copy tone mirrors the sensory experience of the farm — escaping, breathing, slowing down. Not "comfortable rooms available."</p>
+        </div>
+      </div>
+
+      <div class="pf-two-col" style="margin-top:3rem;" data-animate="fade-up">
+        <div>
+          <!-- <img src="/images/projects/bush-creek/rooms-grid.jpg" alt="Bush Creek six-room card grid showing Protea, Rock Rose, Acacia, Aloe, Arum, Jacaranda" /> -->
+          <div class="pf-compare__placeholder" style="height:220px;border-radius:12px;">[ rooms-grid.jpg ]</div>
+          <p style="font-size:.875rem;color:#6B7280;margin-top:.5rem;">Six-room grid — individual pages per room</p>
+        </div>
+        <div>
+          <!-- <img src="/images/projects/bush-creek/availability.jpg" alt="Homepage availability checker with Check In / Check Out date picker" /> -->
+          <div class="pf-compare__placeholder" style="height:220px;border-radius:12px;">[ availability.jpg ]</div>
+          <p style="font-size:.875rem;color:#6B7280;margin-top:.5rem;">Availability checker — friction-free booking path</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════════════
+     S07 — DEVELOPMENT PROCESS
+     ════════════════════════════════════════════════════════════════════ -->
+  <section id="development" class="pf-section pf-section--tint" aria-labelledby="dev-heading">
+    <div class="pf-container">
+      <div class="pf-label">07 — Development Process</div>
+      <h2 class="pf-heading" id="dev-heading" data-animate="fade-up">
+        Built for the Guest Who Books on the Go
+      </h2>
+      <p class="pf-subheading" data-animate="fade-up">
+        South African leisure travellers browse on mobile, late at night, comparing options in real time. Every technical decision was made for that moment.
+      </p>
+      <div class="pf-two-col" data-animate="fade-up">
+        <div>
+          <ul class="pf-list">
+            <li class="pf-list__item"><span class="pf-list__icon" aria-hidden="true">→</span><span class="pf-list__text"><strong>Individual room pages:</strong> Six separate URL-addressable pages (/rooms/protea, /rooms/jacaranda etc.) — SEO-optimisable and independently linkable for direct sharing.</span></li>
+            <li class="pf-list__item"><span class="pf-list__icon" aria-hidden="true">→</span><span class="pf-list__text"><strong>Availability date picker:</strong> Date range input component embedded on homepage and rooms pages — immediate response, no email required.</span></li>
+            <li class="pf-list__item"><span class="pf-list__icon" aria-hidden="true">→</span><span class="pf-list__text"><strong>Image carousel:</strong> Smooth touch-enabled left-right swipe navigation with indicator dots — primary interaction pattern for a visual-led property on mobile.</span></li>
+          </ul>
+        </div>
+        <div>
+          <ul class="pf-list">
+            <li class="pf-list__item"><span class="pf-list__icon" aria-hidden="true">→</span><span class="pf-list__text"><strong>Google Maps embed:</strong> Interactive map on Location page removes pre-arrival anxiety — guests can confirm the route before they commit to the trip.</span></li>
+            <li class="pf-list__item"><span class="pf-list__icon" aria-hidden="true">→</span><span class="pf-list__text"><strong>Click-to-contact links:</strong> Phone number formatted as a <code>tel:</code> link for one-tap calling; email as a <code>mailto:</code> link — zero friction on mobile.</span></li>
+            <li class="pf-list__item"><span class="pf-list__icon" aria-hidden="true">→</span><span class="pf-list__text"><strong>Responsive image loading:</strong> Large farm photographs use responsive srcset attributes — fast load even on South Africa's rural and 3G connections.</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="pf-callout pf-callout--gold" data-animate="fade-up">
+        <p class="pf-callout__label">Tech Stack</p>
+        <p class="pf-callout__body">
+          HTML5 · CSS3 (responsive grid, custom properties) · Vanilla JavaScript · Touch-optimised carousel · Date-range availability component · Google Maps embed · WebP optimised photography · Schema.org BedAndBreakfast markup
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════════════
+     S08 — ANIMATIONS & INTERACTIONS
+     ════════════════════════════════════════════════════════════════════ -->
+  <section id="animations" class="pf-section pf-section--light" aria-labelledby="anim-heading">
+    <div class="pf-container">
+      <div class="pf-label">08 — Animations & Interactions</div>
+      <h2 class="pf-heading" id="anim-heading" data-animate="fade-up">
+        Interactions That Feel Like the Farm Itself — Natural, Unhurried
+      </h2>
+      <div class="pf-process" data-animate="stagger">
+        <div class="pf-process-step">
+          <div class="pf-process-step__num" aria-hidden="true">01</div>
+          <h3 class="pf-process-step__title">Image Carousel</h3>
+          <p class="pf-process-step__body">Smooth left-right swipe on room pages and the gallery section. Touch-friendly swipe gestures with momentum — the primary interaction for mobile guests browsing the property.</p>
+        </div>
+        <div class="pf-process-step">
+          <div class="pf-process-step__num" aria-hidden="true">02</div>
+          <h3 class="pf-process-step__title">Availability Picker</h3>
+          <p class="pf-process-step__body">Date picker with visual calendar — interactive, immediate, satisfying to use. The animation on date selection confirms the choice and invites the next step.</p>
+        </div>
+        <div class="pf-process-step">
+          <div class="pf-process-step__num" aria-hidden="true">03</div>
+          <h3 class="pf-process-step__title">Room Card Hover</h3>
+          <p class="pf-process-step__body">Subtle image zoom and card lift on hover — communicates interactivity without distracting from the photography that's doing the selling.</p>
+        </div>
+        <div class="pf-process-step">
+          <div class="pf-process-step__num" aria-hidden="true">04</div>
+          <h3 class="pf-process-step__title">Scroll Reveals</h3>
+          <p class="pf-process-step__body">Property feature sections fade gently into view — matches the unhurried, peaceful atmosphere of the farm. No fast snaps or jarring transitions.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════════════
+     S09 — MOBILE RESPONSIVENESS
+     ════════════════════════════════════════════════════════════════════ -->
+  <section id="mobile" class="pf-section pf-section--tint" aria-labelledby="mobile-heading">
+    <div class="pf-container">
+      <div class="pf-label">09 — Mobile Responsiveness</div>
+      <h2 class="pf-heading" id="mobile-heading" data-animate="fade-up">
+        Book a Farm Stay from Your Commute
+      </h2>
+      <p class="pf-subheading" data-animate="fade-up">
+        Full feature parity across all devices. The experience of booking Bush Creek is just as beautiful on a 5-inch screen as on a 27-inch monitor.
+      </p>
+      <div class="pf-two-col" data-animate="fade-up">
+        <div>
+          <ul class="pf-list">
+            <li class="pf-list__item"><span class="pf-list__icon" aria-hidden="true">→</span><span class="pf-list__text">Farm hero photography loads beautifully on mobile — atmosphere maintained at every screen size, no cropped or compressed feel</span></li>
+            <li class="pf-list__item"><span class="pf-list__icon" aria-hidden="true">→</span><span class="pf-list__text">3-column room grid collapses to single-column stacked cards — each card fully tappable with clear "View Room" CTA</span></li>
+            <li class="pf-list__item"><span class="pf-list__icon" aria-hidden="true">→</span><span class="pf-list__text">Availability checker uses native mobile date pickers — no third-party calendar that breaks on smaller screens</span></li>
+            <li class="pf-list__item"><span class="pf-list__icon" aria-hidden="true">→</span><span class="pf-list__text">Gallery becomes a swipe-enabled photo carousel on mobile — natural touch interaction pattern for visual browsing</span></li>
+          </ul>
+        </div>
+        <div class="pf-mobile-grid" style="grid-template-columns:1fr 1fr;gap:1.5rem;">
+          <div class="pf-mockup pf-mockup--mobile">
+            <!-- <img class="pf-mockup__screen" src="/images/projects/bush-creek/hero-mobile.jpg" alt="Bush Creek mobile homepage with farm photography" /> -->
+            <div class="pf-mockup__placeholder" style="height:280px;border-radius:24px;">[ hero-mobile.jpg ]</div>
+          </div>
+          <div class="pf-mockup pf-mockup--mobile">
+            <!-- <img class="pf-mockup__screen" src="/images/projects/bush-creek/rooms-mobile.jpg" alt="Bush Creek rooms page on mobile" /> -->
+            <div class="pf-mockup__placeholder" style="height:280px;border-radius:24px;">[ rooms-mobile.jpg ]</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════════════
+     S10 — SEO & PERFORMANCE
+     ════════════════════════════════════════════════════════════════════ -->
+  <section id="seo" class="pf-section pf-section--light" aria-labelledby="seo-heading">
+    <div class="pf-container">
+      <div class="pf-label">10 — SEO & Performance</div>
+      <h2 class="pf-heading" id="seo-heading" data-animate="fade-up">
+        Found Before the OTA
+      </h2>
+      <p class="pf-subheading" data-animate="fade-up">
+        Individual room pages, location-specific targeting, and activity content create a search footprint that OTA listings can't replicate.
+      </p>
+      <div class="pf-two-col" data-animate="fade-up">
+        <div>
+          <h3 style="font-weight:700;margin-bottom:1rem;">SEO Architecture</h3>
+          <ul class="pf-list">
+            <li class="pf-list__item"><span class="pf-list__icon" aria-hidden="true">→</span><span class="pf-list__text">Individual room URLs: /rooms/protea — target "honeymoon suite KwaZulu-Natal" and similar high-intent searches</span></li>
+            <li class="pf-list__item"><span class="pf-list__icon" aria-hidden="true">→</span><span class="pf-list__text">Location page: "Mooi River guest house" and "farm accommodation near Mooi River" — local search intent</span></li>
+            <li class="pf-list__item"><span class="pf-list__icon" aria-hidden="true">→</span><span class="pf-list__text">Activities pages: "things to do near Mooi River" — informational content that drives discovery</span></li>
+            <li class="pf-list__item"><span class="pf-list__icon" aria-hidden="true">→</span><span class="pf-list__text">BedAndBreakfast + LodgingBusiness schema for Google Knowledge Panel eligibility</span></li>
+          </ul>
+        </div>
+        <div>
+          <h3 style="font-weight:700;margin-bottom:1rem;">Performance</h3>
+          <ul class="pf-list">
+            <li class="pf-list__item"><span class="pf-list__icon" aria-hidden="true">→</span><span class="pf-list__text">Farm photography optimised in WebP with responsive srcset — fast on rural/3G connections</span></li>
+            <li class="pf-list__item"><span class="pf-list__icon" aria-hidden="true">→</span><span class="pf-list__text">Lazy-loading on gallery images — no unnecessary data usage on initial page load</span></li>
+            <li class="pf-list__item"><span class="pf-list__icon" aria-hidden="true">→</span><span class="pf-list__text">Reviews page: future UGC signal — Google rewards businesses with structured review presence</span></li>
+            <li class="pf-list__item"><span class="pf-list__icon" aria-hidden="true">→</span><span class="pf-list__text">Lighthouse score target: 88+ mobile, 95+ desktop</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════════════
+     S11 — OUTCOMES
+     ════════════════════════════════════════════════════════════════════ -->
+  <section id="outcomes" class="pf-section pf-section--dark" aria-labelledby="outcomes-heading">
+    <div class="pf-container">
+      <div class="pf-label">11 — Outcomes & Results</div>
+      <h2 class="pf-heading" id="outcomes-heading" data-animate="fade-up">
+        A Digital Home as Beautiful as the Farm Itself
+      </h2>
+      <p class="pf-subheading" data-animate="fade-up">
+        Bush Creek Guest House now has a direct booking capability, a brand identity as warm as the property, and a website that does what the best hospitality websites do — make you want to be there.
+      </p>
+      <div class="pf-outcomes-grid">
+        <div class="pf-outcome-card">
+          <span class="pf-outcome-card__value" data-count="10" data-suffix="+">10+</span>
+          <span class="pf-outcome-card__label">Pages Delivered</span>
+          <span class="pf-outcome-card__context">Home, 6 Rooms, Gallery, Activities, Location, Reviews, Contact</span>
+        </div>
+        <div class="pf-outcome-card">
+          <span class="pf-outcome-card__value" data-count="6" data-suffix="">6</span>
+          <span class="pf-outcome-card__label">Room Pages</span>
+          <span class="pf-outcome-card__context">Each with individual images, descriptions, and booking CTAs</span>
+        </div>
+        <div class="pf-outcome-card">
+          <span class="pf-outcome-card__value">Live</span>
+          <span class="pf-outcome-card__label">Booking Channel</span>
+          <span class="pf-outcome-card__context">Direct alternative to OTA platforms — no commission</span>
+        </div>
+        <div class="pf-outcome-card">
+          <span class="pf-outcome-card__value" data-count="3" data-suffix="">3</span>
+          <span class="pf-outcome-card__label">Activity Sub-pages</span>
+          <span class="pf-outcome-card__context">Local restaurants, on-site, and local activities</span>
+        </div>
+        <div class="pf-outcome-card">
+          <span class="pf-outcome-card__value" data-count="100" data-suffix="%">100%</span>
+          <span class="pf-outcome-card__label">Mobile Ready</span>
+          <span class="pf-outcome-card__context">Book from any device, any screen size</span>
+        </div>
+        <div class="pf-outcome-card">
+          <span class="pf-outcome-card__value">SEO</span>
+          <span class="pf-outcome-card__label">Local Foundation</span>
+          <span class="pf-outcome-card__context">KZN hospitality search terms targeted across 10+ pages</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════════════
+     S12 — TESTIMONIAL
+     ════════════════════════════════════════════════════════════════════ -->
+  <section id="testimonial" class="pf-section pf-section--tint" aria-labelledby="testimonial-heading">
+    <div class="pf-container">
+      <div class="pf-label" style="display:block;text-align:center;">12 — Client Voice</div>
+      <h2 class="pf-heading" id="testimonial-heading" style="text-align:center;margin:0 auto 2rem;" data-animate="fade-up">
+        What Bush Creek Said
+      </h2>
+      <div class="pf-testimonial" data-animate="fade-up">
+        <div class="pf-testimonial__stars" aria-label="5 star rating">★★★★★</div>
+        <p class="pf-testimonial__pending">
+          ✏️ Testimonial being collected from Bush Creek Guest House owner — check back soon.
+        </p>
+        <!--
+        <blockquote class="pf-testimonial__quote">"[Client quote here]"</blockquote>
+        <div class="pf-testimonial__attribution">
+          <div class="pf-testimonial__avatar-placeholder" aria-hidden="true">BC</div>
+          <div>
+            <p class="pf-testimonial__name">Owner Name</p>
+            <p class="pf-testimonial__role">Owner, Bush Creek Guest House</p>
+          </div>
+        </div>
+        -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════════════
+     S13 — CTA
+     ════════════════════════════════════════════════════════════════════ -->
+  <section id="cta" class="pf-section pf-section--brand" style="opacity:1;transform:none;" aria-labelledby="cta-heading">
+    <div class="pf-container">
+      <div class="pf-cta">
+        <p class="pf-cta__eyebrow">Ready to fill your rooms?</p>
+        <h2 class="pf-cta__heading" id="cta-heading">
+          Do You Run a Guest House, Lodge,<br>Hotel, or Hospitality Brand?
+        </h2>
+        <p class="pf-cta__body">
+          We build hospitality websites that make guests want to book before they finish their first scroll. Let's build yours.
+        </p>
+        <div class="pf-cta__buttons">
+          <a href="/quote.html" class="pf-btn pf-btn--primary">Start a Project with Nexora →</a>
+          <a href="/projects.html" class="pf-btn pf-btn--ghost">View All Projects</a>
+        </div>
+        <div class="pf-related" aria-label="Related projects">
+          <p class="pf-related__label">More Projects</p>
+          <div class="pf-related__grid">
+            <a href="/projects/red-wolf-security.html" class="pf-related-card">
+              <span class="pf-related-card__industry" style="color:#F87171;">Corporate Security · Nigeria</span>
+              <span class="pf-related-card__name">Red Wolf Security</span>
+              <span class="pf-related-card__link">redwolfsecuirty.com ↗</span>
+            </a>
+            <a href="/projects/cpil.html" class="pf-related-card">
+              <span class="pf-related-card__industry" style="color:#3B82F6;">Infrastructure · Nigeria</span>
+              <span class="pf-related-card__name">CPIL — Cemex Project Integrated</span>
+              <span class="pf-related-card__link">cpil.com.ng ↗</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="pf-footer" role="contentinfo">
+    <a href="/" class="pf-footer__logo">Nexora<span>.</span></a>
+    <p class="pf-footer__copy">
+      © 2025 Nexora Web Agency · Cape Town, South Africa ·
+      <a href="mailto:nwa.agency.josh@gmail.com" style="color:rgba(255,255,255,.35);">nwa.agency.josh@gmail.com</a>
+    </p>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+  <script src="/assets/js/animations.js" defer></script>
+</body>
+</html>
