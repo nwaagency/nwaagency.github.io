@@ -35,6 +35,41 @@
             .cs-hero {
                 background: radial-gradient(circle at top right, rgba(239, 68, 68, 0.08), transparent 55%);
             }
+
+            /* Image styling */
+            .cs-image {
+                width: 100%;
+                height: auto;
+                display: block;
+                border-radius: 8px;
+            }
+
+            .cs-image-frame {
+                border-radius: 12px;
+                overflow: hidden;
+                background: var(--color-surface, #111827);
+                box-shadow: 0 4px 32px rgba(0, 0, 0, 0.22), 0 1px 4px rgba(0, 0, 0, 0.12);
+                line-height: 0;
+            }
+
+            .cs-hero-shot__img {
+                width: 100%;
+                height: auto;
+                display: block;
+                border-radius: 0;
+            }
+
+            .cs-mockup--mobile .cs-image {
+                border-radius: 20px;
+            }
+
+            .cs-placeholder--caption {
+                margin-top: 0.6rem;
+                font-size: 0.8rem;
+                color: var(--color-text-muted, #6b7280);
+                text-align: center;
+                display: block;
+            }
         </style>
     </head>
 
@@ -144,45 +179,27 @@
                     <span class="cs-label reveal">03 — Client Challenge</span>
                     <h2 class="cs-heading reveal delay-100" id="challenge-heading">Serious Security Capability Behind an Amateur Website</h2>
                     <p class="cs-subheading reveal delay-200"> Red Wolf Security had the personnel, the licences, and the operational track record. Their website did not look like any of it. </p>
-                    <div class="cs-two-col cs-two-col--60-40">
-                        <div class="reveal delay-100">
-                            <p class="cs-body">Red Wolf Security is a Nigerian corporate security firm providing armed escort, CCTV surveillance installation and monitoring, VIP close protection, and access control solutions to commercial, corporate, and high-net-worth clients across Nigeria.</p>
-                            <p class="cs-body">In Nigeria's corporate security sector, procurement decisions are trust-driven. A company's website is reviewed as a proxy for operational credibility — if the site looks amateur, the firm is perceived as amateur. Red Wolf's existing presence was failing them at the first evaluation point.</p>
-                            <ul class="cs-list">
-                                <li class="cs-list__item">
-                                    <span class="cs-list__icon" aria-hidden="true">—</span>
-                                    <span>Three distinct service categories (Armed Escort, CCTV, VIP Protection) were not clearly separated — corporate buyers could not immediately identify the specific capability they needed</span>
-                                </li>
-                                <li class="cs-list__item">
-                                    <span class="cs-list__icon" aria-hidden="true">—</span>
-                                    <span>Licensing credentials and regulatory compliance — critical trust signals in the security sector — were entirely absent from the site</span>
-                                </li>
-                                <li class="cs-list__item">
-                                    <span class="cs-list__icon" aria-hidden="true">—</span>
-                                    <span>No clear quote or engagement pathway — corporate procurement teams with urgent security requirements had no fast route to a conversation</span>
-                                </li>
-                                <li class="cs-list__item">
-                                    <span class="cs-list__icon" aria-hidden="true">—</span>
-                                    <span>Visual design communicated no authority — the firm's years of operational experience and guard deployment scale were entirely invisible</span>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="reveal delay-200">
-                            <div class="cs-compare">
-                                <div class="cs-compare__before">
-                                    <span class="cs-compare__tag cs-compare__tag--before">Before</span>
-                                    <div class="cs-image-frame" style="border-radius:8px;overflow:hidden;">
-                                        <img src="/images/projects/redwolf/compare-before.png" alt="Red Wolf Security website before redesign — undifferentiated services layout" class="cs-image" loading="lazy" />
-                                    </div>
-                                </div>
-                                <div class="cs-compare__after">
-                                    <span class="cs-compare__tag cs-compare__tag--after">After</span>
-                                    <div class="cs-image-frame" style="border-radius:8px;overflow:hidden;">
-                                        <img src="/images/projects/redwolf/compare-after.png" alt="Red Wolf Security website after redesign — credential-first service cards" class="cs-image" loading="lazy" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="reveal delay-100">
+                        <p class="cs-body">Red Wolf Security is a Nigerian corporate security firm providing armed escort, CCTV surveillance installation and monitoring, VIP close protection, and access control solutions to commercial, corporate, and high-net-worth clients across Nigeria.</p>
+                        <p class="cs-body">In Nigeria's corporate security sector, procurement decisions are trust-driven. A company's website is reviewed as a proxy for operational credibility — if the site looks amateur, the firm is perceived as amateur. Red Wolf's existing presence was failing them at the first evaluation point.</p>
+                        <ul class="cs-list">
+                            <li class="cs-list__item">
+                                <span class="cs-list__icon" aria-hidden="true">—</span>
+                                <span>Three distinct service categories (Armed Escort, CCTV, VIP Protection) were not clearly separated — corporate buyers could not immediately identify the specific capability they needed</span>
+                            </li>
+                            <li class="cs-list__item">
+                                <span class="cs-list__icon" aria-hidden="true">—</span>
+                                <span>Licensing credentials and regulatory compliance — critical trust signals in the security sector — were entirely absent from the site</span>
+                            </li>
+                            <li class="cs-list__item">
+                                <span class="cs-list__icon" aria-hidden="true">—</span>
+                                <span>No clear quote or engagement pathway — corporate procurement teams with urgent security requirements had no fast route to a conversation</span>
+                            </li>
+                            <li class="cs-list__item">
+                                <span class="cs-list__icon" aria-hidden="true">—</span>
+                                <span>Visual design communicated no authority — the firm's years of operational experience and guard deployment scale were entirely invisible</span>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </section>

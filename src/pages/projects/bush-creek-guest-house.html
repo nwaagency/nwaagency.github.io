@@ -35,6 +35,41 @@
             .cs-hero {
                 background: radial-gradient(circle at top right, rgba(132, 204, 22, 0.07), transparent 55%);
             }
+
+            /* Image styling */
+            .cs-image {
+                width: 100%;
+                height: auto;
+                display: block;
+                border-radius: 8px;
+            }
+
+            .cs-image-frame {
+                border-radius: 12px;
+                overflow: hidden;
+                background: var(--color-surface, #111827);
+                box-shadow: 0 4px 32px rgba(0, 0, 0, 0.22), 0 1px 4px rgba(0, 0, 0, 0.12);
+                line-height: 0;
+            }
+
+            .cs-hero-shot__img {
+                width: 100%;
+                height: auto;
+                display: block;
+                border-radius: 0;
+            }
+
+            .cs-mockup--mobile .cs-image {
+                border-radius: 20px;
+            }
+
+            .cs-placeholder--caption {
+                margin-top: 0.6rem;
+                font-size: 0.8rem;
+                color: var(--color-text-muted, #6b7280);
+                text-align: center;
+                display: block;
+            }
         </style>
     </head>
 
@@ -136,45 +171,27 @@
                     <span class="cs-label reveal">03 — Client Challenge</span>
                     <h2 class="cs-heading reveal delay-100" id="challenge-heading">A Magical Place That Was Invisible Online</h2>
                     <p class="cs-subheading reveal delay-200"> Every night the Bush Creek dam went unfished and the Protea room sat empty was a night of lost revenue — and it was happening because the website did not make people want to come. </p>
-                    <div class="cs-two-col cs-two-col--60-40">
-                        <div class="reveal delay-100">
-                            <p class="cs-body">Bush Creek Guest House is a working farm in Mooi River, KwaZulu-Natal — six uniquely themed rooms, a natural swimming dam, scenic river walks, and genuine farm life. The product is extraordinary. The digital presence was not communicating any of it.</p>
-                            <p class="cs-body">Rural hospitality properties lose enormous revenue to OTA platforms not because they are inferior products, but because their own websites do not convert. A guest browsing on mobile needs to feel the pull of the place before they will commit to a booking.</p>
-                            <ul class="cs-list">
-                                <li class="cs-list__item">
-                                    <span class="cs-list__icon" aria-hidden="true">—</span>
-                                    <span>No individual room pages — guests could not preview their specific accommodation before booking</span>
-                                </li>
-                                <li class="cs-list__item">
-                                    <span class="cs-list__icon" aria-hidden="true">—</span>
-                                    <span>No availability checker — every enquiry required a slow back-and-forth email exchange, losing impatient mobile browsers instantly</span>
-                                </li>
-                                <li class="cs-list__item">
-                                    <span class="cs-list__icon" aria-hidden="true">—</span>
-                                    <span>No dedicated gallery — the property's most powerful sales asset, its visual beauty, was largely hidden</span>
-                                </li>
-                                <li class="cs-list__item">
-                                    <span class="cs-list__icon" aria-hidden="true">—</span>
-                                    <span>No activities section — potential guests could not see what they would do beyond sleep, making multi-night bookings harder to justify</span>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="reveal delay-200">
-                            <div class="cs-compare">
-                                <div class="cs-compare__before">
-                                    <span class="cs-compare__tag cs-compare__tag--before">Before</span>
-                                    <div class="cs-image-frame" style="border-radius:8px;overflow:hidden;">
-                                        <img src="/images/projects/bushcreek/compare-before.png" alt="Bush Creek website before redesign — basic info page" class="cs-image" loading="lazy" />
-                                    </div>
-                                </div>
-                                <div class="cs-compare__after">
-                                    <span class="cs-compare__tag cs-compare__tag--after">After</span>
-                                    <div class="cs-image-frame" style="border-radius:8px;overflow:hidden;">
-                                        <img src="/images/projects/bushcreek/compare-after.png" alt="Bush Creek website after redesign — six-room grid with individual pages" class="cs-image" loading="lazy" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="reveal delay-100">
+                        <p class="cs-body">Bush Creek Guest House is a working farm in Mooi River, KwaZulu-Natal — six uniquely themed rooms, a natural swimming dam, scenic river walks, and genuine farm life. The product is extraordinary. The digital presence was not communicating any of it.</p>
+                        <p class="cs-body">Rural hospitality properties lose enormous revenue to OTA platforms not because they are inferior products, but because their own websites do not convert. A guest browsing on mobile needs to feel the pull of the place before they will commit to a booking.</p>
+                        <ul class="cs-list">
+                            <li class="cs-list__item">
+                                <span class="cs-list__icon" aria-hidden="true">—</span>
+                                <span>No individual room pages — guests could not preview their specific accommodation before booking</span>
+                            </li>
+                            <li class="cs-list__item">
+                                <span class="cs-list__icon" aria-hidden="true">—</span>
+                                <span>No availability checker — every enquiry required a slow back-and-forth email exchange, losing impatient mobile browsers instantly</span>
+                            </li>
+                            <li class="cs-list__item">
+                                <span class="cs-list__icon" aria-hidden="true">—</span>
+                                <span>No dedicated gallery — the property's most powerful sales asset, its visual beauty, was largely hidden</span>
+                            </li>
+                            <li class="cs-list__item">
+                                <span class="cs-list__icon" aria-hidden="true">—</span>
+                                <span>No activities section — potential guests could not see what they would do beyond sleep, making multi-night bookings harder to justify</span>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </section>

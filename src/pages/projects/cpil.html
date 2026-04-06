@@ -35,6 +35,41 @@
             .cs-hero {
                 background: radial-gradient(circle at top right, rgba(96, 165, 250, 0.08), transparent 55%);
             }
+
+            /* Image styling */
+            .cs-image {
+                width: 100%;
+                height: auto;
+                display: block;
+                border-radius: 8px;
+            }
+
+            .cs-image-frame {
+                border-radius: 12px;
+                overflow: hidden;
+                background: var(--color-surface, #111827);
+                box-shadow: 0 4px 32px rgba(0, 0, 0, 0.22), 0 1px 4px rgba(0, 0, 0, 0.12);
+                line-height: 0;
+            }
+
+            .cs-hero-shot__img {
+                width: 100%;
+                height: auto;
+                display: block;
+                border-radius: 0;
+            }
+
+            .cs-mockup--mobile .cs-image {
+                border-radius: 20px;
+            }
+
+            .cs-placeholder--caption {
+                margin-top: 0.6rem;
+                font-size: 0.8rem;
+                color: var(--color-text-muted, #6b7280);
+                text-align: center;
+                display: block;
+            }
         </style>
     </head>
 
@@ -144,45 +179,27 @@
                     <span class="cs-label reveal">03 — Client Challenge</span>
                     <h2 class="cs-heading reveal delay-100" id="challenge-heading">A Decade of Excellence with a Website That Did Not Show It</h2>
                     <p class="cs-subheading reveal delay-200"> CPIL had been engineering Nigeria's infrastructure since 2015. Their digital presence made it look like they started last year. </p>
-                    <div class="cs-two-col cs-two-col--60-40">
-                        <div class="reveal delay-100">
-                            <p class="cs-body">CPIL (Cemex Project Integrated Limited) is a multi-division Nigerian infrastructure company with over ten years of operational history, 25+ years of combined personnel experience, a 95% client satisfaction rate, and a 100% safety record across power, marine, construction, and facility management.</p>
-                            <p class="cs-body">In Nigeria's infrastructure and energy sector, procurement decisions are preceded by extensive digital due diligence. A company's website is often the first and most important document in a tender evaluation. CPIL's existing digital presence was communicating "small regional contractor" when the reality was "leading national infrastructure company."</p>
-                            <ul class="cs-list">
-                                <li class="cs-list__item">
-                                    <span class="cs-list__icon" aria-hidden="true">—</span>
-                                    <span>Four distinct business divisions were presented as undifferentiated "services" — sector-specific buyers could not immediately find what they needed</span>
-                                </li>
-                                <li class="cs-list__item">
-                                    <span class="cs-list__icon" aria-hidden="true">—</span>
-                                    <span>Proof points (10+ years, 95% satisfaction, 100% safety) were not front-and-centre — buyers had to search for the evidence they needed to feel confident</span>
-                                </li>
-                                <li class="cs-list__item">
-                                    <span class="cs-list__icon" aria-hidden="true">—</span>
-                                    <span>Leadership team credentials were entirely invisible — no personal accountability visible to procurement officers</span>
-                                </li>
-                                <li class="cs-list__item">
-                                    <span class="cs-list__icon" aria-hidden="true">—</span>
-                                    <span>Two strategic offices (Lagos + Warri) were not leveraged as geographic authority signals — no map presence, no contact differentiation by location</span>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="reveal delay-200">
-                            <div class="cs-compare">
-                                <div class="cs-compare__before">
-                                    <span class="cs-compare__tag cs-compare__tag--before">Before</span>
-                                    <div class="cs-image-frame" style="border-radius:8px;overflow:hidden;">
-                                        <img src="/images/projects/cpil/compare-before.png" alt="CPIL website before redesign — generic contractor layout" class="cs-image" loading="lazy" />
-                                    </div>
-                                </div>
-                                <div class="cs-compare__after">
-                                    <span class="cs-compare__tag cs-compare__tag--after">After</span>
-                                    <div class="cs-image-frame" style="border-radius:8px;overflow:hidden;">
-                                        <img src="/images/projects/cpil/compare-after.png" alt="CPIL website after redesign — statistics-first hero strip" class="cs-image" loading="lazy" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="reveal delay-100">
+                        <p class="cs-body">CPIL (Cemex Project Integrated Limited) is a multi-division Nigerian infrastructure company with over ten years of operational history, 25+ years of combined personnel experience, a 95% client satisfaction rate, and a 100% safety record across power, marine, construction, and facility management.</p>
+                        <p class="cs-body">In Nigeria's infrastructure and energy sector, procurement decisions are preceded by extensive digital due diligence. A company's website is often the first and most important document in a tender evaluation. CPIL's existing digital presence was communicating "small regional contractor" when the reality was "leading national infrastructure company."</p>
+                        <ul class="cs-list">
+                            <li class="cs-list__item">
+                                <span class="cs-list__icon" aria-hidden="true">—</span>
+                                <span>Four distinct business divisions were presented as undifferentiated "services" — sector-specific buyers could not immediately find what they needed</span>
+                            </li>
+                            <li class="cs-list__item">
+                                <span class="cs-list__icon" aria-hidden="true">—</span>
+                                <span>Proof points (10+ years, 95% satisfaction, 100% safety) were not front-and-centre — buyers had to search for the evidence they needed to feel confident</span>
+                            </li>
+                            <li class="cs-list__item">
+                                <span class="cs-list__icon" aria-hidden="true">—</span>
+                                <span>Leadership team credentials were entirely invisible — no personal accountability visible to procurement officers</span>
+                            </li>
+                            <li class="cs-list__item">
+                                <span class="cs-list__icon" aria-hidden="true">—</span>
+                                <span>Two strategic offices (Lagos + Warri) were not leveraged as geographic authority signals — no map presence, no contact differentiation by location</span>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </section>
