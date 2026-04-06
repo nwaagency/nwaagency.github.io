@@ -7,7 +7,7 @@
     "build": "rm -rf dist && mkdir -p dist && cp -R src/pages/* dist/ 2>/dev/null || true && cp -R src/assets dist/assets 2>/dev/null || true && cp -R public/* dist/ 2>/dev/null || true",
     "watch": "npx chokidar-cli 'src/**/*' 'public/**/*' -c 'npm run build'",
     "serve": "npx browser-sync start --server 'dist' --files 'dist/**/*' --no-open --port 3000",
-    "dev": "npm run build && npx concurrently --kill-others \"npm run watch\" \"npm run serve\""
+    "dev": "npm run build && npx serve dist"
   },
   "dependencies": {},
   "devDependencies": {}
