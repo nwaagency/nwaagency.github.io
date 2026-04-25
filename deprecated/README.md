@@ -4,7 +4,7 @@
 ![Static Site](https://img.shields.io/badge/architecture-static--site-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
-High‑performance static website for a digital engineering agency. Built with **HTML, CSS, and Vanilla JavaScript** — no build step, no framework, no dependencies. Deployed through **Netlify CDN infrastructure**.
+High‑performance, componentized static website for a digital engineering agency. Built with **HTML, CSS, and Vanilla JavaScript** using a lightweight **layout + components architecture**, assembled via npm scripts and deployed through **Netlify CDN infrastructure**.
 
 ---
 
@@ -17,17 +17,23 @@ git clone https://github.com/nwaagency/nwaagency.github.io.git
 cd nwaagency.github.io
 ```
 
-Preview locally — no install step, no toolchain. Pick whichever is convenient:
+Install dependencies:
 
 ```bash
-python3 -m http.server 3000
-# or
-npx serve .
+npm install
 ```
 
-Then open http://localhost:3000 in a browser.
+Start development:
 
-> **Note on forms:** the contact and quote forms use Netlify Forms. Submissions only flow through on a real Netlify deploy (or deploy preview) — locally, the form action URL will 404. Test forms on Netlify, not on localhost.
+```bash
+npm run dev
+```
+
+If no dev server exists:
+
+```bash
+npx serve .
+```
 
 ---
 
@@ -76,10 +82,11 @@ The system is intentionally built using **static architecture** to maximize:
 
 Maintainability is achieved through:
 
-* shared HTML conventions across pages
+* centralized **BaseLayout**
+* reusable **HTML components**
 * modular CSS layers
 * minimal structured JavaScript
-* a flat, deployable folder layout (no build artifacts)
+* strict separation between **source (`src/`) and assets (`public/`)**
 
 ---
 
@@ -93,34 +100,40 @@ Maintainability is achieved through:
 
 ## Infrastructure
 
-* Netlify (hosting + CDN, including Forms for contact/quote submissions)
-* No build step — site is deployed as plain files
+* Netlify (hosting + CDN)
+* npm (build orchestration)
 
 ---
 
 # Repository Structure
 
 ```text
-├── index.html
-├── about.html
-├── contact.html
-├── contact-submission.html
-├── quote.html
-├── thank-you.html
-├── services.html
-├── projects.html
-├── template.html
-├── projects/                 # case studies
-│   ├── bush-creek-guest-house.html
-│   ├── cpil.html
-│   └── red-wolf-security.html
-├── services/                 # individual service landing pages (10 files)
-├── assets/
-│   ├── css/                  # design tokens + page styles
-│   └── js/                   # animations.js, forms.js
-├── images/                   # project + founder imagery
-├── icons/                    # SVG logos and emblem
+├── public
+│   ├── icons
+│   └── images
+├── src
+│   ├── assets
+│   │   ├── css
+│   │   └── js
+│   ├── components
+│   │   ├── global
+│   │   ├── sections
+│   │   └── ui
+│   ├── layouts
+│   │   └── BaseLayout.html
+│   └── pages
+│       ├── services
+│       ├── projects
+│       ├── about.html
+│       ├── contact.html
+│       ├── index.html
+│       ├── projects.html
+│       ├── quote.html
+│       ├── services.html
+│       ├── template.html
+│       └── thank-you.html
 ├── netlify.toml
+├── package.json
 └── README.md
 ```
 
@@ -599,13 +612,15 @@ Because the system is static, the **attack surface is minimal**.
 
 Requirements:
 
+* Node.js (LTS)
+* npm
 * Git
-* A static file server for local preview (`python3 -m http.server`, `npx serve`, or any equivalent)
 
 Recommended tools:
 
 * VS Code
-* Prettier (for formatting on save)
+* Prettier
+* ESLint
 
 ---
 

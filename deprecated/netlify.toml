@@ -1,6 +1,12 @@
 [build]
-  # Site is plain HTML/CSS/JS — no build step. Publish the project root as-is.
-  publish = "."
+  # Directory to publish to (change 'dist' to 'public' or whatever your SSG outputs)
+  publish = "dist" 
+  # Build command (e.g., 'npm run build' for SSG, or left blank for raw HTML/JS)
+  command = "npm run build"
+
+[context.production.environment]
+  NODE_VERSION = "20"
+  # Optional: Environment variables for API keys or build modes can be set here
 
 # ----------------------------------------------------
 # Routing & Redirects
